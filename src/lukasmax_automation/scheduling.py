@@ -159,9 +159,16 @@ def plan_slots(
     occupied: Iterable[datetime] = (),
     *,
     per_day: int | None = None,
+    not_before: datetime | None = None,
 ) -> list[PlannedSlot]:
-    """Lay out ``per_day`` posting times per day for ``days`` days."""
+    """Lay out ``per_day`` posting times per day for ``days`` days.
+
+    Slots earlier than ``not_before`` (default: now) are skipped. Planning a
+    window that starts today would otherwise fill the morning slots with times
+    that already passed, and the next cron tick would fire all of them at once.
+    """
     tz = ZoneInfo(config.get("timezone", TIMEZONE))
+    floor = (not_before or datetime.now(tz)).astimezone(tz)
     per_day = per_day or int(config.get("posts_per_day", 2))
     gap = timedelta(minutes=int(config.get("min_gap_minutes", 240)))
     spread = int(config.get("jitter_minutes", 20))
@@ -193,7 +200,7 @@ def plan_slots(
             slot = _pick(ordered, candidates, placed, explore_every)
             if slot is None:
                 break
-            chosen = _materialize(slot, day, tz, spread, taken, gap, ordered, candidates)
+            chosen = _materialize(slot, day, tz, spread, taken, gap, ordered, floor)
             if chosen is None:
                 break
             planned.append(chosen)
@@ -228,13 +235,15 @@ def _materialize(
     taken: list[datetime],
     gap: timedelta,
     ordered: list[dict[str, Any]],
-    candidates: list[dict[str, Any]],
+    floor: datetime,
 ) -> PlannedSlot | None:
     """Turn a slot into a concrete datetime, or fall through to the next slot."""
     for option in [slot] + [entry for entry in ordered if entry["id"] != slot["id"]]:
         hour, minute = (int(part) for part in str(option["time"]).split(":"))
         base = datetime.combine(day, time(hour, minute), tzinfo=tz)
         moment = base + timedelta(minutes=_jitter(day, option["id"], spread))
+        if moment <= floor:
+            continue  # already past: the cron would fire it on the next tick
         if not _too_close(moment, taken, gap):
             return PlannedSlot(slot_id=option["id"], local=moment)
     return None

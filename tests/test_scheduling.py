@@ -55,6 +55,33 @@ class TestNoCollisions:
             assert abs(slot.local - taken) >= gap, f"{slot.local} colide com o item existente"
 
 
+class TestNotBefore:
+    """Planning a window that starts today must not schedule into the past."""
+
+    def test_slots_earlier_today_are_skipped(self):
+        afternoon = datetime(2026, 8, 10, 16, 0, tzinfo=SAO_PAULO)
+
+        planned = plan_slots(MONDAY, 3, config(), per_day=2, not_before=afternoon)
+
+        assert planned, "o planejamento nao pode ficar vazio por causa do corte"
+        for slot in planned:
+            assert slot.local > afternoon, f"{slot.local} ja tinha passado"
+
+    def test_a_late_start_pushes_the_first_post_to_the_next_day(self):
+        late = datetime(2026, 8, 10, 23, 59, tzinfo=SAO_PAULO)
+
+        planned = plan_slots(MONDAY, 3, config(), per_day=2, not_before=late)
+
+        assert planned[0].local.date() > MONDAY
+
+    def test_the_day_still_fills_when_the_cut_is_early(self):
+        dawn = datetime(2026, 8, 10, 5, 0, tzinfo=SAO_PAULO)
+
+        planned = plan_slots(MONDAY, 1, config(), per_day=2, not_before=dawn)
+
+        assert len(planned) == 2, "um corte de madrugada nao pode custar slots do dia"
+
+
 class TestNoRut:
     def test_does_not_post_at_the_same_hour_every_day(self):
         planned = plan_slots(MONDAY, 21, config(), per_day=2)

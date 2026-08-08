@@ -14,6 +14,15 @@
 - Há 33 recusas temporárias registradas e dois arquivos `.part` retomáveis. O
   arquivamento em massa foi interrompido deliberadamente, não por falha do motor.
 
+> **Atualização de 8 de agosto (tarde).** As 33 recusas não eram temporárias nem
+> culpa da versão do yt-dlp: faltava *impersonation*. Sem ela o TikTok devolve
+> uma página sem os dados de rehydration, e a extração falha sempre com a mesma
+> mensagem. O CLI do yt-dlp negocia isso sozinho; a API Python precisa do alvo
+> explícito. Com a correção, vídeos que falhavam de forma consistente passaram a
+> baixar, e o acervo saiu de 129 para 194 dos 199 do inventário. As poucas
+> recusas restantes seguem sendo do mesmo tipo e podem ser vídeos que o endpoint
+> público realmente não entrega mais.
+
 ## Instagram `_lukasmax`
 
 - Perfil público acessível.
