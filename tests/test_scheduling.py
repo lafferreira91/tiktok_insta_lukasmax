@@ -166,14 +166,21 @@ class TestExploration:
         assert planned, "desligar a exploracao nao pode zerar o planejamento"
 
 
+# Os testes de tuning falam da matematica, nao do conteudo do pool. Nomear
+# slots a mao os quebrou quando os horarios mudaram -- um falso alarme, ja que
+# o encolhimento bayesiano nao sabe nada sobre que horas sao.
+FORTE, FRACO = (slot["id"] for slot in DEFAULT_CONFIG["pool"][:2])
+TERCEIRO = DEFAULT_CONFIG["pool"][2]["id"]
+
+
 class TestTuning:
     def test_a_strong_slot_gains_weight_and_a_weak_one_loses(self):
-        performance = {"wd-prime": [0.5] * 20, "wd-morning": [0.05] * 20}
+        performance = {FORTE: [0.5] * 20, FRACO: [0.05] * 20}
 
         tuned = tune_weights(DEFAULT_CONFIG, performance)
         weights = {slot["id"]: slot["weight"] for slot in tuned["pool"]}
 
-        assert weights["wd-prime"] > weights["wd-morning"]
+        assert weights[FORTE] > weights[FRACO]
         assert tuned["source"] == "data-driven"
 
     def test_shrinkage_keeps_a_single_sample_from_dominating(self):
@@ -186,23 +193,24 @@ class TestTuning:
         tuned = tune_weights(
             DEFAULT_CONFIG,
             {
-                "wd-lunch": [1.0] * 50,  # muita evidencia
-                "wd-commute": [1.0],  # um post de sorte
-                "wd-prime": [0.1] * 50,  # puxa a media global para baixo
+                FORTE: [1.0] * 50,  # muita evidencia
+                FRACO: [1.0],  # um post de sorte
+                TERCEIRO: [0.1] * 50,  # puxa a media global para baixo
             },
         )
         weights = {slot["id"]: slot["weight"] for slot in tuned["pool"]}
 
-        assert weights["wd-commute"] < weights["wd-lunch"], (
-            "um unico post rendeu o mesmo peso que cinquenta"
-        )
+        assert weights[FRACO] < weights[FORTE], "um unico post rendeu o mesmo peso que cinquenta"
 
     def test_unobserved_slots_keep_their_prior_and_survive(self):
-        tuned = tune_weights(DEFAULT_CONFIG, {"wd-prime": [0.4] * 10})
+        tuned = tune_weights(DEFAULT_CONFIG, {FORTE: [0.4] * 10})
 
-        morning = next(slot for slot in tuned["pool"] if slot["id"] == "wd-morning")
-        assert morning["samples"] == 0
-        assert morning["weight"] == pytest.approx(0.70), "um slot sem dados nao pode ser punido"
+        antes = {slot["id"]: slot["weight"] for slot in DEFAULT_CONFIG["pool"]}
+        sem_dados = next(slot for slot in tuned["pool"] if slot["id"] == FRACO)
+        assert sem_dados["samples"] == 0
+        assert sem_dados["weight"] == pytest.approx(antes[FRACO]), (
+            "um slot sem dados nao pode ser punido"
+        )
         assert len(tuned["pool"]) == len(DEFAULT_CONFIG["pool"]), "um slot foi removido"
 
     def test_no_data_leaves_the_config_untouched(self):

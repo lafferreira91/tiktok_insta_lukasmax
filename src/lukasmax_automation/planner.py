@@ -14,9 +14,10 @@ from __future__ import annotations
 import csv
 from collections.abc import Iterable
 from dataclasses import dataclass
-from datetime import date
+from datetime import date, datetime
 from pathlib import Path
 from typing import Any
+from zoneinfo import ZoneInfo
 
 from . import captions as captions_mod
 from . import queue as queue_mod
@@ -234,3 +235,66 @@ def refresh_captions(
         )
 
     return {"trocadas": trocadas, "ignoradas": ignoradas}
+
+
+#: Estados que ainda podem ser re-datados. Publicado e 'publishing' ficam fora
+#: pelos mesmos motivos de sempre: um ja foi ao ar, o outro tem container aberto.
+RESCHEDULABLE = frozenset({"planned", "prepared", "hosted", "scheduled"})
+
+
+def reschedule(
+    queue: dict[str, Any],
+    config: dict[str, Any],
+    *,
+    per_day: int = 2,
+    start: date | None = None,
+    not_before: datetime | None = None,
+) -> dict[str, Any]:
+    """Redistribui os itens pendentes sobre o pool de horarios atual.
+
+    Trocar o pool em ``data/slots.json`` nao mexe em quem ja tem horario
+    gravado, entao mudar de ideia sobre os horarios precisa deste passo. A ordem
+    dos videos e preservada: quem estava primeiro continua primeiro, so o
+    relogio muda.
+    """
+    pendentes = [item for item in queue["items"] if item.get("status") in RESCHEDULABLE]
+    if not pendentes:
+        return {"redatados": [], "nota": "nada pendente para redatar"}
+
+    pendentes.sort(key=lambda item: str(item.get("scheduled_at") or ""))
+    intocaveis = [
+        item["scheduled_at"]
+        for item in queue["items"]
+        if item.get("status") not in RESCHEDULABLE and item.get("scheduled_at")
+    ]
+
+    piso = not_before or queue_mod.now()
+    inicio = start or piso.astimezone(ZoneInfo(config.get("timezone", "America/Sao_Paulo"))).date()
+    dias = max(1, -(-len(pendentes) // max(per_day, 1)) + 2)
+
+    slots = scheduling.plan_slots(
+        inicio,
+        dias,
+        config,
+        occupied=[datetime.fromisoformat(t) for t in intocaveis],
+        per_day=per_day,
+        not_before=piso,
+    )
+    if len(slots) < len(pendentes):
+        raise scheduling.SchedulingError(
+            f"{len(slots)} horarios para {len(pendentes)} itens; aumente os dias ou o per_day"
+        )
+
+    redatados = []
+    for item, slot in zip(pendentes, slots, strict=False):
+        antes = item.get("scheduled_at")
+        item["scheduled_at"] = slot.scheduled_at
+        item["scheduled_at_utc"] = slot.scheduled_at_utc
+        item["slot_id"] = slot.slot_id
+        redatados.append({"id": item["tiktok_id"], "antes": antes, "depois": slot.scheduled_at})
+
+    return {
+        "redatados": redatados,
+        "primeiro": slots[0].scheduled_at,
+        "ultimo": slots[len(pendentes) - 1].scheduled_at,
+    }
