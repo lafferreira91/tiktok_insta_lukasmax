@@ -460,13 +460,18 @@ def cmd_doctor(args: argparse.Namespace) -> int:
         problems.append("ha itens agendados para o mesmo horario")
 
     if args.check_assets:
+        # Contado e reportado de proposito: um "ok" silencioso nao distingue
+        # "conferi os 26" de "nao conferi nenhum".
+        verified = 0
         for item in scheduled:
             media = item.get("media") or {}
             if not media.get("asset_url"):
                 continue
             check = hosting.verify_asset(media["asset_url"], expected_bytes=media.get("bytes"))
+            verified += 1
             if not check["ok"]:
                 problems.append(f"{item['id']}: asset inacessivel ({check.get('status')})")
+        notes["assets_verificados"] = verified
 
     if publisher_mod.publishing_enabled():
         try:
