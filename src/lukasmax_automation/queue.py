@@ -48,9 +48,13 @@ TRANSITIONS: dict[str, frozenset[str]] = {
 
 STATES = frozenset(TRANSITIONS)
 
-#: Instagram allows 25 published posts per rolling 24h per account. The reserve
-#: leaves room for anything posted by hand from the phone, which our log cannot
-#: see.
+#: Meta's documented ceiling is 100 published posts per rolling 24h per account
+#: (raised from 25; the carousel section of the same page still says 50, so the
+#: real number is not something to ride the edge of). This is deliberately kept
+#: far below it: at 2 posts/day it can only ever fire as a runaway-loop brake,
+#: and the real quota is checked against ``content_publishing_limit`` anyway.
+#: The reserve leaves room for anything posted by hand from the phone, which our
+#: log cannot see.
 DAILY_PUBLISH_LIMIT = 25
 DAILY_PUBLISH_RESERVE = 2
 

@@ -25,7 +25,7 @@ from typing import Any
 
 from .net import ssl_context
 
-DEFAULT_API_VERSION = "v25.0"
+DEFAULT_API_VERSION = "v26.0"
 
 #: Chunk size for resumable uploads. Small enough to keep memory flat, large
 #: enough that a 60 MB Reel is a couple dozen requests.
@@ -203,7 +203,15 @@ class InstagramPublisher:
     def create_container_resumable(
         self, caption: str, *, share_to_feed: bool = True
     ) -> dict[str, Any]:
-        """Fallback path: upload the bytes ourselves via :meth:`upload`."""
+        """Upload the bytes ourselves via :meth:`upload`.
+
+        NOT a usable fallback for this account. Meta's content-publishing docs
+        restrict ``upload_type=resumable`` to apps that implemented *Facebook*
+        Login for Business; an Instagram-Login app on ``graph.instagram.com``
+        only gets the ``video_url`` path. Kept because it is correct and tested,
+        and would come back into play if the account ever moves to a Facebook
+        Page -- but do not plan around it.
+        """
         return self._post(
             f"{self.user_id}/media",
             media_type="REELS",

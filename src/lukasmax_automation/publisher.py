@@ -24,6 +24,7 @@ from datetime import UTC, datetime, timedelta
 from pathlib import Path
 from typing import Any, Protocol
 
+from . import instagram
 from . import queue as queue_mod
 from .instagram import InstagramError, InstagramPublisher, PermanentError, RetriableError
 from .paths import Paths
@@ -59,7 +60,7 @@ def build_publisher() -> InstagramPublisher:
     return InstagramPublisher(
         os.environ["INSTAGRAM_USER_ID"],
         os.environ["INSTAGRAM_ACCESS_TOKEN"],
-        os.environ.get("INSTAGRAM_API_VERSION", "v25.0"),
+        os.environ.get("INSTAGRAM_API_VERSION", instagram.DEFAULT_API_VERSION),
     )
 
 
