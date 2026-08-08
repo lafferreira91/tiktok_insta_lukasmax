@@ -110,6 +110,55 @@ o que importa.
 
 ---
 
+### 🛑 Se aparecer "Função de desenvolvedor é insuficiente"
+
+É o erro mais comum deste passo. A mensagem é enganosa: ela não fala do seu
+papel no app, fala do papel da **conta do Instagram** que o navegador mandou.
+
+Ser dono da `_lukasmax` no Instagram e ser administrador do app na Meta são
+duas identidades **separadas**. Enquanto o app está em desenvolvimento, só quem
+tem papel nele pode autorizar. Se a Meta não consegue ligar a conta do
+Instagram que apareceu no pop-up a um papel no app, devolve esse texto.
+
+A Meta não documenta essa mensagem. As três causas abaixo estão em ordem de
+frequência — teste nesta ordem, a primeira resolve a maioria dos casos.
+
+**1. Sessão errada no navegador (mais provável)**
+
+O pop-up não pede login se já existe sessão do Instagram aberta: ele reusa a
+que estiver lá, sem avisar. Se você tem outra conta logada — pessoal, antiga,
+de outro projeto — é ela que vai para a Meta.
+
+- Abra uma **janela anônima**.
+- Entre em <https://www.instagram.com> **só** com a `_lukasmax`.
+- Na mesma janela anônima, abra <https://developers.facebook.com/apps>, entre
+  na sua conta Meta e refaça o Passo 3.
+
+**2. A conta não foi convidada como testadora**
+
+Se o fluxo automático não atribuiu o papel:
+
+- Menu esquerdo → **Funções do app → Funções** (*App roles → Roles*).
+- Procure a seção de **testadores do Instagram** e adicione `_lukasmax`.
+- **O convite fica pendente até ser aceito, e isso é feito do lado do
+  Instagram, não do painel** — é aqui que quase todo mundo empaca:
+  <https://www.instagram.com/accounts/manage_access/> → aba
+  **Convites de testador** (*Tester Invites*) → **Aceitar**.
+- Volte ao painel e gere o token.
+
+**3. A conta do Instagram não está ligada à sua conta Meta**
+
+Se as duas ainda não se conhecem, não há como a Meta mapear o papel. Vincule as
+duas na **Central de Contas** (*Accounts Center*), pelo app do Instagram:
+*Configurações → Central de Contas → Contas → Adicionar contas*, entrando com a
+mesma conta Meta/Facebook que criou o app.
+
+**Como saber qual das três é a sua:** na tela de consentimento do pop-up,
+confira o `@` que aparece. Se não for `_lukasmax`, é a causa 1. Se for a conta
+certa e ainda assim falhar, é a 2 ou a 3.
+
+---
+
 ## Passo 4 — Pegar o `INSTAGRAM_USER_ID`
 
 Com o token na mão, rode no terminal (troque `SEU_TOKEN`):
@@ -212,6 +261,7 @@ publicar na sua própria conta funciona assim mesmo.
 |---|---|
 | Não aparece o card **Instagram** nos produtos | O app não é do tipo **Empresa**. Crie outro — o tipo não muda depois. |
 | "Adicionar conta" não aceita a `_lukasmax` | A conta ainda é pessoal, ou está privada. |
+| **"Função de desenvolvedor é insuficiente"** | Sessão de outra conta no navegador, ou convite de testador não aceito. Ver a seção no Passo 3. |
 | Token gerado mas `/me` devolve erro 190 | Token copiado com espaço/quebra de linha, ou já revogado por uma nova geração. |
 | `/me` devolve outro `username` | Sessão do Instagram no navegador estava em outra conta. Saia e refaça o Passo 3 numa janela anônima. |
 | Publicar devolve erro sobre PPA | A conta está vinculada a uma Página que exige Autorização de Publicação. Só ocorre com Página vinculada. |
