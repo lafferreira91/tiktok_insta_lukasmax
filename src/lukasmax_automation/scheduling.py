@@ -125,6 +125,8 @@ def load_slots(path: Path) -> dict[str, Any]:
         return json.loads(json.dumps(DEFAULT_CONFIG))
     config = json.loads(path.read_text(encoding="utf-8"))
     config.setdefault("timezone", TIMEZONE)
+    # setdefault, not "or": a pool the operator emptied on purpose must reach
+    # plan_slots and raise, not be silently replaced by the defaults.
     config.setdefault("pool", DEFAULT_SLOTS)
     return config
 
@@ -164,7 +166,10 @@ def plan_slots(
     gap = timedelta(minutes=int(config.get("min_gap_minutes", 240)))
     spread = int(config.get("jitter_minutes", 20))
     explore_every = int(config.get("explore_every", 7) or 0)
-    pool = list(config.get("pool") or DEFAULT_SLOTS)
+    # get(), not `or`: the latter treats a deliberately emptied pool as "not
+    # set" and falls back to the defaults, scheduling posts at exactly the hours
+    # the operator had just removed.
+    pool = list(config.get("pool", DEFAULT_SLOTS))
     if not pool:
         raise SchedulingError("O pool de horarios esta vazio")
 

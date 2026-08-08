@@ -25,44 +25,19 @@
     "error": "ERROR: [TikTok] 7250562695643090181: Unable to extract universal data for rehydration; please report this issue on  https://github.com/yt-dlp/yt-dlp/issues?q= , filling out the appropriate issue template. Confirm you are on the latest version using  yt-dlp -U"
   },
   {
-    "id": "7339284278716501254",
-    "url": "https://www.tiktok.com/@_lukasmax/video/7339284278716501254",
-    "error": "ERROR: [TikTok] 7339284278716501254: Unable to extract universal data for rehydration; please report this issue on  https://github.com/yt-dlp/yt-dlp/issues?q= , filling out the appropriate issue template. Confirm you are on the latest version using  yt-dlp -U"
-  },
-  {
     "id": "7135803985977429254",
     "url": "https://www.tiktok.com/@_lukasmax/video/7135803985977429254",
     "error": "ERROR: [TikTok] 7135803985977429254: Unable to extract universal data for rehydration; please report this issue on  https://github.com/yt-dlp/yt-dlp/issues?q= , filling out the appropriate issue template. Confirm you are on the latest version using  yt-dlp -U"
   },
   {
-    "id": "7132085000597622022",
-    "url": "https://www.tiktok.com/@_lukasmax/video/7132085000597622022",
-    "error": "ERROR: [TikTok] 7132085000597622022: Unable to download webpage: HTTPSConnectionPool(host='www.tiktok.com', port=443): Read timed out. (read timeout=60.0) (caused by TransportError(\"HTTPSConnectionPool(host='www.tiktok.com', port=443): Read timed out. (read timeout=60.0)\"))"
-  },
-  {
     "id": "7140011618393476358",
     "url": "https://www.tiktok.com/@_lukasmax/video/7140011618393476358",
-    "error": "ERROR: [TikTok] 7140011618393476358: Unable to extract universal data for rehydration; please report this issue on  https://github.com/yt-dlp/yt-dlp/issues?q= , filling out the appropriate issue template. Confirm you are on the latest version using  yt-dlp -U"
+    "error": "ERROR: [TikTok] 7140011618393476358: Unexpected response from webpage request; please report this issue on  https://github.com/yt-dlp/yt-dlp/issues?q= , filling out the appropriate issue template. Confirm you are on the latest version using  yt-dlp -U"
   },
   {
     "id": "7313246185358118149",
     "url": "https://www.tiktok.com/@_lukasmax/video/7313246185358118149",
     "error": "ERROR: [TikTok] 7313246185358118149: Unable to extract universal data for rehydration; please report this issue on  https://github.com/yt-dlp/yt-dlp/issues?q= , filling out the appropriate issue template. Confirm you are on the latest version using  yt-dlp -U"
-  },
-  {
-    "id": "7164145793434225925",
-    "url": "https://www.tiktok.com/@_lukasmax/video/7164145793434225925",
-    "error": "ERROR: [TikTok] 7164145793434225925: Unable to extract universal data for rehydration; please report this issue on  https://github.com/yt-dlp/yt-dlp/issues?q= , filling out the appropriate issue template. Confirm you are on the latest version using  yt-dlp -U"
-  },
-  {
-    "id": "7199270963299503365",
-    "url": "https://www.tiktok.com/@_lukasmax/video/7199270963299503365",
-    "error": "ERROR: [TikTok] 7199270963299503365: Unable to extract universal data for rehydration; please report this issue on  https://github.com/yt-dlp/yt-dlp/issues?q= , filling out the appropriate issue template. Confirm you are on the latest version using  yt-dlp -U"
-  },
-  {
-    "id": "7157683298905443590",
-    "url": "https://www.tiktok.com/@_lukasmax/video/7157683298905443590",
-    "error": "ERROR: [TikTok] 7157683298905443590: Unable to extract universal data for rehydration; please report this issue on  https://github.com/yt-dlp/yt-dlp/issues?q= , filling out the appropriate issue template. Confirm you are on the latest version using  yt-dlp -U"
   },
   {
     "id": "7167505737214643462",
@@ -80,11 +55,6 @@
     "error": "ERROR: [TikTok] 7165516573455764741: Unable to extract universal data for rehydration; please report this issue on  https://github.com/yt-dlp/yt-dlp/issues?q= , filling out the appropriate issue template. Confirm you are on the latest version using  yt-dlp -U"
   },
   {
-    "id": "7148499567690976518",
-    "url": "https://www.tiktok.com/@_lukasmax/video/7148499567690976518",
-    "error": "ERROR: \r[download] Got error: HTTPSConnection(host='v16-webapp-prime.tiktok.com', port=443): Failed to resolve 'v16-webapp-prime.tiktok.com' ([Errno 8] nodename nor servname provided, or not known). Giving up after 5 retries"
-  },
-  {
     "id": "7357368246493891845",
     "url": "https://www.tiktok.com/@_lukasmax/video/7357368246493891845",
     "error": "ERROR: [TikTok] 7357368246493891845: Unable to extract universal data for rehydration; please report this issue on  https://github.com/yt-dlp/yt-dlp/issues?q= , filling out the appropriate issue template. Confirm you are on the latest version using  yt-dlp -U"
@@ -93,5 +63,100 @@
     "id": "7305130113845316870",
     "url": "https://www.tiktok.com/@_lukasmax/video/7305130113845316870",
     "error": "ERROR: [TikTok] 7305130113845316870: Unable to extract universal data for rehydration; please report this issue on  https://github.com/yt-dlp/yt-dlp/issues?q= , filling out the appropriate issue template. Confirm you are on the latest version using  yt-dlp -U"
+  },
+  {
+    "id": "7163379865733942533",
+    "url": "https://www.tiktok.com/@_lukasmax/video/7163379865733942533",
+    "error": "ERROR: [TikTok] 7163379865733942533: Unable to extract universal data for rehydration; please report this issue on  https://github.com/yt-dlp/yt-dlp/issues?q= , filling out the appropriate issue template. Confirm you are on the latest version using  yt-dlp -U"
+  },
+  {
+    "id": "7144472046108495109",
+    "url": "https://www.tiktok.com/@_lukasmax/video/7144472046108495109",
+    "error": "ERROR: [TikTok] 7144472046108495109: Unable to extract universal data for rehydration; please report this issue on  https://github.com/yt-dlp/yt-dlp/issues?q= , filling out the appropriate issue template. Confirm you are on the latest version using  yt-dlp -U"
+  },
+  {
+    "id": "7150745775612366086",
+    "url": "https://www.tiktok.com/@_lukasmax/video/7150745775612366086",
+    "error": "ERROR: [TikTok] 7150745775612366086: Unable to extract universal data for rehydration; please report this issue on  https://github.com/yt-dlp/yt-dlp/issues?q= , filling out the appropriate issue template. Confirm you are on the latest version using  yt-dlp -U"
+  },
+  {
+    "id": "7137320777388395782",
+    "url": "https://www.tiktok.com/@_lukasmax/video/7137320777388395782",
+    "error": "ERROR: [TikTok] 7137320777388395782: Unable to extract universal data for rehydration; please report this issue on  https://github.com/yt-dlp/yt-dlp/issues?q= , filling out the appropriate issue template. Confirm you are on the latest version using  yt-dlp -U"
+  },
+  {
+    "id": "7129168180697713925",
+    "url": "https://www.tiktok.com/@_lukasmax/video/7129168180697713925",
+    "error": "ERROR: [TikTok] 7129168180697713925: Unable to extract universal data for rehydration; please report this issue on  https://github.com/yt-dlp/yt-dlp/issues?q= , filling out the appropriate issue template. Confirm you are on the latest version using  yt-dlp -U"
+  },
+  {
+    "id": "7133380842617064709",
+    "url": "https://www.tiktok.com/@_lukasmax/video/7133380842617064709",
+    "error": "ERROR: [TikTok] 7133380842617064709: Unable to extract universal data for rehydration; please report this issue on  https://github.com/yt-dlp/yt-dlp/issues?q= , filling out the appropriate issue template. Confirm you are on the latest version using  yt-dlp -U"
+  },
+  {
+    "id": "7102164197076634886",
+    "url": "https://www.tiktok.com/@_lukasmax/video/7102164197076634886",
+    "error": "ERROR: [TikTok] 7102164197076634886: Unable to extract universal data for rehydration; please report this issue on  https://github.com/yt-dlp/yt-dlp/issues?q= , filling out the appropriate issue template. Confirm you are on the latest version using  yt-dlp -U"
+  },
+  {
+    "id": "7409035059522735365",
+    "url": "https://www.tiktok.com/@_lukasmax/video/7409035059522735365",
+    "error": "ERROR: [TikTok] 7409035059522735365: Unable to extract universal data for rehydration; please report this issue on  https://github.com/yt-dlp/yt-dlp/issues?q= , filling out the appropriate issue template. Confirm you are on the latest version using  yt-dlp -U"
+  },
+  {
+    "id": "7097594574901710085",
+    "url": "https://www.tiktok.com/@_lukasmax/video/7097594574901710085",
+    "error": "ERROR: [TikTok] 7097594574901710085: Unable to download webpage: Failed to perform, curl: (6) Could not resolve host: www.tiktok.com. See https://curl.se/libcurl/c/libcurl-errors.html first for more details. (caused by TransportError('Failed to perform, curl: (6) Could not resolve host: www.tiktok.com. See https://curl.se/libcurl/c/libcurl-errors.html first for more details.'))"
+  },
+  {
+    "id": "7384781588619463942",
+    "url": "https://www.tiktok.com/@_lukasmax/video/7384781588619463942",
+    "error": "ERROR: [TikTok] 7384781588619463942: Unable to extract universal data for rehydration; please report this issue on  https://github.com/yt-dlp/yt-dlp/issues?q= , filling out the appropriate issue template. Confirm you are on the latest version using  yt-dlp -U"
+  },
+  {
+    "id": "7092861820154711301",
+    "url": "https://www.tiktok.com/@_lukasmax/video/7092861820154711301",
+    "error": "ERROR: [TikTok] 7092861820154711301: Unable to extract universal data for rehydration; please report this issue on  https://github.com/yt-dlp/yt-dlp/issues?q= , filling out the appropriate issue template. Confirm you are on the latest version using  yt-dlp -U"
+  },
+  {
+    "id": "7087406480164474117",
+    "url": "https://www.tiktok.com/@_lukasmax/video/7087406480164474117",
+    "error": "ERROR: [TikTok] 7087406480164474117: Unable to extract universal data for rehydration; please report this issue on  https://github.com/yt-dlp/yt-dlp/issues?q= , filling out the appropriate issue template. Confirm you are on the latest version using  yt-dlp -U"
+  },
+  {
+    "id": "7101805204806405382",
+    "url": "https://www.tiktok.com/@_lukasmax/video/7101805204806405382",
+    "error": "ERROR: [TikTok] 7101805204806405382: Unable to extract universal data for rehydration; please report this issue on  https://github.com/yt-dlp/yt-dlp/issues?q= , filling out the appropriate issue template. Confirm you are on the latest version using  yt-dlp -U"
+  },
+  {
+    "id": "6830189877028490502",
+    "url": "https://www.tiktok.com/@_lukasmax/video/6830189877028490502",
+    "error": "ERROR: [TikTok] 6830189877028490502: Unable to extract universal data for rehydration; please report this issue on  https://github.com/yt-dlp/yt-dlp/issues?q= , filling out the appropriate issue template. Confirm you are on the latest version using  yt-dlp -U"
+  },
+  {
+    "id": "7379709129310358789",
+    "url": "https://www.tiktok.com/@_lukasmax/video/7379709129310358789",
+    "error": "ERROR: [TikTok] 7379709129310358789: Unable to download webpage: Failed to perform, curl: (16) Remote peer returned unexpected data while we expected SETTINGS frame.  Perhaps, peer does not support HTTP/2 properly.. See https://curl.se/libcurl/c/libcurl-errors.html first for more details. (caused by TransportError('Failed to perform, curl: (16) Remote peer returned unexpected data while we expected SETTINGS frame.  Perhaps, peer does not support HTTP/2 properly.. See https://curl.se/libcurl/c/libcurl-errors.html first for more details.'))"
+  },
+  {
+    "id": "7439699697830284599",
+    "url": "https://www.tiktok.com/@_lukasmax/video/7439699697830284599",
+    "error": "ERROR: [TikTok] 7439699697830284599: Unable to extract universal data for rehydration; please report this issue on  https://github.com/yt-dlp/yt-dlp/issues?q= , filling out the appropriate issue template. Confirm you are on the latest version using  yt-dlp -U"
+  },
+  {
+    "id": "7467680638980721925",
+    "url": "https://www.tiktok.com/@_lukasmax/video/7467680638980721925",
+    "error": "ERROR: [TikTok] 7467680638980721925: Unable to extract universal data for rehydration; please report this issue on  https://github.com/yt-dlp/yt-dlp/issues?q= , filling out the appropriate issue template. Confirm you are on the latest version using  yt-dlp -U"
+  },
+  {
+    "id": "7619341364228050183",
+    "url": "https://www.tiktok.com/@_lukasmax/video/7619341364228050183",
+    "error": "ERROR: [TikTok] 7619341364228050183: Unable to extract universal data for rehydration; please report this issue on  https://github.com/yt-dlp/yt-dlp/issues?q= , filling out the appropriate issue template. Confirm you are on the latest version using  yt-dlp -U"
+  },
+  {
+    "id": "7652161207738092808",
+    "url": "https://www.tiktok.com/@_lukasmax/video/7652161207738092808",
+    "error": "ERROR: [TikTok] 7652161207738092808: Unable to extract universal data for rehydration; please report this issue on  https://github.com/yt-dlp/yt-dlp/issues?q= , filling out the appropriate issue template. Confirm you are on the latest version using  yt-dlp -U"
   }
 ]
