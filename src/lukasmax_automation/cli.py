@@ -124,6 +124,52 @@ def cmd_draft_captions(args: argparse.Namespace) -> int:
     return 0
 
 
+def cmd_import_captions(args: argparse.Namespace) -> int:
+    """Load hand-written captions from a JSON file.
+
+    The escape hatch for working without an ANTHROPIC_API_KEY: the captions are
+    written elsewhere and imported here, still passing through the same
+    validator and the same approval gate.
+    """
+    paths = _paths(args)
+    entries = json.loads(args.file.read_text(encoding="utf-8"))
+    ranking = {item.tiktok_id: item for item in _ranked_ids(paths)}
+
+    imported, blocked = [], []
+    for entry in entries:
+        video_id = str(entry["tiktok_id"])
+        info = paths.tiktok_info(video_id)
+        if not info.exists():
+            blocked.append({"id": video_id, "reason": "sem .info.json"})
+            continue
+        candidate = ranking.get(video_id)
+        metadata = captions_mod.build_metadata(
+            info,
+            rank=candidate.rank if candidate else None,
+            score=candidate.score if candidate else None,
+        )
+        record = captions_mod.from_text(
+            video_id,
+            metadata,
+            caption=entry["caption"],
+            hashtags=entry.get("hashtags") or [],
+            alt_text=entry.get("alt_text") or "",
+            author=args.author,
+        )
+        if args.approve:
+            try:
+                captions_mod.approve(record)
+            except captions_mod.CaptionError as error:
+                captions_mod.save(record, paths.caption(video_id))
+                blocked.append({"id": video_id, "reason": str(error)})
+                continue
+        captions_mod.save(record, paths.caption(video_id))
+        imported.append({"id": video_id, "status": record["status"]})
+
+    _emit({"importadas": imported, "bloqueadas": blocked})
+    return 1 if blocked and not imported else 0
+
+
 def cmd_review_captions(args: argparse.Namespace) -> int:
     paths = _paths(args)
     records = sorted(paths.captions_dir.glob("*.json")) if paths.captions_dir.exists() else []
@@ -486,6 +532,7 @@ COMMANDS: dict[str, Callable[[argparse.Namespace], int]] = {
     "audit-tiktok": cmd_audit_tiktok,
     "download-archive": cmd_download_archive,
     "draft-captions": cmd_draft_captions,
+    "import-captions": cmd_import_captions,
     "review-captions": cmd_review_captions,
     "approve-caption": cmd_approve_caption,
     "prepare": cmd_prepare,
@@ -522,6 +569,15 @@ def build_parser() -> argparse.ArgumentParser:
     drafts.add_argument("--top", type=int, help="Apenas os N melhores do ranking")
     drafts.add_argument("--ids", nargs="+")
     drafts.add_argument("--force", action="store_true", help="Regera mesmo se o cache bater")
+
+    imports = commands.add_parser(
+        "import-captions", help="Carrega legendas escritas a mao (sem precisar de API de IA)"
+    )
+    imports.add_argument("--file", type=Path, required=True, help="JSON com as legendas")
+    imports.add_argument(
+        "--approve", action="store_true", help="Aprova as que passarem no validador"
+    )
+    imports.add_argument("--author", default="humano", help="Quem escreveu (vai para o registro)")
 
     review = commands.add_parser("review-captions", help="Mostra as legendas para revisao")
     review.add_argument("--status", choices=["draft", "approved"])

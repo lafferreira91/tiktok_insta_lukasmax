@@ -1,0 +1,21 @@
+{
+  "tiktok_id": "7146966322545446149",
+  "prompt_version": "v1",
+  "model": "claude-opus-5 (sessao interativa)",
+  "generated_at": "2026-08-08T18:43:50.667395+00:00",
+  "input_fingerprint": "sha256:7d9de77085cead7df8b9a12a3186caf1b326ad64b9cb58bce976e3a23c8703a7",
+  "caption": "Fala o que eu to querendo ouvir. Se voce tambem ja pediu isso pra alguem que nunca falou nada, essa musica e sua tambem. Salva ela.",
+  "hashtags": [
+    "#Lokko",
+    "#GiuliaBe",
+    "#CarJams",
+    "#DublagemNoCarro",
+    "#MusicaBrasileira"
+  ],
+  "alt_text": "Homem dubla a musica LOKKO dentro do carro.",
+  "warnings": [],
+  "status": "approved",
+  "edited_by_human": true,
+  "approved_at": "2026-08-08T18:43:50.667435+00:00",
+  "history": []
+}

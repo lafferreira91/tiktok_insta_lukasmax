@@ -93,6 +93,19 @@ class TestValidator:
     def test_a_stub_caption_warns(self):
         assert any("muito curta" in warning for warning in validate("oi", ["#a", "#b", "#c"]))
 
+    def test_a_hook_left_hanging_on_a_conjunction_warns(self):
+        caption = "A" * 120 + " e o resto da frase continua bem depois do corte da dobra."
+        assert any("gancho" in warning for warning in validate(caption, ["#a", "#b", "#c"]))
+
+    def test_a_word_merely_ending_in_a_conjunction_letter_is_fine(self):
+        """endswith('e') would flag 'esquece', 'importante' and 'onde'."""
+        caption = "A" * 116 + " esquece o resto da frase que vem bem depois do corte."
+        assert not any("gancho" in warning for warning in validate(caption, ["#a", "#b", "#c"]))
+
+    def test_a_hook_cut_on_a_comma_warns(self):
+        caption = "A" * 124 + ", e entao a frase continua bem depois da dobra do 'mais'."
+        assert any("gancho" in warning for warning in validate(caption, ["#a", "#b", "#c"]))
+
     def test_hashtag_without_the_hash_is_caught(self):
         caption = "Uma legenda com tamanho adequado para o teste passar tranquilamente aqui."
         assert any("sem '#'" in warning for warning in validate(caption, ["#ok", "semhash", "#b"]))

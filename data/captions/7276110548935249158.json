@@ -1,0 +1,21 @@
+{
+  "tiktok_id": "7276110548935249158",
+  "prompt_version": "v1",
+  "model": "claude-opus-5 (sessao interativa)",
+  "generated_at": "2026-08-08T18:43:50.665676+00:00",
+  "input_fingerprint": "sha256:ad0dba951dac2864a55830f87283de1f2aca4a35bacb3670ff7b0fcc6e60a900",
+  "caption": "Existe um momento exato em que a musica para de ser sobre a Anitta e passa a ser sobre alguem que voce conhece. Chega nesse ponto e me conta quem apareceu na sua cabeca.",
+  "hashtags": [
+    "#DeixaEleSofrer",
+    "#Anitta",
+    "#CarJams",
+    "#DublagemNoCarro",
+    "#FunkBrasileiro"
+  ],
+  "alt_text": "Homem dubla a musica Deixa ele sofrer dentro do carro, com expressao debochada.",
+  "warnings": [],
+  "status": "approved",
+  "edited_by_human": true,
+  "approved_at": "2026-08-08T18:43:50.665920+00:00",
+  "history": []
+}

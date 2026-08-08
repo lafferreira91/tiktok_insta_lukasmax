@@ -32,7 +32,7 @@
   {
     "id": "7140011618393476358",
     "url": "https://www.tiktok.com/@_lukasmax/video/7140011618393476358",
-    "error": "ERROR: [TikTok] 7140011618393476358: Unexpected response from webpage request; please report this issue on  https://github.com/yt-dlp/yt-dlp/issues?q= , filling out the appropriate issue template. Confirm you are on the latest version using  yt-dlp -U"
+    "error": "ERROR: [TikTok] 7140011618393476358: Unable to extract universal data for rehydration; please report this issue on  https://github.com/yt-dlp/yt-dlp/issues?q= , filling out the appropriate issue template. Confirm you are on the latest version using  yt-dlp -U"
   },
   {
     "id": "7313246185358118149",
@@ -40,19 +40,9 @@
     "error": "ERROR: [TikTok] 7313246185358118149: Unable to extract universal data for rehydration; please report this issue on  https://github.com/yt-dlp/yt-dlp/issues?q= , filling out the appropriate issue template. Confirm you are on the latest version using  yt-dlp -U"
   },
   {
-    "id": "7167505737214643462",
-    "url": "https://www.tiktok.com/@_lukasmax/video/7167505737214643462",
-    "error": "ERROR: [TikTok] 7167505737214643462: Unable to extract universal data for rehydration; please report this issue on  https://github.com/yt-dlp/yt-dlp/issues?q= , filling out the appropriate issue template. Confirm you are on the latest version using  yt-dlp -U"
-  },
-  {
     "id": "7211529562176392454",
     "url": "https://www.tiktok.com/@_lukasmax/video/7211529562176392454",
-    "error": "ERROR: [TikTok] 7211529562176392454: Unable to extract universal data for rehydration; please report this issue on  https://github.com/yt-dlp/yt-dlp/issues?q= , filling out the appropriate issue template. Confirm you are on the latest version using  yt-dlp -U"
-  },
-  {
-    "id": "7165516573455764741",
-    "url": "https://www.tiktok.com/@_lukasmax/video/7165516573455764741",
-    "error": "ERROR: [TikTok] 7165516573455764741: Unable to extract universal data for rehydration; please report this issue on  https://github.com/yt-dlp/yt-dlp/issues?q= , filling out the appropriate issue template. Confirm you are on the latest version using  yt-dlp -U"
+    "error": "ERROR: \r[download] Got error: Failed to perform, curl: (92) HTTP/2 stream 1 was not closed cleanly: PROTOCOL_ERROR (err 1). See https://curl.se/libcurl/c/libcurl-errors.html first for more details.. Giving up after 5 retries"
   },
   {
     "id": "7357368246493891845",

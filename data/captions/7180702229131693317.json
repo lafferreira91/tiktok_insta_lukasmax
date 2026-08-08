@@ -1,0 +1,21 @@
+{
+  "tiktok_id": "7180702229131693317",
+  "prompt_version": "v1",
+  "model": "claude-opus-5 (sessao interativa)",
+  "generated_at": "2026-08-08T18:43:50.682104+00:00",
+  "input_fingerprint": "sha256:b0559d04889c2c92aa65603b825a821d447a93ad5c05c50804163219c1da4ee2",
+  "caption": "A mensagem ja ta dada, so falta voce ouvir de novo. E de novo. E mais uma vez. Salva essa aqui porque ela vicia sem pedir licenca.",
+  "hashtags": [
+    "#Playground",
+    "#CarJams",
+    "#DublagemNoCarro",
+    "#MusicaBrasileira",
+    "#VibeDoDia"
+  ],
+  "alt_text": "Homem dubla a musica PLAYGROUND dentro do carro.",
+  "warnings": [],
+  "status": "approved",
+  "edited_by_human": true,
+  "approved_at": "2026-08-08T18:43:50.682132+00:00",
+  "history": []
+}

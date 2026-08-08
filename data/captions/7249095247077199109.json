@@ -1,0 +1,21 @@
+{
+  "tiktok_id": "7249095247077199109",
+  "prompt_version": "v1",
+  "model": "claude-opus-5 (sessao interativa)",
+  "generated_at": "2026-08-08T18:43:50.670517+00:00",
+  "input_fingerprint": "sha256:588c596fdcb6f7c70e11c0afef5b780fd94c694f44b253cd262abdb091c4cf2e",
+  "caption": "Vinte e seis segundos e essa musica ja decidiu o clima do resto do dia. Sobe o som e testa se funciona contigo tambem.",
+  "hashtags": [
+    "#WhatItIs",
+    "#Doechii",
+    "#CarJams",
+    "#DublagemNoCarro",
+    "#RapInternacional"
+  ],
+  "alt_text": "Homem dubla a musica What It Is dentro do carro.",
+  "warnings": [],
+  "status": "approved",
+  "edited_by_human": true,
+  "approved_at": "2026-08-08T18:43:50.670536+00:00",
+  "history": []
+}

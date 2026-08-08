@@ -1,0 +1,21 @@
+{
+  "tiktok_id": "7170688728988421381",
+  "prompt_version": "v1",
+  "model": "claude-opus-5 (sessao interativa)",
+  "generated_at": "2026-08-08T18:43:50.679019+00:00",
+  "input_fingerprint": "sha256:f3ecb7cefb7ca11dee1853c3a16dc1c50bbe867a67c1e39ffd188b31174e41ba",
+  "caption": "O mundo ta complicado, entao vamos descomplicar por cinquenta segundos. Sobe o som e me conta se funcionou.",
+  "hashtags": [
+    "#FazParte",
+    "#Projota",
+    "#CarJams",
+    "#DublagemNoCarro",
+    "#RapNacional"
+  ],
+  "alt_text": "Homem dubla a musica Faz Parte do Projota dentro do carro.",
+  "warnings": [],
+  "status": "approved",
+  "edited_by_human": true,
+  "approved_at": "2026-08-08T18:43:50.679047+00:00",
+  "history": []
+}

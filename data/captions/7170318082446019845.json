@@ -1,0 +1,21 @@
+{
+  "tiktok_id": "7170318082446019845",
+  "prompt_version": "v1",
+  "model": "claude-opus-5 (sessao interativa)",
+  "generated_at": "2026-08-08T18:43:50.667914+00:00",
+  "input_fingerprint": "sha256:02fd91fe522feba90a97a2e22fffe87e0fe0e0a2b27a2b87d6014cdd44505510",
+  "caption": "Tem musica que resolve o dia em quarenta segundos. Essa e uma delas. Sobe o volume e me diz se nao melhorou.",
+  "hashtags": [
+    "#CoisaBoa",
+    "#GloriaGroove",
+    "#CarJams",
+    "#DublagemNoCarro",
+    "#PopBrasileiro"
+  ],
+  "alt_text": "Homem dubla a musica Coisa Boa dentro do carro, sorrindo.",
+  "warnings": [],
+  "status": "approved",
+  "edited_by_human": true,
+  "approved_at": "2026-08-08T18:43:50.667947+00:00",
+  "history": []
+}

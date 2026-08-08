@@ -33,6 +33,46 @@ MAX_CAPTION_CHARS = 2200
 TARGET_MIN_CHARS = 90
 TARGET_MAX_CHARS = 400
 HOOK_CHARS = 125
+
+#: Words that leave the hook hanging mid-thought when the caption is cut at the
+#: "more" fold. Matched whole, never as a suffix.
+DANGLING_WORDS = frozenset(
+    {
+        "e",
+        "ou",
+        "mas",
+        "que",
+        "de",
+        "da",
+        "do",
+        "das",
+        "dos",
+        "em",
+        "no",
+        "na",
+        "nos",
+        "nas",
+        "com",
+        "sem",
+        "por",
+        "para",
+        "pra",
+        "pro",
+        "a",
+        "o",
+        "as",
+        "os",
+        "um",
+        "uma",
+        "ao",
+        "aos",
+        "se",
+        "ja",
+        "the",
+        "and",
+        "of",
+    }
+)
 MAX_HASHTAGS = 30
 TARGET_HASHTAG_RANGE = (3, 8)
 
@@ -159,9 +199,13 @@ def validate(caption: str, hashtags: list[str]) -> list[str]:
     if text and text != caption:
         warnings.append("legenda tem espaco em branco nas pontas")
 
-    hook = text[:HOOK_CHARS]
-    if text and len(text) > HOOK_CHARS and hook.rstrip().endswith((",", "e", "de", "que")):
-        warnings.append("o gancho corta no meio de uma frase antes do 'mais'")
+    hook = text[:HOOK_CHARS].rstrip()
+    if text and len(text) > HOOK_CHARS:
+        # Compare the last *word*, not a suffix: endswith("e") matches "esquece",
+        # "importante" and "onde", flagging perfectly good hooks as broken.
+        last_word = hook.rstrip(",;:").rsplit(" ", 1)[-1].lower()
+        if hook.endswith((",", ";", ":")) or last_word in DANGLING_WORDS:
+            warnings.append("o gancho corta no meio de uma frase antes do 'mais'")
 
     if len(hashtags) > MAX_HASHTAGS:
         warnings.append(f"{len(hashtags)} hashtags (limite do Instagram: {MAX_HASHTAGS})")
@@ -222,6 +266,41 @@ def approve(record: dict[str, Any], *, force: bool = False) -> dict[str, Any]:
 # ---------------------------------------------------------------------------
 # Generation
 # ---------------------------------------------------------------------------
+
+
+def from_text(
+    tiktok_id: str,
+    metadata: dict[str, Any],
+    *,
+    caption: str,
+    hashtags: list[str],
+    alt_text: str = "",
+    author: str = "human",
+) -> dict[str, Any]:
+    """Build a caption record from text written by hand.
+
+    Same shape and the same validation as a generated one, so an imported
+    caption is indistinguishable downstream -- and carries a real fingerprint,
+    so a later ``draft-captions`` run treats it as current instead of
+    overwriting it.
+    """
+    caption = caption.strip()
+    hashtags = [str(tag).strip() for tag in hashtags]
+    return {
+        "tiktok_id": tiktok_id,
+        "prompt_version": PROMPT_VERSION,
+        "model": author,
+        "generated_at": _now(),
+        "input_fingerprint": fingerprint(metadata),
+        "caption": caption,
+        "hashtags": hashtags,
+        "alt_text": alt_text.strip(),
+        "warnings": validate(caption, hashtags),
+        "status": "draft",
+        "edited_by_human": True,
+        "approved_at": None,
+        "history": [],
+    }
 
 
 def _client():
