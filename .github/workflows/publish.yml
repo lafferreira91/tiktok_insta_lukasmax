@@ -1,9 +1,28 @@
 name: Publicar Reels agendados
 
+# A Content Publishing API do Instagram nao tem agendamento nativo: media_publish
+# publica sempre na hora. Por isso o agendamento e este cron, que acorda e
+# publica o que estiver vencido. O scheduled_at da fila e um piso, nao um
+# horario exato -- o cron do GitHub Actions e best-effort e atrasa sob carga.
 on:
   schedule:
     - cron: "*/30 * * * *"
   workflow_dispatch:
+    inputs:
+      dry_run:
+        description: "Mostrar o que faria sem publicar"
+        type: boolean
+        default: false
+      max_per_run:
+        description: "Maximo de posts nesta execucao"
+        type: string
+        default: "1"
+
+# O push da fila e o lock que impede dois runs de reivindicarem o mesmo item.
+# Sem isso, duas execucoes sobrepostas poderiam publicar o mesmo Reel duas vezes.
+concurrency:
+  group: publish-queue
+  cancel-in-progress: false
 
 permissions:
   contents: write
@@ -11,22 +30,62 @@ permissions:
 jobs:
   publish:
     runs-on: ubuntu-latest
+    # A publicacao nasce desligada: ligar exige mudar a variable no repositorio.
+    if: github.event_name == 'workflow_dispatch' || vars.PUBLISH_ENABLED == 'true'
+    env:
+      INSTAGRAM_USER_ID: ${{ secrets.INSTAGRAM_USER_ID }}
+      INSTAGRAM_ACCESS_TOKEN: ${{ secrets.INSTAGRAM_ACCESS_TOKEN }}
+      INSTAGRAM_API_VERSION: ${{ vars.INSTAGRAM_API_VERSION || 'v25.0' }}
+      PUBLISH_ENABLED: ${{ vars.PUBLISH_ENABLED }}
     steps:
       - uses: actions/checkout@v4
-      - uses: astral-sh/setup-uv@v6
-      - run: uv sync
-      - run: uv run lukasmax publish-due
-        env:
-          INSTAGRAM_USER_ID: ${{ secrets.INSTAGRAM_USER_ID }}
-          INSTAGRAM_ACCESS_TOKEN: ${{ secrets.INSTAGRAM_ACCESS_TOKEN }}
-          INSTAGRAM_API_VERSION: v25.0
-          PUBLISH_ENABLED: ${{ vars.PUBLISH_ENABLED }}
-      - name: Salvar estado da fila
-        run: |
-          if git diff --quiet -- data/queue.json; then exit 0; fi
-          git config user.name "lukasmax-bot"
-          git config user.email "lukasmax-bot@users.noreply.github.com"
-          git add data/queue.json
-          git commit -m "Atualiza fila de publicacao"
-          git push
 
+      - uses: astral-sh/setup-uv@v6
+        with:
+          enable-cache: true
+
+      # Sem --extra local: o publicador so fala HTTP com a Graph API e nunca
+      # toca no arquivo de video, entao yt-dlp, ffmpeg e PyAV ficam de fora.
+      - name: Instalar dependencias minimas
+        run: uv sync --frozen
+
+      - name: Checagem previa
+        run: uv run lukasmax doctor
+
+      # Sempre antes de publicar: resolve qualquer item que ficou preso em
+      # 'publishing' por um run que morreu no meio.
+      - name: Reconciliar publicacoes interrompidas
+        run: uv run lukasmax reconcile
+
+      - name: Publicar o que estiver vencido
+        run: |
+          uv run lukasmax publish-due \
+            --max-per-run "${{ inputs.max_per_run || 1 }}" \
+            ${{ inputs.dry_run && '--dry-run' || '' }}
+
+      - name: Gravar o estado da fila
+        if: always()
+        run: |
+          if [ -z "$(git status --porcelain data/)" ]; then
+            echo "Nada mudou na fila."
+            exit 0
+          fi
+          git config user.name  "lukasmax-bot"
+          git config user.email "lukasmax-bot@users.noreply.github.com"
+          git add data/
+
+          # Um push rejeitado significa que outra execucao escreveu antes. Refaz
+          # o ciclo inteiro sobre o estado novo em vez de forcar por cima.
+          for attempt in 1 2 3; do
+            git commit -m "Estado da fila apos o run ${GITHUB_RUN_ID}" || break
+            if git push; then
+              exit 0
+            fi
+            echo "Push rejeitado (tentativa ${attempt}); rebaseando."
+            git reset --soft HEAD~1
+            git stash --include-untracked || true
+            git pull --rebase --autostash
+            git stash pop || true
+          done
+          echo "Nao consegui gravar a fila apos 3 tentativas." >&2
+          exit 1

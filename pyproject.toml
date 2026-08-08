@@ -3,14 +3,26 @@ name = "lukasmax-social-automation"
 version = "0.1.0"
 description = "Automacao gratuita de TikTok para Instagram Reels"
 requires-python = ">=3.11"
+# Kept deliberately tiny: this is everything the CI publish job installs. It
+# talks to the Graph API over stdlib urllib and never touches a video file, so
+# yt-dlp, ffmpeg and the AI SDK all belong in the "local" extra below.
 dependencies = [
-  "imageio-ffmpeg>=0.6.0",
   "python-dotenv>=1.1.0",
-  "yt-dlp[default]>=2026.7.4",
 ]
 
 [project.optional-dependencies]
-dev = ["pytest>=8.0"]
+# Collecting, transcoding and writing captions -- all of which run on the Mac.
+local = [
+  "anthropic>=0.69",
+  "av>=13.0.0",
+  "imageio-ffmpeg>=0.6.0",
+  # O extra curl-cffi habilita impersonation. Sem ele o TikTok devolve paginas
+  # sem os dados de rehydration e o download falha -- foi a causa das 33 falhas
+  # registradas em reports/download_errors.json. A faixa de versao e do proprio
+  # yt-dlp: instalar curl-cffi solto acaba numa versao que ele rejeita.
+  "yt-dlp[curl-cffi,default]>=2026.7.4",
+]
+dev = ["pytest>=8.0", "ruff>=0.6.0"]
 
 [project.scripts]
 lukasmax = "lukasmax_automation.cli:main"
@@ -23,4 +35,15 @@ build-backend = "hatchling.build"
 packages = ["src/lukasmax_automation"]
 
 [tool.pytest.ini_options]
-pythonpath = ["src"]
+pythonpath = ["src", "tests"]
+
+[tool.ruff]
+line-length = 100
+target-version = "py311"
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "UP", "B", "SIM"]
+ignore = [
+  "B008",   # argparse namespaces and Path defaults are fine as call defaults
+  "SIM108", # ternaries are not always clearer than an if/else
+]

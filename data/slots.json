@@ -1,0 +1,100 @@
+{
+  "version": 1,
+  "source": "heuristic",
+  "timezone": "America/Sao_Paulo",
+  "posts_per_day": 2,
+  "min_gap_minutes": 240,
+  "jitter_minutes": 20,
+  "explore_every": 7,
+  "pool": [
+    {
+      "id": "wd-morning",
+      "weekdays": [
+        0,
+        1,
+        2,
+        3,
+        4
+      ],
+      "time": "08:45",
+      "weight": 0.7,
+      "samples": 0,
+      "rationale": "deslocamento matinal"
+    },
+    {
+      "id": "wd-lunch",
+      "weekdays": [
+        0,
+        1,
+        2,
+        3,
+        4
+      ],
+      "time": "12:15",
+      "weight": 1.0,
+      "samples": 0,
+      "rationale": "intervalo de almoco"
+    },
+    {
+      "id": "wd-commute",
+      "weekdays": [
+        0,
+        1,
+        2,
+        3,
+        4
+      ],
+      "time": "18:30",
+      "weight": 0.95,
+      "samples": 0,
+      "rationale": "volta do trabalho"
+    },
+    {
+      "id": "wd-prime",
+      "weekdays": [
+        0,
+        1,
+        2,
+        3,
+        4
+      ],
+      "time": "21:00",
+      "weight": 1.05,
+      "samples": 0,
+      "rationale": "prime time"
+    },
+    {
+      "id": "we-late-am",
+      "weekdays": [
+        5,
+        6
+      ],
+      "time": "11:00",
+      "weight": 0.85,
+      "samples": 0,
+      "rationale": "fim de semana acorda tarde"
+    },
+    {
+      "id": "we-evening",
+      "weekdays": [
+        5,
+        6
+      ],
+      "time": "19:30",
+      "weight": 1.0,
+      "samples": 0,
+      "rationale": "sabado/domingo a noite"
+    },
+    {
+      "id": "we-night",
+      "weekdays": [
+        5,
+        6
+      ],
+      "time": "22:00",
+      "weight": 0.9,
+      "samples": 0,
+      "rationale": "rolagem noturna"
+    }
+  ]
+}

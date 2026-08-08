@@ -1,15 +1,41 @@
 {
+  "version": 2,
   "items": [
     {
+      "id": "q_20260812T180000_7278034913729907974",
       "tiktok_id": "7278034913729907974",
       "source_url": "https://www.tiktok.com/@_lukasmax/video/7278034913729907974",
-      "scheduled_at": "2026-08-12T18:00:00-03:00",
       "status": "scheduled_external",
+      "scheduled_at": "2026-08-12T18:00:00-03:00",
+      "scheduled_at_utc": "2026-08-12T21:00:00+00:00",
+      "slot_id": "legacy",
+      "rank": 0,
+      "media": null,
       "caption": "Essa desbloqueou uma memória que eu nem sabia que tinha 😂\n\nQuem também lembra de “Toda Toda”? Salva para ouvir de novo e manda para quem cantava essa com você.\n\n#TodaToda #NostalgiaMusical #CarJams #MusicaBrasileira #Anos2010",
+      "caption_fingerprint": null,
+      "attempts": 0,
+      "max_attempts": 3,
+      "next_attempt_at": null,
+      "last_error": null,
+      "container_id": null,
+      "container_created_at": null,
+      "claimed_at": null,
+      "claimed_by_run": null,
+      "instagram_media_id": "27996092376710770",
+      "permalink": null,
+      "published_at": null,
+      "history": [
+        {
+          "at": "2026-08-08T15:43:37.690495+00:00",
+          "from": "",
+          "to": "scheduled_external",
+          "by": "local",
+          "note": "migrado do schema v1"
+        }
+      ],
       "notes": "Arquivo 1080x1920 validado sem marca do TikTok. Agendado somente no Instagram pelo Meta Business Suite; a verificacao da plataforma nao encontrou problemas de direitos autorais.",
       "scheduled_via": "meta_business_suite",
       "instagram_post_id": "27996092376710770",
-      "scheduled_confirmed_at": "2026-08-08",
       "copyright_check": "passed"
     }
   ]

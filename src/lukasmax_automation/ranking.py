@@ -1,8 +1,9 @@
 from __future__ import annotations
 
+from collections.abc import Iterable, Mapping
 from dataclasses import dataclass
 from math import log1p
-from typing import Iterable, Mapping, Any
+from typing import Any
 
 
 @dataclass(frozen=True)
@@ -37,8 +38,10 @@ def rank_videos(entries: Iterable[Mapping[str, Any]]) -> list[RankedVideo]:
             continue
         weighted_engagement = likes + (comments * 3) + (shares * 5)
         engagement_rate = weighted_engagement / views
-        score = (log1p(views) * 0.62) + (log1p(weighted_engagement) * 0.23) + (
-            min(engagement_rate, 1.0) * 15 * 0.15
+        score = (
+            (log1p(views) * 0.62)
+            + (log1p(weighted_engagement) * 0.23)
+            + (min(engagement_rate, 1.0) * 15 * 0.15)
         )
         url = item.get("webpage_url") or item.get("url") or ""
         ranked.append(
@@ -54,4 +57,3 @@ def rank_videos(entries: Iterable[Mapping[str, Any]]) -> list[RankedVideo]:
             )
         )
     return sorted(ranked, key=lambda video: video.score, reverse=True)
-

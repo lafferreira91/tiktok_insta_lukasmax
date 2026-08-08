@@ -1,86 +1,174 @@
-# Operação e recuperação
+# Operacao
 
-## Preparar o ambiente
+## Instalacao
 
 ```bash
-uv sync --extra dev
+uv sync --extra local --extra dev   # no Mac: tudo
+uv sync                             # no CI: so o nucleo
 ```
 
-## Atualizar inventário e ranking
+O extra `local` traz yt-dlp, ffmpeg, PyAV e o SDK da Anthropic. O job de
+publicacao nao instala nada disso: ele so fala HTTP com a Graph API.
+
+Copie `.env.example` para `.env` e preencha. `ANTHROPIC_API_KEY` fica **so no
+Mac** -- o runner publica legendas ja congeladas na fila e nunca chama a IA.
+
+## O fluxo, do inicio ao fim
+
+Tudo antes de `git push` roda no seu Mac. Dali em diante o cron do GitHub
+Actions assume.
+
+```
+audit-tiktok → download-archive → draft-captions → review-captions
+    → approve-caption → prepare → plan-queue → host-media → doctor → git push
+         ↓ [CI, a cada 30 min]
+    reconcile → publish-due
+```
+
+### 1. Inventariar e ranquear
 
 ```bash
 uv run lukasmax audit-tiktok
 ```
 
-Se a página do TikTok interromper uma extração, o último JSON válido pode ser
-fornecido com `--input caminho.json`.
+Le o perfil, salva `data/tiktok_inventory.json` e gera `data/tiktok_ranking.csv`
+ordenado por um score que pondera views, likes, comentarios e shares.
 
-## Baixar todo o acervo sem marca-d'água
+O TikTok limita requisicoes: um HTTP 429 aqui e transitorio, tente de novo mais
+tarde. O inventario anterior nao e sobrescrito quando a chamada falha.
 
-```bash
-uv run lukasmax download-archive
-```
-
-O comando:
-
-1. baixa primeiro os vídeos mais bem ranqueados;
-2. rejeita o formato que o TikTok identifica como `watermarked`;
-3. prefere a maior resolução limpa disponível;
-4. salva um `.info.json` ao lado de cada vídeo;
-5. registra sucessos em `data/downloaded.txt`;
-6. pode ser interrompido e retomado sem repetir arquivos.
-
-No estado atual, não é necessário executar esse comando: o acervo em massa foi
-pausado para validar primeiro o piloto completo. Dois arquivos `.part` foram
-preservados porque permitem retomar downloads interrompidos futuramente.
-
-Para testar com poucos itens:
+### 2. Baixar o acervo
 
 ```bash
-uv run lukasmax download-archive --limit 3
+uv run lukasmax download-archive            # tudo que falta
+uv run lukasmax download-archive --limit 3  # teste
 ```
 
-## Publicação
+Retomavel: pula o que ja esta em `data/downloaded.txt`, e as falhas registradas
+em `reports/download_errors.json` sao naturalmente retentadas na proxima
+execucao. Espaça os downloads em 4 segundos e recua progressivamente diante de
+um 429.
 
-A publicação possui duas travas independentes:
+Formatos com marca-d'agua nunca sao escolhidos -- `best_unwatermarked_format`
+descarta qualquer formato marcado como `watermark` ou com id `download`.
 
-- `PUBLISH_ENABLED` precisa ser `true`;
-- o item da fila precisa ter `status` igual a `ready`.
-
-Sem ambas, nenhum conteúdo é enviado. O fluxo de publicação é: criar container
-de Reel, enviar o MP4 diretamente pelo upload resumível, aguardar o processamento
-e publicar o container.
-
-O piloto já foi agendado pelo Meta Business Suite e usa o estado
-`scheduled_external`. Esse estado não é elegível para o publicador local e evita
-duplicação. O registro confirmado é:
-
-- destino: somente Instagram `_lukasmax`;
-- data e hora: 12/08/2026 às 18:00 (`America/Sao_Paulo`);
-- identificação do post: `27996092376710770`;
-- direitos autorais: verificação do Business Suite aprovada;
-- arquivo: `media/ready/7278034913729907974.mp4`.
-
-Para conferir manualmente, abra **Meta Business Suite → Planner**, avance para
-a semana de 9 a 15 de agosto de 2026 e localize o item do dia 12 às 18:00.
-
-Para conferir o motor sem publicar:
+### 3. Gerar as legendas
 
 ```bash
-uv run lukasmax status
+uv run lukasmax draft-captions --top 40
+uv run lukasmax review-captions
+uv run lukasmax approve-caption --all
 ```
 
-Depois de configurar o token, valide conta, username e tipo profissional:
+`draft-captions` manda apenas metadados (titulo, musica, metricas) para o
+modelo -- nunca o video. O resultado vai para `data/captions/<id>.json`.
+
+Um cache por fingerprint faz re-execucoes serem gratuitas: so o que mudou de
+metadados ou de versao do prompt e regerado. Use `--force` para ignorar o cache.
+
+`review-captions` imprime cada legenda com contagem de caracteres e avisos.
+Voce pode editar o JSON a mao antes de aprovar.
+
+`approve-caption` **recusa** legendas com avisos do validador (tamanho,
+quantidade de hashtags, termos proibidos). Use `--force` se souber o que esta
+fazendo.
+
+### 4. Normalizar a midia
 
 ```bash
-uv run lukasmax check-instagram
+uv run lukasmax prepare --all-approved
+uv run lukasmax prepare --id 7278034913729907974
 ```
 
-## Segredos necessários
+Transcodifica para H.264/AAC 1080x1920 30fps 48kHz com `-map_metadata -1`, que
+remove os metadados da plataforma de origem. O resultado vai para
+`media/ready/` e so passa se a validacao completa der certo.
 
-- `INSTAGRAM_USER_ID`
-- `INSTAGRAM_ACCESS_TOKEN`
-- opcionalmente `INSTAGRAM_API_VERSION`
+### 5. Agendar
 
-Nunca salvar esses valores no repositório. Localmente use `.env`; no GitHub use
-Actions Secrets.
+```bash
+uv run lukasmax plan-queue --days 14 --per-day 2 --dry-run
+uv run lukasmax plan-queue --days 14 --per-day 2
+```
+
+Casa os videos elegiveis com os horarios de `data/slots.json`, em ordem de
+ranking. Um video so e elegivel se tiver **midia preparada** e **legenda
+aprovada** -- o resumo mostra quantos foram recusados e por que.
+
+Planeje em janelas de 14 dias, nao o acervo inteiro: replanejar fica barato
+quando os horarios mudarem.
+
+A legenda e **copiada** para o item da fila. Editar o arquivo depois nao muda um
+post ja agendado.
+
+### 6. Hospedar e conferir
+
+```bash
+uv run lukasmax host-media --tag media-v1
+uv run lukasmax doctor --check-assets
+git add data/ && git commit -m "Agenda das proximas duas semanas" && git push
+```
+
+`host-media` sobe cada MP4 como asset de Release e grava a URL na fila. A Meta
+baixa desse link direto; o runner nunca transfere o arquivo.
+
+`doctor` e a checagem final: token valido, quota, todo item agendado com legenda
+e asset acessivel, e nenhum horario duplicado. Sai com codigo diferente de zero
+se algo estiver errado -- e o mesmo comando que o CI roda antes de publicar.
+
+## Publicacao (automatica)
+
+O workflow `publish.yml` roda a cada 30 minutos, reconcilia o que ficou preso e
+publica no maximo **um** item por execucao.
+
+**Duas travas independentes** impedem publicacao acidental:
+
+1. A variable `PUBLISH_ENABLED` do repositorio precisa ser exatamente `true`.
+2. So itens em `scheduled` (ou `retry` com backoff vencido) sao elegiveis.
+
+### Sequencia de estreia
+
+1. `PUBLISH_ENABLED=false` e rode o workflow manualmente com `dry_run` -- ele
+   imprime o que faria.
+2. Rode manualmente com `dry_run` desligado e `max_per_run=1`: um post real.
+3. Confira o permalink no perfil.
+4. So entao mude `PUBLISH_ENABLED` para `true` e deixe o cron assumir.
+5. Observe tres dias antes de planejar janelas maiores.
+
+## Quando algo da errado
+
+**Item preso em `publishing`** -- um run morreu no meio.
+`uv run lukasmax reconcile` resolve: se o post ja tinha saido, marca como
+publicado; se nao, reagenda. Nunca edite o status a mao, porque `media_publish`
+nao e idempotente e um item reaberto errado vira post duplicado.
+
+**Item em `failed`** -- as tentativas acabaram ou o erro era permanente. Veja
+`last_error`, corrija a causa, e devolva para a fila alterando o status para
+`scheduled` via `transition` (nao por edicao manual do JSON).
+
+**Downloads falhando com "Unable to extract universal data for rehydration"** --
+falta impersonation. Confirme com `uv run yt-dlp --list-impersonate-targets`:
+se os alvos aparecem como `(unavailable)`, a versao do `curl-cffi` esta fora da
+faixa que o yt-dlp aceita. Rode `uv sync --extra local` para restaurar.
+
+**Token perto de expirar** -- o token de longa duracao vale 60 dias.
+`lukasmax status` mostra o estado, e `refresh_long_lived_token()` estende por
+mais 60 (exige token com mais de 24h de vida).
+
+## Estados da fila
+
+| Estado | Escrito por | Significado |
+|---|---|---|
+| `planned` | local | tem horario, midia ainda nao preparada |
+| `prepared` | local | MP4 normalizado e validado, legenda congelada |
+| `hosted` | local | asset no Release |
+| `scheduled` | local | **unico estado que o CI enxerga** |
+| `publishing` | CI | claim feito -- invisivel para outras execucoes |
+| `published` | CI | terminal |
+| `retry` | CI | falha transitoria, aguardando backoff |
+| `failed` | CI | tentativas esgotadas ou erro permanente |
+| `skipped` | local | fora de rotacao, preservado |
+| `scheduled_external` | legado | o piloto agendado a mao, terminal |
+
+Transicoes ilegais levantam excecao. Comandos locais escrevem apenas os estados
+locais; o CI apenas os dele. Nenhum campo e escrito pelos dois lados.

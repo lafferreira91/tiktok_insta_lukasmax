@@ -1,0 +1,55 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: astral-sh/setup-uv@v6
+        with:
+          enable-cache: true
+
+      # Os testes cobrem media.py (PyAV) e a geracao de legendas, entao aqui o
+      # extra "local" e necessario -- diferente do job de publicacao.
+      - name: Instalar dependencias
+        run: uv sync --frozen --extra local --extra dev
+
+      - name: Lint
+        run: uv run ruff check src tests
+
+      - name: Formatacao
+        run: uv run ruff format --check src tests
+
+      - name: Testes
+        run: uv run pytest -q
+
+  # O job de publicacao instala apenas o nucleo. Se alguem reintroduzir um
+  # import de yt-dlp, ffmpeg ou PyAV no caminho de publicacao, o cron quebraria
+  # em producao -- este job faz isso falhar aqui, no PR.
+  publish-job-stays-light:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: astral-sh/setup-uv@v6
+        with:
+          enable-cache: true
+
+      - name: Instalar apenas o nucleo
+        run: uv sync --frozen
+
+      - name: O publicador precisa importar sem as dependencias pesadas
+        run: |
+          uv run python -c "
+          from lukasmax_automation import publisher, queue, instagram, hosting
+          print('ok: o caminho de publicacao nao depende de yt-dlp, ffmpeg nem PyAV')
+          "

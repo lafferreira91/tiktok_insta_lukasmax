@@ -16,4 +16,3 @@ def test_watermarked_format_is_never_selected():
         {"format_id": "clean", "format_note": "", "vcodec": "h265", "height": 1080, "tbr": 1500},
     ]
     assert best_unwatermarked_format(formats) == "clean"
-
