@@ -1,0 +1,62 @@
+{
+  "pilot_ready": true,
+  "pilot_validation": {
+    "valid": true,
+    "checks": {
+      "readable": true,
+      "mp4": true,
+      "duration": true,
+      "video_codec": true,
+      "dimensions": true,
+      "vertical_9_16": true,
+      "fps": true,
+      "audio_codec": true,
+      "audio_48khz": true
+    },
+    "media": {
+      "readable": true,
+      "duration_seconds": 61.6,
+      "video_codec": "h264",
+      "width": 1080,
+      "height": 1920,
+      "fps": 30.0,
+      "audio_codec": "aac",
+      "audio_hz": 48000
+    }
+  },
+  "queue": {
+    "items": [
+      {
+        "tiktok_id": "7278034913729907974",
+        "source_url": "https://www.tiktok.com/@_lukasmax/video/7278034913729907974",
+        "scheduled_at": "2026-08-12T18:00:00-03:00",
+        "status": "scheduled_external",
+        "caption": "Essa desbloqueou uma memória que eu nem sabia que tinha 😂\n\nQuem também lembra de “Toda Toda”? Salva para ouvir de novo e manda para quem cantava essa com você.\n\n#TodaToda #NostalgiaMusical #CarJams #MusicaBrasileira #Anos2010",
+        "notes": "Arquivo 1080x1920 validado sem marca do TikTok. Agendado somente no Instagram pelo Meta Business Suite; a verificacao da plataforma nao encontrou problemas de direitos autorais.",
+        "scheduled_via": "meta_business_suite",
+        "instagram_post_id": "27996092376710770",
+        "scheduled_confirmed_at": "2026-08-08",
+        "copyright_check": "passed"
+      }
+    ]
+  },
+  "instagram_user_id_configured": false,
+  "instagram_token_configured": false,
+  "instagram_professional_account": {
+    "confirmed": true,
+    "type": "creator",
+    "category": "Digital creator",
+    "category_visible": false,
+    "confirmed_at": "2026-08-08"
+  },
+  "pilot_schedule": {
+    "confirmed": true,
+    "destination": "instagram_only",
+    "scheduled_at": "2026-08-12T18:00:00-03:00",
+    "timezone": "America/Sao_Paulo",
+    "platform": "meta_business_suite",
+    "instagram_post_id": "27996092376710770",
+    "copyright_check": "passed"
+  },
+  "publishing_enabled": false
+}

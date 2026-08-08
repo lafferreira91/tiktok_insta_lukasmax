@@ -1,0 +1,32 @@
+name: Publicar Reels agendados
+
+on:
+  schedule:
+    - cron: "*/30 * * * *"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: astral-sh/setup-uv@v6
+      - run: uv sync
+      - run: uv run lukasmax publish-due
+        env:
+          INSTAGRAM_USER_ID: ${{ secrets.INSTAGRAM_USER_ID }}
+          INSTAGRAM_ACCESS_TOKEN: ${{ secrets.INSTAGRAM_ACCESS_TOKEN }}
+          INSTAGRAM_API_VERSION: v25.0
+          PUBLISH_ENABLED: ${{ vars.PUBLISH_ENABLED }}
+      - name: Salvar estado da fila
+        run: |
+          if git diff --quiet -- data/queue.json; then exit 0; fi
+          git config user.name "lukasmax-bot"
+          git config user.email "lukasmax-bot@users.noreply.github.com"
+          git add data/queue.json
+          git commit -m "Atualiza fila de publicacao"
+          git push
+
