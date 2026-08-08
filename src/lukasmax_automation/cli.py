@@ -303,6 +303,21 @@ def cmd_plan_queue(args: argparse.Namespace) -> int:
     return 0
 
 
+def cmd_refresh_captions(args: argparse.Namespace) -> int:
+    paths = _paths(args)
+    queue = queue_mod.load_queue(paths.queue)
+    if any(item.get("status") == "publishing" for item in queue["items"]):
+        print("Ha item em 'publishing'; rode 'lukasmax reconcile' antes.", file=sys.stderr)
+        return 1
+
+    resultado = planner.refresh_captions(queue, paths, ids=args.ids)
+    if resultado["trocadas"] and not args.dry_run:
+        queue_mod.save_queue(queue, paths.queue)
+    resultado["dry_run"] = args.dry_run
+    _emit(resultado)
+    return 0
+
+
 def _cover_targets(queue: dict[str, Any], ids: list[str] | None) -> list[dict[str, Any]]:
     """Itens que ainda podem receber capa: publicado nao volta atras."""
     wanted = set(ids or [])
@@ -632,6 +647,7 @@ COMMANDS: dict[str, Callable[[argparse.Namespace], int]] = {
     "approve-caption": cmd_approve_caption,
     "prepare": cmd_prepare,
     "plan-queue": cmd_plan_queue,
+    "refresh-captions": cmd_refresh_captions,
     "pick-covers": cmd_pick_covers,
     "set-cover": cmd_set_cover,
     "host-media": cmd_host_media,
@@ -696,6 +712,12 @@ def build_parser() -> argparse.ArgumentParser:
     plan.add_argument("--start", help="Data inicial (YYYY-MM-DD)")
     plan.add_argument("--strategy", choices=["front-loaded", "interleaved"], default="front-loaded")
     plan.add_argument("--dry-run", action="store_true")
+
+    refresh = commands.add_parser(
+        "refresh-captions", help="Recopia as legendas aprovadas para itens ainda nao publicados"
+    )
+    refresh.add_argument("--ids", nargs="+")
+    refresh.add_argument("--dry-run", action="store_true")
 
     picks = commands.add_parser(
         "pick-covers", help="Escolhe a capa (thumb_offset) do quadro mais nitido"

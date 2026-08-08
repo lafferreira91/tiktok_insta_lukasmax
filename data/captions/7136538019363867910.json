@@ -1,10 +1,10 @@
 {
   "tiktok_id": "7136538019363867910",
   "prompt_version": "v1",
-  "model": "claude-opus-5 (sessao interativa)",
-  "generated_at": "2026-08-08T18:43:50.674400+00:00",
+  "model": "humano",
+  "generated_at": "2026-08-08T20:21:19.622048+00:00",
   "input_fingerprint": "sha256:3ee4b5c3d7718cd75374f0c19c813a14d10b14614ab4c319aaee6424bd01eb6f",
-  "caption": "Esse sorriso indica: fugimos da prisao. Nem que a prisao seja so a segunda-feira. Marca quem fugiria contigo.",
+  "caption": "Esse sorriso indica: fugimos da prisão 😃\n\nA prisão era a segunda-feira. Mas conta.",
   "hashtags": [
     "#ARua",
     "#Jao",
@@ -16,6 +16,6 @@
   "warnings": [],
   "status": "approved",
   "edited_by_human": true,
-  "approved_at": "2026-08-08T18:43:50.674504+00:00",
+  "approved_at": "2026-08-08T20:21:19.622085+00:00",
   "history": []
 }

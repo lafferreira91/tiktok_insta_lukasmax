@@ -30,7 +30,14 @@ PROMPT_VERSION = "v1"
 #: Instagram's hard ceiling is 2200 characters, but the first ~125 are all that
 #: show before the "more" fold, so that is where the hook has to live.
 MAX_CAPTION_CHARS = 2200
-TARGET_MIN_CHARS = 90
+
+#: Piso baixo de proposito. Ele nasceu em 90, quando as legendas eram paragrafos
+#: explicativos, e passou a reprovar justamente as boas quando a voz mudou para
+#: algo mais seco: "Ahhh que coisa boa. Eu tinha planos pro resto do dia. Tinha."
+#: tem 60 caracteres e diz mais que qualquer paragrafo. O que o piso precisa
+#: barrar e a legenda vazia de conteudo -- so a frase da musica sem nada em
+#: volta -- e para isso 40 basta.
+TARGET_MIN_CHARS = 40
 TARGET_MAX_CHARS = 400
 HOOK_CHARS = 125
 

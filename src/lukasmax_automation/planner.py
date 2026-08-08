@@ -181,3 +181,56 @@ def summarize_rejections(rejected: Iterable[Rejection]) -> dict[str, int]:
     for entry in rejected:
         tally[entry.reason] = tally.get(entry.reason, 0) + 1
     return dict(sorted(tally.items(), key=lambda pair: -pair[1]))
+
+
+#: Estados em que a legenda ainda pode ser trocada. 'publishing' fica de fora de
+#: proposito: o container ja existe na Meta com o texto antigo, entao reescrever
+#: aqui so criaria divergencia entre o que a fila diz e o que foi postado.
+REFRESHABLE = frozenset({"planned", "prepared", "hosted", "scheduled", "retry"})
+
+
+def refresh_captions(
+    queue: dict[str, Any],
+    paths: Paths,
+    *,
+    ids: Iterable[str] | None = None,
+) -> dict[str, list[dict[str, Any]]]:
+    """Recopia as legendas aprovadas para os itens que ainda nao foram ao ar.
+
+    O congelamento existe para que editar ``data/captions/`` nunca mude sozinho
+    um post agendado. Trocar a legenda de propositio precisa entao de um caminho
+    explicito -- este -- e ele nunca toca em item publicado.
+    """
+    wanted = set(ids or [])
+    trocadas: list[dict[str, Any]] = []
+    ignoradas: list[dict[str, Any]] = []
+
+    for item in queue["items"]:
+        video_id = item["tiktok_id"]
+        if wanted and video_id not in wanted:
+            continue
+        if item.get("status") not in REFRESHABLE:
+            ignoradas.append({"id": video_id, "motivo": f"status {item.get('status')}"})
+            continue
+
+        record = captions_mod.load(paths.caption(video_id))
+        if not record or record.get("status") != "approved":
+            ignoradas.append({"id": video_id, "motivo": "legenda nao aprovada"})
+            continue
+
+        novo = captions_mod.full_caption(record)
+        if not novo.strip():
+            ignoradas.append({"id": video_id, "motivo": "legenda vazia"})
+            continue
+        if novo == item.get("caption"):
+            continue
+
+        antes = item.get("caption") or ""
+        item["caption"] = novo
+        item["caption_fingerprint"] = record.get("input_fingerprint")
+        item["alt_text"] = record.get("alt_text")
+        trocadas.append(
+            {"id": video_id, "antes": antes.split("\n")[0][:60], "depois": novo.split("\n")[0][:60]}
+        )
+
+    return {"trocadas": trocadas, "ignoradas": ignoradas}

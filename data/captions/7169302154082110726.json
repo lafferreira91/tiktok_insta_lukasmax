@@ -1,8 +1,8 @@
 {
   "tiktok_id": "7169302154082110726",
   "prompt_version": "v1",
-  "model": "claude-opus-5 (sessao interativa)",
-  "generated_at": "2026-08-08T18:43:50.683119+00:00",
+  "model": "humano",
+  "generated_at": "2026-08-08T20:21:19.628456+00:00",
   "input_fingerprint": "sha256:bbf8ade5f6481946b345b1ae9f9fb5bc6879ec205b93655c60410e7b8ad1b6ae",
   "caption": "Passa o bic. Vinte e dois segundos e eu ja tinha esquecido que estava dirigindo. Sobe o volume.",
   "hashtags": [
@@ -16,6 +16,6 @@
   "warnings": [],
   "status": "approved",
   "edited_by_human": true,
-  "approved_at": "2026-08-08T18:43:50.683152+00:00",
+  "approved_at": "2026-08-08T20:21:19.628470+00:00",
   "history": []
 }

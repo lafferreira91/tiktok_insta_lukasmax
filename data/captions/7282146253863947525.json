@@ -1,10 +1,10 @@
 {
   "tiktok_id": "7282146253863947525",
   "prompt_version": "v1",
-  "model": "claude-opus-5 (sessao interativa)",
-  "generated_at": "2026-08-08T18:43:50.668742+00:00",
+  "model": "humano",
+  "generated_at": "2026-08-08T20:21:19.615940+00:00",
   "input_fingerprint": "sha256:fef1dce8ec7ea30adc266df1bce8d08bec00ca94693fbfc450288e14c9a6584e",
-  "caption": "Se voce soube a proxima linha antes de mim, a gente tem a mesma idade e nenhum dos dois vai admitir. Marca a pessoa que vai se entregar junto.",
+  "caption": "Se você já sabia a próxima linha, a gente tem a mesma idade 💀\n\nE nenhum dos dois vai admitir. Marca quem vai negar junto comigo.",
   "hashtags": [
     "#TremendoVacilao",
     "#Perlla",
@@ -16,6 +16,6 @@
   "warnings": [],
   "status": "approved",
   "edited_by_human": true,
-  "approved_at": "2026-08-08T18:43:50.668776+00:00",
+  "approved_at": "2026-08-08T20:21:19.615961+00:00",
   "history": []
 }

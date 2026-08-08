@@ -1,10 +1,10 @@
 {
   "tiktok_id": "7172658171608141061",
   "prompt_version": "v1",
-  "model": "claude-opus-5 (sessao interativa)",
-  "generated_at": "2026-08-08T18:43:50.671625+00:00",
+  "model": "humano",
+  "generated_at": "2026-08-08T20:21:19.617828+00:00",
   "input_fingerprint": "sha256:ab099a2fdf87cf872c5472f3b76092e2d3ef95722a041c681890ce3bbfb103ca",
-  "caption": "Se eu me solto voce me arrasta. E o combinado de toda amizade que presta. Marca a pessoa que te arrasta.",
+  "caption": "Se eu me solto você me arrasta 🫠\n\nÉ o combinado de toda amizade que presta. Marca quem te arrasta e depois finge que não foi ideia dela.",
   "hashtags": [
     "#Ressaca",
     "#Jao",
@@ -16,6 +16,6 @@
   "warnings": [],
   "status": "approved",
   "edited_by_human": true,
-  "approved_at": "2026-08-08T18:43:50.671652+00:00",
+  "approved_at": "2026-08-08T20:21:19.617845+00:00",
   "history": []
 }

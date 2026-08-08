@@ -1,8 +1,8 @@
 {
   "tiktok_id": "7284631926319680774",
   "prompt_version": "v1",
-  "model": "claude-opus-5 (sessao interativa)",
-  "generated_at": "2026-08-08T18:43:50.680678+00:00",
+  "model": "humano",
+  "generated_at": "2026-08-08T20:21:19.626814+00:00",
   "input_fingerprint": "sha256:2882dc3107174c7271ec1dc35a79a389dbba7762d1453a0bed70890e721522b7",
   "caption": "Fiquei com um pouco de vergonha dessa, mas cantei inteira mesmo assim. Comenta se voce tambem tem uma musica assim.",
   "hashtags": [
@@ -16,6 +16,6 @@
   "warnings": [],
   "status": "approved",
   "edited_by_human": true,
-  "approved_at": "2026-08-08T18:43:50.680822+00:00",
+  "approved_at": "2026-08-08T20:21:19.626837+00:00",
   "history": []
 }

@@ -1,8 +1,8 @@
 {
   "tiktok_id": "7266148366793460998",
   "prompt_version": "v1",
-  "model": "claude-opus-5 (sessao interativa)",
-  "generated_at": "2026-08-08T18:43:50.681638+00:00",
+  "model": "humano",
+  "generated_at": "2026-08-08T20:21:19.627275+00:00",
   "input_fingerprint": "sha256:dabafeba5befd56d995d2453d408cf62e6a22b4714bc35943a5aa3225e5d294c",
   "caption": "Desenterrando essa aqui pra ver quem lembra. Se voce ja soltou o refrao antes de eu chegar nele, comenta.",
   "hashtags": [
@@ -16,6 +16,6 @@
   "warnings": [],
   "status": "approved",
   "edited_by_human": true,
-  "approved_at": "2026-08-08T18:43:50.681667+00:00",
+  "approved_at": "2026-08-08T20:21:19.627291+00:00",
   "history": []
 }

@@ -1,10 +1,10 @@
 {
   "tiktok_id": "7175523555927411974",
   "prompt_version": "v1",
-  "model": "claude-opus-5 (sessao interativa)",
-  "generated_at": "2026-08-08T18:43:50.672439+00:00",
+  "model": "humano",
+  "generated_at": "2026-08-08T20:21:19.618869+00:00",
   "input_fingerprint": "sha256:3ee787e9e23843a83eda0ae09021465cc08618ecf83d4582bc99269a225a9ed8",
-  "caption": "E me olhando fica mais bonito ainda. Ja usei essa frase e ja levei essa frase, e nao sei qual doi mais. Comenta ai.",
+  "caption": "E me olhando fica mais bonito ainda 😐\n\nJá usei essa frase e já levei essa frase. Uma das duas dói mais e eu não vou dizer qual.",
   "hashtags": [
     "#Aff",
     "#ElanaDara",
@@ -16,6 +16,6 @@
   "warnings": [],
   "status": "approved",
   "edited_by_human": true,
-  "approved_at": "2026-08-08T18:43:50.672458+00:00",
+  "approved_at": "2026-08-08T20:21:19.618886+00:00",
   "history": []
 }
