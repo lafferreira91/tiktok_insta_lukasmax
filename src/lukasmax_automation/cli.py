@@ -628,6 +628,11 @@ def build_parser() -> argparse.ArgumentParser:
 
 
 def main(argv: list[str] | None = None) -> int:
+    # .env.local vem primeiro e vence: e a convencao que a maioria das
+    # ferramentas usa para o arquivo de segredos de uma maquina so. Sem isso o
+    # token fica num arquivo que ninguem le, e o erro que aparece e "variavel
+    # ausente" -- que manda procurar no lugar errado.
+    load_dotenv(".env.local")
     load_dotenv()
     args = build_parser().parse_args(argv)
     try:

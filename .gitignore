@@ -1,8 +1,14 @@
+# Segredos. O padrao cobre .env, .env.local, .env.producao e qualquer variante
+# futura -- listar so ".env" deixou o .env.local de fora, e um token do
+# Instagram commitado num repo publico e irreversivel: vale para sempre ate ser
+# revogado a mao. A excecao do .env.example vem depois, e deliberada.
 .env
+.env.*
+!.env.example
+
 .venv/
 __pycache__/
 .pytest_cache/
 *.pyc
 /media/
 reports/frames/
-
