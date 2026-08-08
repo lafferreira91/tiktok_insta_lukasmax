@@ -547,6 +547,7 @@ name = "lukasmax-social-automation"
 version = "0.1.0"
 source = { editable = "." }
 dependencies = [
+    { name = "certifi" },
     { name = "python-dotenv" },
 ]
 
@@ -566,6 +567,7 @@ local = [
 requires-dist = [
     { name = "anthropic", marker = "extra == 'local'", specifier = ">=0.69" },
     { name = "av", marker = "extra == 'local'", specifier = ">=13.0.0" },
+    { name = "certifi", specifier = ">=2024.2.2" },
     { name = "imageio-ffmpeg", marker = "extra == 'local'", specifier = ">=0.6.0" },
     { name = "pytest", marker = "extra == 'dev'", specifier = ">=8.0" },
     { name = "python-dotenv", specifier = ">=1.1.0" },

@@ -170,7 +170,7 @@ class TestErrorClassification:
         publisher = InstagramPublisher("user-1", "secret")
         body = json.dumps(payload).encode()
 
-        def urlopen(request, timeout=None):
+        def urlopen(request, timeout=None, **kwargs):
             raise urllib.error.HTTPError(
                 getattr(request, "full_url", "https://x"), status, "erro", {}, BytesIO(body)
             )
@@ -185,7 +185,7 @@ class TestErrorClassification:
             {"error": {"code": 9004, "message": "O video nao pode ser baixado da URL"}}
         ).encode()
 
-        def urlopen(request, timeout=None):
+        def urlopen(request, timeout=None, **kwargs):
             raise urllib.error.HTTPError("https://x", 400, "Bad Request", {}, BytesIO(body))
 
         monkeypatch.setattr("urllib.request.urlopen", urlopen)
@@ -195,7 +195,7 @@ class TestErrorClassification:
     def test_network_failure_is_retriable(self, monkeypatch):
         publisher = InstagramPublisher("user-1", "secret")
 
-        def urlopen(request, timeout=None):
+        def urlopen(request, timeout=None, **kwargs):
             raise urllib.error.URLError("conexao recusada")
 
         monkeypatch.setattr("urllib.request.urlopen", urlopen)

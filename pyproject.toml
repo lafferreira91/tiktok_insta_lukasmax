@@ -7,6 +7,10 @@ requires-python = ">=3.11"
 # talks to the Graph API over stdlib urllib and never touches a video file, so
 # yt-dlp, ffmpeg and the AI SDK all belong in the "local" extra below.
 dependencies = [
+  # The publish job talks HTTPS to the Graph API. Relying on the OS trust store
+  # makes TLS verification work or fail depending on the machine, which is how
+  # you get a job that passes in CI and fails on the Mac.
+  "certifi>=2024.2.2",
   "python-dotenv>=1.1.0",
 ]
 

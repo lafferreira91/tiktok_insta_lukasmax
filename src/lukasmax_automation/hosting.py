@@ -20,6 +20,8 @@ import urllib.request
 from pathlib import Path
 from typing import Any
 
+from .net import ssl_context
+
 RELEASE_NOTES = (
     "Videos normalizados para publicacao como Reels.\n\n"
     "Assets gerados por `lukasmax host-media`. Nao editar a mao: a fila em "
@@ -109,10 +111,15 @@ def verify_asset(
     GitHub answers the release-download URL with a 302 to a storage host, which
     is exactly what Meta's fetcher has to follow -- so this doubles as a check
     that the ``video_url`` path will work.
+
+    ``final_url`` is returned for diagnostics only and must never be stored: it
+    is a signed URL that expires within the hour. The queue keeps the stable
+    ``github.com/.../releases/download/...`` form, which mints a fresh signature
+    on every request -- including Meta's, at container-creation time.
     """
     request = urllib.request.Request(url, method="HEAD")
     try:
-        with urllib.request.urlopen(request, timeout=timeout) as response:
+        with urllib.request.urlopen(request, timeout=timeout, context=ssl_context()) as response:
             length = response.headers.get("Content-Length")
             size = int(length) if length else None
             ok = response.status == 200 and (expected_bytes is None or size == expected_bytes)
@@ -133,7 +140,10 @@ def fetch_asset(url: str, dest: Path, *, expected_sha256: str | None = None) -> 
     """Download an asset locally. Only used by the resumable upload fallback."""
     dest.parent.mkdir(parents=True, exist_ok=True)
     try:
-        with urllib.request.urlopen(url, timeout=300) as response, dest.open("wb") as handle:
+        with (
+            urllib.request.urlopen(url, timeout=300, context=ssl_context()) as response,
+            dest.open("wb") as handle,
+        ):
             while block := response.read(1024 * 1024):
                 handle.write(block)
     except (urllib.error.HTTPError, urllib.error.URLError) as error:

@@ -2,6 +2,356 @@
   "version": 2,
   "items": [
     {
+      "id": "q_20260808T194100_7276110548935249158",
+      "tiktok_id": "7276110548935249158",
+      "source_url": "https://www.tiktok.com/@_lukasmax/video/7276110548935249158",
+      "status": "scheduled",
+      "scheduled_at": "2026-08-08T19:41:00-03:00",
+      "scheduled_at_utc": "2026-08-08T22:41:00+00:00",
+      "slot_id": "we-evening",
+      "rank": 1,
+      "media": {
+        "release_tag": "media-v1",
+        "asset_name": "7276110548935249158.mp4",
+        "asset_url": "https://github.com/lafferreira91/tiktok_insta_lukasmax/releases/download/media-v1/7276110548935249158.mp4",
+        "sha256": "5ff48dcf8c2de266311b2660d5b1119cc193ec87cfe80142ad8d5c55e004c81f",
+        "bytes": 59620469,
+        "local_path": "media/ready/7276110548935249158.mp4",
+        "duration_seconds": 60.211
+      },
+      "caption": "Existe um momento exato em que a musica para de ser sobre a Anitta e passa a ser sobre alguem que voce conhece. Chega nesse ponto e me conta quem apareceu na sua cabeca.\n\n#DeixaEleSofrer #Anitta #CarJams #DublagemNoCarro #FunkBrasileiro",
+      "caption_fingerprint": "sha256:ad0dba951dac2864a55830f87283de1f2aca4a35bacb3670ff7b0fcc6e60a900",
+      "attempts": 0,
+      "max_attempts": 3,
+      "next_attempt_at": null,
+      "last_error": null,
+      "container_id": null,
+      "container_created_at": null,
+      "claimed_at": null,
+      "claimed_by_run": null,
+      "instagram_media_id": null,
+      "permalink": null,
+      "published_at": null,
+      "history": [
+        {
+          "at": "2026-08-08T19:03:38.378870+00:00",
+          "from": "",
+          "to": "planned",
+          "by": "local"
+        },
+        {
+          "at": "2026-08-08T19:03:38.380167+00:00",
+          "from": "planned",
+          "to": "prepared",
+          "by": "local",
+          "note": "midia normalizada em disco"
+        },
+        {
+          "at": "2026-08-08T19:04:24.479492+00:00",
+          "from": "prepared",
+          "to": "hosted",
+          "by": "local",
+          "note": "asset em media-v1"
+        },
+        {
+          "at": "2026-08-08T19:04:24.479770+00:00",
+          "from": "hosted",
+          "to": "scheduled",
+          "by": "local",
+          "note": "pronto para o cron publicar"
+        }
+      ],
+      "caption_ref": "data/captions/7276110548935249158.json",
+      "alt_text": "Homem dubla a musica Deixa ele sofrer dentro do carro, com expressao debochada."
+    },
+    {
+      "id": "q_20260809T104300_7146966322545446149",
+      "tiktok_id": "7146966322545446149",
+      "source_url": "https://www.tiktok.com/@_lukasmax/video/7146966322545446149",
+      "status": "prepared",
+      "scheduled_at": "2026-08-09T10:43:00-03:00",
+      "scheduled_at_utc": "2026-08-09T13:43:00+00:00",
+      "slot_id": "we-late-am",
+      "rank": 3,
+      "media": null,
+      "caption": "Fala o que eu to querendo ouvir. Se voce tambem ja pediu isso pra alguem que nunca falou nada, essa musica e sua tambem. Salva ela.\n\n#Lokko #GiuliaBe #CarJams #DublagemNoCarro #MusicaBrasileira",
+      "caption_fingerprint": "sha256:7d9de77085cead7df8b9a12a3186caf1b326ad64b9cb58bce976e3a23c8703a7",
+      "attempts": 0,
+      "max_attempts": 3,
+      "next_attempt_at": null,
+      "last_error": null,
+      "container_id": null,
+      "container_created_at": null,
+      "claimed_at": null,
+      "claimed_by_run": null,
+      "instagram_media_id": null,
+      "permalink": null,
+      "published_at": null,
+      "history": [
+        {
+          "at": "2026-08-08T19:03:38.379015+00:00",
+          "from": "",
+          "to": "planned",
+          "by": "local"
+        },
+        {
+          "at": "2026-08-08T19:03:38.380172+00:00",
+          "from": "planned",
+          "to": "prepared",
+          "by": "local",
+          "note": "midia normalizada em disco"
+        }
+      ],
+      "caption_ref": "data/captions/7146966322545446149.json",
+      "alt_text": "Homem dubla a musica LOKKO dentro do carro."
+    },
+    {
+      "id": "q_20260809T221300_7288713801967488262",
+      "tiktok_id": "7288713801967488262",
+      "source_url": "https://www.tiktok.com/@_lukasmax/video/7288713801967488262",
+      "status": "prepared",
+      "scheduled_at": "2026-08-09T22:13:00-03:00",
+      "scheduled_at_utc": "2026-08-10T01:13:00+00:00",
+      "slot_id": "we-night",
+      "rank": 2,
+      "media": null,
+      "caption": "Comecei achando que dava pra dublar essa sem me entregar. Nao deu. Marca quem canta essa contigo no volume maximo.\n\n#Cobertor #Anitta #Projota #CarJams #DublagemNoCarro",
+      "caption_fingerprint": "sha256:6356956e7b04d4c8325179da0f4d9970633b5faaee5e4052ffd16e62a010f87d",
+      "attempts": 0,
+      "max_attempts": 3,
+      "next_attempt_at": null,
+      "last_error": null,
+      "container_id": null,
+      "container_created_at": null,
+      "claimed_at": null,
+      "claimed_by_run": null,
+      "instagram_media_id": null,
+      "permalink": null,
+      "published_at": null,
+      "history": [
+        {
+          "at": "2026-08-08T19:03:38.378953+00:00",
+          "from": "",
+          "to": "planned",
+          "by": "local"
+        },
+        {
+          "at": "2026-08-08T19:03:38.380170+00:00",
+          "from": "planned",
+          "to": "prepared",
+          "by": "local",
+          "note": "midia normalizada em disco"
+        }
+      ],
+      "caption_ref": "data/captions/7288713801967488262.json",
+      "alt_text": "Homem dubla a musica Cobertor dentro do carro."
+    },
+    {
+      "id": "q_20260810T090400_7282146253863947525",
+      "tiktok_id": "7282146253863947525",
+      "source_url": "https://www.tiktok.com/@_lukasmax/video/7282146253863947525",
+      "status": "prepared",
+      "scheduled_at": "2026-08-10T09:04:00-03:00",
+      "scheduled_at_utc": "2026-08-10T12:04:00+00:00",
+      "slot_id": "wd-morning",
+      "rank": 5,
+      "media": null,
+      "caption": "Se voce soube a proxima linha antes de mim, a gente tem a mesma idade e nenhum dos dois vai admitir. Marca a pessoa que vai se entregar junto.\n\n#TremendoVacilao #Perlla #CarJams #NostalgiaMusical #FunkAntigo",
+      "caption_fingerprint": "sha256:fef1dce8ec7ea30adc266df1bce8d08bec00ca94693fbfc450288e14c9a6584e",
+      "attempts": 0,
+      "max_attempts": 3,
+      "next_attempt_at": null,
+      "last_error": null,
+      "container_id": null,
+      "container_created_at": null,
+      "claimed_at": null,
+      "claimed_by_run": null,
+      "instagram_media_id": null,
+      "permalink": null,
+      "published_at": null,
+      "history": [
+        {
+          "at": "2026-08-08T19:03:38.379119+00:00",
+          "from": "",
+          "to": "planned",
+          "by": "local"
+        },
+        {
+          "at": "2026-08-08T19:03:38.380176+00:00",
+          "from": "planned",
+          "to": "prepared",
+          "by": "local",
+          "note": "midia normalizada em disco"
+        }
+      ],
+      "caption_ref": "data/captions/7282146253863947525.json",
+      "alt_text": "Homem dubla a musica Tremendo Vacilao dentro do carro, rindo."
+    },
+    {
+      "id": "q_20260810T181600_7170318082446019845",
+      "tiktok_id": "7170318082446019845",
+      "source_url": "https://www.tiktok.com/@_lukasmax/video/7170318082446019845",
+      "status": "prepared",
+      "scheduled_at": "2026-08-10T18:16:00-03:00",
+      "scheduled_at_utc": "2026-08-10T21:16:00+00:00",
+      "slot_id": "wd-commute",
+      "rank": 4,
+      "media": null,
+      "caption": "Tem musica que resolve o dia em quarenta segundos. Essa e uma delas. Sobe o volume e me diz se nao melhorou.\n\n#CoisaBoa #GloriaGroove #CarJams #DublagemNoCarro #PopBrasileiro",
+      "caption_fingerprint": "sha256:02fd91fe522feba90a97a2e22fffe87e0fe0e0a2b27a2b87d6014cdd44505510",
+      "attempts": 0,
+      "max_attempts": 3,
+      "next_attempt_at": null,
+      "last_error": null,
+      "container_id": null,
+      "container_created_at": null,
+      "claimed_at": null,
+      "claimed_by_run": null,
+      "instagram_media_id": null,
+      "permalink": null,
+      "published_at": null,
+      "history": [
+        {
+          "at": "2026-08-08T19:03:38.379069+00:00",
+          "from": "",
+          "to": "planned",
+          "by": "local"
+        },
+        {
+          "at": "2026-08-08T19:03:38.380174+00:00",
+          "from": "planned",
+          "to": "prepared",
+          "by": "local",
+          "note": "midia normalizada em disco"
+        }
+      ],
+      "caption_ref": "data/captions/7170318082446019845.json",
+      "alt_text": "Homem dubla a musica Coisa Boa dentro do carro, sorrindo."
+    },
+    {
+      "id": "q_20260811T084100_7261719493234265349",
+      "tiktok_id": "7261719493234265349",
+      "source_url": "https://www.tiktok.com/@_lukasmax/video/7261719493234265349",
+      "status": "prepared",
+      "scheduled_at": "2026-08-11T08:41:00-03:00",
+      "scheduled_at_utc": "2026-08-11T11:41:00+00:00",
+      "slot_id": "wd-morning",
+      "rank": 6,
+      "media": null,
+      "caption": "Dessa vez eu nao vou fugir. Levei uns anos pra conseguir dizer isso e uns segundos pra dublar. Salva pra quando precisar lembrar.\n\n#NoMoney #Galantis #CarJams #DublagemNoCarro #MusicaInternacional",
+      "caption_fingerprint": "sha256:1e98b15b22c2f1f53f222d3b19a7c6424dc2f005366b20cb1f0ac9ac782bfe4e",
+      "attempts": 0,
+      "max_attempts": 3,
+      "next_attempt_at": null,
+      "last_error": null,
+      "container_id": null,
+      "container_created_at": null,
+      "claimed_at": null,
+      "claimed_by_run": null,
+      "instagram_media_id": null,
+      "permalink": null,
+      "published_at": null,
+      "history": [
+        {
+          "at": "2026-08-08T19:03:38.379168+00:00",
+          "from": "",
+          "to": "planned",
+          "by": "local"
+        },
+        {
+          "at": "2026-08-08T19:03:38.380177+00:00",
+          "from": "planned",
+          "to": "prepared",
+          "by": "local",
+          "note": "midia normalizada em disco"
+        }
+      ],
+      "caption_ref": "data/captions/7261719493234265349.json",
+      "alt_text": "Homem dubla a musica No Money dentro do carro."
+    },
+    {
+      "id": "q_20260811T205300_7279779784622738693",
+      "tiktok_id": "7279779784622738693",
+      "source_url": "https://www.tiktok.com/@_lukasmax/video/7279779784622738693",
+      "status": "prepared",
+      "scheduled_at": "2026-08-11T20:53:00-03:00",
+      "scheduled_at_utc": "2026-08-11T23:53:00+00:00",
+      "slot_id": "wd-prime",
+      "rank": 7,
+      "media": null,
+      "caption": "Te ensinei certin e agora ta usando comigo. A gente ensina e depois se arrepende. Comenta se ja passou por isso.\n\n#TeEnsineiCertin #Ludmilla #CarJams #DublagemNoCarro #FunkBrasileiro",
+      "caption_fingerprint": "sha256:438e4041e8c20c1bd577c467e945b114e9e48210fb14853fbe99ba9e7cb5729a",
+      "attempts": 0,
+      "max_attempts": 3,
+      "next_attempt_at": null,
+      "last_error": null,
+      "container_id": null,
+      "container_created_at": null,
+      "claimed_at": null,
+      "claimed_by_run": null,
+      "instagram_media_id": null,
+      "permalink": null,
+      "published_at": null,
+      "history": [
+        {
+          "at": "2026-08-08T19:03:38.379216+00:00",
+          "from": "",
+          "to": "planned",
+          "by": "local"
+        },
+        {
+          "at": "2026-08-08T19:03:38.380178+00:00",
+          "from": "planned",
+          "to": "prepared",
+          "by": "local",
+          "note": "midia normalizada em disco"
+        }
+      ],
+      "caption_ref": "data/captions/7279779784622738693.json",
+      "alt_text": "Homem dubla a musica Te ensinei certin dentro do carro."
+    },
+    {
+      "id": "q_20260812T120000_7249095247077199109",
+      "tiktok_id": "7249095247077199109",
+      "source_url": "https://www.tiktok.com/@_lukasmax/video/7249095247077199109",
+      "status": "prepared",
+      "scheduled_at": "2026-08-12T12:00:00-03:00",
+      "scheduled_at_utc": "2026-08-12T15:00:00+00:00",
+      "slot_id": "wd-lunch",
+      "rank": 8,
+      "media": null,
+      "caption": "Vinte e seis segundos e essa musica ja decidiu o clima do resto do dia. Sobe o som e testa se funciona contigo tambem.\n\n#WhatItIs #Doechii #CarJams #DublagemNoCarro #RapInternacional",
+      "caption_fingerprint": "sha256:588c596fdcb6f7c70e11c0afef5b780fd94c694f44b253cd262abdb091c4cf2e",
+      "attempts": 0,
+      "max_attempts": 3,
+      "next_attempt_at": null,
+      "last_error": null,
+      "container_id": null,
+      "container_created_at": null,
+      "claimed_at": null,
+      "claimed_by_run": null,
+      "instagram_media_id": null,
+      "permalink": null,
+      "published_at": null,
+      "history": [
+        {
+          "at": "2026-08-08T19:03:38.379262+00:00",
+          "from": "",
+          "to": "planned",
+          "by": "local"
+        },
+        {
+          "at": "2026-08-08T19:03:38.380180+00:00",
+          "from": "planned",
+          "to": "prepared",
+          "by": "local",
+          "note": "midia normalizada em disco"
+        }
+      ],
+      "caption_ref": "data/captions/7249095247077199109.json",
+      "alt_text": "Homem dubla a musica What It Is dentro do carro."
+    },
+    {
       "id": "q_20260812T180000_7278034913729907974",
       "tiktok_id": "7278034913729907974",
       "source_url": "https://www.tiktok.com/@_lukasmax/video/7278034913729907974",
@@ -37,6 +387,744 @@
       "scheduled_via": "meta_business_suite",
       "instagram_post_id": "27996092376710770",
       "copyright_check": "passed"
+    },
+    {
+      "id": "q_20260813T122800_7385652296526351622",
+      "tiktok_id": "7385652296526351622",
+      "source_url": "https://www.tiktok.com/@_lukasmax/video/7385652296526351622",
+      "status": "prepared",
+      "scheduled_at": "2026-08-13T12:28:00-03:00",
+      "scheduled_at_utc": "2026-08-13T15:28:00+00:00",
+      "slot_id": "wd-lunch",
+      "rank": 9,
+      "media": null,
+      "caption": "Dublei em japones sem saber uma palavra de japones e a confianca foi a mesma. Comenta se ficou perto ou se foi um desastre.\n\n#Rockstar #Lisa #CarJams #DublagemNoCarro #KPop",
+      "caption_fingerprint": "sha256:282a1897f0c913748d53ab4298f0c0af475a163923371952007c0794924aaf6d",
+      "attempts": 0,
+      "max_attempts": 3,
+      "next_attempt_at": null,
+      "last_error": null,
+      "container_id": null,
+      "container_created_at": null,
+      "claimed_at": null,
+      "claimed_by_run": null,
+      "instagram_media_id": null,
+      "permalink": null,
+      "published_at": null,
+      "history": [
+        {
+          "at": "2026-08-08T19:03:38.379309+00:00",
+          "from": "",
+          "to": "planned",
+          "by": "local"
+        },
+        {
+          "at": "2026-08-08T19:03:38.380181+00:00",
+          "from": "planned",
+          "to": "prepared",
+          "by": "local",
+          "note": "midia normalizada em disco"
+        }
+      ],
+      "caption_ref": "data/captions/7385652296526351622.json",
+      "alt_text": "Homem dubla a musica Rockstar da LISA dentro do carro."
+    },
+    {
+      "id": "q_20260813T184200_7172658171608141061",
+      "tiktok_id": "7172658171608141061",
+      "source_url": "https://www.tiktok.com/@_lukasmax/video/7172658171608141061",
+      "status": "prepared",
+      "scheduled_at": "2026-08-13T18:42:00-03:00",
+      "scheduled_at_utc": "2026-08-13T21:42:00+00:00",
+      "slot_id": "wd-commute",
+      "rank": 10,
+      "media": null,
+      "caption": "Se eu me solto voce me arrasta. E o combinado de toda amizade que presta. Marca a pessoa que te arrasta.\n\n#Ressaca #Jao #CarJams #DublagemNoCarro #MusicaBrasileira",
+      "caption_fingerprint": "sha256:ab099a2fdf87cf872c5472f3b76092e2d3ef95722a041c681890ce3bbfb103ca",
+      "attempts": 0,
+      "max_attempts": 3,
+      "next_attempt_at": null,
+      "last_error": null,
+      "container_id": null,
+      "container_created_at": null,
+      "claimed_at": null,
+      "claimed_by_run": null,
+      "instagram_media_id": null,
+      "permalink": null,
+      "published_at": null,
+      "history": [
+        {
+          "at": "2026-08-08T19:03:38.379356+00:00",
+          "from": "",
+          "to": "planned",
+          "by": "local"
+        },
+        {
+          "at": "2026-08-08T19:03:38.380183+00:00",
+          "from": "planned",
+          "to": "prepared",
+          "by": "local",
+          "note": "midia normalizada em disco"
+        }
+      ],
+      "caption_ref": "data/captions/7172658171608141061.json",
+      "alt_text": "Homem dubla a musica Ressaca do Jao dentro do carro."
+    },
+    {
+      "id": "q_20260814T083200_7175523555927411974",
+      "tiktok_id": "7175523555927411974",
+      "source_url": "https://www.tiktok.com/@_lukasmax/video/7175523555927411974",
+      "status": "prepared",
+      "scheduled_at": "2026-08-14T08:32:00-03:00",
+      "scheduled_at_utc": "2026-08-14T11:32:00+00:00",
+      "slot_id": "wd-morning",
+      "rank": 12,
+      "media": null,
+      "caption": "E me olhando fica mais bonito ainda. Ja usei essa frase e ja levei essa frase, e nao sei qual doi mais. Comenta ai.\n\n#Aff #ElanaDara #CarJams #DublagemNoCarro #MusicaBrasileira",
+      "caption_fingerprint": "sha256:3ee787e9e23843a83eda0ae09021465cc08618ecf83d4582bc99269a225a9ed8",
+      "attempts": 0,
+      "max_attempts": 3,
+      "next_attempt_at": null,
+      "last_error": null,
+      "container_id": null,
+      "container_created_at": null,
+      "claimed_at": null,
+      "claimed_by_run": null,
+      "instagram_media_id": null,
+      "permalink": null,
+      "published_at": null,
+      "history": [
+        {
+          "at": "2026-08-08T19:03:38.379448+00:00",
+          "from": "",
+          "to": "planned",
+          "by": "local"
+        },
+        {
+          "at": "2026-08-08T19:03:38.380185+00:00",
+          "from": "planned",
+          "to": "prepared",
+          "by": "local",
+          "note": "midia normalizada em disco"
+        }
+      ],
+      "caption_ref": "data/captions/7175523555927411974.json",
+      "alt_text": "Homem dubla a musica aff da Elana Dara dentro do carro."
+    },
+    {
+      "id": "q_20260814T184200_7255074217979383046",
+      "tiktok_id": "7255074217979383046",
+      "source_url": "https://www.tiktok.com/@_lukasmax/video/7255074217979383046",
+      "status": "prepared",
+      "scheduled_at": "2026-08-14T18:42:00-03:00",
+      "scheduled_at_utc": "2026-08-14T21:42:00+00:00",
+      "slot_id": "wd-commute",
+      "rank": 11,
+      "media": null,
+      "caption": "Nem todos os dias serao bons dias, e essa musica nao finge o contrario. Salva pra ouvir num dia desses.\n\n#Breakaway #KellyClarkson #CarJams #DublagemNoCarro #Anos2000",
+      "caption_fingerprint": "sha256:b7af52a49a9993b11e115fc4b68f5ec890db5c83ce6e229c7caa4e8fe3c00f0f",
+      "attempts": 0,
+      "max_attempts": 3,
+      "next_attempt_at": null,
+      "last_error": null,
+      "container_id": null,
+      "container_created_at": null,
+      "claimed_at": null,
+      "claimed_by_run": null,
+      "instagram_media_id": null,
+      "permalink": null,
+      "published_at": null,
+      "history": [
+        {
+          "at": "2026-08-08T19:03:38.379402+00:00",
+          "from": "",
+          "to": "planned",
+          "by": "local"
+        },
+        {
+          "at": "2026-08-08T19:03:38.380184+00:00",
+          "from": "planned",
+          "to": "prepared",
+          "by": "local",
+          "note": "midia normalizada em disco"
+        }
+      ],
+      "caption_ref": "data/captions/7255074217979383046.json",
+      "alt_text": "Homem dubla a musica Breakaway dentro do carro."
+    },
+    {
+      "id": "q_20260815T110000_7264173841973316870",
+      "tiktok_id": "7264173841973316870",
+      "source_url": "https://www.tiktok.com/@_lukasmax/video/7264173841973316870",
+      "status": "prepared",
+      "scheduled_at": "2026-08-15T11:00:00-03:00",
+      "scheduled_at_utc": "2026-08-15T14:00:00+00:00",
+      "slot_id": "we-late-am",
+      "rank": 14,
+      "media": null,
+      "caption": "Vinte e dois segundos pra lembrar que a gente sobreviveu ao fim do mundo umas quantas vezes. Salva essa.\n\n#UmMinutoParaOFimDoMundo #CPM22 #CarJams #RockNacional #NostalgiaMusical",
+      "caption_fingerprint": "sha256:c93c6361f8c9edacdf9c179d2f79476d207b45ce456e8329f437c7f6dcd19c4f",
+      "attempts": 0,
+      "max_attempts": 3,
+      "next_attempt_at": null,
+      "last_error": null,
+      "container_id": null,
+      "container_created_at": null,
+      "claimed_at": null,
+      "claimed_by_run": null,
+      "instagram_media_id": null,
+      "permalink": null,
+      "published_at": null,
+      "history": [
+        {
+          "at": "2026-08-08T19:03:38.379544+00:00",
+          "from": "",
+          "to": "planned",
+          "by": "local"
+        },
+        {
+          "at": "2026-08-08T19:03:38.380188+00:00",
+          "from": "planned",
+          "to": "prepared",
+          "by": "local",
+          "note": "midia normalizada em disco"
+        }
+      ],
+      "caption_ref": "data/captions/7264173841973316870.json",
+      "alt_text": "Homem dubla a musica Um Minuto Para O Fim Do Mundo dentro do carro."
+    },
+    {
+      "id": "q_20260815T220300_7256061139488869637",
+      "tiktok_id": "7256061139488869637",
+      "source_url": "https://www.tiktok.com/@_lukasmax/video/7256061139488869637",
+      "status": "prepared",
+      "scheduled_at": "2026-08-15T22:03:00-03:00",
+      "scheduled_at_utc": "2026-08-16T01:03:00+00:00",
+      "slot_id": "we-night",
+      "rank": 13,
+      "media": null,
+      "caption": "Vamos fugir? Sem plano e sem destino, so com essa musica no ultimo volume. Marca aqui quem entraria no carro sem nem perguntar pra onde a gente vai.\n\n#Down #JaySean #CarJams #DublagemNoCarro #Anos2000",
+      "caption_fingerprint": "sha256:0c522cfab377ec2da429f7ace254c2b3dbd23f98b9376cdbe91ba0408a6b0eac",
+      "attempts": 0,
+      "max_attempts": 3,
+      "next_attempt_at": null,
+      "last_error": null,
+      "container_id": null,
+      "container_created_at": null,
+      "claimed_at": null,
+      "claimed_by_run": null,
+      "instagram_media_id": null,
+      "permalink": null,
+      "published_at": null,
+      "history": [
+        {
+          "at": "2026-08-08T19:03:38.379495+00:00",
+          "from": "",
+          "to": "planned",
+          "by": "local"
+        },
+        {
+          "at": "2026-08-08T19:03:38.380187+00:00",
+          "from": "planned",
+          "to": "prepared",
+          "by": "local",
+          "note": "midia normalizada em disco"
+        }
+      ],
+      "caption_ref": "data/captions/7256061139488869637.json",
+      "alt_text": "Homem dubla a musica Down do Jay Sean dentro do carro."
+    },
+    {
+      "id": "q_20260816T105700_7266803953864641798",
+      "tiktok_id": "7266803953864641798",
+      "source_url": "https://www.tiktok.com/@_lukasmax/video/7266803953864641798",
+      "status": "prepared",
+      "scheduled_at": "2026-08-16T10:57:00-03:00",
+      "scheduled_at_utc": "2026-08-16T13:57:00+00:00",
+      "slot_id": "we-late-am",
+      "rank": 16,
+      "media": null,
+      "caption": "Meu pai me disse. E se o seu tambem disse alguma coisa que ficou, manda essa pra ele hoje.\n\n#TheNights #Avicii #CarJams #DublagemNoCarro #MusicaInternacional",
+      "caption_fingerprint": "sha256:e05b2515da1b2247b50149a8177c8fca21164e1f1455eabf608c89336a212086",
+      "attempts": 0,
+      "max_attempts": 3,
+      "next_attempt_at": null,
+      "last_error": null,
+      "container_id": null,
+      "container_created_at": null,
+      "claimed_at": null,
+      "claimed_by_run": null,
+      "instagram_media_id": null,
+      "permalink": null,
+      "published_at": null,
+      "history": [
+        {
+          "at": "2026-08-08T19:03:38.379656+00:00",
+          "from": "",
+          "to": "planned",
+          "by": "local"
+        },
+        {
+          "at": "2026-08-08T19:03:38.380191+00:00",
+          "from": "planned",
+          "to": "prepared",
+          "by": "local",
+          "note": "midia normalizada em disco"
+        }
+      ],
+      "caption_ref": "data/captions/7266803953864641798.json",
+      "alt_text": "Homem dubla a musica The Nights do Avicii dentro do carro."
+    },
+    {
+      "id": "q_20260816T194000_7248389240256548101",
+      "tiktok_id": "7248389240256548101",
+      "source_url": "https://www.tiktok.com/@_lukasmax/video/7248389240256548101",
+      "status": "prepared",
+      "scheduled_at": "2026-08-16T19:40:00-03:00",
+      "scheduled_at_utc": "2026-08-16T22:40:00+00:00",
+      "slot_id": "we-evening",
+      "rank": 15,
+      "media": null,
+      "caption": "Nao tenho mais tempo pra ficar na sua mao. Demorei pra aprender essa e canto como quem passou por ela. Comenta se voce tambem.\n\n#LoveLove #Melody #CarJams #DublagemNoCarro #PopBrasileiro",
+      "caption_fingerprint": "sha256:5810097d176037ce20f11adfbde4712ca13c8092357db0732896f408119a7b44",
+      "attempts": 0,
+      "max_attempts": 3,
+      "next_attempt_at": null,
+      "last_error": null,
+      "container_id": null,
+      "container_created_at": null,
+      "claimed_at": null,
+      "claimed_by_run": null,
+      "instagram_media_id": null,
+      "permalink": null,
+      "published_at": null,
+      "history": [
+        {
+          "at": "2026-08-08T19:03:38.379609+00:00",
+          "from": "",
+          "to": "planned",
+          "by": "local"
+        },
+        {
+          "at": "2026-08-08T19:03:38.380190+00:00",
+          "from": "planned",
+          "to": "prepared",
+          "by": "local",
+          "note": "midia normalizada em disco"
+        }
+      ],
+      "caption_ref": "data/captions/7248389240256548101.json",
+      "alt_text": "Homem dubla a musica Love, Love da Melody dentro do carro."
+    },
+    {
+      "id": "q_20260817T115900_7136538019363867910",
+      "tiktok_id": "7136538019363867910",
+      "source_url": "https://www.tiktok.com/@_lukasmax/video/7136538019363867910",
+      "status": "prepared",
+      "scheduled_at": "2026-08-17T11:59:00-03:00",
+      "scheduled_at_utc": "2026-08-17T14:59:00+00:00",
+      "slot_id": "wd-lunch",
+      "rank": 17,
+      "media": null,
+      "caption": "Esse sorriso indica: fugimos da prisao. Nem que a prisao seja so a segunda-feira. Marca quem fugiria contigo.\n\n#ARua #Jao #CarJams #DublagemNoCarro #MusicaBrasileira",
+      "caption_fingerprint": "sha256:3ee4b5c3d7718cd75374f0c19c813a14d10b14614ab4c319aaee6424bd01eb6f",
+      "attempts": 0,
+      "max_attempts": 3,
+      "next_attempt_at": null,
+      "last_error": null,
+      "container_id": null,
+      "container_created_at": null,
+      "claimed_at": null,
+      "claimed_by_run": null,
+      "instagram_media_id": null,
+      "permalink": null,
+      "published_at": null,
+      "history": [
+        {
+          "at": "2026-08-08T19:03:38.379703+00:00",
+          "from": "",
+          "to": "planned",
+          "by": "local"
+        },
+        {
+          "at": "2026-08-08T19:03:38.380192+00:00",
+          "from": "planned",
+          "to": "prepared",
+          "by": "local",
+          "note": "midia normalizada em disco"
+        }
+      ],
+      "caption_ref": "data/captions/7136538019363867910.json",
+      "alt_text": "Homem dubla a musica A Rua do Jao dentro do carro, sorrindo."
+    },
+    {
+      "id": "q_20260817T181500_7144801859243478277",
+      "tiktok_id": "7144801859243478277",
+      "source_url": "https://www.tiktok.com/@_lukasmax/video/7144801859243478277",
+      "status": "prepared",
+      "scheduled_at": "2026-08-17T18:15:00-03:00",
+      "scheduled_at_utc": "2026-08-17T21:15:00+00:00",
+      "slot_id": "wd-commute",
+      "rank": 18,
+      "media": null,
+      "caption": "Vermelho que nem a lanterna traseira da nave que toca esse som. Sobe o volume e me diz se nao da vontade de sair dirigindo.\n\n#Vermelho #GloriaGroove #CarJams #DublagemNoCarro #PopBrasileiro",
+      "caption_fingerprint": "sha256:3be5192c7c27bb557c5645ce7f6d4ca90332ec069f3e11649f3350b5a16775b5",
+      "attempts": 0,
+      "max_attempts": 3,
+      "next_attempt_at": null,
+      "last_error": null,
+      "container_id": null,
+      "container_created_at": null,
+      "claimed_at": null,
+      "claimed_by_run": null,
+      "instagram_media_id": null,
+      "permalink": null,
+      "published_at": null,
+      "history": [
+        {
+          "at": "2026-08-08T19:03:38.379749+00:00",
+          "from": "",
+          "to": "planned",
+          "by": "local"
+        },
+        {
+          "at": "2026-08-08T19:03:38.380194+00:00",
+          "from": "planned",
+          "to": "prepared",
+          "by": "local",
+          "note": "midia normalizada em disco"
+        }
+      ],
+      "caption_ref": "data/captions/7144801859243478277.json",
+      "alt_text": "Homem dubla a musica VERMELHO da Gloria Groove dentro do carro."
+    },
+    {
+      "id": "q_20260818T084200_7232386311330581765",
+      "tiktok_id": "7232386311330581765",
+      "source_url": "https://www.tiktok.com/@_lukasmax/video/7232386311330581765",
+      "status": "prepared",
+      "scheduled_at": "2026-08-18T08:42:00-03:00",
+      "scheduled_at_utc": "2026-08-18T11:42:00+00:00",
+      "slot_id": "wd-morning",
+      "rank": 20,
+      "media": null,
+      "caption": "Voce deveria ouvir essa todos os dias. Nao e exagero, e prescricao. Salva e testa por uma semana.\n\n#Energy #MorganStJean #CarJams #DublagemNoCarro #MusicaInternacional",
+      "caption_fingerprint": "sha256:301fe2a3d0bd3b5d193ecafdfbbbb93d9ef721209e5f1e7f77d54a6b8d1662ff",
+      "attempts": 0,
+      "max_attempts": 3,
+      "next_attempt_at": null,
+      "last_error": null,
+      "container_id": null,
+      "container_created_at": null,
+      "claimed_at": null,
+      "claimed_by_run": null,
+      "instagram_media_id": null,
+      "permalink": null,
+      "published_at": null,
+      "history": [
+        {
+          "at": "2026-08-08T19:03:38.379842+00:00",
+          "from": "",
+          "to": "planned",
+          "by": "local"
+        },
+        {
+          "at": "2026-08-08T19:03:38.380196+00:00",
+          "from": "planned",
+          "to": "prepared",
+          "by": "local",
+          "note": "midia normalizada em disco"
+        }
+      ],
+      "caption_ref": "data/captions/7232386311330581765.json",
+      "alt_text": "Homem dubla a musica Energy dentro do carro."
+    },
+    {
+      "id": "q_20260818T182900_7162282370211532037",
+      "tiktok_id": "7162282370211532037",
+      "source_url": "https://www.tiktok.com/@_lukasmax/video/7162282370211532037",
+      "status": "prepared",
+      "scheduled_at": "2026-08-18T18:29:00-03:00",
+      "scheduled_at_utc": "2026-08-18T21:29:00+00:00",
+      "slot_id": "wd-commute",
+      "rank": 19,
+      "media": null,
+      "caption": "Ultimamente nada tem feito muito sentido, e essa musica e a unica coisa que ficou fazendo. Salva pra um dia desses.\n\n#CarJams #DublagemNoCarro #MusicaBrasileira #VibeDoDia",
+      "caption_fingerprint": "sha256:2bbf4b577fd376e39af58dffeeb2701b291abda3b3132672f769154c999c9f99",
+      "attempts": 0,
+      "max_attempts": 3,
+      "next_attempt_at": null,
+      "last_error": null,
+      "container_id": null,
+      "container_created_at": null,
+      "claimed_at": null,
+      "claimed_by_run": null,
+      "instagram_media_id": null,
+      "permalink": null,
+      "published_at": null,
+      "history": [
+        {
+          "at": "2026-08-08T19:03:38.379795+00:00",
+          "from": "",
+          "to": "planned",
+          "by": "local"
+        },
+        {
+          "at": "2026-08-08T19:03:38.380195+00:00",
+          "from": "planned",
+          "to": "prepared",
+          "by": "local",
+          "note": "midia normalizada em disco"
+        }
+      ],
+      "caption_ref": "data/captions/7162282370211532037.json",
+      "alt_text": "Homem dubla uma musica dentro do carro, com expressao pensativa."
+    },
+    {
+      "id": "q_20260819T083800_7261262427470171398",
+      "tiktok_id": "7261262427470171398",
+      "source_url": "https://www.tiktok.com/@_lukasmax/video/7261262427470171398",
+      "status": "prepared",
+      "scheduled_at": "2026-08-19T08:38:00-03:00",
+      "scheduled_at_utc": "2026-08-19T11:38:00+00:00",
+      "slot_id": "wd-morning",
+      "rank": 21,
+      "media": null,
+      "caption": "Essa e das antigas e eu sei exatamente onde voce estava quando ela tocava. Comenta o ano que veio na sua cabeca.\n\n#KissYou #OneDirection #CarJams #NostalgiaMusical #Anos2010",
+      "caption_fingerprint": "sha256:77554b795989e39403083137b5a2c5bd6ca3c3a007f6a5e1437b99f6a86dbda5",
+      "attempts": 0,
+      "max_attempts": 3,
+      "next_attempt_at": null,
+      "last_error": null,
+      "container_id": null,
+      "container_created_at": null,
+      "claimed_at": null,
+      "claimed_by_run": null,
+      "instagram_media_id": null,
+      "permalink": null,
+      "published_at": null,
+      "history": [
+        {
+          "at": "2026-08-08T19:03:38.379888+00:00",
+          "from": "",
+          "to": "planned",
+          "by": "local"
+        },
+        {
+          "at": "2026-08-08T19:03:38.380198+00:00",
+          "from": "planned",
+          "to": "prepared",
+          "by": "local",
+          "note": "midia normalizada em disco"
+        }
+      ],
+      "caption_ref": "data/captions/7261262427470171398.json",
+      "alt_text": "Homem dubla a musica Kiss You do One Direction dentro do carro."
+    },
+    {
+      "id": "q_20260819T181100_7260602106560662790",
+      "tiktok_id": "7260602106560662790",
+      "source_url": "https://www.tiktok.com/@_lukasmax/video/7260602106560662790",
+      "status": "prepared",
+      "scheduled_at": "2026-08-19T18:11:00-03:00",
+      "scheduled_at_utc": "2026-08-19T21:11:00+00:00",
+      "slot_id": "wd-commute",
+      "rank": 22,
+      "media": null,
+      "caption": "Essa aqui e boa demais pra ficar guardada no fundo da playlist. Sobe o volume ate o carro do lado ouvir junto e comenta se voce ja conhecia.\n\n#LushLife #ZaraLarsson #CarJams #DublagemNoCarro #PopInternacional",
+      "caption_fingerprint": "sha256:277b2bdb9acc7d0a04a73e64b95626ce4f1a36a4da7e46a0e6a82a18445f4384",
+      "attempts": 0,
+      "max_attempts": 3,
+      "next_attempt_at": null,
+      "last_error": null,
+      "container_id": null,
+      "container_created_at": null,
+      "claimed_at": null,
+      "claimed_by_run": null,
+      "instagram_media_id": null,
+      "permalink": null,
+      "published_at": null,
+      "history": [
+        {
+          "at": "2026-08-08T19:03:38.379934+00:00",
+          "from": "",
+          "to": "planned",
+          "by": "local"
+        },
+        {
+          "at": "2026-08-08T19:03:38.380199+00:00",
+          "from": "planned",
+          "to": "prepared",
+          "by": "local",
+          "note": "midia normalizada em disco"
+        }
+      ],
+      "caption_ref": "data/captions/7260602106560662790.json",
+      "alt_text": "Homem dubla a musica Lush Life da Zara Larsson dentro do carro."
+    },
+    {
+      "id": "q_20260820T122200_7281383855074921733",
+      "tiktok_id": "7281383855074921733",
+      "source_url": "https://www.tiktok.com/@_lukasmax/video/7281383855074921733",
+      "status": "prepared",
+      "scheduled_at": "2026-08-20T12:22:00-03:00",
+      "scheduled_at_utc": "2026-08-20T15:22:00+00:00",
+      "slot_id": "wd-lunch",
+      "rank": 24,
+      "media": null,
+      "caption": "Corra. E o que a musica manda e e o que eu faria se a batida entrasse enquanto voce le isso. Salva pra ouvir inteira.\n\n#DogDaysAreOver #FlorenceAndTheMachine #CarJams #DublagemNoCarro #Indie",
+      "caption_fingerprint": "sha256:68b681c11e1dbe5d8b4d5d234e538a16303e23bc880761dbcf309543d63b4f2b",
+      "attempts": 0,
+      "max_attempts": 3,
+      "next_attempt_at": null,
+      "last_error": null,
+      "container_id": null,
+      "container_created_at": null,
+      "claimed_at": null,
+      "claimed_by_run": null,
+      "instagram_media_id": null,
+      "permalink": null,
+      "published_at": null,
+      "history": [
+        {
+          "at": "2026-08-08T19:03:38.380026+00:00",
+          "from": "",
+          "to": "planned",
+          "by": "local"
+        },
+        {
+          "at": "2026-08-08T19:03:38.380202+00:00",
+          "from": "planned",
+          "to": "prepared",
+          "by": "local",
+          "note": "midia normalizada em disco"
+        }
+      ],
+      "caption_ref": "data/captions/7281383855074921733.json",
+      "alt_text": "Homem dubla a musica Dog Days Are Over dentro do carro."
+    },
+    {
+      "id": "q_20260820T210700_7186376198358928645",
+      "tiktok_id": "7186376198358928645",
+      "source_url": "https://www.tiktok.com/@_lukasmax/video/7186376198358928645",
+      "status": "prepared",
+      "scheduled_at": "2026-08-20T21:07:00-03:00",
+      "scheduled_at_utc": "2026-08-21T00:07:00+00:00",
+      "slot_id": "wd-prime",
+      "rank": 23,
+      "media": null,
+      "caption": "Vai com calma, meu coracao. Dezessete segundos e ele nao obedeceu nenhum. Marca quem tambem nunca conseguiu.\n\n#Malvadao3 #Xama #CarJams #DublagemNoCarro #RapNacional",
+      "caption_fingerprint": "sha256:98b4838c9c16c97d26956ee6c6a4cf3a9d8c7e9e4f49c2f4b5ac358f12f32270",
+      "attempts": 0,
+      "max_attempts": 3,
+      "next_attempt_at": null,
+      "last_error": null,
+      "container_id": null,
+      "container_created_at": null,
+      "claimed_at": null,
+      "claimed_by_run": null,
+      "instagram_media_id": null,
+      "permalink": null,
+      "published_at": null,
+      "history": [
+        {
+          "at": "2026-08-08T19:03:38.379980+00:00",
+          "from": "",
+          "to": "planned",
+          "by": "local"
+        },
+        {
+          "at": "2026-08-08T19:03:38.380200+00:00",
+          "from": "planned",
+          "to": "prepared",
+          "by": "local",
+          "note": "midia normalizada em disco"
+        }
+      ],
+      "caption_ref": "data/captions/7186376198358928645.json",
+      "alt_text": "Homem dubla a musica Malvadao 3 do Xama dentro do carro."
+    },
+    {
+      "id": "q_20260821T121000_7170688728988421381",
+      "tiktok_id": "7170688728988421381",
+      "source_url": "https://www.tiktok.com/@_lukasmax/video/7170688728988421381",
+      "status": "prepared",
+      "scheduled_at": "2026-08-21T12:10:00-03:00",
+      "scheduled_at_utc": "2026-08-21T15:10:00+00:00",
+      "slot_id": "wd-lunch",
+      "rank": 25,
+      "media": null,
+      "caption": "O mundo ta complicado, entao vamos descomplicar por cinquenta segundos. Sobe o som e me conta se funcionou.\n\n#FazParte #Projota #CarJams #DublagemNoCarro #RapNacional",
+      "caption_fingerprint": "sha256:f3ecb7cefb7ca11dee1853c3a16dc1c50bbe867a67c1e39ffd188b31174e41ba",
+      "attempts": 0,
+      "max_attempts": 3,
+      "next_attempt_at": null,
+      "last_error": null,
+      "container_id": null,
+      "container_created_at": null,
+      "claimed_at": null,
+      "claimed_by_run": null,
+      "instagram_media_id": null,
+      "permalink": null,
+      "published_at": null,
+      "history": [
+        {
+          "at": "2026-08-08T19:03:38.380073+00:00",
+          "from": "",
+          "to": "planned",
+          "by": "local"
+        },
+        {
+          "at": "2026-08-08T19:03:38.380203+00:00",
+          "from": "planned",
+          "to": "prepared",
+          "by": "local",
+          "note": "midia normalizada em disco"
+        }
+      ],
+      "caption_ref": "data/captions/7170688728988421381.json",
+      "alt_text": "Homem dubla a musica Faz Parte do Projota dentro do carro."
+    },
+    {
+      "id": "q_20260821T182000_7194055345004612869",
+      "tiktok_id": "7194055345004612869",
+      "source_url": "https://www.tiktok.com/@_lukasmax/video/7194055345004612869",
+      "status": "prepared",
+      "scheduled_at": "2026-08-21T18:20:00-03:00",
+      "scheduled_at_utc": "2026-08-21T21:20:00+00:00",
+      "slot_id": "wd-commute",
+      "rank": 26,
+      "media": null,
+      "caption": "Sofri muito ate aqui, e o ate aqui e justamente a parte que importa. Salva essa pra lembrar disso num dia em que voce esquecer.\n\n#Anestesiado #BrunoGadiol #CarJams #DublagemNoCarro #MusicaBrasileira",
+      "caption_fingerprint": "sha256:23b3990b51531740449ed3945a7ca9aa783e0c265089e400b93562b0b759999b",
+      "attempts": 0,
+      "max_attempts": 3,
+      "next_attempt_at": null,
+      "last_error": null,
+      "container_id": null,
+      "container_created_at": null,
+      "claimed_at": null,
+      "claimed_by_run": null,
+      "instagram_media_id": null,
+      "permalink": null,
+      "published_at": null,
+      "history": [
+        {
+          "at": "2026-08-08T19:03:38.380119+00:00",
+          "from": "",
+          "to": "planned",
+          "by": "local"
+        },
+        {
+          "at": "2026-08-08T19:03:38.380205+00:00",
+          "from": "planned",
+          "to": "prepared",
+          "by": "local",
+          "note": "midia normalizada em disco"
+        }
+      ],
+      "caption_ref": "data/captions/7194055345004612869.json",
+      "alt_text": "Homem dubla a musica Anestesiado do Bruno Gadiol dentro do carro."
     }
   ]
 }

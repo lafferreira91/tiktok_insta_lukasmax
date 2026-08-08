@@ -23,6 +23,8 @@ import urllib.request
 from pathlib import Path
 from typing import Any
 
+from .net import ssl_context
+
 DEFAULT_API_VERSION = "v25.0"
 
 #: Chunk size for resumable uploads. Small enough to keep memory flat, large
@@ -115,7 +117,9 @@ class InstagramPublisher:
             headers.setdefault("Content-Type", "application/x-www-form-urlencoded")
         request = urllib.request.Request(url, data=body, headers=headers, method=method)
         try:
-            with urllib.request.urlopen(request, timeout=self.timeout) as response:
+            with urllib.request.urlopen(
+                request, timeout=self.timeout, context=ssl_context()
+            ) as response:
                 self.last_usage_header = response.headers.get("X-Business-Use-Case-Usage")
                 raw = response.read()
                 return json.loads(raw) if raw else {}
