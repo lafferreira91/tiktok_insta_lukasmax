@@ -121,3 +121,13 @@ class Paths:
 
     def frames_dir(self, video_id: str) -> Path:
         return self.reports / "frames" / video_id
+
+    @property
+    def covers_dir(self) -> Path:
+        return self.reports / "covers"
+
+    def cover_preview(self, video_id: str) -> Path:
+        return self.covers_dir / f"{video_id}.jpg"
+
+    def cover_sheet(self, video_id: str) -> Path:
+        return self.covers_dir / f"{video_id}-opcoes.jpg"

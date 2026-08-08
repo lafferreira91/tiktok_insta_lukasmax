@@ -20,7 +20,8 @@ Actions assume.
 
 ```
 audit-tiktok → download-archive → draft-captions → review-captions
-    → approve-caption → prepare → plan-queue → host-media → doctor → git push
+    → approve-caption → prepare → plan-queue → pick-covers → host-media
+    → doctor → git push
          ↓ [CI, a cada 30 min]
     reconcile → publish-due
 ```
@@ -101,7 +102,33 @@ quando os horarios mudarem.
 A legenda e **copiada** para o item da fila. Editar o arquivo depois nao muda um
 post ja agendado.
 
-### 6. Hospedar e conferir
+### 6. Escolher a capa
+
+```bash
+uv run lukasmax pick-covers
+```
+
+O Instagram usa `thumb_offset` para a capa do Reel, e **o padrao e o quadro 0**.
+Num clipe de TikTok esse quadro e quase sempre transicao, movimento borrado ou
+uma piscada -- foi assim que o primeiro post saiu com o olho semicerrado.
+
+`pick-covers` pontua 24 quadros da janela util (a partir de 1s, ate 12s) por
+nitidez e exposicao, grava o melhor offset no item da fila e deixa dois JPEGs em
+`reports/covers/`: a capa escolhida e um contact sheet com todos os candidatos.
+
+Ele **nao** detecta olho fechado -- isso exigiria um modelo de marcos faciais.
+O que ele faz e nunca usar o quadro 0 e preferir quadros estaveis, o que resolve
+a maioria dos casos. Se discordar de alguma, olhe o contact sheet e fixe a mao:
+
+```bash
+uv run lukasmax set-cover --id 7276110548935249158 --at 4.2
+```
+
+O valor fica congelado na fila como `media.thumb_offset_ms`; o runner nao
+decodifica video nenhum. Post ja publicado nao entra: a API nao troca a capa
+depois de publicado.
+
+### 7. Hospedar e conferir
 
 ```bash
 uv run lukasmax host-media --tag media-v1

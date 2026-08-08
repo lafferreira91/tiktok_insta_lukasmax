@@ -93,7 +93,9 @@
         "sha256": "f1c9bcc152352f79fabe4411a206425717cd2941d4e1094a77dbb474174e0b2f",
         "bytes": 69997152,
         "local_path": "media/ready/7146966322545446149.mp4",
-        "duration_seconds": 48.043
+        "duration_seconds": 48.043,
+        "thumb_offset_ms": 6233,
+        "thumb_offset_source": "auto"
       },
       "caption": "Fala o que eu to querendo ouvir. Se voce tambem ja pediu isso pra alguem que nunca falou nada, essa musica e sua tambem. Salva ela.\n\n#Lokko #GiuliaBe #CarJams #DublagemNoCarro #MusicaBrasileira",
       "caption_fingerprint": "sha256:7d9de77085cead7df8b9a12a3186caf1b326ad64b9cb58bce976e3a23c8703a7",
@@ -156,7 +158,9 @@
         "sha256": "850894bd199fe58f8317748e7b9ea7e2da870b576bb9f029d1f69a4d714ce784",
         "bytes": 54633130,
         "local_path": "media/ready/7288713801967488262.mp4",
-        "duration_seconds": 59.328
+        "duration_seconds": 59.328,
+        "thumb_offset_ms": 10400,
+        "thumb_offset_source": "auto"
       },
       "caption": "Comecei achando que dava pra dublar essa sem me entregar. Nao deu. Marca quem canta essa contigo no volume maximo.\n\n#Cobertor #Anitta #Projota #CarJams #DublagemNoCarro",
       "caption_fingerprint": "sha256:6356956e7b04d4c8325179da0f4d9970633b5faaee5e4052ffd16e62a010f87d",
@@ -219,7 +223,9 @@
         "sha256": "b69063c02bd248fcb7ac87deaeb21de7b4e6a7a17b580f0a045ec87086a9a29c",
         "bytes": 80851954,
         "local_path": "media/ready/7282146253863947525.mp4",
-        "duration_seconds": 74.143
+        "duration_seconds": 74.143,
+        "thumb_offset_ms": 9366,
+        "thumb_offset_source": "auto"
       },
       "caption": "Se voce soube a proxima linha antes de mim, a gente tem a mesma idade e nenhum dos dois vai admitir. Marca a pessoa que vai se entregar junto.\n\n#TremendoVacilao #Perlla #CarJams #NostalgiaMusical #FunkAntigo",
       "caption_fingerprint": "sha256:fef1dce8ec7ea30adc266df1bce8d08bec00ca94693fbfc450288e14c9a6584e",
@@ -282,7 +288,9 @@
         "sha256": "471ceff358dcf631311ce9e7fad0ea5cd60645f83564deecca2f6d69589533b2",
         "bytes": 25722832,
         "local_path": "media/ready/7170318082446019845.mp4",
-        "duration_seconds": 41.367
+        "duration_seconds": 41.367,
+        "thumb_offset_ms": 6766,
+        "thumb_offset_source": "auto"
       },
       "caption": "Tem musica que resolve o dia em quarenta segundos. Essa e uma delas. Sobe o volume e me diz se nao melhorou.\n\n#CoisaBoa #GloriaGroove #CarJams #DublagemNoCarro #PopBrasileiro",
       "caption_fingerprint": "sha256:02fd91fe522feba90a97a2e22fffe87e0fe0e0a2b27a2b87d6014cdd44505510",
@@ -345,7 +353,9 @@
         "sha256": "a78e7d68846b7682aab08ced65795fea4f47eae000c49c5ddd876a5da9cd5081",
         "bytes": 71139224,
         "local_path": "media/ready/7261719493234265349.mp4",
-        "duration_seconds": 54.7
+        "duration_seconds": 54.7,
+        "thumb_offset_ms": 2066,
+        "thumb_offset_source": "auto"
       },
       "caption": "Dessa vez eu nao vou fugir. Levei uns anos pra conseguir dizer isso e uns segundos pra dublar. Salva pra quando precisar lembrar.\n\n#NoMoney #Galantis #CarJams #DublagemNoCarro #MusicaInternacional",
       "caption_fingerprint": "sha256:1e98b15b22c2f1f53f222d3b19a7c6424dc2f005366b20cb1f0ac9ac782bfe4e",
@@ -408,7 +418,9 @@
         "sha256": "f5ac0db0fb01ab4982b4f1e618129c07b8f7af2e53af795c8e5619bf027647d7",
         "bytes": 72787549,
         "local_path": "media/ready/7279779784622738693.mp4",
-        "duration_seconds": 61.975
+        "duration_seconds": 61.975,
+        "thumb_offset_ms": 13000,
+        "thumb_offset_source": "auto"
       },
       "caption": "Te ensinei certin e agora ta usando comigo. A gente ensina e depois se arrepende. Comenta se ja passou por isso.\n\n#TeEnsineiCertin #Ludmilla #CarJams #DublagemNoCarro #FunkBrasileiro",
       "caption_fingerprint": "sha256:438e4041e8c20c1bd577c467e945b114e9e48210fb14853fbe99ba9e7cb5729a",
@@ -471,7 +483,9 @@
         "sha256": "9edec9c35ebe7c2391a3dbb6b2db0a8224f34e710faa25062018979f56646fe0",
         "bytes": 29085053,
         "local_path": "media/ready/7249095247077199109.mp4",
-        "duration_seconds": 26.681
+        "duration_seconds": 26.681,
+        "thumb_offset_ms": 6766,
+        "thumb_offset_source": "auto"
       },
       "caption": "Vinte e seis segundos e essa musica ja decidiu o clima do resto do dia. Sobe o som e testa se funciona contigo tambem.\n\n#WhatItIs #Doechii #CarJams #DublagemNoCarro #RapInternacional",
       "caption_fingerprint": "sha256:588c596fdcb6f7c70e11c0afef5b780fd94c694f44b253cd262abdb091c4cf2e",
@@ -571,7 +585,9 @@
         "sha256": "59973c03a10d61882def9565f5858ca5146aa908a0aa78b792aba1dc9b7d53ac",
         "bytes": 66266691,
         "local_path": "media/ready/7385652296526351622.mp4",
-        "duration_seconds": 58.817
+        "duration_seconds": 58.817,
+        "thumb_offset_ms": 1000,
+        "thumb_offset_source": "auto"
       },
       "caption": "Dublei em japones sem saber uma palavra de japones e a confianca foi a mesma. Comenta se ficou perto ou se foi um desastre.\n\n#Rockstar #Lisa #CarJams #DublagemNoCarro #KPop",
       "caption_fingerprint": "sha256:282a1897f0c913748d53ab4298f0c0af475a163923371952007c0794924aaf6d",
@@ -634,7 +650,9 @@
         "sha256": "13e9e4bc80e09e4a20486f37186e57c5731ca5f3634aba8199df035a93b81c28",
         "bytes": 55187257,
         "local_path": "media/ready/7172658171608141061.mp4",
-        "duration_seconds": 34.669
+        "duration_seconds": 34.669,
+        "thumb_offset_ms": 8333,
+        "thumb_offset_source": "auto"
       },
       "caption": "Se eu me solto voce me arrasta. E o combinado de toda amizade que presta. Marca a pessoa que te arrasta.\n\n#Ressaca #Jao #CarJams #DublagemNoCarro #MusicaBrasileira",
       "caption_fingerprint": "sha256:ab099a2fdf87cf872c5472f3b76092e2d3ef95722a041c681890ce3bbfb103ca",
@@ -697,7 +715,9 @@
         "sha256": "d088852b3f78822c82ee1adc9a543490281300ede91ac3a85081976620ce77b1",
         "bytes": 68479011,
         "local_path": "media/ready/7175523555927411974.mp4",
-        "duration_seconds": 51.573
+        "duration_seconds": 51.573,
+        "thumb_offset_ms": 10933,
+        "thumb_offset_source": "auto"
       },
       "caption": "E me olhando fica mais bonito ainda. Ja usei essa frase e ja levei essa frase, e nao sei qual doi mais. Comenta ai.\n\n#Aff #ElanaDara #CarJams #DublagemNoCarro #MusicaBrasileira",
       "caption_fingerprint": "sha256:3ee787e9e23843a83eda0ae09021465cc08618ecf83d4582bc99269a225a9ed8",
@@ -760,7 +780,9 @@
         "sha256": "099a93ab9a501d83a5c23ed3ffdccb4c9c628b2f6a4dfe9e1f771b1f7af9117e",
         "bytes": 116153352,
         "local_path": "media/ready/7255074217979383046.mp4",
-        "duration_seconds": 97.502
+        "duration_seconds": 97.502,
+        "thumb_offset_ms": 2566,
+        "thumb_offset_source": "auto"
       },
       "caption": "Nem todos os dias serao bons dias, e essa musica nao finge o contrario. Salva pra ouvir num dia desses.\n\n#Breakaway #KellyClarkson #CarJams #DublagemNoCarro #Anos2000",
       "caption_fingerprint": "sha256:b7af52a49a9993b11e115fc4b68f5ec890db5c83ce6e229c7caa4e8fe3c00f0f",
@@ -823,7 +845,9 @@
         "sha256": "a2bd804837211122e7a852920810366701365b5d6a6c480a569d8d00cd25f15d",
         "bytes": 24565294,
         "local_path": "media/ready/7264173841973316870.mp4",
-        "duration_seconds": 22.316
+        "duration_seconds": 22.316,
+        "thumb_offset_ms": 11466,
+        "thumb_offset_source": "auto"
       },
       "caption": "Vinte e dois segundos pra lembrar que a gente sobreviveu ao fim do mundo umas quantas vezes. Salva essa.\n\n#UmMinutoParaOFimDoMundo #CPM22 #CarJams #RockNacional #NostalgiaMusical",
       "caption_fingerprint": "sha256:c93c6361f8c9edacdf9c179d2f79476d207b45ce456e8329f437c7f6dcd19c4f",
@@ -886,7 +910,9 @@
         "sha256": "3dc5ab84fe7bd65e9e3947465e015134b53746f2522aefaf772701ca0fe7096a",
         "bytes": 39581444,
         "local_path": "media/ready/7256061139488869637.mp4",
-        "duration_seconds": 38.337
+        "duration_seconds": 38.337,
+        "thumb_offset_ms": 12500,
+        "thumb_offset_source": "auto"
       },
       "caption": "Vamos fugir? Sem plano e sem destino, so com essa musica no ultimo volume. Marca aqui quem entraria no carro sem nem perguntar pra onde a gente vai.\n\n#Down #JaySean #CarJams #DublagemNoCarro #Anos2000",
       "caption_fingerprint": "sha256:0c522cfab377ec2da429f7ace254c2b3dbd23f98b9376cdbe91ba0408a6b0eac",
@@ -949,7 +975,9 @@
         "sha256": "187751fb0580fd813c25e10c562216e6811826c3ada120027b4af4c23c94ce5a",
         "bytes": 40628624,
         "local_path": "media/ready/7266803953864641798.mp4",
-        "duration_seconds": 34.901
+        "duration_seconds": 34.901,
+        "thumb_offset_ms": 4133,
+        "thumb_offset_source": "auto"
       },
       "caption": "Meu pai me disse. E se o seu tambem disse alguma coisa que ficou, manda essa pra ele hoje.\n\n#TheNights #Avicii #CarJams #DublagemNoCarro #MusicaInternacional",
       "caption_fingerprint": "sha256:e05b2515da1b2247b50149a8177c8fca21164e1f1455eabf608c89336a212086",
@@ -1012,7 +1040,9 @@
         "sha256": "293a2b1e8c3c4a7f5144653c939788096b263a4387a9a679bc456e0618f0d4f0",
         "bytes": 50296393,
         "local_path": "media/ready/7248389240256548101.mp4",
-        "duration_seconds": 41.077
+        "duration_seconds": 41.077,
+        "thumb_offset_ms": 2066,
+        "thumb_offset_source": "auto"
       },
       "caption": "Nao tenho mais tempo pra ficar na sua mao. Demorei pra aprender essa e canto como quem passou por ela. Comenta se voce tambem.\n\n#LoveLove #Melody #CarJams #DublagemNoCarro #PopBrasileiro",
       "caption_fingerprint": "sha256:5810097d176037ce20f11adfbde4712ca13c8092357db0732896f408119a7b44",
@@ -1075,7 +1105,9 @@
         "sha256": "12e873d701d219282f630be751301b589252f7c19ff2b1d4e52df8e8f9521971",
         "bytes": 47256780,
         "local_path": "media/ready/7136538019363867910.mp4",
-        "duration_seconds": 45.814
+        "duration_seconds": 45.814,
+        "thumb_offset_ms": 11466,
+        "thumb_offset_source": "auto"
       },
       "caption": "Esse sorriso indica: fugimos da prisao. Nem que a prisao seja so a segunda-feira. Marca quem fugiria contigo.\n\n#ARua #Jao #CarJams #DublagemNoCarro #MusicaBrasileira",
       "caption_fingerprint": "sha256:3ee4b5c3d7718cd75374f0c19c813a14d10b14614ab4c319aaee6424bd01eb6f",
@@ -1138,7 +1170,9 @@
         "sha256": "e8a27edb471dc3fcbc09f352519a40f8cfdad5176a8e1205d67cb3f453a78be7",
         "bytes": 53440270,
         "local_path": "media/ready/7144801859243478277.mp4",
-        "duration_seconds": 42.8
+        "duration_seconds": 42.8,
+        "thumb_offset_ms": 1000,
+        "thumb_offset_source": "auto"
       },
       "caption": "Vermelho que nem a lanterna traseira da nave que toca esse som. Sobe o volume e me diz se nao da vontade de sair dirigindo.\n\n#Vermelho #GloriaGroove #CarJams #DublagemNoCarro #PopBrasileiro",
       "caption_fingerprint": "sha256:3be5192c7c27bb557c5645ce7f6d4ca90332ec069f3e11649f3350b5a16775b5",
@@ -1201,7 +1235,9 @@
         "sha256": "151cf948b79b732626314398e8e76b4bea4f8d9c61af61d5cc349a1eb4ef350f",
         "bytes": 75535890,
         "local_path": "media/ready/7232386311330581765.mp4",
-        "duration_seconds": 70.195
+        "duration_seconds": 70.195,
+        "thumb_offset_ms": 10933,
+        "thumb_offset_source": "auto"
       },
       "caption": "Voce deveria ouvir essa todos os dias. Nao e exagero, e prescricao. Salva e testa por uma semana.\n\n#Energy #MorganStJean #CarJams #DublagemNoCarro #MusicaInternacional",
       "caption_fingerprint": "sha256:301fe2a3d0bd3b5d193ecafdfbbbb93d9ef721209e5f1e7f77d54a6b8d1662ff",
@@ -1264,7 +1300,9 @@
         "sha256": "9cd05516871450f9429914f3e41e7ea0d8984605c5c5d22836b827b391d1273d",
         "bytes": 12816414,
         "local_path": "media/ready/7162282370211532037.mp4",
-        "duration_seconds": 27.61
+        "duration_seconds": 27.61,
+        "thumb_offset_ms": 8833,
+        "thumb_offset_source": "auto"
       },
       "caption": "Ultimamente nada tem feito muito sentido, e essa musica e a unica coisa que ficou fazendo. Salva pra um dia desses.\n\n#CarJams #DublagemNoCarro #MusicaBrasileira #VibeDoDia",
       "caption_fingerprint": "sha256:2bbf4b577fd376e39af58dffeeb2701b291abda3b3132672f769154c999c9f99",
@@ -1327,7 +1365,9 @@
         "sha256": "758311f87e6c31c270f35b583e7fe41c3a653fcd89eab2e9e1c2a6346ede4a77",
         "bytes": 62545775,
         "local_path": "media/ready/7261262427470171398.mp4",
-        "duration_seconds": 60.167
+        "duration_seconds": 60.167,
+        "thumb_offset_ms": 5700,
+        "thumb_offset_source": "auto"
       },
       "caption": "Essa e das antigas e eu sei exatamente onde voce estava quando ela tocava. Comenta o ano que veio na sua cabeca.\n\n#KissYou #OneDirection #CarJams #NostalgiaMusical #Anos2010",
       "caption_fingerprint": "sha256:77554b795989e39403083137b5a2c5bd6ca3c3a007f6a5e1437b99f6a86dbda5",
@@ -1390,7 +1430,9 @@
         "sha256": "56ba9e0d4ef4f4d05ead88d3d1333561148fdf1ab6d18635021ae31347ba2b22",
         "bytes": 94708847,
         "local_path": "media/ready/7260602106560662790.mp4",
-        "duration_seconds": 69.8
+        "duration_seconds": 69.8,
+        "thumb_offset_ms": 13000,
+        "thumb_offset_source": "auto"
       },
       "caption": "Essa aqui e boa demais pra ficar guardada no fundo da playlist. Sobe o volume ate o carro do lado ouvir junto e comenta se voce ja conhecia.\n\n#LushLife #ZaraLarsson #CarJams #DublagemNoCarro #PopInternacional",
       "caption_fingerprint": "sha256:277b2bdb9acc7d0a04a73e64b95626ce4f1a36a4da7e46a0e6a82a18445f4384",
@@ -1453,7 +1495,9 @@
         "sha256": "09d749050bd6362d165a17c976ac67281f0f95170befb8620adc9d1af3afa784",
         "bytes": 77126359,
         "local_path": "media/ready/7281383855074921733.mp4",
-        "duration_seconds": 65.7
+        "duration_seconds": 65.7,
+        "thumb_offset_ms": 1000,
+        "thumb_offset_source": "auto"
       },
       "caption": "Corra. E o que a musica manda e e o que eu faria se a batida entrasse enquanto voce le isso. Salva pra ouvir inteira.\n\n#DogDaysAreOver #FlorenceAndTheMachine #CarJams #DublagemNoCarro #Indie",
       "caption_fingerprint": "sha256:68b681c11e1dbe5d8b4d5d234e538a16303e23bc880761dbcf309543d63b4f2b",
@@ -1516,7 +1560,9 @@
         "sha256": "742542c9fffef596b75446728c4ae48a046c84b471916d7e956167b90c27e310",
         "bytes": 16189211,
         "local_path": "media/ready/7186376198358928645.mp4",
-        "duration_seconds": 17.95
+        "duration_seconds": 17.95,
+        "thumb_offset_ms": 8333,
+        "thumb_offset_source": "auto"
       },
       "caption": "Vai com calma, meu coracao. Dezessete segundos e ele nao obedeceu nenhum. Marca quem tambem nunca conseguiu.\n\n#Malvadao3 #Xama #CarJams #DublagemNoCarro #RapNacional",
       "caption_fingerprint": "sha256:98b4838c9c16c97d26956ee6c6a4cf3a9d8c7e9e4f49c2f4b5ac358f12f32270",
@@ -1579,7 +1625,9 @@
         "sha256": "e53423148a013e758589715ceecacdb02a6a2090b529f4f741c2b6b587a73019",
         "bytes": 27677704,
         "local_path": "media/ready/7170688728988421381.mp4",
-        "duration_seconds": 53.43
+        "duration_seconds": 53.43,
+        "thumb_offset_ms": 10933,
+        "thumb_offset_source": "auto"
       },
       "caption": "O mundo ta complicado, entao vamos descomplicar por cinquenta segundos. Sobe o som e me conta se funcionou.\n\n#FazParte #Projota #CarJams #DublagemNoCarro #RapNacional",
       "caption_fingerprint": "sha256:f3ecb7cefb7ca11dee1853c3a16dc1c50bbe867a67c1e39ffd188b31174e41ba",
@@ -1642,7 +1690,9 @@
         "sha256": "aebc227fc667c1a24d6309f4512d503d4a4612ba75cd5c1401721369b1655f9a",
         "bytes": 42431388,
         "local_path": "media/ready/7194055345004612869.mp4",
-        "duration_seconds": 37.919
+        "duration_seconds": 37.919,
+        "thumb_offset_ms": 1533,
+        "thumb_offset_source": "auto"
       },
       "caption": "Sofri muito ate aqui, e o ate aqui e justamente a parte que importa. Salva essa pra lembrar disso num dia em que voce esquecer.\n\n#Anestesiado #BrunoGadiol #CarJams #DublagemNoCarro #MusicaBrasileira",
       "caption_fingerprint": "sha256:23b3990b51531740449ed3945a7ca9aa783e0c265089e400b93562b0b759999b",

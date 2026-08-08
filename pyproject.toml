@@ -20,6 +20,9 @@ local = [
   "anthropic>=0.69",
   "av>=13.0.0",
   "imageio-ffmpeg>=0.6.0",
+  # Pontuar quadros candidatos a capa (nitidez e exposicao). So no Mac: o
+  # runner recebe o offset ja escolhido, congelado na fila.
+  "numpy>=2.0",
   # O extra curl-cffi habilita impersonation. Sem ele o TikTok devolve paginas
   # sem os dados de rehydration e o download falha -- foi a causa das 33 falhas
   # registradas em reports/download_errors.json. A faixa de versao e do proprio

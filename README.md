@@ -39,6 +39,7 @@ uv run lukasmax review-captions     # confira antes de aprovar
 uv run lukasmax approve-caption --all
 uv run lukasmax prepare --all-approved
 uv run lukasmax plan-queue --days 14 --per-day 2
+uv run lukasmax pick-covers         # capa: sem isso, o Instagram usa o quadro 0
 uv run lukasmax host-media --tag media-v1
 uv run lukasmax doctor              # checagem final
 git push

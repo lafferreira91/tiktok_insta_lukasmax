@@ -185,20 +185,31 @@ class InstagramPublisher:
 
     # -- containers -----------------------------------------------------
     def create_container_from_url(
-        self, video_url: str, caption: str, *, share_to_feed: bool = True
+        self,
+        video_url: str,
+        caption: str,
+        *,
+        share_to_feed: bool = True,
+        thumb_offset_ms: int | None = None,
     ) -> dict[str, Any]:
         """Primary path: hand Meta a public URL and let it fetch the file itself.
 
         The runner never transfers the video, which keeps the publish job free of
         yt-dlp, ffmpeg and bandwidth.
+
+        ``thumb_offset_ms`` picks the cover frame. Omitting it does not mean "let
+        Instagram choose well" -- it means frame 0, which on a TikTok clip is
+        usually a transition or a blink.
         """
-        return self._post(
-            f"{self.user_id}/media",
-            media_type="REELS",
-            video_url=video_url,
-            caption=caption,
-            share_to_feed="true" if share_to_feed else "false",
-        )
+        fields: dict[str, Any] = {
+            "media_type": "REELS",
+            "video_url": video_url,
+            "caption": caption,
+            "share_to_feed": "true" if share_to_feed else "false",
+        }
+        if thumb_offset_ms is not None:
+            fields["thumb_offset"] = str(int(thumb_offset_ms))
+        return self._post(f"{self.user_id}/media", **fields)
 
     def create_container_resumable(
         self, caption: str, *, share_to_feed: bool = True

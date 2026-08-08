@@ -86,7 +86,10 @@ class FakePublisher:
 
     # -- Graph API surface ---------------------------------------------
     def create_container_from_url(self, video_url: str, caption: str, **kwargs):
-        self._record("create_container_from_url", video_url, caption)
+        # Os kwargs sao registrados de proposito: thumb_offset viaja por aqui, e
+        # descarta-los faria um teste passar mesmo se a capa parasse de ser
+        # enviada -- que foi como o quadro 0 chegou ao primeiro post.
+        self._record("create_container_from_url", video_url, caption, **kwargs)
         self._next_container += 1
         return {"id": f"container-{self._next_container}"}
 

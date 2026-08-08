@@ -303,6 +303,88 @@ def cmd_plan_queue(args: argparse.Namespace) -> int:
     return 0
 
 
+def _cover_targets(queue: dict[str, Any], ids: list[str] | None) -> list[dict[str, Any]]:
+    """Itens que ainda podem receber capa: publicado nao volta atras."""
+    wanted = set(ids or [])
+    return [
+        item
+        for item in queue["items"]
+        if item.get("status") in {"planned", "prepared", "hosted", "scheduled"}
+        and (not wanted or item["tiktok_id"] in wanted)
+    ]
+
+
+def cmd_pick_covers(args: argparse.Namespace) -> int:
+    from . import covers
+
+    paths = _paths(args)
+    queue = queue_mod.load_queue(paths.queue)
+    targets = _cover_targets(queue, args.ids)
+    if not targets:
+        _emit({"capas": [], "nota": "nenhum item elegivel"})
+        return 0
+
+    chosen, failed = [], []
+    for item in targets:
+        media = item.setdefault("media", {})
+        if media.get("thumb_offset_ms") is not None and not args.force:
+            continue
+        source = paths.ready(item["tiktok_id"])
+        try:
+            options = covers.candidates(source)
+            best = max(options, key=lambda c: c.score)
+            media["thumb_offset_ms"] = best.offset_ms
+            media["thumb_offset_source"] = "auto"
+            covers.export_frame(source, best.offset_ms, paths.cover_preview(item["tiktok_id"]))
+            covers.contact_sheet(
+                source,
+                [c.offset_ms for c in options],
+                paths.cover_sheet(item["tiktok_id"]),
+            )
+            chosen.append(
+                {
+                    "id": item["tiktok_id"],
+                    "em": round(best.offset_ms / 1000, 2),
+                    "preview": str(paths.cover_preview(item["tiktok_id"]).relative_to(paths.root)),
+                }
+            )
+            print(f"COVER_OK {item['tiktok_id']} @ {best.offset_ms / 1000:.2f}s", flush=True)
+        except covers.CoverError as error:
+            failed.append({"id": item["tiktok_id"], "reason": str(error)})
+            print(f"COVER_ERROR {item['tiktok_id']}: {error}", flush=True)
+
+    queue_mod.save_queue(queue, paths.queue)
+    _emit({"capas": chosen, "falhas": failed})
+    return 1 if failed else 0
+
+
+def cmd_set_cover(args: argparse.Namespace) -> int:
+    """Fixar a capa num instante escolhido a mao."""
+    from . import covers
+
+    paths = _paths(args)
+    queue = queue_mod.load_queue(paths.queue)
+    targets = _cover_targets(queue, [args.id])
+    if not targets:
+        print(f"Nenhum item editavel com tiktok_id {args.id}", file=sys.stderr)
+        return 1
+
+    offset_ms = int(round(args.at * 1000))
+    item = targets[0]
+    media = item.setdefault("media", {})
+    media["thumb_offset_ms"] = offset_ms
+    media["thumb_offset_source"] = "manual"
+    try:
+        preview = covers.export_frame(paths.ready(args.id), offset_ms, paths.cover_preview(args.id))
+    except covers.CoverError as error:
+        print(f"ERRO: {error}", file=sys.stderr)
+        return 1
+
+    queue_mod.save_queue(queue, paths.queue)
+    _emit({"id": args.id, "em": args.at, "preview": str(preview.relative_to(paths.root))})
+    return 0
+
+
 def cmd_host_media(args: argparse.Namespace) -> int:
     paths = _paths(args)
     queue = queue_mod.load_queue(paths.queue)
@@ -550,6 +632,8 @@ COMMANDS: dict[str, Callable[[argparse.Namespace], int]] = {
     "approve-caption": cmd_approve_caption,
     "prepare": cmd_prepare,
     "plan-queue": cmd_plan_queue,
+    "pick-covers": cmd_pick_covers,
+    "set-cover": cmd_set_cover,
     "host-media": cmd_host_media,
     "publish-due": cmd_publish_due,
     "reconcile": cmd_reconcile,
@@ -612,6 +696,16 @@ def build_parser() -> argparse.ArgumentParser:
     plan.add_argument("--start", help="Data inicial (YYYY-MM-DD)")
     plan.add_argument("--strategy", choices=["front-loaded", "interleaved"], default="front-loaded")
     plan.add_argument("--dry-run", action="store_true")
+
+    picks = commands.add_parser(
+        "pick-covers", help="Escolhe a capa (thumb_offset) do quadro mais nitido"
+    )
+    picks.add_argument("--ids", nargs="+")
+    picks.add_argument("--force", action="store_true", help="Refaz mesmo se ja houver capa")
+
+    setcover = commands.add_parser("set-cover", help="Fixa a capa num instante escolhido a mao")
+    setcover.add_argument("--id", required=True, help="tiktok_id do video")
+    setcover.add_argument("--at", required=True, type=float, help="Instante em segundos")
 
     host = commands.add_parser("host-media", help="Sobe os videos como assets de Release")
     host.add_argument("--tag", default="media-v1")

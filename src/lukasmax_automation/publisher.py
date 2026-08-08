@@ -119,7 +119,14 @@ def publish_item(item: dict[str, Any], publisher: Publisher, paths: Paths) -> di
 
     container_id = item.get("container_id")
     if not container_id:
-        container = publisher.create_container_from_url(video_url, item.get("caption") or "")
+        # Sem thumb_offset a capa e o quadro 0, que num clipe de TikTok e quase
+        # sempre transicao ou movimento. O valor vem congelado na fila, escolhido
+        # no Mac por 'lukasmax pick-covers' -- o runner nao decodifica video.
+        container = publisher.create_container_from_url(
+            video_url,
+            item.get("caption") or "",
+            thumb_offset_ms=media.get("thumb_offset_ms"),
+        )
         container_id = str(container["id"])
         item["container_id"] = container_id
         item["container_created_at"] = queue_mod.now().isoformat()
