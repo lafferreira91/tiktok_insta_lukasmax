@@ -275,8 +275,19 @@ def publish_due(
     if not publishing_enabled() and not dry_run:
         return {"enabled": False, "published": [], "skipped": "PUBLISH_ENABLED nao esta true"}
 
-    publisher = publisher or build_publisher()
     outcome: dict[str, Any] = {"enabled": True, "published": [], "failed": [], "reconciled": []}
+
+    # Um dry run responde "o que voce publicaria agora?", e a fila sozinha
+    # responde isso. Exigir credencial aqui tornava impossivel testar este
+    # caminho no CI, que e justamente onde ele roda -- e um comando que promete
+    # nao tocar em nada nao deveria precisar de um cliente da API para provar.
+    if dry_run and publisher is None:
+        outcome["due"] = [item["id"] for item in queue_mod.find_due(queue)[:max_per_run]]
+        outcome["dry_run"] = True
+        outcome["nota"] = "sem credenciais: reconciliacao e quota nao foram consultadas"
+        return outcome
+
+    publisher = publisher or build_publisher()
 
     reconciled = reconcile(queue, publisher, paths)
     if reconciled:

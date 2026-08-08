@@ -53,3 +53,16 @@ jobs:
           from lukasmax_automation import publisher, queue, instagram, hosting
           print('ok: o caminho de publicacao nao depende de yt-dlp, ffmpeg nem PyAV')
           "
+
+      # Importar os modulos internos nao provava nada: quem o runner executa e o
+      # console script, e ele importa cli.py, que importava media (PyAV) no topo.
+      # O job acima passava verde com o 'doctor' quebrado em producao. Rodar os
+      # comandos de verdade e a unica versao honesta deste teste.
+      - name: Os comandos do CI precisam rodar de verdade
+        env:
+          PUBLISH_ENABLED: "false"
+        run: |
+          uv run lukasmax doctor
+          uv run lukasmax publish-due --dry-run --max-per-run 1
+          # 'reconcile' fica de fora: ele consulta a Graph API por definicao, e
+          # este job nao tem (nem deve ter) as credenciais.

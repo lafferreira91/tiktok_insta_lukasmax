@@ -67,6 +67,31 @@ class TestSingleRun:
         assert publisher.count("publish") == 0
         assert queue_mod.load_queue(paths.queue)["items"][0]["status"] == "scheduled"
 
+    def test_dry_run_works_without_credentials(self, paths, monkeypatch):
+        """The CI has to be able to exercise this path, and it holds no token.
+
+        A command that promises to touch nothing should not need an API client
+        to prove it -- the queue alone answers "what would you publish now?".
+        """
+        monkeypatch.delenv("INSTAGRAM_USER_ID", raising=False)
+        monkeypatch.delenv("INSTAGRAM_ACCESS_TOKEN", raising=False)
+        queue_mod.save_queue(make_queue(make_item("111")), paths.queue)
+
+        result = publisher_mod.publish_due(paths.queue, paths, dry_run=True)
+
+        assert result["dry_run"] is True
+        assert len(result["due"]) == 1
+        assert queue_mod.load_queue(paths.queue)["items"][0]["status"] == "scheduled"
+
+    def test_a_real_run_without_credentials_still_refuses(self, paths, monkeypatch):
+        """The relaxation above must not become a way to publish blind."""
+        monkeypatch.delenv("INSTAGRAM_USER_ID", raising=False)
+        monkeypatch.delenv("INSTAGRAM_ACCESS_TOKEN", raising=False)
+        queue_mod.save_queue(make_queue(make_item("111")), paths.queue)
+
+        with pytest.raises(RuntimeError, match="Variaveis ausentes"):
+            publisher_mod.publish_due(paths.queue, paths)
+
 
 class TestRepeatedRuns:
     def test_two_consecutive_runs_publish_exactly_once(self, paths, publisher):

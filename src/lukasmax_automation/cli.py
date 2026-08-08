@@ -25,7 +25,6 @@ from . import captions as captions_mod
 from . import hosting, planner, scheduling
 from . import publisher as publisher_mod
 from . import queue as queue_mod
-from .media import normalize_for_instagram, validate_for_instagram, write_report
 from .paths import Paths
 from .ranking import rank_videos
 
@@ -239,6 +238,11 @@ def cmd_prepare(args: argparse.Namespace) -> int:
         print("Informe --id <tiktok_id> ou --all-approved", file=sys.stderr)
         return 2
 
+    # Import tardio de proposito: media puxa av e imageio-ffmpeg, que so existem
+    # no extra "local". O runner instala so o core e nunca prepara video -- mas
+    # se este import ficasse no topo do modulo, ele quebraria ate o 'doctor'.
+    from .media import normalize_for_instagram, write_report
+
     prepared, skipped, failed = [], [], []
     for video_id in video_ids:
         source = paths.tiktok_source(video_id)
@@ -310,6 +314,10 @@ def cmd_host_media(args: argparse.Namespace) -> int:
     if not targets:
         _emit({"hospedados": [], "nota": "nenhum item em 'prepared'"})
         return 0
+
+    # Mesmo motivo do cmd_prepare: hospedar le a duracao do arquivo local, algo
+    # que so acontece no Mac.
+    from .media import validate_for_instagram
 
     slug = hosting.repo_slug()
     hosting.ensure_release(args.tag)
