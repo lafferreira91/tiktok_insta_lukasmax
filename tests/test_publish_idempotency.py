@@ -83,6 +83,24 @@ class TestSingleRun:
         assert len(result["due"]) == 1
         assert queue_mod.load_queue(paths.queue)["items"][0]["status"] == "scheduled"
 
+    def test_dry_run_never_publishes_a_stranded_container(self, paths, publisher):
+        """The trap: reconciliation resolves a FINISHED container by posting it.
+
+        It ran before the dry-run check, so ``publish-due --dry-run`` could post
+        for real -- the exact opposite of what the flag promises, on the command
+        people reach for precisely because they believe it is safe.
+        """
+        item = make_item("111", status="publishing")
+        item["container_id"] = "c-1"
+        publisher.status_code = "FINISHED"
+        queue_mod.save_queue(make_queue(item), paths.queue)
+
+        result = run(paths, publisher, dry_run=True)
+
+        assert publisher.count("publish") == 0, "o dry run publicou de verdade"
+        assert result["reconciled"] == [item["id"]], "deve reportar o que faria"
+        assert queue_mod.load_queue(paths.queue)["items"][0]["status"] == "publishing"
+
     def test_a_real_run_without_credentials_still_refuses(self, paths, monkeypatch):
         """The relaxation above must not become a way to publish blind."""
         monkeypatch.delenv("INSTAGRAM_USER_ID", raising=False)

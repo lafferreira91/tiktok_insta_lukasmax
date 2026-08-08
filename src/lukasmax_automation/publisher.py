@@ -152,7 +152,13 @@ def publish_item(item: dict[str, Any], publisher: Publisher, paths: Paths) -> di
     return item
 
 
-def reconcile(queue: dict[str, Any], publisher: Publisher, paths: Paths) -> list[dict[str, Any]]:
+def reconcile(
+    queue: dict[str, Any],
+    publisher: Publisher,
+    paths: Paths,
+    *,
+    dry_run: bool = False,
+) -> list[dict[str, Any]]:
     """Resolve items left in ``publishing`` by a crashed run.
 
     ``media_publish`` has no idempotency key, so we cannot simply retry. Instead
@@ -160,10 +166,18 @@ def reconcile(queue: dict[str, Any], publisher: Publisher, paths: Paths) -> list
     check the account's recent media: if something was posted after the claim,
     the crash happened *after* a successful publish and retrying would duplicate
     it.
+
+    ``dry_run`` stops before every mutation. This matters more than it looks: a
+    stranded ``FINISHED`` container is resolved by calling ``media_publish``, so
+    without this flag ``publish-due --dry-run`` posts for real -- the one thing
+    its name promises it will not do.
     """
     resolved = []
     for item in list(queue["items"]):
         if item.get("status") != "publishing":
+            continue
+        if dry_run:
+            resolved.append(item)
             continue
         container_id = item.get("container_id")
         claimed_at = item.get("claimed_at")
@@ -277,22 +291,30 @@ def publish_due(
 
     outcome: dict[str, Any] = {"enabled": True, "published": [], "failed": [], "reconciled": []}
 
-    # Um dry run responde "o que voce publicaria agora?", e a fila sozinha
-    # responde isso. Exigir credencial aqui tornava impossivel testar este
-    # caminho no CI, que e justamente onde ele roda -- e um comando que promete
-    # nao tocar em nada nao deveria precisar de um cliente da API para provar.
-    if dry_run and publisher is None:
-        outcome["due"] = [item["id"] for item in queue_mod.find_due(queue)[:max_per_run]]
-        outcome["dry_run"] = True
-        outcome["nota"] = "sem credenciais: reconciliacao e quota nao foram consultadas"
-        return outcome
+    # Um dry run sem credenciais ainda responde "o que voce publicaria agora?",
+    # porque a fila sozinha responde isso -- e sem essa degradacao era
+    # impossivel exercitar este caminho no CI, que e onde ele roda.
+    #
+    # A degradacao e o ultimo recurso, nao o caminho normal: com token na mao o
+    # dry run continua reconciliando e conferindo a quota, que e o que torna a
+    # previsao fiel. Condicionar em "publisher is None" degradava toda execucao
+    # vinda do CLI, inclusive as que tinham credencial.
+    if publisher is None:
+        try:
+            publisher = build_publisher()
+        except RuntimeError:
+            if not dry_run:
+                raise
+            outcome["due"] = [item["id"] for item in queue_mod.find_due(queue)[:max_per_run]]
+            outcome["dry_run"] = True
+            outcome["nota"] = "sem credenciais: reconciliacao e quota nao foram consultadas"
+            return outcome
 
-    publisher = publisher or build_publisher()
-
-    reconciled = reconcile(queue, publisher, paths)
+    reconciled = reconcile(queue, publisher, paths, dry_run=dry_run)
     if reconciled:
         outcome["reconciled"] = [item["id"] for item in reconciled]
-        persist(queue)
+        if not dry_run:
+            persist(queue)
 
     blocked = _quota_blocked(publisher, paths)
     if blocked:
