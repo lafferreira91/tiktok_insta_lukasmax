@@ -1,0 +1,62 @@
+name: Renovar o token do Instagram
+
+# O token do Painel de Apps vale 60 dias e, depois de vencido, NAO ha renovacao:
+# so gerar outro a mao no painel da Meta. Sem este cron a automacao inteira tem
+# prazo de validade -- ela publicaria por dois meses e morreria em silencio.
+#
+# Roda dia 1 de cada mes: com validade de 60 dias, cada renovacao devolve o
+# relogio para 60 e a folga nunca cai abaixo de 30 dias, mesmo que uma execucao
+# falhe e so a seguinte pegue.
+on:
+  schedule:
+    - cron: "0 6 1 * *"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  renovar:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: astral-sh/setup-uv@v6
+        with:
+          enable-cache: true
+
+      - name: Instalar dependencias minimas
+        run: uv sync --frozen
+
+      # GITHUB_TOKEN nao pode escrever secrets -- por isso o PAT. Sem ele o
+      # passo falha alto, que e melhor que renovar o token e perder o valor
+      # novo: o antigo continuaria valendo, mas so ate vencer.
+      - name: Renovar e gravar no secret
+        env:
+          INSTAGRAM_USER_ID: ${{ secrets.INSTAGRAM_USER_ID }}
+          INSTAGRAM_ACCESS_TOKEN: ${{ secrets.INSTAGRAM_ACCESS_TOKEN }}
+          GH_TOKEN: ${{ secrets.SECRETS_PAT }}
+        run: |
+          if [ -z "$GH_TOKEN" ]; then
+            echo "::error::Falta o secret SECRETS_PAT. Sem ele o token vence e a publicacao para."
+            exit 1
+          fi
+
+          # O token puro nunca passa por 'echo': o log deste repositorio e
+          # publico, e um token vazado vale ate ser revogado a mao.
+          uv run lukasmax refresh-token --print-token > token.txt
+          if [ ! -s token.txt ]; then
+            echo "::error::A Meta nao devolveu um token novo."
+            rm -f token.txt
+            exit 1
+          fi
+
+          gh secret set INSTAGRAM_ACCESS_TOKEN < token.txt
+          rm -f token.txt
+          echo "Token renovado por mais 60 dias."
+
+      - name: Confirmar que o token novo funciona
+        env:
+          INSTAGRAM_USER_ID: ${{ secrets.INSTAGRAM_USER_ID }}
+          INSTAGRAM_ACCESS_TOKEN: ${{ secrets.INSTAGRAM_ACCESS_TOKEN }}
+        run: uv run lukasmax check-instagram

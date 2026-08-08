@@ -486,6 +486,41 @@ def cmd_reconcile(args: argparse.Namespace) -> int:
     return 0
 
 
+def cmd_refresh_token(args: argparse.Namespace) -> int:
+    """Estende o token por mais 60 dias.
+
+    Sem isso a automacao tem prazo de validade: o token do Painel de Apps vence
+    em 60 dias e, passado o prazo, nao ha como renovar -- so gerar outro a mao.
+    Este comando existe para que um cron mensal mantenha o relogio sempre longe
+    do fim.
+    """
+    try:
+        publisher = publisher_mod.build_publisher()
+    except RuntimeError as error:
+        print(str(error), file=sys.stderr)
+        return 2
+
+    try:
+        resposta = publisher.refresh_long_lived_token()
+    except Exception as error:  # noqa: BLE001 - qualquer falha aqui e operacional
+        print(f"ERRO ao renovar o token: {error}", file=sys.stderr)
+        return 1
+
+    novo = resposta.get("access_token")
+    if not novo:
+        print(f"A Meta nao devolveu um token novo: {resposta}", file=sys.stderr)
+        return 1
+
+    dias = int(resposta.get("expires_in") or 0) // 86400
+    # O token so aparece em stdout quando pedido: o log do Actions e publico
+    # neste repositorio, e um token vazado vale ate ser revogado a mao.
+    if args.print_token:
+        print(novo)
+    else:
+        _emit({"renovado": True, "validade_dias": dias, "token": f"...{novo[-6:]}"})
+    return 0
+
+
 def cmd_check_instagram(args: argparse.Namespace) -> int:
     try:
         publisher = publisher_mod.build_publisher()
@@ -675,6 +710,7 @@ COMMANDS: dict[str, Callable[[argparse.Namespace], int]] = {
     "host-media": cmd_host_media,
     "publish-due": cmd_publish_due,
     "reconcile": cmd_reconcile,
+    "refresh-token": cmd_refresh_token,
     "check-instagram": cmd_check_instagram,
     "status": cmd_status,
     "doctor": cmd_doctor,
@@ -766,6 +802,13 @@ def build_parser() -> argparse.ArgumentParser:
     publish.add_argument("--dry-run", action="store_true")
 
     commands.add_parser("reconcile", help="Resolve itens presos em 'publishing'")
+    token = commands.add_parser("refresh-token", help="Estende o token por mais 60 dias")
+    token.add_argument(
+        "--print-token",
+        action="store_true",
+        help="Imprime o token puro em stdout, para o CI gravar no secret",
+    )
+
     commands.add_parser("check-instagram", help="Testa o token e mostra a quota")
     commands.add_parser("status", help="Panorama da fila e do acervo")
     commands.add_parser("migrate-queue", help="Converte a fila do schema v1 para v2")
