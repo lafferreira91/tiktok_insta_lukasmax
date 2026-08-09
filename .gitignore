@@ -12,3 +12,7 @@ __pycache__/
 *.pyc
 /media/
 reports/frames/
+# Capas e contact sheets: ~70 MB de JPEG derivado, regeneravel com
+# 'lukasmax pick-covers'. O que importa (o thumb_offset escolhido) mora na
+# fila, que e versionada. Manter os arquivos aqui so incharia o historico.
+reports/covers/

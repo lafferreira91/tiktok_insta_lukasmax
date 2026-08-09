@@ -111,3 +111,34 @@ class TestPublishUsesTheChosenFrame:
         result = publisher_mod.publish_due(paths.queue, paths, publisher=publisher)
 
         assert len(result["published"]) == 1
+
+
+class TestItemRecemPlanejado:
+    def test_item_com_media_nula_recebe_capa(self, paths, monkeypatch):
+        """Um item recem-planejado tem "media": None, nao ausente.
+
+        setdefault devolvia esse None e o comando morria com AttributeError no
+        primeiro dos 167 videos -- depois de o planejamento ja ter sido gravado.
+        """
+        import argparse
+
+        from lukasmax_automation import cli
+
+        item = make_item("111")
+        item["media"] = None
+        queue = make_queue(item)
+        queue_mod.save_queue(queue, paths.queue)
+
+        monkeypatch.setattr(
+            covers, "candidates", lambda *a, **k: [covers.Candidate(1500, 10.0, 120.0, 10.0)]
+        )
+        monkeypatch.setattr(covers, "export_frame", lambda *a, **k: paths.root / "x.jpg")
+        monkeypatch.setattr(covers, "contact_sheet", lambda *a, **k: paths.root / "y.jpg")
+
+        codigo = cli.cmd_pick_covers(
+            argparse.Namespace(ids=None, force=False, root=str(paths.root))
+        )
+
+        assert codigo == 0
+        gravado = queue_mod.load_queue(paths.queue)["items"][0]
+        assert gravado["media"]["thumb_offset_ms"] == 1500

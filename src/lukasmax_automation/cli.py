@@ -362,7 +362,11 @@ def cmd_pick_covers(args: argparse.Namespace) -> int:
 
     chosen, failed = [], []
     for item in targets:
-        media = item.setdefault("media", {})
+        # setdefault nao serve aqui: um item recem-planejado tem a chave "media"
+        # presente com valor None, entao setdefault devolve o None em vez de
+        # criar o dicionario.
+        media = item.get("media") or {}
+        item["media"] = media
         if media.get("thumb_offset_ms") is not None and not args.force:
             continue
         source = paths.ready(item["tiktok_id"])

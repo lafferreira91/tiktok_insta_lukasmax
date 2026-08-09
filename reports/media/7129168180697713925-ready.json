@@ -1,0 +1,27 @@
+{
+  "valid": true,
+  "checks": {
+    "readable": true,
+    "mp4": true,
+    "duration": true,
+    "video_codec": true,
+    "dimensions": true,
+    "vertical_9_16": true,
+    "fps": true,
+    "audio_codec": true,
+    "audio_48khz": true
+  },
+  "media": {
+    "readable": true,
+    "duration_seconds": 48.833,
+    "video_codec": "h264",
+    "width": 576,
+    "height": 1024,
+    "fps": 30.0,
+    "audio_codec": "aac",
+    "audio_hz": 48000,
+    "bitrate": 2043312,
+    "has_audio": true,
+    "rotation": 0
+  }
+}
