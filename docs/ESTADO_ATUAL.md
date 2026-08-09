@@ -149,6 +149,7 @@ hora, das 08h as 20h59.
 
 ```
 a cada 30 min, 08h-21h    publish.yml    reconcilia + publica 1 item vencido
+1x por dia, 02h07         insights.yml   mede os Reels de 24h e de 7 dias
 dia 1 de cada mes, 03h17  token.yml      renova o token por mais 60 dias
 ```
 
@@ -186,6 +187,29 @@ Uso ate aqui: 36 execucoes de ~15 segundos cada, menos de 15 minutos no total.
 A reducao de 48 para 26 execucoes diarias foi por **ruido, nao por economia**: as
 22 execucoes da madrugada so encontravam fila vazia, ja que nenhum slot passa das
 18:45.
+
+## 4b. A unica coisa que espera por voce
+
+**Reels de teste estao ligados em um post so**, o de 09/08 as 10:13.
+
+Um reel de teste vai apenas para quem **nao** segue o perfil e **nao aparece no
+grid** -- entao nesse horario o perfil nao ganha nada, e e o comportamento
+esperado, nao falha.
+
+Esta em um so de proposito. `reconcile` detecta "o run morreu depois de
+publicar" cruzando com `GET /me/media`, e nao esta confirmado que um reel de
+teste aparece nessa lista. Se nao aparecer, um crash na hora errada viraria post
+duplicado -- a unica falha irreversivel do sistema.
+
+Depois de confirmar que o primeiro apareceu:
+
+```bash
+uv run lukasmax mark-trials      # libera os 94 restantes
+```
+
+**Se voce nunca rodar isso, nada quebra.** A automacao segue publicando dois
+posts por dia ate 13/11, so que sem os testes -- exatamente como funcionava
+antes.
 
 ## 5. O que pode dar errado, e quando
 
@@ -251,9 +275,13 @@ uv run lukasmax status
 
 ## Resumo
 
-**Sim, esta tudo certo, e nao, voce nao precisa mais conferir.**
+**Esta tudo certo e nada exige voce para continuar funcionando.**
 
-O primeiro post automatico sai **domingo, 09/08 as 10:13**. Depois disso sao dois
-por dia ate 13/11.
+Sao dois posts por dia ate **13/11**, metricas coletadas sozinhas todo dia, e o
+token se renovando todo mes.
 
-A unica coisa que vale marcar no calendario e **novembro**, quando a fila acaba.
+Duas coisas para o calendario, nenhuma urgente:
+
+- **Depois de 09/08**, se quiser os reels de teste nos outros 94 dias, rode
+  `mark-trials` (secao 4b). Sem isso nada quebra -- so nao ha testes.
+- **Novembro**, quando a fila acaba.
