@@ -47,6 +47,9 @@ git push
 
 Passo a passo detalhado em [docs/OPERATIONS.md](docs/OPERATIONS.md).
 
+Estado verificado, horarios dos posts e o que pode dar errado (e quando):
+[docs/ESTADO_ATUAL.md](docs/ESTADO_ATUAL.md).
+
 ## O que o repositorio precisa ter configurado
 
 | Nome | Onde | Para que |
