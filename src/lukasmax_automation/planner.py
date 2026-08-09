@@ -298,3 +298,81 @@ def reschedule(
         "primeiro": slots[0].scheduled_at,
         "ultimo": slots[len(pendentes) - 1].scheduled_at,
     }
+
+
+#: Estados em que ainda da para decidir se o post e teste. Publicado e
+#: 'publishing' ficam de fora: o primeiro ja foi ao ar, o segundo tem container
+#: aberto -- e o container e onde 'trial_params' viaja.
+TRIALABLE = frozenset({"planned", "prepared", "hosted", "scheduled", "retry"})
+
+#: MANUAL, nao SS_PERFORMANCE: nada sobe sozinho para o perfil. Se um teste
+#: explodir, a graduacao e um toque no app -- a decisao continua sendo humana.
+TRIAL_STRATEGY = "MANUAL"
+
+
+def mark_trials(
+    queue: dict[str, Any], *, clear: bool = False, limit_days: int | None = None
+) -> dict[str, Any]:
+    """Marca um dos dois posts de cada dia como reel de teste.
+
+    Reel de teste so alcanca **nao seguidores**. Com 170 seguidores, quase todo
+    alcance possivel esta fora deles, entao dedicar um dos dois posts diarios a
+    esse publico dobra a superficie sem duplicar nada: sao videos diferentes, e o
+    consumo do acervo nao muda.
+
+    O escolhido e o de **rank mais baixo do par** -- os dois ranks de um dia sao
+    vizinhos, entao a diferenca e pequena, mas o criterio e deterministico e o
+    video mais forte fica com o perfil.
+
+    Publicar o *mesmo* video nas duas versoes seria pior: o reel normal tambem e
+    distribuido para nao seguidores, entao as duas copias disputariam o mesmo
+    publico com o mesmo conteudo.
+
+    ``limit_days`` marca apenas os N primeiros dias. Existe para a liberacao em
+    etapas: ``reconcile`` detecta "o run morreu depois de publicar" cruzando com
+    a lista de midias recentes da conta, e **nao esta confirmado que um reel de
+    teste aparece nessa lista**. Se nao aparecer, um crash na hora errada vira
+    post duplicado -- a unica falha irreversivel do projeto. Por isso o primeiro
+    teste vai com ``limit_days=1``.
+    """
+    claimed = [item for item in queue["items"] if item.get("status") == "publishing"]
+    if claimed:
+        raise queue_mod.QueueError(
+            f"{len(claimed)} item(ns) em 'publishing'. Rode 'lukasmax reconcile' antes."
+        )
+
+    elegiveis = [item for item in queue["items"] if item.get("status") in TRIALABLE]
+
+    if clear:
+        limpos = [item["id"] for item in elegiveis if item.pop("trial", None) is not None]
+        return {"limpos": limpos, "marcados": []}
+
+    por_dia: dict[str, list[dict[str, Any]]] = {}
+    for item in elegiveis:
+        dia = str(item.get("scheduled_at") or "")[:10]
+        if dia:
+            por_dia.setdefault(dia, []).append(item)
+
+    dias = sorted(por_dia.items())
+    if limit_days is not None:
+        dias = dias[:limit_days]
+
+    marcados: list[dict[str, Any]] = []
+    for dia, itens in dias:
+        if len(itens) < 2:
+            # Dia com um post so: ele fica no perfil. Um dia inteiro sem nada no
+            # feed seria pior que um dia sem teste.
+            continue
+        # rank ausente vai para o fim: sem ranking, e o candidato mais fraco.
+        escolhido = max(itens, key=lambda i: (i.get("rank") is None, i.get("rank") or 0))
+        escolhido["trial"] = {"graduation_strategy": TRIAL_STRATEGY}
+        marcados.append({"id": escolhido["id"], "dia": dia, "rank": escolhido.get("rank")})
+
+    # Idempotencia: um item que deixou de ser o escolhido perde a marca, senao
+    # rodar duas vezes com a fila alterada acumularia testes.
+    escolhidos = {m["id"] for m in marcados}
+    for item in elegiveis:
+        if item["id"] not in escolhidos:
+            item.pop("trial", None)
+
+    return {"marcados": marcados, "limpos": [], "dias_com_teste": len(marcados)}

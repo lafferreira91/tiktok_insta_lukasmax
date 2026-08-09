@@ -224,6 +224,7 @@ class InstagramPublisher:
         *,
         share_to_feed: bool = True,
         thumb_offset_ms: int | None = None,
+        trial_params: dict[str, str] | None = None,
     ) -> dict[str, Any]:
         """Primary path: hand Meta a public URL and let it fetch the file itself.
 
@@ -233,6 +234,11 @@ class InstagramPublisher:
         ``thumb_offset_ms`` picks the cover frame. Omitting it does not mean "let
         Instagram choose well" -- it means frame 0, which on a TikTok clip is
         usually a transition or a blink.
+
+        ``trial_params`` turns the post into a trial reel, shown **only to
+        non-followers**. ``graduation_strategy`` is ``MANUAL`` or
+        ``SS_PERFORMANCE``; with MANUAL nothing ever reaches the followers or the
+        profile grid unless graduated by hand in the app.
         """
         fields: dict[str, Any] = {
             "media_type": "REELS",
@@ -242,6 +248,10 @@ class InstagramPublisher:
         }
         if thumb_offset_ms is not None:
             fields["thumb_offset"] = str(int(thumb_offset_ms))
+        if trial_params:
+            # Only when set: urlencode would turn None into the literal "None",
+            # and Meta rejects that.
+            fields["trial_params"] = json.dumps(trial_params)
         return self._post(f"{self.user_id}/media", **fields)
 
     def create_container_resumable(

@@ -140,7 +140,10 @@
         }
       ],
       "caption_ref": "data/captions/7146966322545446149.json",
-      "alt_text": "Homem dubla a musica LOKKO dentro do carro."
+      "alt_text": "Homem dubla a musica LOKKO dentro do carro.",
+      "trial": {
+        "graduation_strategy": "MANUAL"
+      }
     },
     {
       "id": "q_20260809T221300_7288713801967488262",

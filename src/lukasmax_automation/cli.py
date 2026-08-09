@@ -540,6 +540,24 @@ def cmd_check_instagram(args: argparse.Namespace) -> int:
     return 0
 
 
+def cmd_mark_trials(args: argparse.Namespace) -> int:
+    paths = _paths(args)
+    queue = queue_mod.load_queue(paths.queue)
+    try:
+        resultado = planner.mark_trials(queue, clear=args.clear, limit_days=args.limit_days)
+    except queue_mod.QueueError as error:
+        print(f"ERRO: {error}", file=sys.stderr)
+        return 1
+
+    if (resultado["marcados"] or resultado["limpos"]) and not args.dry_run:
+        queue_mod.save_queue(queue, paths.queue)
+    resultado["dry_run"] = args.dry_run
+    resultado["marcados"] = len(resultado["marcados"])
+    resultado["limpos"] = len(resultado["limpos"])
+    _emit(resultado)
+    return 0
+
+
 def cmd_collect_insights(args: argparse.Namespace) -> int:
     paths = _paths(args)
     queue = queue_mod.load_queue(paths.queue)
@@ -751,6 +769,7 @@ COMMANDS: dict[str, Callable[[argparse.Namespace], int]] = {
     "reconcile": cmd_reconcile,
     "refresh-token": cmd_refresh_token,
     "check-instagram": cmd_check_instagram,
+    "mark-trials": cmd_mark_trials,
     "collect-insights": cmd_collect_insights,
     "audience": cmd_audience,
     "status": cmd_status,
@@ -851,6 +870,15 @@ def build_parser() -> argparse.ArgumentParser:
     )
 
     commands.add_parser("check-instagram", help="Testa o token e mostra a quota")
+
+    trials = commands.add_parser(
+        "mark-trials", help="Marca 1 dos 2 posts do dia como reel de teste (so nao seguidores)"
+    )
+    trials.add_argument("--dry-run", action="store_true")
+    trials.add_argument("--clear", action="store_true", help="Remove todas as marcas")
+    trials.add_argument(
+        "--limit-days", type=int, help="Marca so os N primeiros dias (liberacao em etapas)"
+    )
 
     coleta = commands.add_parser(
         "collect-insights", help="Coleta metricas dos Reels publicados (24h e 7 dias)"

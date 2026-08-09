@@ -122,10 +122,15 @@ def publish_item(item: dict[str, Any], publisher: Publisher, paths: Paths) -> di
         # Sem thumb_offset a capa e o quadro 0, que num clipe de TikTok e quase
         # sempre transicao ou movimento. O valor vem congelado na fila, escolhido
         # no Mac por 'lukasmax pick-covers' -- o runner nao decodifica video.
+        # 'trial' tambem vem congelado da fila, escolhido por 'lukasmax
+        # mark-trials'. E campo lido, nunca escrito, pelo CI -- mesmo contrato de
+        # thumb_offset_ms, o que preserva a regra de que nenhum campo e escrito
+        # pelos dois lados.
         container = publisher.create_container_from_url(
             video_url,
             item.get("caption") or "",
             thumb_offset_ms=media.get("thumb_offset_ms"),
+            trial_params=item.get("trial") or None,
         )
         container_id = str(container["id"])
         item["container_id"] = container_id
