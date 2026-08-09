@@ -81,7 +81,7 @@
       "id": "q_20260809T104300_7146966322545446149",
       "tiktok_id": "7146966322545446149",
       "source_url": "https://www.tiktok.com/@_lukasmax/video/7146966322545446149",
-      "status": "scheduled",
+      "status": "failed",
       "scheduled_at": "2026-08-09T10:13:00-03:00",
       "scheduled_at_utc": "2026-08-09T13:13:00+00:00",
       "slot_id": "we-late-am",
@@ -102,11 +102,11 @@
       "attempts": 0,
       "max_attempts": 3,
       "next_attempt_at": null,
-      "last_error": null,
+      "last_error": "POST https://graph.instagram.com/v26.0/17841457416772335/media -> 400: Application does not have permission for this action",
       "container_id": null,
       "container_created_at": null,
-      "claimed_at": null,
-      "claimed_by_run": null,
+      "claimed_at": "2026-08-09T13:15:47.762138+00:00",
+      "claimed_by_run": "31315348662",
       "instagram_media_id": null,
       "permalink": null,
       "published_at": null,
@@ -137,6 +137,20 @@
           "to": "scheduled",
           "by": "local",
           "note": "pronto para o cron publicar"
+        },
+        {
+          "at": "2026-08-09T13:15:47.762155+00:00",
+          "from": "scheduled",
+          "to": "publishing",
+          "by": "ci",
+          "note": "claim do run 31315348662"
+        },
+        {
+          "at": "2026-08-09T13:15:48.177070+00:00",
+          "from": "publishing",
+          "to": "failed",
+          "by": "ci",
+          "note": "POST https://graph.instagram.com/v26.0/17841457416772335/media -> 400: Application does not have permission for this action"
         }
       ],
       "caption_ref": "data/captions/7146966322545446149.json",
