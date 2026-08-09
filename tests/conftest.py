@@ -77,6 +77,16 @@ class FakePublisher:
         self.fail_publish = fail_publish
         self._next_container = 0
         self.recent_media: list[dict] = []
+        #: Payload devolvido por media_insights, no formato real da Meta.
+        self.insights: dict = {
+            "data": [
+                {"name": "views", "values": [{"value": 512}]},
+                {"name": "reach", "values": [{"value": 276}]},
+                {"name": "total_interactions", "values": [{"value": 41}]},
+            ]
+        }
+        #: Quando setado, media_insights levanta esse erro.
+        self.insights_error: Exception | None = None
 
     def _record(self, name: str, *args, **kwargs):
         self.calls.append((name, args, kwargs))
@@ -117,6 +127,12 @@ class FakePublisher:
     def permalink(self, media_id: str) -> str | None:
         self._record("permalink", media_id)
         return f"https://instagram.com/reel/{media_id}"
+
+    def media_insights(self, media_id: str, metrics: str) -> dict:
+        self._record("media_insights", media_id, metrics)
+        if self.insights_error is not None:
+            raise self.insights_error
+        return self.insights
 
 
 @pytest.fixture

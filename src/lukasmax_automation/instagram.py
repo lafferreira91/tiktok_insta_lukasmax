@@ -169,6 +169,39 @@ class InstagramPublisher:
     def media_insights(self, media_id: str, metrics: str) -> dict[str, Any]:
         return self._get(f"{media_id}/insights", metric=metrics)
 
+    def follower_demographics(self, breakdown: str) -> dict[str, int]:
+        """Quem segue, por ``age,gender`` | ``city`` | ``country``.
+
+        Indisponivel abaixo de 100 seguidores -- limite da propria Meta.
+        """
+        response = self._get(
+            f"{self.user_id}/insights",
+            metric="follower_demographics",
+            period="lifetime",
+            metric_type="total_value",
+            breakdown=breakdown,
+        )
+        entries = response.get("data") or [{}]
+        groups = (entries[0].get("total_value") or {}).get("breakdowns") or [{}]
+        return {
+            " ".join(result["dimension_values"]): result["value"]
+            for result in sorted(groups[0].get("results") or [], key=lambda r: -r["value"])
+            if result.get("value")
+        }
+
+    def online_followers(self) -> dict[str, int]:
+        """Seguidores online por hora, ``{"0".."23": n}``.
+
+        O fuso das chaves nao e documentado. O corte de dia da API e UTC-7, o que
+        sugere que as chaves tambem sao -- mas isso e indicio, nao fato, e por
+        isso nenhum horario de publicacao foi decidido a partir daqui.
+        """
+        response = self._get(
+            f"{self.user_id}/insights", metric="online_followers", period="lifetime"
+        )
+        values = (response.get("data") or [{}])[0].get("values") or []
+        return next((v["value"] for v in values if v.get("value")), {})
+
     def permalink(self, media_id: str) -> str | None:
         try:
             return self._get(media_id, fields="permalink").get("permalink")

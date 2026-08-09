@@ -22,7 +22,7 @@ from typing import Any
 from dotenv import load_dotenv
 
 from . import captions as captions_mod
-from . import hosting, planner, scheduling
+from . import hosting, insights, planner, scheduling
 from . import publisher as publisher_mod
 from . import queue as queue_mod
 from .paths import Paths
@@ -540,6 +540,41 @@ def cmd_check_instagram(args: argparse.Namespace) -> int:
     return 0
 
 
+def cmd_collect_insights(args: argparse.Namespace) -> int:
+    paths = _paths(args)
+    queue = queue_mod.load_queue(paths.queue)
+    try:
+        publisher = publisher_mod.build_publisher()
+    except RuntimeError as error:
+        print(str(error), file=sys.stderr)
+        return 2
+    _emit(insights.collect(queue, publisher, paths.insights_csv, dry_run=args.dry_run))
+    return 0
+
+
+def cmd_audience(args: argparse.Namespace) -> int:
+    """Quem segue e quando esta online. Só leitura, para o dado ser reproduzível."""
+    try:
+        publisher = publisher_mod.build_publisher()
+    except RuntimeError as error:
+        print(str(error), file=sys.stderr)
+        return 2
+
+    _emit(
+        {
+            "conta": publisher.check_account(),
+            "idade_genero": publisher.follower_demographics("age,gender"),
+            "cidades": dict(list(publisher.follower_demographics("city").items())[:10]),
+            "seguidores_online_por_hora": publisher.online_followers(),
+            "nota": (
+                "o fuso das chaves horarias nao e documentado pela Meta; o corte de dia "
+                "da API e UTC-7, o que sugere que as chaves tambem sao. Trate como indicio."
+            ),
+        }
+    )
+    return 0
+
+
 # ---------------------------------------------------------------------------
 # Inspection
 # ---------------------------------------------------------------------------
@@ -716,6 +751,8 @@ COMMANDS: dict[str, Callable[[argparse.Namespace], int]] = {
     "reconcile": cmd_reconcile,
     "refresh-token": cmd_refresh_token,
     "check-instagram": cmd_check_instagram,
+    "collect-insights": cmd_collect_insights,
+    "audience": cmd_audience,
     "status": cmd_status,
     "doctor": cmd_doctor,
     "migrate-queue": cmd_migrate_queue,
@@ -814,6 +851,13 @@ def build_parser() -> argparse.ArgumentParser:
     )
 
     commands.add_parser("check-instagram", help="Testa o token e mostra a quota")
+
+    coleta = commands.add_parser(
+        "collect-insights", help="Coleta metricas dos Reels publicados (24h e 7 dias)"
+    )
+    coleta.add_argument("--dry-run", action="store_true", help="Mostra o que coletaria")
+
+    commands.add_parser("audience", help="Quem segue o perfil e quando esta online")
     commands.add_parser("status", help="Panorama da fila e do acervo")
     commands.add_parser("migrate-queue", help="Converte a fila do schema v1 para v2")
 
