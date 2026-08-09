@@ -1,2 +1,3 @@
 {"at": "2026-08-08T19:54:42.490392+00:00", "item_id": "q_20260808T194100_7276110548935249158", "tiktok_id": "7276110548935249158", "container_id": "18019359560913893", "media_id": "17902106994540777", "run_id": "local-4914", "outcome": "published"}
 {"at": "2026-08-09T13:15:48.177188+00:00", "item_id": "q_20260809T104300_7146966322545446149", "run_id": "31315348662", "outcome": "failed", "error": "POST https://graph.instagram.com/v26.0/17841457416772335/media -> 400: Application does not have permission for this action"}
+{"at": "2026-08-09T15:47:32.548628+00:00", "item_id": "q_20260809T104300_7146966322545446149", "tiktok_id": "7146966322545446149", "container_id": "18019485302913893", "media_id": "18092472602100302", "run_id": "31321987843", "outcome": "published"}
