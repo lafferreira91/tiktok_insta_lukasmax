@@ -7,9 +7,11 @@ name: Renovar o token do Instagram
 # Roda dia 1 de cada mes: com validade de 60 dias, cada renovacao devolve o
 # relogio para 60 e a folga nunca cai abaixo de 30 dias, mesmo que uma execucao
 # falhe e so a seguinte pegue.
+# Minuto 17 e nao 0: o inicio de cada hora e o pico de carga do Actions, e a
+# propria documentacao recomenda sair dele para reduzir atraso e descarte.
 on:
   schedule:
-    - cron: "0 6 1 * *"
+    - cron: "17 6 1 * *"
   workflow_dispatch:
 
 permissions:

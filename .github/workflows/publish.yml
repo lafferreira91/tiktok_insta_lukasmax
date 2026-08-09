@@ -4,9 +4,22 @@ name: Publicar Reels agendados
 # publica sempre na hora. Por isso o agendamento e este cron, que acorda e
 # publica o que estiver vencido. O scheduled_at da fila e um piso, nao um
 # horario exato -- o cron do GitHub Actions e best-effort e atrasa sob carga.
+#
+# A janela cobre 08:00-20:59 no horario de Brasilia (11-23 UTC, sem horario de
+# verao no Brasil desde 2019). Todos os slots ficam entre 09:15 e 18:45, e o
+# jitter e de no maximo 20 minutos, entao nada nunca vence fora dessa faixa: as
+# 22 execucoes noturnas so encontravam fila vazia.
+#
+# Por que a cada 30 minutos e nao cravado na hora do slot: a documentacao do
+# GitHub avisa que execucoes agendadas atrasam sob carga e que, se a carga for
+# alta, "alguns jobs podem ser descartados". Com 26 janelas por dia, um job
+# perdido custa 30 minutos de atraso; com uma janela por slot, custaria o post.
+#
+# Os minutos 13 e 43 tambem sao da recomendacao deles: o pico de carga e no
+# inicio de cada hora.
 on:
   schedule:
-    - cron: "*/30 * * * *"
+    - cron: "13,43 11-23 * * *"
   workflow_dispatch:
     inputs:
       dry_run:
