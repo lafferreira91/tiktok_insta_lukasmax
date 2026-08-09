@@ -110,3 +110,42 @@ escolhas que não seriam óbvias para quem chega depois.
   o canal novo sem misturar audiências.
 - **Música licenciada é aprovação separada.** Ausência de marca-d'água não
   significa que o áudio possa ser republicado automaticamente.
+
+## Metricas e crescimento
+
+- **Insight e coletado por idade, nao por data.** Cada Reel e medido as 24h e aos
+  7 dias de vida. Comparar um post de dois dias com um de sessenta mede idade,
+  nao qualidade -- e o numero continua parecendo razoavel, que e por que o erro
+  passaria despercebido.
+- **`insights.csv` e append-only.** Sobrescrever destruiria a informacao de
+  idade, e a Meta nao devolve isso retroativamente: o que nao foi gravado as 24h
+  nao existe mais. De brinde, a chave `(media_id, idade)` ja gravada e o proprio
+  registro de "ja coletei" -- idempotencia sem estado extra e, principalmente,
+  sem escrever em `queue.json`, que o job de publicacao disputa.
+- **`is_trial` entrou no CSV antes de existirem reels de teste.** Uma coluna
+  adicionada depois deixaria todo o historico anterior sem ela, e trial e normal
+  ficariam inseparaveis -- eles tem distribuicao de alcance estruturalmente
+  diferente, entao misturar envenena o ajuste de horarios sem que o numero
+  pareca errado.
+- **`insights.yml` compartilha o `concurrency: group` do `publish.yml`.** Os dois
+  commitam em `data/`; sem isso o loop de rebase daquele job, hoje um caminho
+  frio, viraria caminho quente em producao.
+- **O coletor nunca chama `transition`.** `published` e estado terminal com
+  transicoes vazias: qualquer tentativa levantaria excecao.
+- **Reel de teste usa `MANUAL`, nao `SS_PERFORMANCE`.** Nada sobe sozinho para o
+  perfil. A graduacao de um vencedor e um toque no app -- a decisao continua
+  sendo humana.
+- **Um dos dois posts do dia e teste, com videos diferentes.** Publicar o mesmo
+  video nas duas versoes seria pior: o reel normal tambem e distribuido para nao
+  seguidores, entao as copias disputariam o mesmo publico com o mesmo conteudo.
+- **`tune-slots` nao foi escrito.** O motor (`tune_weights`) existe e e testado,
+  mas a 2 posts/dia so ha sinal depois de meses, e pesos novos nao mexem em quem
+  ja tem horario gravado. Um comando inutilizavel por dois meses e peso morto.
+- **Story automatico foi descartado por impossibilidade, nao por custo.** A API
+  nao publica figurinhas (link, enquete, localizacao) e nao republica midia ja
+  publicada. O "compartilhar nos stories" do app e um SDK de celular que exige
+  toque humano. O que a API faria e uma copia sem link de volta -- que nao leva
+  ninguem ao Reel, o unico objetivo.
+- **Seguir, curtir e comentar em terceiros nao existe na API.** As permissoes do
+  Login do Instagram sao `basic`, `content_publish`, `manage_comments` e
+  `manage_messages`. Automatizar por fora viola os Termos.

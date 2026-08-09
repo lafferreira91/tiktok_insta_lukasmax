@@ -50,6 +50,9 @@ Passo a passo detalhado em [docs/OPERATIONS.md](docs/OPERATIONS.md).
 Estado verificado, horarios dos posts e o que pode dar errado (e quando):
 [docs/ESTADO_ATUAL.md](docs/ESTADO_ATUAL.md).
 
+O que a API **nao** faz e voce faz a mao:
+[docs/ENGAJAMENTO.md](docs/ENGAJAMENTO.md).
+
 ## O que o repositorio precisa ter configurado
 
 | Nome | Onde | Para que |
@@ -99,6 +102,7 @@ runner nunca chama a IA, entao nunca precisa dela.
 | `data/queue.json` | a agenda -- quem publica quando |
 | `data/slots.json` | os horarios candidatos e seus pesos |
 | `data/publish_log.jsonl` | trilha de auditoria, append-only |
+| `data/insights.csv` | desempenho de cada Reel, medido as 24h e aos 7 dias |
 | `media/` | os videos (fora do Git) |
 | `reports/` | validacoes de midia e erros de download |
 

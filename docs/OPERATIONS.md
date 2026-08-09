@@ -162,6 +162,60 @@ publica no maximo **um** item por execucao.
 4. So entao mude `PUBLISH_ENABLED` para `true` e deixe o cron assumir.
 5. Observe tres dias antes de planejar janelas maiores.
 
+## Medir o que foi publicado
+
+```bash
+uv run lukasmax collect-insights --dry-run   # o que coletaria
+uv run lukasmax collect-insights             # coleta e grava
+uv run lukasmax audience                     # quem segue e quando esta online
+```
+
+Roda sozinho em `insights.yml`, uma vez por dia. **Insight nao e recuperavel
+depois**: a Meta nao devolve retroativamente qual era o alcance nas primeiras
+24h, entao cada dia sem coletar e um dia perdido para sempre.
+
+Cada Reel e medido duas vezes, **as 24h e aos 7 dias de vida**. A comparacao e
+por idade, nao por data de coleta -- comparar um post de dois dias com um de
+sessenta mede idade, nao qualidade, e o numero continua parecendo razoavel.
+
+`data/insights.csv` e append-only, uma linha por `(media_id, idade)`. A chave ja
+presente no arquivo *e* o registro de "ja coletei", entao rodar duas vezes no
+mesmo dia nao duplica nada e nada precisa ser escrito em `queue.json` -- que e
+disputado pelo job de publicacao.
+
+Quando houver umas 8 amostras por horario, `scheduling.tune_weights` (ja escrito
+e testado) pode reponderar o pool. Nao ha comando para isso ainda, de proposito:
+a 2 posts/dia isso leva meses, e pesos novos **nao mexem em quem ja tem horario
+gravado** -- exigiriam `reschedule` depois.
+
+## Reels de teste
+
+```bash
+uv run lukasmax mark-trials --dry-run           # o que marcaria
+uv run lukasmax mark-trials --limit-days 1      # so o primeiro dia
+uv run lukasmax mark-trials                     # todos os dias
+uv run lukasmax mark-trials --clear             # desfaz
+```
+
+Marca **um dos dois posts de cada dia** como reel de teste: ele vai apenas para
+quem **nao** segue o perfil, e nao aparece no grid. Com 170 seguidores, quase
+todo alcance possivel esta fora deles.
+
+Continuam dois posts por dia, com **videos diferentes** -- nada e duplicado e o
+consumo do acervo nao muda. Publicar o mesmo video nas duas versoes seria pior:
+o reel normal tambem e distribuido para nao seguidores, entao as copias
+disputariam o mesmo publico com o mesmo conteudo.
+
+O escolhido e o de **rank mais baixo do par**, e a estrategia e `MANUAL`: nada
+sobe sozinho para o perfil. Se um teste explodir, a graduacao e um toque no app.
+
+**Libere em etapas.** `reconcile` detecta "o run morreu depois de publicar"
+cruzando com `GET /me/media`, e nao esta confirmado que um reel de teste aparece
+nessa lista. Se nao aparecer, um crash na hora errada vira post duplicado -- a
+unica falha irreversivel do sistema. Por isso o primeiro vai com
+`--limit-days 1`: publique, confirme que ele aparece em `/me/media`, e so entao
+rode sem limite.
+
 ## O token vence em 60 dias
 
 Este e o unico prazo que pode matar a automacao em silencio. O token do Painel
