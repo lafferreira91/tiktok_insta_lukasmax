@@ -149,3 +149,16 @@ escolhas que não seriam óbvias para quem chega depois.
 - **Seguir, curtir e comentar em terceiros nao existe na API.** As permissoes do
   Login do Instagram sao `basic`, `content_publish`, `manage_comments` e
   `manage_messages`. Automatizar por fora viola os Termos.
+- **Reels de teste nao funcionam nesta conta.** Testado ao vivo em 09/08/2026: o
+  mesmo video, na mesma chamada, com `trial_params` devolve `400: Application
+  does not have permission for this action`; sem ele o container e criado
+  normalmente. Nao e bug do codigo, e a Meta nao documenta como obter a
+  permissao. `mark-trials` passou a recusar por padrao -- marcar um item
+  significaria um post que falha em producao. O codigo fica: se a permissao
+  aparecer, `--force` libera.
+- **A liberacao em etapas se pagou na primeira vez.** O plano mandava marcar um
+  post, publicar e so entao escalar. O primeiro falhou -- se tivessem sido os 95,
+  seriam 95 posts perdidos em vez de um recuperavel.
+- **`mark-trials --clear` limpa todo item nao terminal, nao so os marcaveis.** Um
+  item que falhou ao publicar sai de `TRIALABLE` mas mantem a marca; devolve-lo
+  para a fila reintroduziria a mesma falha. Foi o que quase aconteceu em 09/08.

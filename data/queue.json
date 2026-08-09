@@ -81,7 +81,7 @@
       "id": "q_20260809T104300_7146966322545446149",
       "tiktok_id": "7146966322545446149",
       "source_url": "https://www.tiktok.com/@_lukasmax/video/7146966322545446149",
-      "status": "failed",
+      "status": "scheduled",
       "scheduled_at": "2026-08-09T10:13:00-03:00",
       "scheduled_at_utc": "2026-08-09T13:13:00+00:00",
       "slot_id": "we-late-am",
@@ -151,13 +151,17 @@
           "to": "failed",
           "by": "ci",
           "note": "POST https://graph.instagram.com/v26.0/17841457416772335/media -> 400: Application does not have permission for this action"
+        },
+        {
+          "at": "2026-08-09T15:25:13.932730+00:00",
+          "from": "failed",
+          "to": "scheduled",
+          "by": "local",
+          "note": "trial_params recusado pela Meta: conta sem a permissao"
         }
       ],
       "caption_ref": "data/captions/7146966322545446149.json",
-      "alt_text": "Homem dubla a musica LOKKO dentro do carro.",
-      "trial": {
-        "graduation_strategy": "MANUAL"
-      }
+      "alt_text": "Homem dubla a musica LOKKO dentro do carro."
     },
     {
       "id": "q_20260809T221300_7288713801967488262",

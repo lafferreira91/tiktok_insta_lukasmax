@@ -209,6 +209,14 @@ disputariam o mesmo publico com o mesmo conteudo.
 O escolhido e o de **rank mais baixo do par**, e a estrategia e `MANUAL`: nada
 sobe sozinho para o perfil. Se um teste explodir, a graduacao e um toque no app.
 
+**A conta nao tem essa permissao.** Testado ao vivo em 09/08/2026: o mesmo
+video, na mesma chamada, com `trial_params` devolve `400: Application does not
+have permission for this action`, e sem ele o container e criado normalmente.
+Nao e bug do codigo. A Meta nao documenta como obter a permissao.
+
+Por isso o comando **recusa por padrao** -- marcar um item aqui significa um post
+que falha em producao. Se a permissao aparecer, `--force` libera.
+
 **Libere em etapas.** `reconcile` detecta "o run morreu depois de publicar"
 cruzando com `GET /me/media`, e nao esta confirmado que um reel de teste aparece
 nessa lista. Se nao aparecer, um crash na hora errada vira post duplicado -- a
@@ -264,8 +272,18 @@ publicado; se nao, reagenda. Nunca edite o status a mao, porque `media_publish`
 nao e idempotente e um item reaberto errado vira post duplicado.
 
 **Item em `failed`** -- as tentativas acabaram ou o erro era permanente. Veja
-`last_error`, corrija a causa, e devolva para a fila alterando o status para
-`scheduled` via `transition` (nao por edicao manual do JSON).
+`last_error`, corrija a causa, e devolva para a fila:
+
+```bash
+uv run lukasmax requeue --dry-run
+uv run lukasmax requeue --note "por que"
+uv run lukasmax requeue --ids 7146966322545446149
+```
+
+Nunca edite o JSON a mao: `media_publish` nao e idempotente e um item reaberto
+errado vira post duplicado. **Corrija a causa antes** -- se o item carregava uma
+marca que causou a falha, limpe primeiro (ex.: `mark-trials --clear`), senao ele
+volta para a fila e falha de novo do mesmo jeito.
 
 **Downloads falhando com "Unable to extract universal data for rehydration"** --
 falta impersonation. Confirme com `uv run yt-dlp --list-impersonate-targets`:

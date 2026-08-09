@@ -309,9 +309,27 @@ TRIALABLE = frozenset({"planned", "prepared", "hosted", "scheduled", "retry"})
 #: explodir, a graduacao e um toque no app -- a decisao continua sendo humana.
 TRIAL_STRATEGY = "MANUAL"
 
+#: Esta conta NAO pode publicar reels de teste. Testado ao vivo em 09/08/2026:
+#: o mesmo video, na mesma chamada, com ``trial_params`` devolve
+#: ``400: Application does not have permission for this action`` e sem ele o
+#: container e criado normalmente. Nao e bug do codigo -- e uma permissao que o
+#: app nao tem, e a Meta nao documenta como obte-la.
+#:
+#: O codigo fica: se a permissao aparecer, basta ``--force``. Ate la o comando
+#: recusa, porque marcar um item aqui significa um post que falha em producao.
+TRIAL_PERMISSION_MISSING = (
+    "A conta nao tem permissao para reels de teste: a Meta recusa 'trial_params' "
+    "com 400 'Application does not have permission for this action'. "
+    "Confirme no painel do app e use --force quando a permissao existir."
+)
+
 
 def mark_trials(
-    queue: dict[str, Any], *, clear: bool = False, limit_days: int | None = None
+    queue: dict[str, Any],
+    *,
+    clear: bool = False,
+    limit_days: int | None = None,
+    force: bool = False,
 ) -> dict[str, Any]:
     """Marca um dos dois posts de cada dia como reel de teste.
 
@@ -343,8 +361,19 @@ def mark_trials(
 
     elegiveis = [item for item in queue["items"] if item.get("status") in TRIALABLE]
 
+    if not clear and not force:
+        raise queue_mod.QueueError(TRIAL_PERMISSION_MISSING)
+
     if clear:
-        limpos = [item["id"] for item in elegiveis if item.pop("trial", None) is not None]
+        # Limpa de TODO item nao publicado, nao so dos marcaveis: um item que
+        # falhou ao publicar sai de TRIALABLE mas continua com a marca, e
+        # devolve-lo para a fila reintroduziria a mesma falha. Foi exatamente o
+        # que aconteceu em 09/08/2026.
+        limpos = [
+            item["id"]
+            for item in queue["items"]
+            if item.get("status") not in queue_mod.TERMINAL and item.pop("trial", None) is not None
+        ]
         return {"limpos": limpos, "marcados": []}
 
     por_dia: dict[str, list[dict[str, Any]]] = {}

@@ -540,11 +540,55 @@ def cmd_check_instagram(args: argparse.Namespace) -> int:
     return 0
 
 
+def cmd_requeue(args: argparse.Namespace) -> int:
+    """Devolve itens 'failed' para a fila.
+
+    O caminho de recuperacao ja estava documentado mas nao tinha comando, o que
+    empurrava para edicao manual do JSON -- justamente o que nunca se deve fazer,
+    porque um item reaberto errado vira post duplicado.
+    """
+    paths = _paths(args)
+    queue = queue_mod.load_queue(paths.queue)
+    alvos = [
+        item
+        for item in queue["items"]
+        if item.get("status") == "failed"
+        and (not args.ids or str(item.get("tiktok_id")) in set(args.ids))
+    ]
+    if not alvos:
+        _emit({"requeued": [], "nota": "nenhum item em 'failed'"})
+        return 0
+
+    for item in alvos:
+        if not args.dry_run:
+            queue_mod.transition(
+                item, "scheduled", by="local", note=args.note or "requeue manual", attempts=0
+            )
+    if not args.dry_run:
+        queue_mod.save_queue(queue, paths.queue)
+    _emit(
+        {
+            "requeued": [
+                {
+                    "id": i["tiktok_id"],
+                    "quando": i["scheduled_at"],
+                    "erro_anterior": i.get("last_error"),
+                }
+                for i in alvos
+            ],
+            "dry_run": args.dry_run,
+        }
+    )
+    return 0
+
+
 def cmd_mark_trials(args: argparse.Namespace) -> int:
     paths = _paths(args)
     queue = queue_mod.load_queue(paths.queue)
     try:
-        resultado = planner.mark_trials(queue, clear=args.clear, limit_days=args.limit_days)
+        resultado = planner.mark_trials(
+            queue, clear=args.clear, limit_days=args.limit_days, force=args.force
+        )
     except queue_mod.QueueError as error:
         print(f"ERRO: {error}", file=sys.stderr)
         return 1
@@ -770,6 +814,7 @@ COMMANDS: dict[str, Callable[[argparse.Namespace], int]] = {
     "refresh-token": cmd_refresh_token,
     "check-instagram": cmd_check_instagram,
     "mark-trials": cmd_mark_trials,
+    "requeue": cmd_requeue,
     "collect-insights": cmd_collect_insights,
     "audience": cmd_audience,
     "status": cmd_status,
@@ -871,11 +916,19 @@ def build_parser() -> argparse.ArgumentParser:
 
     commands.add_parser("check-instagram", help="Testa o token e mostra a quota")
 
+    requeue = commands.add_parser("requeue", help="Devolve itens 'failed' para a fila")
+    requeue.add_argument("--ids", nargs="+", help="tiktok_ids; sem isso, todos os falhados")
+    requeue.add_argument("--note", help="Motivo, gravado no historico do item")
+    requeue.add_argument("--dry-run", action="store_true")
+
     trials = commands.add_parser(
         "mark-trials", help="Marca 1 dos 2 posts do dia como reel de teste (so nao seguidores)"
     )
     trials.add_argument("--dry-run", action="store_true")
     trials.add_argument("--clear", action="store_true", help="Remove todas as marcas")
+    trials.add_argument(
+        "--force", action="store_true", help="Marca mesmo sem a permissao confirmada"
+    )
     trials.add_argument(
         "--limit-days", type=int, help="Marca so os N primeiros dias (liberacao em etapas)"
     )

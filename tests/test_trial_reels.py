@@ -44,32 +44,32 @@ class TestMarcacao:
             agendado("c", "2026-09-02", rank=4),
             agendado("d", "2026-09-02", rank=3),
         )
-        planner.mark_trials(queue)
+        planner.mark_trials(queue, force=True)
         marcados = {i["id"] for i in queue["items"] if i.get("trial")}
         assert marcados == {"b", "c"}
 
     def test_a_estrategia_e_manual_nada_sobe_sozinho(self):
         queue = make_queue(agendado("a", "2026-09-01", 1), agendado("b", "2026-09-01", 2))
-        planner.mark_trials(queue)
+        planner.mark_trials(queue, force=True)
         (teste,) = [i for i in queue["items"] if i.get("trial")]
         assert teste["trial"] == {"graduation_strategy": "MANUAL"}
 
     def test_dia_com_um_post_so_nao_vira_teste(self):
         """Um dia inteiro sem nada no feed seria pior que um dia sem teste."""
         queue = make_queue(agendado("a", "2026-09-01", 1))
-        planner.mark_trials(queue)
+        planner.mark_trials(queue, force=True)
         assert not any(i.get("trial") for i in queue["items"])
 
     def test_e_idempotente(self):
         queue = make_queue(agendado("a", "2026-09-01", 1), agendado("b", "2026-09-01", 2))
-        primeira = planner.mark_trials(queue)
-        segunda = planner.mark_trials(queue)
+        primeira = planner.mark_trials(queue, force=True)
+        segunda = planner.mark_trials(queue, force=True)
         assert primeira["marcados"] == segunda["marcados"]
         assert sum(1 for i in queue["items"] if i.get("trial")) == 1
 
     def test_clear_remove_tudo(self):
         queue = make_queue(agendado("a", "2026-09-01", 1), agendado("b", "2026-09-01", 2))
-        planner.mark_trials(queue)
+        planner.mark_trials(queue, force=True)
         resultado = planner.mark_trials(queue, clear=True)
         assert len(resultado["limpos"]) == 1
         assert not any(i.get("trial") for i in queue["items"])
@@ -79,7 +79,7 @@ class TestMarcacao:
             agendado("a", "2026-09-01", 1, status="published"),
             agendado("b", "2026-09-01", 2, status="published"),
         )
-        planner.mark_trials(queue)
+        planner.mark_trials(queue, force=True)
         assert not any(i.get("trial") for i in queue["items"])
 
     def test_limit_days_marca_so_os_primeiros_dias(self):
@@ -90,13 +90,45 @@ class TestMarcacao:
             agendado("c", "2026-09-02", 3),
             agendado("d", "2026-09-02", 4),
         )
-        planner.mark_trials(queue, limit_days=1)
+        planner.mark_trials(queue, limit_days=1, force=True)
         assert {i["id"] for i in queue["items"] if i.get("trial")} == {"b"}
+
+    def test_recusa_sem_force_porque_a_conta_nao_tem_a_permissao(self):
+        """Testado ao vivo: a Meta recusa 'trial_params' nesta conta com 400.
+
+        Marcar um item aqui significa um post que falha em producao, entao o
+        comando precisa recusar ate a permissao existir.
+        """
+        queue = make_queue(agendado("a", "2026-09-01", 1), agendado("b", "2026-09-01", 2))
+        with pytest.raises(queue_mod.QueueError, match="permissao"):
+            planner.mark_trials(queue)
+        assert not any(i.get("trial") for i in queue["items"])
+
+    def test_clear_alcanca_item_que_falhou(self):
+        """Regressao de 09/08/2026.
+
+        O item que falhou ao publicar sai de TRIALABLE mas mantem a marca. Se o
+        clear nao o alcancasse, devolve-lo para a fila com 'requeue'
+        reintroduziria exatamente a falha que o tirou de la.
+        """
+        queue = make_queue(
+            agendado("a", "2026-09-01", 1, status="failed", trial={"graduation_strategy": "MANUAL"})
+        )
+        resultado = planner.mark_trials(queue, clear=True)
+        assert resultado["limpos"] == ["a"]
+        assert "trial" not in queue["items"][0]
+
+    def test_clear_funciona_sem_force(self):
+        """Desfazer nunca pode estar bloqueado."""
+        queue = make_queue(agendado("a", "2026-09-01", 1), agendado("b", "2026-09-01", 2))
+        planner.mark_trials(queue, force=True)
+        planner.mark_trials(queue, clear=True)
+        assert not any(i.get("trial") for i in queue["items"])
 
     def test_recusa_com_item_em_publishing(self):
         queue = make_queue(agendado("a", "2026-09-01", 1, status="publishing"))
         with pytest.raises(queue_mod.QueueError, match="publishing"):
-            planner.mark_trials(queue)
+            planner.mark_trials(queue, force=True)
 
 
 class TestEnvioParaAApi:
