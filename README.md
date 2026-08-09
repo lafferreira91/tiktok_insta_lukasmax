@@ -47,6 +47,21 @@ git push
 
 Passo a passo detalhado em [docs/OPERATIONS.md](docs/OPERATIONS.md).
 
+## O que o repositorio precisa ter configurado
+
+| Nome | Onde | Para que |
+|---|---|---|
+| `INSTAGRAM_USER_ID` | secret | Conta que recebe os posts |
+| `INSTAGRAM_ACCESS_TOKEN` | secret | Token da Graph API, 60 dias |
+| `SECRETS_PAT` | secret | Deixa o cron mensal renovar o token acima |
+| `PUBLISH_ENABLED` | variable | `true` liga a publicacao; qualquer outra coisa desliga |
+
+`ANTHROPIC_API_KEY` **nao** entra aqui. As legendas sao congeladas na fila antes
+do push, entao o runner nunca chama IA.
+
+Sem o `SECRETS_PAT` tudo funciona -- por 60 dias. Depois disso o token vence,
+nao ha como renovar, e a publicacao para calada.
+
 ## As garantias
 
 **Nada e publicado por acidente.** Sao duas travas independentes: a variable

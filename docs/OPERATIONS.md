@@ -162,6 +162,46 @@ publica no maximo **um** item por execucao.
 4. So entao mude `PUBLISH_ENABLED` para `true` e deixe o cron assumir.
 5. Observe tres dias antes de planejar janelas maiores.
 
+## O token vence em 60 dias
+
+Este e o unico prazo que pode matar a automacao em silencio. O token do Painel
+de Apps vale 60 dias e, **depois de vencido, nao existe renovacao** -- so gerar
+outro a mao no painel da Meta.
+
+`token.yml` roda dia 1 de cada mes e devolve o relogio para 60 dias. Com essa
+cadencia a folga nunca cai abaixo de 30 dias, mesmo que uma execucao falhe.
+
+Ele exige o secret **`SECRETS_PAT`**, um token fine-grained do GitHub com
+permissao `Secrets: Read and write` neste repositorio. O `GITHUB_TOKEN` do
+Actions nao escreve secrets, entao nao ha como evitar esse passo manual. Sem o
+PAT o job falha alto -- de proposito, porque renovar o token e perder o valor
+novo seria pior: o antigo continuaria valendo so ate vencer.
+
+Para renovar a mao:
+
+```bash
+uv run lukasmax refresh-token           # mostra a validade, esconde o token
+uv run lukasmax refresh-token --print-token | gh secret set INSTAGRAM_ACCESS_TOKEN
+```
+
+O `--print-token` existe so para o pipe acima. O log do Actions neste
+repositorio e publico, e um token vazado vale ate ser revogado a mao.
+
+## Mudar de ideia depois de agendar
+
+A legenda e o horario ficam **congelados** no item da fila. Isso e proposital:
+editar `data/captions/` ou `data/slots.json` nunca deve alterar sozinho um post
+ja agendado. Trocar de propositio tem caminho explicito:
+
+```bash
+uv run lukasmax refresh-captions          # recopia as legendas aprovadas
+uv run lukasmax reschedule                # redistribui sobre o pool atual
+uv run lukasmax pick-covers --force       # reescolhe as capas
+```
+
+Nenhum dos tres toca em `published`, `publishing` ou `scheduled_external`.
+Depois de qualquer um deles: `doctor`, `git commit`, `git push`.
+
 ## Quando algo da errado
 
 **Item preso em `publishing`** -- um run morreu no meio.
