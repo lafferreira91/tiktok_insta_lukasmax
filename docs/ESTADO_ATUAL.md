@@ -97,6 +97,44 @@ Distribuicao real dos 192 posts por hora:
 **Ate quando:** o ultimo post agendado e **13/11/2026 as 09:20**. Sao 97 dias, 95
 deles com dois posts e 2 com um so.
 
+### O fuso: tudo em horario de Sao Paulo
+
+Os horarios da tabela acima sao **horario de Brasilia**. Isso importa porque o
+runner do GitHub roda em **UTC**, e um erro de fuso aqui nao daria erro nenhum —
+so postaria tres horas fora da hora, calado.
+
+Os quatro pontos foram conferidos contra os 192 itens reais da fila:
+
+| O que | Como esta |
+|---|---|
+| O horario e montado | com `ZoneInfo("America/Sao_Paulo")`, nao offset fixo |
+| Todo `scheduled_at` na fila | tem offset explicito — **zero** sem fuso |
+| O offset gravado | bate com o de Sao Paulo em todas as 192 datas |
+| Convertidos para UTC | **192 de 192** caem dentro da janela do cron |
+
+E o comparador do runner, simulado com o processo em `TZ=UTC` no primeiro post
+(09/08 as 10:13 SP = 13:13 UTC):
+
+```
+   1h antes  (12:13 UTC / 09:13 SP):  0 devidos
+1 min antes  (13:12 UTC / 10:12 SP):  0 devidos
+    na hora  (13:13 UTC / 10:13 SP):  1 devido   ←
+1 min depois (13:14 UTC / 10:14 SP):  1 devido
+```
+
+Ele vira no minuto certo. O motivo e que os dois lados da comparacao carregam
+fuso: `queue.now()` devolve UTC-aware e o `scheduled_at` tem `-03:00`. Python
+converte sozinho — e um `scheduled_at` sem fuso levantaria excecao em vez de
+comparar errado, por isso `_parse` trata timestamp sem offset como UTC de
+proposito, em vez de adivinhar o fuso de quem escreveu.
+
+**A unica dependencia de fuso fixo** e o `OFFSET_UTC = -3` do teste
+`test_cron_cobre_os_slots.py`. O Brasil nao tem horario de verao desde 2019; se
+voltar, o **agendamento continua certo sozinho** (o `ZoneInfo` ajusta), mas a
+janela do cron precisaria comecar uma hora antes — o slot das 09:15 com jitter
+minimo cairia as 10:55 UTC, fora dos `11-23`. E por isso que a constante existe
+com comentario em vez de estar escondida no codigo.
+
 ### Por que o horario e um piso, nao uma promessa
 
 O cron do GitHub Actions e best-effort: ele atrasa sob carga e, pela propria
