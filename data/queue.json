@@ -726,7 +726,7 @@
       "id": "q_20260812T180000_7278034913729907974",
       "tiktok_id": "7278034913729907974",
       "source_url": "https://www.tiktok.com/@_lukasmax/video/7278034913729907974",
-      "status": "scheduled",
+      "status": "published",
       "scheduled_at": "2026-08-13T18:57:00-03:00",
       "scheduled_at_utc": "2026-08-13T21:57:00+00:00",
       "slot_id": "wd-commute",
@@ -748,13 +748,13 @@
       "max_attempts": 3,
       "next_attempt_at": null,
       "last_error": null,
-      "container_id": null,
-      "container_created_at": null,
-      "claimed_at": null,
-      "claimed_by_run": null,
-      "instagram_media_id": "27996092376710770",
-      "permalink": null,
-      "published_at": null,
+      "container_id": "18020125364913893",
+      "container_created_at": "2026-08-13T22:22:58.693185+00:00",
+      "claimed_at": "2026-08-13T22:22:58.236748+00:00",
+      "claimed_by_run": "31749697959",
+      "instagram_media_id": "18083325593265583",
+      "permalink": "https://www.instagram.com/reel/Db_zVX9gNcE/",
+      "published_at": "2026-08-13T22:23:36.151571+00:00",
       "history": [
         {
           "at": "2026-08-08T15:43:37.690495+00:00",
@@ -797,6 +797,19 @@
           "to": "scheduled",
           "by": "local",
           "note": "pronto para o cron publicar"
+        },
+        {
+          "at": "2026-08-13T22:22:58.236767+00:00",
+          "from": "scheduled",
+          "to": "publishing",
+          "by": "ci",
+          "note": "claim do run 31749697959"
+        },
+        {
+          "at": "2026-08-13T22:23:36.151597+00:00",
+          "from": "publishing",
+          "to": "published",
+          "by": "ci"
         }
       ],
       "notes": "Arquivo 1080x1920 validado sem marca do TikTok. Agendado somente no Instagram pelo Meta Business Suite; a verificacao da plataforma nao encontrou problemas de direitos autorais.",
