@@ -17,23 +17,9 @@
         4
       ],
       "time": "09:15",
-      "weight": 1.0,
+      "weight": 0.9,
       "samples": 0,
-      "rationale": "09-12 foi a segunda melhor faixa no TikTok dele (38k medianas, n=51)"
-    },
-    {
-      "id": "wd-lunch",
-      "weekdays": [
-        0,
-        1,
-        2,
-        3,
-        4
-      ],
-      "time": "12:15",
-      "weight": 0.8,
-      "samples": 0,
-      "rationale": "intervalo de almoco; 32,5k medianas, a mais fraca das faixas diurnas"
+      "rationale": "sem amostra ainda; fica para ser medido antes de qualquer corte"
     },
     {
       "id": "wd-afternoon",
@@ -44,10 +30,10 @@
         3,
         4
       ],
-      "time": "17:15",
-      "weight": 1.1,
-      "samples": 0,
-      "rationale": "15-18 foi a MELHOR faixa dele (40k medianas, n=51)"
+      "time": "16:45",
+      "weight": 1.2,
+      "samples": 1,
+      "rationale": "16.560 views no unico teste, o melhor resultado ate agora"
     },
     {
       "id": "wd-commute",
@@ -59,9 +45,23 @@
         4
       ],
       "time": "18:45",
-      "weight": 0.95,
+      "weight": 1.2,
+      "samples": 1,
+      "rationale": "15.738 views; junto com a tarde forma a faixa que rende"
+    },
+    {
+      "id": "wd-night",
+      "weekdays": [
+        0,
+        1,
+        2,
+        3,
+        4
+      ],
+      "time": "21:15",
+      "weight": 1.0,
       "samples": 0,
-      "rationale": "volta do trabalho; 34k medianas e o pico que os estudos apontam"
+      "rationale": "pico de seguidores online pela API; entra para ser testado"
     },
     {
       "id": "we-late-am",
@@ -70,9 +70,9 @@
         6
       ],
       "time": "10:30",
-      "weight": 1.0,
-      "samples": 0,
-      "rationale": "fim de semana acorda tarde; domingo rende 40,4k para ele"
+      "weight": 0.85,
+      "samples": 1,
+      "rationale": "497 views no unico teste, o pior de todos"
     },
     {
       "id": "we-afternoon",
@@ -80,8 +80,8 @@
         5,
         6
       ],
-      "time": "16:30",
-      "weight": 1.05,
+      "time": "16:15",
+      "weight": 1.1,
       "samples": 0,
       "rationale": "mesma faixa da tarde que lidera nos dias uteis"
     },
@@ -92,9 +92,20 @@
         6
       ],
       "time": "18:30",
-      "weight": 0.95,
+      "weight": 1.2,
+      "samples": 2,
+      "rationale": "4.988 e 1.778 views; melhor que qualquer horario diurno"
+    },
+    {
+      "id": "we-night",
+      "weekdays": [
+        5,
+        6
+      ],
+      "time": "21:00",
+      "weight": 1.0,
       "samples": 0,
-      "rationale": "inicio da noite, antes da queda que aparece depois das 21h"
+      "rationale": "mesmo teste noturno dos dias uteis, no fim de semana"
     }
   ]
 }

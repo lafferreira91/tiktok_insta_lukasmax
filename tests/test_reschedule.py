@@ -24,12 +24,18 @@ def config(**overrides):
 
 
 class TestOPoolPadrao:
-    def test_nenhum_horario_depois_das_21h(self):
-        """O dono do perfil pediu; e os proprios numeros dele concordam --
-        a faixa 21-00 teve as menores medianas fora da madrugada."""
+    def test_nada_passa_das_22h(self):
+        """O limite era 21h, herdado do historico do TikTok dele.
+
+        Os 7 primeiros posts no Instagram derrubaram essa premissa: a faixa
+        noturna rendeu ~11x mais que a do almoco, com videos de ranking
+        equivalente. O teto subiu para 22h para acomodar o slot das 21:15, que
+        entrou para medir o pico de seguidores online -- mas continua existindo,
+        porque madrugada segue fora de questao.
+        """
         for slot in scheduling.DEFAULT_SLOTS:
             hora = int(slot["time"].split(":")[0])
-            assert hora < 21, f"{slot['id']} as {slot['time']} e tarde demais"
+            assert hora < 22, f"{slot['id']} as {slot['time']} e tarde demais"
 
     def test_nenhum_horario_antes_das_8h(self):
         for slot in scheduling.DEFAULT_SLOTS:

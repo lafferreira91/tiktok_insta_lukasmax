@@ -28,55 +28,69 @@ from zoneinfo import ZoneInfo
 
 TIMEZONE = "America/Sao_Paulo"
 
-#: Starting weights for a Brazilian short-video audience: lunch break, commute
-#: home, and prime time on weekdays; a later start and a long evening at the
-#: weekend. These are a prior, not a measurement -- phase 2 replaces them.
+#: Horarios medidos no proprio Instagram dele, nao herdados do TikTok.
+#:
+#: Os 7 primeiros posts (13/08/2026) mostraram algo que o historico do TikTok nao
+#: previa: a faixa 12h-14h rende **~11x menos** que a partir das 17h -- mediana de
+#: 1.460 views contra 15.738. E nao e qualidade de video: os dois grupos tem
+#: ranking e views de TikTok praticamente identicos (mediana 762k para os do dia,
+#: 722k para os da noite), e a serie alterna alto-baixo em vez de so subir, o que
+#: descarta crescimento da conta como explicacao.
+#:
+#: Isso converge com a curva de ``online_followers`` da API, cujo pico cai entre
+#: 19h e 22h -- duas fontes independentes apontando para o mesmo lugar.
+#:
+#: O slot do almoco saiu. O da manha ficou: ele **ainda nao tem nenhuma amostra**,
+#: e remover por suposicao seria repetir o erro que o almoco acabou de expor.
 DEFAULT_SLOTS: list[dict[str, Any]] = [
     {
         "id": "wd-morning",
         "weekdays": [0, 1, 2, 3, 4],
         "time": "09:15",
-        "weight": 1.00,
+        "weight": 0.90,
         "samples": 0,
-        "rationale": "09-12 foi a segunda melhor faixa no TikTok dele (38k medianas, n=51)",
-    },
-    {
-        "id": "wd-lunch",
-        "weekdays": [0, 1, 2, 3, 4],
-        "time": "12:15",
-        "weight": 0.80,
-        "samples": 0,
-        "rationale": "intervalo de almoco; 32,5k medianas, a mais fraca das faixas diurnas",
+        "rationale": "sem amostra ainda; fica para ser medido antes de qualquer corte",
     },
     {
         "id": "wd-afternoon",
         "weekdays": [0, 1, 2, 3, 4],
-        "time": "17:15",
-        "weight": 1.10,
-        "samples": 0,
-        "rationale": "15-18 foi a MELHOR faixa dele (40k medianas, n=51)",
+        # 16:45 e nao 17:15 para abrir 270 minutos ate as 21:15. Com 17:15 a
+        # distancia era de exatamente 240 -- o minimo -- e o jitter derrubava o
+        # par noturno, empurrando o segundo post do dia para a manha.
+        "time": "16:45",
+        "weight": 1.20,
+        "samples": 1,
+        "rationale": "16.560 views no unico teste, o melhor resultado ate agora",
     },
     {
         "id": "wd-commute",
         "weekdays": [0, 1, 2, 3, 4],
         "time": "18:45",
-        "weight": 0.95,
+        "weight": 1.20,
+        "samples": 1,
+        "rationale": "15.738 views; junto com a tarde forma a faixa que rende",
+    },
+    {
+        "id": "wd-night",
+        "weekdays": [0, 1, 2, 3, 4],
+        "time": "21:15",
+        "weight": 1.00,
         "samples": 0,
-        "rationale": "volta do trabalho; 34k medianas e o pico que os estudos apontam",
+        "rationale": "pico de seguidores online pela API; entra para ser testado",
     },
     {
         "id": "we-late-am",
         "weekdays": [5, 6],
         "time": "10:30",
-        "weight": 1.00,
-        "samples": 0,
-        "rationale": "fim de semana acorda tarde; domingo rende 40,4k para ele",
+        "weight": 0.85,
+        "samples": 1,
+        "rationale": "497 views no unico teste, o pior de todos",
     },
     {
         "id": "we-afternoon",
         "weekdays": [5, 6],
-        "time": "16:30",
-        "weight": 1.05,
+        "time": "16:15",
+        "weight": 1.10,
         "samples": 0,
         "rationale": "mesma faixa da tarde que lidera nos dias uteis",
     },
@@ -84,9 +98,17 @@ DEFAULT_SLOTS: list[dict[str, Any]] = [
         "id": "we-evening",
         "weekdays": [5, 6],
         "time": "18:30",
-        "weight": 0.95,
+        "weight": 1.20,
+        "samples": 2,
+        "rationale": "4.988 e 1.778 views; melhor que qualquer horario diurno",
+    },
+    {
+        "id": "we-night",
+        "weekdays": [5, 6],
+        "time": "21:00",
+        "weight": 1.00,
         "samples": 0,
-        "rationale": "inicio da noite, antes da queda que aparece depois das 21h",
+        "rationale": "mesmo teste noturno dos dias uteis, no fim de semana",
     },
 ]
 
@@ -208,6 +230,12 @@ def plan_slots(
             ordered = [entry for entry in ordered if entry["id"] != chosen.slot_id]
             placed += 1
 
+    # Dentro de um dia os slots sao escolhidos por peso, nao por relogio, entao
+    # 'planned' pode sair fora de ordem cronologica. Quem consome esta lista
+    # (reschedule, plan_queue) casa o video melhor ranqueado com o primeiro
+    # horario da lista -- sem esta ordenacao o melhor video podia cair no
+    # horario mais tarde do dia por acaso.
+    planned.sort(key=lambda entry: entry.local)
     return planned
 
 

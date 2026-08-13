@@ -192,10 +192,10 @@ class TestPerformancePorSlot:
     def test_alimenta_tune_weights_de_ponta_a_ponta(self):
         from lukasmax_automation import scheduling
 
-        rows = [self.linha(), self.linha(slot_id="wd-lunch", total_interactions="10")]
+        rows = [self.linha(), self.linha(slot_id="wd-commute", total_interactions="10")]
         ajustado = scheduling.tune_weights(
             scheduling.DEFAULT_CONFIG, insights.performance_by_slot(rows)
         )
         pesos = {slot["id"]: slot["weight"] for slot in ajustado["pool"]}
-        assert pesos["wd-morning"] > pesos["wd-lunch"]
+        assert pesos["wd-morning"] > pesos["wd-commute"]
         assert len(ajustado["pool"]) == len(scheduling.DEFAULT_SLOTS)

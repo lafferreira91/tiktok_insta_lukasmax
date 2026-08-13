@@ -162,3 +162,31 @@ escolhas que não seriam óbvias para quem chega depois.
 - **`mark-trials --clear` limpa todo item nao terminal, nao so os marcaveis.** Um
   item que falhou ao publicar sai de `TRIALABLE` mas mantem a marca; devolve-lo
   para a fila reintroduziria a mesma falha. Foi o que quase aconteceu em 09/08.
+
+## Horarios, segunda rodada (13/08/2026, n=7)
+
+- **A faixa do almoco saiu do pool.** Os 7 primeiros posts medidos as 24h dao
+  mediana de 1.460 views entre 12h e 14h contra 15.738 a partir das 17h -- ~11x.
+  O que torna isso acionavel com n=7 e o controle: os dois grupos tem ranking e
+  views de TikTok praticamente identicos (762k contra 722k de mediana), entao a
+  diferenca nao e qualidade de video. E a serie alterna alto-baixo em vez de so
+  subir, o que descarta crescimento da conta.
+- **Isso contradiz o historico do TikTok dele** (onde 15-18h liderava e a noite
+  caia) e **confirma a curva de `online_followers`** da API, cujo pico esta entre
+  19h e 22h. Plataformas diferentes, publicos diferentes: vale o dado do
+  Instagram.
+- **O slot da manha ficou, mesmo sem nenhuma amostra.** Corta-lo por suposicao
+  seria repetir exatamente o erro que o almoco acabou de expor. Ele fica com ~39%
+  dos posts, o que resolve a duvida em ~3 semanas.
+- **`wd-afternoon` foi de 17:15 para 16:45.** Nao e ajuste fino de horario: com
+  17:15 a distancia ate as 21:15 era de exatamente 240 minutos, o minimo, e o
+  jitter derrubava o par noturno -- empurrando o segundo post do dia para a
+  manha. 270 minutos deixam o par sempre viavel.
+- **O cron ganhou a hora 0 UTC** para cobrir o slot das 21:15. Quem pegou isso
+  foi `test_cron_cobre_os_slots.py`, que existe exatamente para amarrar o pool de
+  horarios a janela do cron -- sem ele o sintoma seria um post que nao sai, sem
+  erro em lugar nenhum.
+- **`plan_slots` passou a devolver os horarios em ordem cronologica.** Dentro de
+  um dia os slots sao escolhidos por peso, e quem consome a lista casa o video
+  melhor ranqueado com o primeiro horario -- sem a ordenacao o melhor video podia
+  cair no horario mais tarde por acaso.

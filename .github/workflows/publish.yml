@@ -5,10 +5,16 @@ name: Publicar Reels agendados
 # publica o que estiver vencido. O scheduled_at da fila e um piso, nao um
 # horario exato -- o cron do GitHub Actions e best-effort e atrasa sob carga.
 #
-# A janela cobre 08:00-20:59 no horario de Brasilia (11-23 UTC, sem horario de
-# verao no Brasil desde 2019). Todos os slots ficam entre 09:15 e 18:45, e o
-# jitter e de no maximo 20 minutos, entao nada nunca vence fora dessa faixa: as
-# 22 execucoes noturnas so encontravam fila vazia.
+# A janela cobre 08:00-21:59 no horario de Brasilia (11-23 e 0 UTC, sem horario
+# de verao no Brasil desde 2019). Os slots vao de 09:15 a 21:15 e o jitter e de
+# no maximo 20 minutos, entao o mais tardio vence as 21:35 locais = 00:35 UTC --
+# e por isso que a hora 0 entra. As demais horas da madrugada continuam fora:
+# ali a fila esta sempre vazia.
+#
+# A hora 0 chegou depois: os primeiros 7 posts mostraram que a faixa noturna
+# rende ~11x mais que a do almoco, e o slot das 21:15 nasceu desse dado. O teste
+# tests/test_cron_cobre_os_slots.py e quem amarra as duas pontas -- foi ele que
+# pegou o slot novo caindo fora desta janela.
 #
 # Por que a cada 30 minutos e nao cravado na hora do slot: a documentacao do
 # GitHub avisa que execucoes agendadas atrasam sob carga e que, se a carga for
@@ -19,7 +25,7 @@ name: Publicar Reels agendados
 # inicio de cada hora.
 on:
   schedule:
-    - cron: "13,43 11-23 * * *"
+    - cron: "13,43 0,11-23 * * *"
   workflow_dispatch:
     inputs:
       dry_run:
