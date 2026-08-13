@@ -9,7 +9,7 @@ from __future__ import annotations
 
 import csv
 import json
-from datetime import date
+from datetime import date, timedelta
 
 import pytest
 from conftest import make_item, make_queue
@@ -18,7 +18,20 @@ from lukasmax_automation import captions as captions_mod
 from lukasmax_automation import planner, scheduling
 from lukasmax_automation import queue as queue_mod
 
-MONDAY = date(2026, 8, 10)
+
+def _proxima_segunda() -> date:
+    """A proxima segunda-feira ainda no futuro.
+
+    Era uma data fixa (10/08/2026) e o teste apodreceu sozinho: o planejador
+    recusa horario no passado, entao a partir de 11/08 os dois testes de
+    capacidade passaram a receber lista vazia e falhar sem que nada no codigo
+    tivesse mudado. Data relativa nao tem esse problema.
+    """
+    hoje = date.today()
+    return hoje + timedelta(days=(7 - hoje.weekday()) % 7 or 7)
+
+
+MONDAY = _proxima_segunda()
 
 
 def write_ranking(paths, ids: list[str]) -> None:

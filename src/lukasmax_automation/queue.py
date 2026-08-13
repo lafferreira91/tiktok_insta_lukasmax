@@ -43,7 +43,13 @@ TRANSITIONS: dict[str, frozenset[str]] = {
     # -- terminal -----------------------------------------------------
     "published": frozenset(),
     "skipped": frozenset({"planned"}),
-    "scheduled_external": frozenset(),
+    # Nasceu terminal porque se assumiu que o agendador externo publicaria. Em
+    # 12/08/2026 essa premissa caiu: o agendamento foi cancelado no Meta Business
+    # Suite, o post nunca saiu, e o item -- o video melhor ranqueado do acervo --
+    # ficou preso fora da fila para sempre. So 'skipped' e permitido, porque dali
+    # o caminho de volta ('skipped' -> 'planned') ja existe e passa pelo mesmo
+    # funil de preparo, hospedagem e agendamento que qualquer outro video.
+    "scheduled_external": frozenset({"skipped"}),
 }
 
 STATES = frozenset(TRANSITIONS)

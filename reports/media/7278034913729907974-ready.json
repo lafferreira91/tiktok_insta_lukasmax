@@ -13,12 +13,15 @@
   },
   "media": {
     "readable": true,
-    "duration_seconds": 61.6,
+    "duration_seconds": 61.604,
     "video_codec": "h264",
     "width": 1080,
     "height": 1920,
     "fps": 30.0,
     "audio_codec": "aac",
-    "audio_hz": 48000
+    "audio_hz": 48000,
+    "bitrate": 7698426,
+    "has_audio": true,
+    "rotation": 0
   }
 }

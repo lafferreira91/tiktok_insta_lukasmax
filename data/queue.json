@@ -645,43 +645,6 @@
       "alt_text": "Homem dubla a musica What It Is dentro do carro."
     },
     {
-      "id": "q_20260812T180000_7278034913729907974",
-      "tiktok_id": "7278034913729907974",
-      "source_url": "https://www.tiktok.com/@_lukasmax/video/7278034913729907974",
-      "status": "scheduled_external",
-      "scheduled_at": "2026-08-12T18:00:00-03:00",
-      "scheduled_at_utc": "2026-08-12T21:00:00+00:00",
-      "slot_id": "legacy",
-      "rank": 0,
-      "media": null,
-      "caption": "Essa desbloqueou uma memória que eu nem sabia que tinha 😂\n\nQuem também lembra de “Toda Toda”? Salva para ouvir de novo e manda para quem cantava essa com você.\n\n#TodaToda #NostalgiaMusical #CarJams #MusicaBrasileira #Anos2010",
-      "caption_fingerprint": null,
-      "attempts": 0,
-      "max_attempts": 3,
-      "next_attempt_at": null,
-      "last_error": null,
-      "container_id": null,
-      "container_created_at": null,
-      "claimed_at": null,
-      "claimed_by_run": null,
-      "instagram_media_id": "27996092376710770",
-      "permalink": null,
-      "published_at": null,
-      "history": [
-        {
-          "at": "2026-08-08T15:43:37.690495+00:00",
-          "from": "",
-          "to": "scheduled_external",
-          "by": "local",
-          "note": "migrado do schema v1"
-        }
-      ],
-      "notes": "Arquivo 1080x1920 validado sem marca do TikTok. Agendado somente no Instagram pelo Meta Business Suite; a verificacao da plataforma nao encontrou problemas de direitos autorais.",
-      "scheduled_via": "meta_business_suite",
-      "instagram_post_id": "27996092376710770",
-      "copyright_check": "passed"
-    },
-    {
       "id": "q_20260813T184200_7172658171608141061",
       "tiktok_id": "7172658171608141061",
       "source_url": "https://www.tiktok.com/@_lukasmax/video/7172658171608141061",
@@ -747,27 +710,27 @@
       "alt_text": "Homem dubla a musica Ressaca do Jao dentro do carro."
     },
     {
-      "id": "q_20260813T122800_7385652296526351622",
-      "tiktok_id": "7385652296526351622",
-      "source_url": "https://www.tiktok.com/@_lukasmax/video/7385652296526351622",
+      "id": "q_20260812T180000_7278034913729907974",
+      "tiktok_id": "7278034913729907974",
+      "source_url": "https://www.tiktok.com/@_lukasmax/video/7278034913729907974",
       "status": "scheduled",
       "scheduled_at": "2026-08-13T17:33:00-03:00",
       "scheduled_at_utc": "2026-08-13T20:33:00+00:00",
       "slot_id": "wd-afternoon",
-      "rank": 9,
+      "rank": 0,
       "media": {
         "release_tag": "media-v1",
-        "asset_name": "7385652296526351622.mp4",
-        "asset_url": "https://github.com/lafferreira91/tiktok_insta_lukasmax/releases/download/media-v1/7385652296526351622.mp4",
-        "sha256": "59973c03a10d61882def9565f5858ca5146aa908a0aa78b792aba1dc9b7d53ac",
-        "bytes": 66266691,
-        "local_path": "media/ready/7385652296526351622.mp4",
-        "duration_seconds": 58.817,
-        "thumb_offset_ms": 1000,
+        "asset_name": "7278034913729907974.mp4",
+        "asset_url": "https://github.com/lafferreira91/tiktok_insta_lukasmax/releases/download/media-v1/7278034913729907974.mp4",
+        "sha256": "65ec008ca4afb88e482317f76206c7e07cd2ece8894de7a92bbd600ffbcff124",
+        "bytes": 59281735,
+        "local_path": "media/ready/7278034913729907974.mp4",
+        "duration_seconds": 61.604,
+        "thumb_offset_ms": 11966,
         "thumb_offset_source": "auto"
       },
-      "caption": "Dublei em japonês sem saber uma palavra de japonês 🇯🇵\n\nA confiança foi a mesma de quem sabe. O resultado, nem tanto.\n\n#Rockstar #Lisa #CarJams #DublagemNoCarro #KPop",
-      "caption_fingerprint": "sha256:282a1897f0c913748d53ab4298f0c0af475a163923371952007c0794924aaf6d",
+      "caption": "Toda Toda 🔓\n\nEsse é o que estourou. 3 milhões de pessoas viram e eu continuo achando que foi sorte.\n\n#TodaToda #PikenoEMenor #CarJams #DublagemNoCarro",
+      "caption_fingerprint": "sha256:4ec204b2d2a15d0a3dae9bedd784b9c34c83ea5b8858bcb2e97b6f62c2ef7a22",
       "attempts": 0,
       "max_attempts": 3,
       "next_attempt_at": null,
@@ -776,40 +739,58 @@
       "container_created_at": null,
       "claimed_at": null,
       "claimed_by_run": null,
-      "instagram_media_id": null,
+      "instagram_media_id": "27996092376710770",
       "permalink": null,
       "published_at": null,
       "history": [
         {
-          "at": "2026-08-08T19:03:38.379309+00:00",
+          "at": "2026-08-08T15:43:37.690495+00:00",
           "from": "",
-          "to": "planned",
-          "by": "local"
+          "to": "scheduled_external",
+          "by": "local",
+          "note": "migrado do schema v1"
         },
         {
-          "at": "2026-08-08T19:03:38.380181+00:00",
+          "at": "2026-08-13T02:36:13.582005+00:00",
+          "from": "scheduled_external",
+          "to": "skipped",
+          "by": "local",
+          "note": "agendamento no Business Suite cancelado; post nunca saiu"
+        },
+        {
+          "at": "2026-08-13T02:36:13.582209+00:00",
+          "from": "skipped",
+          "to": "planned",
+          "by": "local",
+          "note": "devolvido ao funil normal"
+        },
+        {
+          "at": "2026-08-13T02:38:00.376928+00:00",
           "from": "planned",
           "to": "prepared",
           "by": "local",
           "note": "midia normalizada em disco"
         },
         {
-          "at": "2026-08-08T19:11:53.480739+00:00",
+          "at": "2026-08-13T02:38:52.729466+00:00",
           "from": "prepared",
           "to": "hosted",
           "by": "local",
           "note": "asset em media-v1"
         },
         {
-          "at": "2026-08-08T19:11:53.480776+00:00",
+          "at": "2026-08-13T02:38:52.729758+00:00",
           "from": "hosted",
           "to": "scheduled",
           "by": "local",
           "note": "pronto para o cron publicar"
         }
       ],
-      "caption_ref": "data/captions/7385652296526351622.json",
-      "alt_text": "Homem dubla a musica Rockstar da LISA dentro do carro."
+      "notes": "Arquivo 1080x1920 validado sem marca do TikTok. Agendado somente no Instagram pelo Meta Business Suite; a verificacao da plataforma nao encontrou problemas de direitos autorais.",
+      "scheduled_via": "meta_business_suite",
+      "instagram_post_id": "27996092376710770",
+      "copyright_check": "passed",
+      "alt_text": "Homem dubla a musica Toda Toda, de Pikeno e Menor, dentro do carro."
     },
     {
       "id": "q_20260814T184200_7255074217979383046",
@@ -12371,6 +12352,71 @@
       ],
       "caption_ref": "data/captions/7619341364228050183.json",
       "alt_text": "Homem dubla dentro do carro. Texto na tela: No repeat 🔁"
+    },
+    {
+      "id": "q_20260813T122800_7385652296526351622",
+      "tiktok_id": "7385652296526351622",
+      "source_url": "https://www.tiktok.com/@_lukasmax/video/7385652296526351622",
+      "status": "scheduled",
+      "scheduled_at": "2026-11-13T17:33:00-03:00",
+      "scheduled_at_utc": "2026-11-13T20:33:00+00:00",
+      "slot_id": "wd-afternoon",
+      "rank": 9,
+      "media": {
+        "release_tag": "media-v1",
+        "asset_name": "7385652296526351622.mp4",
+        "asset_url": "https://github.com/lafferreira91/tiktok_insta_lukasmax/releases/download/media-v1/7385652296526351622.mp4",
+        "sha256": "59973c03a10d61882def9565f5858ca5146aa908a0aa78b792aba1dc9b7d53ac",
+        "bytes": 66266691,
+        "local_path": "media/ready/7385652296526351622.mp4",
+        "duration_seconds": 58.817,
+        "thumb_offset_ms": 1000,
+        "thumb_offset_source": "auto"
+      },
+      "caption": "Dublei em japonês sem saber uma palavra de japonês 🇯🇵\n\nA confiança foi a mesma de quem sabe. O resultado, nem tanto.\n\n#Rockstar #Lisa #CarJams #DublagemNoCarro #KPop",
+      "caption_fingerprint": "sha256:282a1897f0c913748d53ab4298f0c0af475a163923371952007c0794924aaf6d",
+      "attempts": 0,
+      "max_attempts": 3,
+      "next_attempt_at": null,
+      "last_error": null,
+      "container_id": null,
+      "container_created_at": null,
+      "claimed_at": null,
+      "claimed_by_run": null,
+      "instagram_media_id": null,
+      "permalink": null,
+      "published_at": null,
+      "history": [
+        {
+          "at": "2026-08-08T19:03:38.379309+00:00",
+          "from": "",
+          "to": "planned",
+          "by": "local"
+        },
+        {
+          "at": "2026-08-08T19:03:38.380181+00:00",
+          "from": "planned",
+          "to": "prepared",
+          "by": "local",
+          "note": "midia normalizada em disco"
+        },
+        {
+          "at": "2026-08-08T19:11:53.480739+00:00",
+          "from": "prepared",
+          "to": "hosted",
+          "by": "local",
+          "note": "asset em media-v1"
+        },
+        {
+          "at": "2026-08-08T19:11:53.480776+00:00",
+          "from": "hosted",
+          "to": "scheduled",
+          "by": "local",
+          "note": "pronto para o cron publicar"
+        }
+      ],
+      "caption_ref": "data/captions/7385652296526351622.json",
+      "alt_text": "Homem dubla a musica Rockstar da LISA dentro do carro."
     }
   ]
 }
