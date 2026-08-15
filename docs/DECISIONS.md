@@ -190,3 +190,10 @@ escolhas que não seriam óbvias para quem chega depois.
   um dia os slots sao escolhidos por peso, e quem consome a lista casa o video
   melhor ranqueado com o primeiro horario -- sem a ordenacao o melhor video podia
   cair no horario mais tarde por acaso.
+- **O cron tem uma hora de reserva depois do ultimo slot.** Em 15/08/2026 as
+  duas execucoes da hora 0 UTC nao rodaram e o post das 21:26 precisou de
+  disparo manual. Meia-noite UTC e o pico de carga do GitHub -- o mesmo motivo
+  pelo qual os minutos 13 e 43 evitam o topo da hora, so que na escala da hora.
+  Sem a reserva, um job descartado ali empurra o post da noite para as 08:13 do
+  dia seguinte: oito horas fora do horario e ainda poluindo a medicao do slot da
+  manha. `test_existe_uma_hora_de_reserva_depois_do_ultimo_slot` guarda isso.

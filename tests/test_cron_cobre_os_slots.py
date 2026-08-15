@@ -92,6 +92,28 @@ class TestCobertura:
         _, minutos = janela
         assert 0 not in minutos
 
+    def test_existe_uma_hora_de_reserva_depois_do_ultimo_slot(self, janela):
+        """A janela nao pode terminar exatamente onde o ultimo post vence.
+
+        Em 15/08/2026 as duas execucoes da hora 0 UTC nao rodaram -- meia-noite
+        UTC e o pico de carga do GitHub, que a documentacao deles avisa poder
+        descartar jobs agendados. Como a janela acabava ali, o post das 21:26
+        ficaria para as 08:13 do dia seguinte: oito horas fora do horario e ainda
+        poluindo a medicao do slot da manha.
+
+        Uma hora de folga depois do ultimo vencimento transforma "job descartado"
+        em uma hora de atraso.
+        """
+        horas_utc, _ = janela
+        jitter = DEFAULT_CONFIG["jitter_minutes"]
+        ultimo = max((int(s["time"][:2]) * 60 + int(s["time"][3:]) + jitter) for s in DEFAULT_SLOTS)
+        hora_utc_do_ultimo = ((ultimo // 60) - OFFSET_UTC) % 24
+        reserva = (hora_utc_do_ultimo + 1) % 24
+        assert reserva in horas_utc, (
+            f"o ultimo post vence as {ultimo // 60}h locais ({hora_utc_do_ultimo}h UTC) e "
+            f"nao ha execucao em {reserva}h UTC para pegar um job descartado"
+        )
+
     def test_a_madrugada_fica_de_fora(self, janela):
         """Se a janela virar 24h de novo, sao 22 execucoes diarias em fila
         vazia -- e o sinal de que alguem esqueceu de restringir."""

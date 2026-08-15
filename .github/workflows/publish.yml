@@ -5,27 +5,30 @@ name: Publicar Reels agendados
 # publica o que estiver vencido. O scheduled_at da fila e um piso, nao um
 # horario exato -- o cron do GitHub Actions e best-effort e atrasa sob carga.
 #
-# A janela cobre 08:00-21:59 no horario de Brasilia (11-23 e 0 UTC, sem horario
-# de verao no Brasil desde 2019). Os slots vao de 09:15 a 21:15 e o jitter e de
-# no maximo 20 minutos, entao o mais tardio vence as 21:35 locais = 00:35 UTC --
-# e por isso que a hora 0 entra. As demais horas da madrugada continuam fora:
-# ali a fila esta sempre vazia.
+# A janela cobre 08:00-22:59 no horario de Brasilia (11-23, 0 e 1 UTC, sem
+# horario de verao no Brasil desde 2019). Os slots vao de 09:15 a 21:15 e o
+# jitter e de no maximo 20 minutos, entao o mais tardio vence as 21:35 locais =
+# 00:35 UTC. As demais horas da madrugada ficam fora: ali a fila esta sempre
+# vazia.
 #
-# A hora 0 chegou depois: os primeiros 7 posts mostraram que a faixa noturna
-# rende ~11x mais que a do almoco, e o slot das 21:15 nasceu desse dado. O teste
-# tests/test_cron_cobre_os_slots.py e quem amarra as duas pontas -- foi ele que
-# pegou o slot novo caindo fora desta janela.
+# Por que a hora 1 existe, sendo que nada vence nela: em 15/08/2026 as DUAS
+# execucoes da hora 0 (00:13 e 00:43 UTC) simplesmente nao rodaram, e o post das
+# 21:26 teve de ser disparado a mao. Meia-noite UTC e o momento de maior carga do
+# GitHub -- e o mesmo motivo pelo qual os minutos 13 e 43 evitam o topo da hora,
+# so que na escala da hora. A hora 1 e a rede de seguranca: sem ela, uma hora 0
+# descartada empurra o post da noite para as 08:13 do dia seguinte, oito horas
+# fora do horario e ainda por cima poluindo a medicao do slot da manha.
 #
 # Por que a cada 30 minutos e nao cravado na hora do slot: a documentacao do
 # GitHub avisa que execucoes agendadas atrasam sob carga e que, se a carga for
-# alta, "alguns jobs podem ser descartados". Com 26 janelas por dia, um job
-# perdido custa 30 minutos de atraso; com uma janela por slot, custaria o post.
+# alta, "alguns jobs podem ser descartados". Com muitas janelas por dia, um job
+# perdido custa 30 minutos; com uma janela por slot, custaria o post.
 #
-# Os minutos 13 e 43 tambem sao da recomendacao deles: o pico de carga e no
-# inicio de cada hora.
+# O teste tests/test_cron_cobre_os_slots.py amarra esta janela ao pool de
+# horarios -- foi ele que pegou o slot das 21:15 caindo fora dela.
 on:
   schedule:
-    - cron: "13,43 0,11-23 * * *"
+    - cron: "13,43 0-1,11-23 * * *"
   workflow_dispatch:
     inputs:
       dry_run:
