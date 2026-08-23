@@ -2146,7 +2146,7 @@
       "id": "q_20260822T183600_7284631926319680774",
       "tiktok_id": "7284631926319680774",
       "source_url": "https://www.tiktok.com/@_lukasmax/video/7284631926319680774",
-      "status": "scheduled",
+      "status": "published",
       "scheduled_at": "2026-08-22T21:04:00-03:00",
       "scheduled_at_utc": "2026-08-23T00:04:00+00:00",
       "slot_id": "we-night",
@@ -2166,13 +2166,13 @@
       "max_attempts": 3,
       "next_attempt_at": null,
       "last_error": null,
-      "container_id": null,
-      "container_created_at": null,
-      "claimed_at": null,
-      "claimed_by_run": null,
-      "instagram_media_id": null,
-      "permalink": null,
-      "published_at": null,
+      "container_id": "18021583214913893",
+      "container_created_at": "2026-08-23T01:57:14.811663+00:00",
+      "claimed_at": "2026-08-23T01:57:14.450233+00:00",
+      "claimed_by_run": "32611605409",
+      "instagram_media_id": "17988357159018839",
+      "permalink": "https://www.instagram.com/reel/DcXXAvAGYpW/",
+      "published_at": "2026-08-23T01:58:11.515337+00:00",
       "history": [
         {
           "at": "2026-08-08T23:56:58.738515+00:00",
@@ -2200,6 +2200,19 @@
           "to": "scheduled",
           "by": "local",
           "note": "pronto para o cron publicar"
+        },
+        {
+          "at": "2026-08-23T01:57:14.450260+00:00",
+          "from": "scheduled",
+          "to": "publishing",
+          "by": "ci",
+          "note": "claim do run 32611605409"
+        },
+        {
+          "at": "2026-08-23T01:58:11.515356+00:00",
+          "from": "publishing",
+          "to": "published",
+          "by": "ci"
         }
       ],
       "caption_ref": "data/captions/7284631926319680774.json",
