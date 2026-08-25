@@ -28,38 +28,31 @@ from zoneinfo import ZoneInfo
 
 TIMEZONE = "America/Sao_Paulo"
 
-#: Horarios medidos no proprio Instagram dele, com 30 posts (25/08/2026).
+#: Um unico horario, o unico que se provou (25/08/2026, n=30).
 #:
-#: Medianas de views as 24h, todas na mesma idade para a comparacao ser justa:
+#: Medianas de views as 24h, todas medidas na mesma idade:
 #:
-#:     18-19h  7.664 (n=8)   <- a faixa que rende
+#:     18-19h  7.664 (n=8)   <- este
 #:     10h     2.276 (n=12)
 #:     16h     1.789 (n=4)
 #:     12-13h  1.141 (n=3)
 #:     22h     1.101 (n=3)
 #:
-#: A vantagem da noite **sobrevive ao controle por ranking do video**: 9,2x entre
-#: os videos de topo e 2,6x entre os da cauda. Nao e artefato de terem calhado
-#: videos melhores a noite.
+#: A vantagem da noite sobrevive ao controle por ranking do video: 9,2x entre os
+#: de topo e 2,6x entre os da cauda. Nao e artefato de terem calhado videos
+#: melhores a noite.
 #:
-#: Duas hipoteses minhas cairam aqui. O slot das 21h veio da curva de
-#: ``online_followers`` da API, cujo pico esta entre 19h e 22h -- e ficou em
-#: ultimo lugar. E o das 16h, que eu tinha posto com peso alto por causa de um
-#: unico bom resultado, ficou abaixo da manha. Os dois sairam.
+#: O slot da manha saiu junto com a mudanca para 1 post/dia. Ele nao era ruim --
+#: era o melhor fora da noite -- mas so existia porque dois posts diarios nao
+#: cabem na mesma faixa de 4 horas. Com um post por dia, nao ha motivo para
+#: nenhum deles sair da melhor faixa. Manter a manha no pool faria a rotacao
+#: alternar e jogar metade da fila de volta no slot fraco, que e exatamente o que
+#: esta mudanca existe para evitar.
 #:
-#: Sobraram dois slots por dia, o que e exatamente o necessario para 2 posts
-#: diarios: um na melhor faixa medida e um na melhor faixa disponivel fora dela.
-#: Nao ha mais rotacao porque nao ha mais o que rotacionar -- a variacao vem do
-#: jitter.
+#: Duas hipoteses minhas cairam no caminho: o slot das 21h, tirado da curva de
+#: `online_followers` da API, ficou em ultimo; e o das 16h, que eu tinha posto com
+#: peso alto por causa de um unico bom resultado, ficou abaixo da manha.
 DEFAULT_SLOTS: list[dict[str, Any]] = [
-    {
-        "id": "wd-morning",
-        "weekdays": [0, 1, 2, 3, 4],
-        "time": "09:15",
-        "weight": 1.00,
-        "samples": 12,
-        "rationale": "2.276 views medianos (h24, n=12); o melhor fora da noite",
-    },
     {
         "id": "wd-commute",
         "weekdays": [0, 1, 2, 3, 4],
@@ -69,20 +62,12 @@ DEFAULT_SLOTS: list[dict[str, Any]] = [
         "rationale": "7.664 views medianos (h24, n=8); 3,4x qualquer outra faixa",
     },
     {
-        "id": "we-late-am",
-        "weekdays": [5, 6],
-        "time": "10:30",
-        "weight": 1.00,
-        "samples": 12,
-        "rationale": "mesma faixa da manha dos dias uteis",
-    },
-    {
         "id": "we-evening",
         "weekdays": [5, 6],
         "time": "18:30",
         "weight": 1.40,
         "samples": 8,
-        "rationale": "mesma faixa da noite dos dias uteis",
+        "rationale": "mesma faixa da noite, no fim de semana",
     },
 ]
 
@@ -90,7 +75,17 @@ DEFAULT_CONFIG: dict[str, Any] = {
     "version": 1,
     "source": "heuristic",
     "timezone": TIMEZONE,
-    "posts_per_day": 2,
+    # 1, nao 2, desde 25/08/2026. O slot da noite vale 3,4x o da manha, e com dois
+    # posts por dia metade da fila era obrigada a cair no slot fraco -- nao por
+    # escolha, mas porque nao cabem dois na mesma faixa (o intervalo minimo e de
+    # 4h). Um por dia poe TODOS na melhor faixa: +55% de views projetados sobre os
+    # posts restantes, e o acervo dura ate fevereiro em vez de novembro.
+    #
+    # A premissa nao testada e que postar menos nao piora cada post. O indicio a
+    # favor: entre os 14 dias com dois posts, o desempenho de um nao previu o do
+    # outro (rho -0,09), ou seja, eles nao competiam. Por isso e um teste de duas
+    # semanas, nao uma mudanca definitiva.
+    "posts_per_day": 1,
     "min_gap_minutes": 240,
     "jitter_minutes": 20,
     "explore_every": 7,

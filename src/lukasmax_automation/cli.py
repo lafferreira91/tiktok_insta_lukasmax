@@ -274,12 +274,14 @@ def cmd_prepare(args: argparse.Namespace) -> int:
 def cmd_plan_queue(args: argparse.Namespace) -> int:
     paths = _paths(args)
     start = date.fromisoformat(args.start) if args.start else date.today()
+    config = scheduling.load_slots(paths.slots)
     result = planner.plan_queue(
         paths,
         start=start,
         days=args.days,
-        per_day=args.per_day,
+        per_day=args.per_day or int(config.get("posts_per_day", 2)),
         strategy=args.strategy,
+        slots_config=config,
     )
     summary = {
         "janela": f"{start.isoformat()} + {args.days} dias",
@@ -327,7 +329,8 @@ def cmd_reschedule(args: argparse.Namespace) -> int:
 
     config = scheduling.load_slots(paths.slots)
     try:
-        resultado = planner.reschedule(queue, config, per_day=args.per_day)
+        por_dia = args.per_day or int(config.get("posts_per_day", 2))
+        resultado = planner.reschedule(queue, config, per_day=por_dia)
     except scheduling.SchedulingError as error:
         print(f"ERRO: {error}", file=sys.stderr)
         return 1
@@ -871,7 +874,10 @@ def build_parser() -> argparse.ArgumentParser:
         "plan-queue", help="Agenda os videos elegiveis nos melhores horarios"
     )
     plan.add_argument("--days", type=int, default=14)
-    plan.add_argument("--per-day", type=int, default=2)
+    # Sem default fixo: a fonte da verdade e "posts_per_day" em data/slots.json.
+    # Um 2 cravado aqui ignorava calado a configuracao -- foi o que fez o
+    # reschedule pedir 83 horarios para 161 itens depois da mudanca para 1/dia.
+    plan.add_argument("--per-day", type=int, help="Sobrepoe o posts_per_day da configuracao")
     plan.add_argument("--start", help="Data inicial (YYYY-MM-DD)")
     plan.add_argument("--strategy", choices=["front-loaded", "interleaved"], default="front-loaded")
     plan.add_argument("--dry-run", action="store_true")
@@ -879,7 +885,7 @@ def build_parser() -> argparse.ArgumentParser:
     redata = commands.add_parser(
         "reschedule", help="Redistribui os itens pendentes sobre o pool de horarios atual"
     )
-    redata.add_argument("--per-day", type=int, default=2)
+    redata.add_argument("--per-day", type=int, help="Sobrepoe o posts_per_day da configuracao")
     redata.add_argument("--dry-run", action="store_true")
 
     refresh = commands.add_parser(

@@ -224,3 +224,42 @@ escolhas que não seriam óbvias para quem chega depois.
 - **Idade do video ficou como suspeita, nao como achado**: rho +0,39 a favor dos
   mais novos, mas os mais novos aqui tambem eram os mais bem ranqueados, e com
   n=30 nao da para separar os dois.
+
+## Um post por dia (25/08/2026)
+
+- **A cadencia virou a maior alavanca, nao o horario.** Com dois posts diarios,
+  metade da fila era obrigada a cair no slot fraco -- nao por escolha, mas porque
+  nao cabem dois na faixa boa (o intervalo minimo e de 4h). Com um por dia,
+  **todos** pegam a melhor faixa: 161 x 7.664 contra 80 x 7.664 + 81 x 2.276,
+  ou seja **+55% de views projetados** sobre os posts restantes.
+- **De brinde, o acervo dura ate 01/02/2027** em vez de 13/11/2026. Como nao ha
+  videos novos (o ultimo TikTok do perfil e de 16/06/2026), a duracao do acervo
+  deixou de ser detalhe.
+- **A premissa nao testada e que postar menos nao piora cada post.** O indicio a
+  favor: entre os 14 dias com dois posts, o desempenho de um nao previu o do
+  outro (rho -0,09) -- eles nao competiam. Por isso e um teste de duas semanas.
+- **O slot da manha saiu do pool inteiro**, nao so do dia. Mante-lo faria a
+  rotacao alternar e jogar 46 dos 161 posts de volta no slot fraco, anulando
+  metade do ganho. Foi o que aconteceu na primeira tentativa.
+- **`--per-day` do CLI nao tem mais default fixo.** Ele valia 2 e ignorava calado
+  o `posts_per_day` da configuracao -- foi assim que o reschedule pediu 83
+  horarios para 161 itens. A configuracao passou a ser a fonte da verdade.
+
+## O que NAO e alavanca (testado, sem sinal)
+
+Vale registrar para ninguem gastar tempo de novo:
+
+- **Duracao do video**: rho -0,01 com views. Videos curtos tem mais retencao
+  (rho -0,53) e retencao prevê views (+0,74), mas os dois efeitos se cancelam.
+- **Tamanho da legenda** (-0,10) e **numero de hashtags** (-0,08).
+- **Dia da semana**: n de 1 a 2 por dia, insuficiente para concluir.
+- **Canibalizacao entre os dois posts do dia**: rho -0,09, ou seja, nao existia.
+- **Acervo novo**: nao ha. O perfil no TikTok nao publica desde 16/06/2026.
+
+## Sobre o alcance
+
+- **98% do alcance vem de nao seguidores** (16.135 contra 360 em 28 dias). O
+  perfil cresceu de 170 para 1.214 seguidores, mas seguidor quase nao gera view
+  aqui -- quem distribui e o algoritmo do Reels. E o motivo pelo qual a curva de
+  `online_followers` falhou como preditor: ela mede quando os seguidores estao no
+  app, nao quando o algoritmo testa o video.

@@ -7,7 +7,6 @@ calendar than the dry run promised.
 
 from __future__ import annotations
 
-from collections import Counter
 from datetime import date, datetime, time, timedelta
 from zoneinfo import ZoneInfo
 
@@ -90,26 +89,40 @@ class TestNotBefore:
         assert planned[0].local.date() > MONDAY
 
     def test_the_day_still_fills_when_the_cut_is_early(self):
-        dawn = datetime(2026, 8, 10, 5, 0, tzinfo=SAO_PAULO)
+        # Derivado de MONDAY: uma data fixa aqui deixa de ser "de madrugada no
+        # primeiro dia" assim que MONDAY passa dela.
+        dawn = datetime.combine(MONDAY, time(5, 0), tzinfo=SAO_PAULO)
+        esperado = len([s for s in DEFAULT_CONFIG["pool"] if MONDAY.weekday() in s["weekdays"]])
 
-        planned = plan_slots(MONDAY, 1, config(), per_day=2, not_before=dawn)
+        planned = plan_slots(MONDAY, 1, config(), per_day=esperado, not_before=dawn)
 
-        assert len(planned) == 2, "um corte de madrugada nao pode custar slots do dia"
+        assert len(planned) == esperado, "um corte de madrugada nao pode custar slots do dia"
 
 
 class TestNoRut:
-    def test_does_not_post_at_the_same_hour_every_day(self):
-        planned = plan_slots(MONDAY, 21, config(), per_day=2)
+    def test_o_minuto_nunca_e_o_mesmo_dois_dias_seguidos(self):
+        """A variacao vem do jitter, nao mais da rotacao.
 
-        hours = Counter(slot.local.hour for slot in planned)
-        assert len(hours) >= 3, f"so {len(hours)} horario(s) distintos: {dict(hours)}"
+        Ate 25/08/2026 o pool tinha varios horarios por dia e este teste exigia
+        pelo menos tres horas distintas em 21 dias. Com um post diario na unica
+        faixa que se provou, a hora passou a ser sempre a mesma de proposito --
+        o que precisa continuar variando e o minuto, para o post nao sair
+        cravado no mesmo instante todo dia.
+        """
+        planned = plan_slots(MONDAY, 21, config())
 
-    def test_the_top_slot_does_not_take_every_single_day(self):
-        planned = plan_slots(MONDAY, 21, config(), per_day=1)
+        minutos = [slot.local.minute for slot in planned]
+        assert len(set(minutos)) >= 5, f"o jitter parou de espalhar: {sorted(set(minutos))}"
+        assert not any(a == b for a, b in zip(minutos, minutos[1:], strict=False)), (
+            "dois dias seguidos no mesmo minuto"
+        )
 
-        used = Counter(slot.slot_id for slot in planned)
-        most_common = used.most_common(1)[0][1]
-        assert most_common < len(planned), "um unico slot levou todos os dias"
+    def test_o_pool_do_dia_e_respeitado(self):
+        planned = plan_slots(MONDAY, 21, config())
+
+        for slot in planned:
+            definicao = next(s for s in DEFAULT_CONFIG["pool"] if s["id"] == slot.slot_id)
+            assert slot.local.weekday() in definicao["weekdays"]
 
     def test_weekday_and_weekend_use_different_pools(self):
         planned = plan_slots(MONDAY, 14, config(), per_day=2)
@@ -166,33 +179,57 @@ class TestTimezone:
 class TestExploration:
     def test_least_sampled_slots_get_a_turn(self):
         """Without this the engine only ever learns about its starting slots."""
-        pool = [dict(slot) for slot in DEFAULT_CONFIG["pool"]]
-        for slot in pool:
-            slot["samples"] = 100 if slot["id"] != "wd-morning" else 0
-            slot["weight"] = 0.1 if slot["id"] == "wd-morning" else 1.0
+        # Pool sintetico: o pool real tem um slot por dia desde 25/08/2026, e com
+        # um unico candidato nao existe exploracao a testar. A mecanica continua
+        # valendo para quando um horario novo entrar.
+        pool = [
+            {
+                "id": "conhecido",
+                "weekdays": [0, 1, 2, 3, 4],
+                "time": "18:45",
+                "weight": 1.0,
+                "samples": 100,
+            },
+            {
+                "id": "novo",
+                "weekdays": [0, 1, 2, 3, 4],
+                "time": "12:15",
+                "weight": 0.1,
+                "samples": 0,
+            },
+        ]
 
-        planned = plan_slots(MONDAY, 28, config(pool=pool, explore_every=5), per_day=2)
+        planned = plan_slots(MONDAY, 28, config(pool=pool, explore_every=5), per_day=1)
 
         used = {slot.slot_id for slot in planned}
-        assert "wd-morning" in used, "o slot menos observado nunca foi testado"
+        assert "novo" in used, "o slot menos observado nunca foi testado"
 
     def test_exploration_can_be_switched_off(self):
         planned = plan_slots(MONDAY, 14, config(explore_every=0), per_day=2)
         assert planned, "desligar a exploracao nao pode zerar o planejamento"
 
 
-# Os testes de tuning falam da matematica, nao do conteudo do pool. Nomear
-# slots a mao os quebrou quando os horarios mudaram -- um falso alarme, ja que
-# o encolhimento bayesiano nao sabe nada sobre que horas sao.
-FORTE, FRACO = (slot["id"] for slot in DEFAULT_CONFIG["pool"][:2])
-TERCEIRO = DEFAULT_CONFIG["pool"][2]["id"]
+# Os testes de tuning falam da matematica, nao do conteudo do pool. Ja quebraram
+# duas vezes por dependerem do pool real: primeiro por nomear slots a mao, depois
+# por assumir que ele teria pelo menos tres. O encolhimento bayesiano nao sabe
+# nada sobre que horas sao, entao o pool aqui e sintetico.
+FORTE, FRACO, TERCEIRO = "forte", "fraco", "terceiro"
+
+POOL_SINTETICO: dict = {
+    **DEFAULT_CONFIG,
+    "pool": [
+        {"id": FORTE, "weekdays": [0, 1, 2, 3, 4], "time": "10:00", "weight": 1.0, "samples": 0},
+        {"id": FRACO, "weekdays": [0, 1, 2, 3, 4], "time": "15:00", "weight": 1.0, "samples": 0},
+        {"id": TERCEIRO, "weekdays": [0, 1, 2, 3, 4], "time": "20:00", "weight": 1.0, "samples": 0},
+    ],
+}
 
 
 class TestTuning:
     def test_a_strong_slot_gains_weight_and_a_weak_one_loses(self):
         performance = {FORTE: [0.5] * 20, FRACO: [0.05] * 20}
 
-        tuned = tune_weights(DEFAULT_CONFIG, performance)
+        tuned = tune_weights(POOL_SINTETICO, performance)
         weights = {slot["id"]: slot["weight"] for slot in tuned["pool"]}
 
         assert weights[FORTE] > weights[FRACO]
@@ -206,7 +243,7 @@ class TestTuning:
         to the global mean, so numbers from two different datasets say nothing.
         """
         tuned = tune_weights(
-            DEFAULT_CONFIG,
+            POOL_SINTETICO,
             {
                 FORTE: [1.0] * 50,  # muita evidencia
                 FRACO: [1.0],  # um post de sorte
@@ -218,18 +255,18 @@ class TestTuning:
         assert weights[FRACO] < weights[FORTE], "um unico post rendeu o mesmo peso que cinquenta"
 
     def test_unobserved_slots_keep_their_prior_and_survive(self):
-        tuned = tune_weights(DEFAULT_CONFIG, {FORTE: [0.4] * 10})
+        tuned = tune_weights(POOL_SINTETICO, {FORTE: [0.4] * 10})
 
-        antes = {slot["id"]: slot["weight"] for slot in DEFAULT_CONFIG["pool"]}
+        antes = {slot["id"]: slot["weight"] for slot in POOL_SINTETICO["pool"]}
         sem_dados = next(slot for slot in tuned["pool"] if slot["id"] == FRACO)
         assert sem_dados["samples"] == 0
         assert sem_dados["weight"] == pytest.approx(antes[FRACO]), (
             "um slot sem dados nao pode ser punido"
         )
-        assert len(tuned["pool"]) == len(DEFAULT_CONFIG["pool"]), "um slot foi removido"
+        assert len(tuned["pool"]) == len(POOL_SINTETICO["pool"]), "um slot foi removido"
 
     def test_no_data_leaves_the_config_untouched(self):
-        assert tune_weights(DEFAULT_CONFIG, {}) == DEFAULT_CONFIG
+        assert tune_weights(POOL_SINTETICO, {}) == POOL_SINTETICO
 
 
 class TestConfig:

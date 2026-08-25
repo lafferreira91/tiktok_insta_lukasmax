@@ -2,25 +2,11 @@
   "version": 1,
   "source": "heuristic",
   "timezone": "America/Sao_Paulo",
-  "posts_per_day": 2,
+  "posts_per_day": 1,
   "min_gap_minutes": 240,
   "jitter_minutes": 20,
   "explore_every": 7,
   "pool": [
-    {
-      "id": "wd-morning",
-      "weekdays": [
-        0,
-        1,
-        2,
-        3,
-        4
-      ],
-      "time": "09:15",
-      "weight": 1.0,
-      "samples": 12,
-      "rationale": "2.276 views medianos (h24, n=12); o melhor fora da noite"
-    },
     {
       "id": "wd-commute",
       "weekdays": [
@@ -36,17 +22,6 @@
       "rationale": "7.664 views medianos (h24, n=8); 3,4x qualquer outra faixa"
     },
     {
-      "id": "we-late-am",
-      "weekdays": [
-        5,
-        6
-      ],
-      "time": "10:30",
-      "weight": 1.0,
-      "samples": 12,
-      "rationale": "mesma faixa da manha dos dias uteis"
-    },
-    {
       "id": "we-evening",
       "weekdays": [
         5,
@@ -55,7 +30,7 @@
       "time": "18:30",
       "weight": 1.4,
       "samples": 8,
-      "rationale": "mesma faixa da noite dos dias uteis"
+      "rationale": "mesma faixa da noite, no fim de semana"
     }
   ]
 }

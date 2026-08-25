@@ -43,9 +43,16 @@ class TestOPoolPadrao:
             assert hora >= 8, f"{slot['id']} as {slot['time']} e cedo demais"
 
     def test_dias_uteis_e_fim_de_semana_ambos_cobertos(self):
-        uteis = [s for s in scheduling.DEFAULT_SLOTS if 0 in s["weekdays"]]
-        fds = [s for s in scheduling.DEFAULT_SLOTS if 5 in s["weekdays"]]
-        assert len(uteis) >= 2 and len(fds) >= 2
+        """Nenhum dia da semana pode ficar sem horario nenhum.
+
+        Antes exigia dois slots de cada tipo, o que era so um proxy de "o pool
+        e variado". Desde 25/08/2026 e um por dia de propósito -- o que ainda
+        nao pode acontecer e um dia da semana descoberto.
+        """
+        for dia in range(7):
+            assert [s for s in scheduling.DEFAULT_SLOTS if dia in s["weekdays"]], (
+                f"o dia {dia} da semana nao tem horario nenhum"
+            )
 
 
 class TestRemarcacao:
