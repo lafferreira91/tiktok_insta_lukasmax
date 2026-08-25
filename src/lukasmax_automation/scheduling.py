@@ -28,87 +28,61 @@ from zoneinfo import ZoneInfo
 
 TIMEZONE = "America/Sao_Paulo"
 
-#: Horarios medidos no proprio Instagram dele, nao herdados do TikTok.
+#: Horarios medidos no proprio Instagram dele, com 30 posts (25/08/2026).
 #:
-#: Os 7 primeiros posts (13/08/2026) mostraram algo que o historico do TikTok nao
-#: previa: a faixa 12h-14h rende **~11x menos** que a partir das 17h -- mediana de
-#: 1.460 views contra 15.738. E nao e qualidade de video: os dois grupos tem
-#: ranking e views de TikTok praticamente identicos (mediana 762k para os do dia,
-#: 722k para os da noite), e a serie alterna alto-baixo em vez de so subir, o que
-#: descarta crescimento da conta como explicacao.
+#: Medianas de views as 24h, todas na mesma idade para a comparacao ser justa:
 #:
-#: Isso converge com a curva de ``online_followers`` da API, cujo pico cai entre
-#: 19h e 22h -- duas fontes independentes apontando para o mesmo lugar.
+#:     18-19h  7.664 (n=8)   <- a faixa que rende
+#:     10h     2.276 (n=12)
+#:     16h     1.789 (n=4)
+#:     12-13h  1.141 (n=3)
+#:     22h     1.101 (n=3)
 #:
-#: O slot do almoco saiu. O da manha ficou: ele **ainda nao tem nenhuma amostra**,
-#: e remover por suposicao seria repetir o erro que o almoco acabou de expor.
+#: A vantagem da noite **sobrevive ao controle por ranking do video**: 9,2x entre
+#: os videos de topo e 2,6x entre os da cauda. Nao e artefato de terem calhado
+#: videos melhores a noite.
+#:
+#: Duas hipoteses minhas cairam aqui. O slot das 21h veio da curva de
+#: ``online_followers`` da API, cujo pico esta entre 19h e 22h -- e ficou em
+#: ultimo lugar. E o das 16h, que eu tinha posto com peso alto por causa de um
+#: unico bom resultado, ficou abaixo da manha. Os dois sairam.
+#:
+#: Sobraram dois slots por dia, o que e exatamente o necessario para 2 posts
+#: diarios: um na melhor faixa medida e um na melhor faixa disponivel fora dela.
+#: Nao ha mais rotacao porque nao ha mais o que rotacionar -- a variacao vem do
+#: jitter.
 DEFAULT_SLOTS: list[dict[str, Any]] = [
     {
         "id": "wd-morning",
         "weekdays": [0, 1, 2, 3, 4],
         "time": "09:15",
-        "weight": 0.90,
-        "samples": 0,
-        "rationale": "sem amostra ainda; fica para ser medido antes de qualquer corte",
-    },
-    {
-        "id": "wd-afternoon",
-        "weekdays": [0, 1, 2, 3, 4],
-        # 16:45 e nao 17:15 para abrir 270 minutos ate as 21:15. Com 17:15 a
-        # distancia era de exatamente 240 -- o minimo -- e o jitter derrubava o
-        # par noturno, empurrando o segundo post do dia para a manha.
-        "time": "16:45",
-        "weight": 1.20,
-        "samples": 1,
-        "rationale": "16.560 views no unico teste, o melhor resultado ate agora",
+        "weight": 1.00,
+        "samples": 12,
+        "rationale": "2.276 views medianos (h24, n=12); o melhor fora da noite",
     },
     {
         "id": "wd-commute",
         "weekdays": [0, 1, 2, 3, 4],
         "time": "18:45",
-        "weight": 1.20,
-        "samples": 1,
-        "rationale": "15.738 views; junto com a tarde forma a faixa que rende",
-    },
-    {
-        "id": "wd-night",
-        "weekdays": [0, 1, 2, 3, 4],
-        "time": "21:15",
-        "weight": 1.00,
-        "samples": 0,
-        "rationale": "pico de seguidores online pela API; entra para ser testado",
+        "weight": 1.40,
+        "samples": 8,
+        "rationale": "7.664 views medianos (h24, n=8); 3,4x qualquer outra faixa",
     },
     {
         "id": "we-late-am",
         "weekdays": [5, 6],
         "time": "10:30",
-        "weight": 0.85,
-        "samples": 1,
-        "rationale": "497 views no unico teste, o pior de todos",
-    },
-    {
-        "id": "we-afternoon",
-        "weekdays": [5, 6],
-        "time": "16:15",
-        "weight": 1.10,
-        "samples": 0,
-        "rationale": "mesma faixa da tarde que lidera nos dias uteis",
+        "weight": 1.00,
+        "samples": 12,
+        "rationale": "mesma faixa da manha dos dias uteis",
     },
     {
         "id": "we-evening",
         "weekdays": [5, 6],
         "time": "18:30",
-        "weight": 1.20,
-        "samples": 2,
-        "rationale": "4.988 e 1.778 views; melhor que qualquer horario diurno",
-    },
-    {
-        "id": "we-night",
-        "weekdays": [5, 6],
-        "time": "21:00",
-        "weight": 1.00,
-        "samples": 0,
-        "rationale": "mesmo teste noturno dos dias uteis, no fim de semana",
+        "weight": 1.40,
+        "samples": 8,
+        "rationale": "mesma faixa da noite dos dias uteis",
     },
 ]
 

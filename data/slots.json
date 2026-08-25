@@ -17,23 +17,9 @@
         4
       ],
       "time": "09:15",
-      "weight": 0.9,
-      "samples": 0,
-      "rationale": "sem amostra ainda; fica para ser medido antes de qualquer corte"
-    },
-    {
-      "id": "wd-afternoon",
-      "weekdays": [
-        0,
-        1,
-        2,
-        3,
-        4
-      ],
-      "time": "16:45",
-      "weight": 1.2,
-      "samples": 1,
-      "rationale": "16.560 views no unico teste, o melhor resultado ate agora"
+      "weight": 1.0,
+      "samples": 12,
+      "rationale": "2.276 views medianos (h24, n=12); o melhor fora da noite"
     },
     {
       "id": "wd-commute",
@@ -45,23 +31,9 @@
         4
       ],
       "time": "18:45",
-      "weight": 1.2,
-      "samples": 1,
-      "rationale": "15.738 views; junto com a tarde forma a faixa que rende"
-    },
-    {
-      "id": "wd-night",
-      "weekdays": [
-        0,
-        1,
-        2,
-        3,
-        4
-      ],
-      "time": "21:15",
-      "weight": 1.0,
-      "samples": 0,
-      "rationale": "pico de seguidores online pela API; entra para ser testado"
+      "weight": 1.4,
+      "samples": 8,
+      "rationale": "7.664 views medianos (h24, n=8); 3,4x qualquer outra faixa"
     },
     {
       "id": "we-late-am",
@@ -70,20 +42,9 @@
         6
       ],
       "time": "10:30",
-      "weight": 0.85,
-      "samples": 1,
-      "rationale": "497 views no unico teste, o pior de todos"
-    },
-    {
-      "id": "we-afternoon",
-      "weekdays": [
-        5,
-        6
-      ],
-      "time": "16:15",
-      "weight": 1.1,
-      "samples": 0,
-      "rationale": "mesma faixa da tarde que lidera nos dias uteis"
+      "weight": 1.0,
+      "samples": 12,
+      "rationale": "mesma faixa da manha dos dias uteis"
     },
     {
       "id": "we-evening",
@@ -92,20 +53,9 @@
         6
       ],
       "time": "18:30",
-      "weight": 1.2,
-      "samples": 2,
-      "rationale": "4.988 e 1.778 views; melhor que qualquer horario diurno"
-    },
-    {
-      "id": "we-night",
-      "weekdays": [
-        5,
-        6
-      ],
-      "time": "21:00",
-      "weight": 1.0,
-      "samples": 0,
-      "rationale": "mesmo teste noturno dos dias uteis, no fim de semana"
+      "weight": 1.4,
+      "samples": 8,
+      "rationale": "mesma faixa da noite dos dias uteis"
     }
   ]
 }

@@ -8,7 +8,7 @@ calendar than the dry run promised.
 from __future__ import annotations
 
 from collections import Counter
-from datetime import date, datetime, timedelta
+from datetime import date, datetime, time, timedelta
 from zoneinfo import ZoneInfo
 
 import pytest
@@ -17,7 +17,20 @@ from lukasmax_automation import scheduling
 from lukasmax_automation.scheduling import DEFAULT_CONFIG, plan_slots, tune_weights
 
 SAO_PAULO = ZoneInfo("America/Sao_Paulo")
-MONDAY = date(2026, 8, 10)
+
+
+def _proxima_segunda() -> date:
+    """A proxima segunda-feira ainda no futuro.
+
+    Era 10/08/2026, fixa, e o teste apodreceu sozinho quando essa data virou
+    passado: ``plan_slots`` recusa horario anterior a agora, entao o
+    planejamento voltava vazio sem nada no codigo ter mudado.
+    """
+    hoje = date.today()
+    return hoje + timedelta(days=(7 - hoje.weekday()) % 7 or 7)
+
+
+MONDAY = _proxima_segunda()
 
 
 def config(**overrides):
@@ -68,7 +81,9 @@ class TestNotBefore:
             assert slot.local > afternoon, f"{slot.local} ja tinha passado"
 
     def test_a_late_start_pushes_the_first_post_to_the_next_day(self):
-        late = datetime(2026, 8, 10, 23, 59, tzinfo=SAO_PAULO)
+        # Derivado de MONDAY: uma data fixa aqui deixa de ser 'tarde no
+        # primeiro dia' assim que MONDAY passa dela.
+        late = datetime.combine(MONDAY, time(23, 59), tzinfo=SAO_PAULO)
 
         planned = plan_slots(MONDAY, 3, config(), per_day=2, not_before=late)
 

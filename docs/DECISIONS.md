@@ -197,3 +197,30 @@ escolhas que não seriam óbvias para quem chega depois.
   Sem a reserva, um job descartado ali empurra o post da noite para as 08:13 do
   dia seguinte: oito horas fora do horario e ainda poluindo a medicao do slot da
   manha. `test_existe_uma_hora_de_reserva_depois_do_ultimo_slot` guarda isso.
+
+## Horarios, terceira rodada (25/08/2026, n=30)
+
+- **As duas hipoteses que eu tinha adicionado cairam.** O slot das 21h veio da
+  curva de `online_followers` da API (pico entre 19h e 22h) e ficou em ULTIMO
+  lugar: 1.101 views medianos contra 7.664 da faixa 18-19h. O slot das 16h, que
+  eu tinha posto com peso alto por causa de um unico bom resultado, ficou abaixo
+  da manha. Ambos removidos.
+- **A vantagem da noite sobrevive ao controle por ranking**: 9,2x entre os videos
+  de topo (rank 0-12) e 2,6x entre os da cauda. Nao era artefato de terem
+  calhado videos melhores a noite -- que era exatamente o confundidor a descartar.
+- **48% dos posts que faltavam estavam em faixas ja reprovadas** e apenas 15% na
+  melhor. Depois da remarcacao: 50% na melhor faixa. Esse era o custo real de
+  manter slots reprovados no pool, e nao aparecia em nenhuma metrica ate alguem
+  contar.
+- **O ranking do TikTok quase nao prevê o Instagram**: rho de Spearman +0,12
+  entre posicao no ranking e views no Instagram; views no TikTok, +0,23. A fila
+  inteira e ordenada por esse ranking, e a ordenacao vale muito pouco aqui.
+- **O que prevê e retencao**: tempo assistido rho +0,81, retencao
+  (assistido/duracao) +0,74. Nao serve para escolher video antes de postar --
+  so se sabe depois -- mas descarta duracao como fator (+/-0,01).
+- **As taxas de engajamento do TikTok tem correlacao NEGATIVA** (salvamento
+  -0,58, compartilhamento -0,48). Provavel artefato: taxa = engajamento/views,
+  entao videos de pouca audiencia tem taxa inflada. Nao usar como sinal.
+- **Idade do video ficou como suspeita, nao como achado**: rho +0,39 a favor dos
+  mais novos, mas os mais novos aqui tambem eram os mais bem ranqueados, e com
+  n=30 nao da para separar os dois.
