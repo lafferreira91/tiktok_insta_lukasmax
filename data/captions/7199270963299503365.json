@@ -1,10 +1,10 @@
 {
   "tiktok_id": "7199270963299503365",
-  "prompt_version": "v1",
+  "prompt_version": "v2",
   "model": "humano",
   "generated_at": "2026-08-08T22:31:30.466213+00:00",
   "input_fingerprint": "sha256:f949b3f8593d14ef30e43cbcb7ebbf8f2047f8945cb98b50cdb72f36849b036a",
-  "caption": "Me desculpa por não ser o que você esperava ✨\n\nPedido de desculpas que na verdade é um aviso.",
+  "caption": "Me desculpa por não ser o que você esperava ✨",
   "hashtags": [
     "#AmorNaoEhPra",
     "#ElanaDaraVitorKley",
@@ -16,5 +16,11 @@
   "status": "approved",
   "edited_by_human": true,
   "approved_at": "2026-08-08T22:31:30.466247+00:00",
-  "history": []
+  "history": [
+    {
+      "at": "2026-08-08T22:31:30.466213+00:00",
+      "model": "humano",
+      "caption": "Me desculpa por não ser o que você esperava ✨\n\nPedido de desculpas que na verdade é um aviso."
+    }
+  ]
 }

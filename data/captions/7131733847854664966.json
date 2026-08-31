@@ -1,10 +1,10 @@
 {
   "tiktok_id": "7131733847854664966",
-  "prompt_version": "v1",
+  "prompt_version": "v2",
   "model": "humano",
   "generated_at": "2026-08-08T22:31:30.475716+00:00",
   "input_fingerprint": "sha256:4a5e6df0ed9c342a2e774196da67eabfd1b510e49410fc895e22bd7273299ab9",
-  "caption": "A gente se perdeu e não se encontrou mais 🥲\n\nNão fosse tão tarde. Mas é sempre tarde.",
+  "caption": "A gente se perdeu e não se encontrou mais 🥲",
   "hashtags": [
     "#NaoFosseTaoTarde",
     "#LouGarcia",
@@ -16,5 +16,11 @@
   "status": "approved",
   "edited_by_human": true,
   "approved_at": "2026-08-08T22:31:30.475859+00:00",
-  "history": []
+  "history": [
+    {
+      "at": "2026-08-08T22:31:30.475716+00:00",
+      "model": "humano",
+      "caption": "A gente se perdeu e não se encontrou mais 🥲\n\nNão fosse tão tarde. Mas é sempre tarde."
+    }
+  ]
 }

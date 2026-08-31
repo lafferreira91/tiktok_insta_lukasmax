@@ -1,10 +1,10 @@
 {
   "tiktok_id": "7268768328976518405",
-  "prompt_version": "v1",
+  "prompt_version": "v2",
   "model": "humano",
   "generated_at": "2026-08-08T22:31:30.410227+00:00",
   "input_fingerprint": "sha256:fae3d2e2fc02dff2f07983eb4fdb464985d47f46935359056c0038cccbbb51a7",
-  "caption": "Não desista ✋\n\nConselho de quem está dublando no carro em vez de resolver a vida. Mas vale.",
+  "caption": "Não desista ✋",
   "hashtags": [
     "#WhatayaWant",
     "#AdamLambert",
@@ -16,5 +16,11 @@
   "status": "approved",
   "edited_by_human": true,
   "approved_at": "2026-08-08T22:31:30.410326+00:00",
-  "history": []
+  "history": [
+    {
+      "at": "2026-08-08T22:31:30.410227+00:00",
+      "model": "humano",
+      "caption": "Não desista ✋\n\nConselho de quem está dublando no carro em vez de resolver a vida. Mas vale."
+    }
+  ]
 }

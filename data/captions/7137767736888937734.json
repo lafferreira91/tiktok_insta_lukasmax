@@ -1,10 +1,10 @@
 {
   "tiktok_id": "7137767736888937734",
-  "prompt_version": "v1",
+  "prompt_version": "v2",
   "model": "humano",
   "generated_at": "2026-08-08T22:31:30.436112+00:00",
   "input_fingerprint": "sha256:13c964153e6357952822568389742620a5e6bd9f619f828c9d06be28292e7b02",
-  "caption": "Levando a Kim pra curtir no petshop 🐶\n\nEla não pediu. Ela nunca pede.",
+  "caption": "Levando a Kim pra curtir no petshop 🐶",
   "hashtags": [
     "#CACHORRINHAS",
     "#LuisaSonza",
@@ -16,5 +16,11 @@
   "status": "approved",
   "edited_by_human": true,
   "approved_at": "2026-08-08T22:31:30.436145+00:00",
-  "history": []
+  "history": [
+    {
+      "at": "2026-08-08T22:31:30.436112+00:00",
+      "model": "humano",
+      "caption": "Levando a Kim pra curtir no petshop 🐶\n\nEla não pediu. Ela nunca pede."
+    }
+  ]
 }

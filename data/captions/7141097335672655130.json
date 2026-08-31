@@ -1,10 +1,10 @@
 {
   "tiktok_id": "7141097335672655130",
-  "prompt_version": "v1",
+  "prompt_version": "v2",
   "model": "humano",
   "generated_at": "2026-08-08T22:31:30.479959+00:00",
   "input_fingerprint": "sha256:884d6565253b9feeb9af28de0520275a23d0adb00ceea0f3d7aa8d1b2f6c55d2",
-  "caption": "Você é um perigo, dá vontade de correr ✨\n\nDá vontade. Ninguém corre.",
+  "caption": "Você é um perigo, dá vontade de correr ✨",
   "hashtags": [
     "#VoceEUmPerigo",
     "#PRISCILLA",
@@ -16,5 +16,11 @@
   "status": "approved",
   "edited_by_human": true,
   "approved_at": "2026-08-08T22:31:30.479990+00:00",
-  "history": []
+  "history": [
+    {
+      "at": "2026-08-08T22:31:30.479959+00:00",
+      "model": "humano",
+      "caption": "Você é um perigo, dá vontade de correr ✨\n\nDá vontade. Ninguém corre."
+    }
+  ]
 }

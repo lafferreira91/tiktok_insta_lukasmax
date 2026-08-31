@@ -1,10 +1,10 @@
 {
   "tiktok_id": "7194055345004612869",
-  "prompt_version": "v1",
+  "prompt_version": "v2",
   "model": "humano",
   "generated_at": "2026-08-08T20:21:19.626250+00:00",
   "input_fingerprint": "sha256:23b3990b51531740449ed3945a7ca9aa783e0c265089e400b93562b0b759999b",
-  "caption": "Sofri muito até aqui 🙂\n\nO \"até aqui\" é a parte boa da frase. Foca nela.",
+  "caption": "Sofri muito até aqui 🙂",
   "hashtags": [
     "#Anestesiado",
     "#BrunoGadiol",
@@ -17,5 +17,11 @@
   "status": "approved",
   "edited_by_human": true,
   "approved_at": "2026-08-08T20:21:19.626264+00:00",
-  "history": []
+  "history": [
+    {
+      "at": "2026-08-08T20:21:19.626250+00:00",
+      "model": "humano",
+      "caption": "Sofri muito até aqui 🙂\n\nO \"até aqui\" é a parte boa da frase. Foca nela."
+    }
+  ]
 }

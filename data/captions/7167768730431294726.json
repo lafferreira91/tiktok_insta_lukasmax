@@ -1,10 +1,10 @@
 {
   "tiktok_id": "7167768730431294726",
-  "prompt_version": "v1",
+  "prompt_version": "v2",
   "model": "humano",
   "generated_at": "2026-08-08T22:31:30.453735+00:00",
   "input_fingerprint": "sha256:fd0f78f323d28367fd83b50403ad6db60984a8f9c787ab4281308459029c6de4",
-  "caption": "Tell me 🖤\n\nA Avril fez essa pergunta em 2002 e ninguém respondeu até hoje.",
+  "caption": "Tell me 🖤",
   "hashtags": [
     "#Complicated",
     "#AvrilLavigne",
@@ -16,5 +16,11 @@
   "status": "approved",
   "edited_by_human": true,
   "approved_at": "2026-08-08T22:31:30.453760+00:00",
-  "history": []
+  "history": [
+    {
+      "at": "2026-08-08T22:31:30.453735+00:00",
+      "model": "humano",
+      "caption": "Tell me 🖤\n\nA Avril fez essa pergunta em 2002 e ninguém respondeu até hoje."
+    }
+  ]
 }

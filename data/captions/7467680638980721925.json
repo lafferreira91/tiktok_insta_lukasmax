@@ -1,10 +1,10 @@
 {
   "tiktok_id": "7467680638980721925",
-  "prompt_version": "v1",
+  "prompt_version": "v2",
   "model": "humano",
   "generated_at": "2026-08-08T22:31:30.496603+00:00",
   "input_fingerprint": "sha256:f5e386a28e2d09c3a0b920efec224cbe590fe284912d1a72fb156d265863e13f",
-  "caption": "Drinks or coffee ☕\n\nA resposta certa é os dois, em ordem errada.",
+  "caption": "Drinks or coffee ☕",
   "hashtags": [
     "#DrinksOrCoffee",
     "#ROSE",
@@ -16,5 +16,11 @@
   "status": "approved",
   "edited_by_human": true,
   "approved_at": "2026-08-08T22:31:30.496621+00:00",
-  "history": []
+  "history": [
+    {
+      "at": "2026-08-08T22:31:30.496603+00:00",
+      "model": "humano",
+      "caption": "Drinks or coffee ☕\n\nA resposta certa é os dois, em ordem errada."
+    }
+  ]
 }

@@ -1,10 +1,10 @@
 {
   "tiktok_id": "7274588859537558789",
-  "prompt_version": "v1",
+  "prompt_version": "v2",
   "model": "humano",
   "generated_at": "2026-08-08T22:31:30.404346+00:00",
   "input_fingerprint": "sha256:dc9d62ff29276786816107c48383f85fc3826c799c34c717422f0cf3630487bc",
-  "caption": "Vai devagar, sua criança levada 🎹\n\nO Billy Joel me deu esse conselho em 1977. Continuo sem seguir.",
+  "caption": "Vai devagar, sua criança levada 🎹",
   "hashtags": [
     "#Vienna",
     "#BillyJoel",
@@ -16,5 +16,11 @@
   "status": "approved",
   "edited_by_human": true,
   "approved_at": "2026-08-08T22:31:30.404393+00:00",
-  "history": []
+  "history": [
+    {
+      "at": "2026-08-08T22:31:30.404346+00:00",
+      "model": "humano",
+      "caption": "Vai devagar, sua criança levada 🎹\n\nO Billy Joel me deu esse conselho em 1977. Continuo sem seguir."
+    }
+  ]
 }

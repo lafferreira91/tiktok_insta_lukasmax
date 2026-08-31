@@ -1,10 +1,10 @@
 {
   "tiktok_id": "7163379865733942533",
-  "prompt_version": "v1",
+  "prompt_version": "v2",
   "model": "humano",
   "generated_at": "2026-08-08T22:31:30.477699+00:00",
   "input_fingerprint": "sha256:ed95a2819f5d9c578de0ae93fdef35d414f0731fec0eb3a6d971d13a5f5fe74c",
-  "caption": "Vou dizer de novo ✨\n\nDe novo e de novo. É literalmente o refrão.",
+  "caption": "Vou dizer de novo ✨",
   "hashtags": [
     "#ComeBackToMe",
     "#VanessaHudgens",
@@ -16,5 +16,11 @@
   "status": "approved",
   "edited_by_human": true,
   "approved_at": "2026-08-08T22:31:30.477746+00:00",
-  "history": []
+  "history": [
+    {
+      "at": "2026-08-08T22:31:30.477699+00:00",
+      "model": "humano",
+      "caption": "Vou dizer de novo ✨\n\nDe novo e de novo. É literalmente o refrão."
+    }
+  ]
 }

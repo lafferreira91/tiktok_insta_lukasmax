@@ -1,10 +1,10 @@
 {
   "tiktok_id": "7373295250850254086",
-  "prompt_version": "v1",
+  "prompt_version": "v2",
   "model": "humano",
   "generated_at": "2026-08-08T22:31:30.468876+00:00",
   "input_fingerprint": "sha256:a9039e1dd61b279f2c808bb0bfc73e215e61ef9b87243182333efaaa664ed92f",
-  "caption": "Ele me disse que me amaria a vida toda 💔\n\nA vida toda durou menos que o álbum.",
+  "caption": "Ele me disse que me amaria a vida toda 💔",
   "hashtags": [
     "#ICanDoIt",
     "#TaylorSwift",
@@ -16,5 +16,11 @@
   "status": "approved",
   "edited_by_human": true,
   "approved_at": "2026-08-08T22:31:30.468898+00:00",
-  "history": []
+  "history": [
+    {
+      "at": "2026-08-08T22:31:30.468876+00:00",
+      "model": "humano",
+      "caption": "Ele me disse que me amaria a vida toda 💔\n\nA vida toda durou menos que o álbum."
+    }
+  ]
 }

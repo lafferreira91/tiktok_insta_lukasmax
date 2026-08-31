@@ -1,10 +1,10 @@
 {
   "tiktok_id": "7248389240256548101",
-  "prompt_version": "v1",
+  "prompt_version": "v2",
   "model": "humano",
   "generated_at": "2026-08-08T20:21:19.620341+00:00",
   "input_fingerprint": "sha256:5810097d176037ce20f11adfbde4712ca13c8092357db0732896f408119a7b44",
-  "caption": "Não tenho mais tempo pra ficar na sua mão ✋\n\nDemorei uns anos pra aprender isso. Barato, considerando.",
+  "caption": "Não tenho mais tempo pra ficar na sua mão ✋",
   "hashtags": [
     "#LoveLove",
     "#Melody",
@@ -17,5 +17,11 @@
   "status": "approved",
   "edited_by_human": true,
   "approved_at": "2026-08-08T20:21:19.620361+00:00",
-  "history": []
+  "history": [
+    {
+      "at": "2026-08-08T20:21:19.620341+00:00",
+      "model": "humano",
+      "caption": "Não tenho mais tempo pra ficar na sua mão ✋\n\nDemorei uns anos pra aprender isso. Barato, considerando."
+    }
+  ]
 }

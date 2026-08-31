@@ -1,10 +1,10 @@
 {
   "tiktok_id": "7178503899534429446",
-  "prompt_version": "v1",
+  "prompt_version": "v2",
   "model": "humano",
   "generated_at": "2026-08-08T22:31:30.462489+00:00",
   "input_fingerprint": "sha256:49b620d5877fd54af26e059aadb3d5659a7d82bcddbe116e3604a7c4c515ccfa",
-  "caption": "Trago seu amor de volta ✨\n\nSem consulta, sem garantia, sem endereço fixo.",
+  "caption": "Trago seu amor de volta ✨",
   "hashtags": [
     "#TragoSeuAmorDe",
     "#PablloVittar",
@@ -16,5 +16,11 @@
   "status": "approved",
   "edited_by_human": true,
   "approved_at": "2026-08-08T22:31:30.462526+00:00",
-  "history": []
+  "history": [
+    {
+      "at": "2026-08-08T22:31:30.462489+00:00",
+      "model": "humano",
+      "caption": "Trago seu amor de volta ✨\n\nSem consulta, sem garantia, sem endereço fixo."
+    }
+  ]
 }

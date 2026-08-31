@@ -1,10 +1,10 @@
 {
   "tiktok_id": "7141472042238397701",
-  "prompt_version": "v1",
+  "prompt_version": "v2",
   "model": "humano",
   "generated_at": "2026-08-08T22:31:30.454989+00:00",
   "input_fingerprint": "sha256:9aff4351d354051d4fcf96be35b8e07e08dba1cd8f0ac17dd216b64e0a77e449",
-  "caption": "Vou morrer sozinho 🔥\n\nDramático? Sim. Falso? Não necessariamente.",
+  "caption": "Vou morrer sozinho 🔥",
   "hashtags": [
     "#VouMorrerSozinho",
     "#Jao",
@@ -16,5 +16,11 @@
   "status": "approved",
   "edited_by_human": true,
   "approved_at": "2026-08-08T22:31:30.455007+00:00",
-  "history": []
+  "history": [
+    {
+      "at": "2026-08-08T22:31:30.454989+00:00",
+      "model": "humano",
+      "caption": "Vou morrer sozinho 🔥\n\nDramático? Sim. Falso? Não necessariamente."
+    }
+  ]
 }

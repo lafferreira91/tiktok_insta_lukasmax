@@ -1,10 +1,10 @@
 {
   "tiktok_id": "7024692283316489478",
-  "prompt_version": "v1",
+  "prompt_version": "v2",
   "model": "humano",
   "generated_at": "2026-08-08T22:31:30.495524+00:00",
   "input_fingerprint": "sha256:f737f0d3e9e2adf1fb26ac1e13ec59358cd15cd2b837cb8308257afae26bc7b5",
-  "caption": "Praise God 🙏\n\nO Kanye pediu. Eu obedeci no volume máximo.",
+  "caption": "Praise God 🙏",
   "hashtags": [
     "#PraiseGod",
     "#KanyeWest",
@@ -16,5 +16,11 @@
   "status": "approved",
   "edited_by_human": true,
   "approved_at": "2026-08-08T22:31:30.495543+00:00",
-  "history": []
+  "history": [
+    {
+      "at": "2026-08-08T22:31:30.495524+00:00",
+      "model": "humano",
+      "caption": "Praise God 🙏\n\nO Kanye pediu. Eu obedeci no volume máximo."
+    }
+  ]
 }

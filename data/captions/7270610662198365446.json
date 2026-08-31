@@ -1,10 +1,10 @@
 {
   "tiktok_id": "7270610662198365446",
-  "prompt_version": "v1",
+  "prompt_version": "v2",
   "model": "humano",
   "generated_at": "2026-08-08T22:31:30.419604+00:00",
   "input_fingerprint": "sha256:a6b13b14b26db99cb99f4029ff48b9a2bd222ef9afd50219f51227a046d1755c",
-  "caption": "Mwah 😘\n\nEsse era o vídeo inteiro. Não tinha plano B.",
+  "caption": "Mwah 😘",
   "hashtags": [
     "#BlowYourMind",
     "#DuaLipa",
@@ -16,5 +16,11 @@
   "status": "approved",
   "edited_by_human": true,
   "approved_at": "2026-08-08T22:31:30.419634+00:00",
-  "history": []
+  "history": [
+    {
+      "at": "2026-08-08T22:31:30.419604+00:00",
+      "model": "humano",
+      "caption": "Mwah 😘\n\nEsse era o vídeo inteiro. Não tinha plano B."
+    }
+  ]
 }

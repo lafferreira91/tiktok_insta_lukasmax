@@ -1,10 +1,10 @@
 {
   "tiktok_id": "7101805204806405382",
-  "prompt_version": "v1",
+  "prompt_version": "v2",
   "model": "humano",
   "generated_at": "2026-08-08T22:31:30.493105+00:00",
   "input_fingerprint": "sha256:306ef1191c8344d909b6d89787d86482637f22c48c15a4a626f55dc2fce984e2",
-  "caption": "Sunroof ☀️\n\nTeto solar aberto e nenhuma responsabilidade em vista.",
+  "caption": "Sunroof ☀️",
   "hashtags": [
     "#Sunroof",
     "#NickyYoureDazy",
@@ -16,5 +16,11 @@
   "status": "approved",
   "edited_by_human": true,
   "approved_at": "2026-08-08T22:31:30.493126+00:00",
-  "history": []
+  "history": [
+    {
+      "at": "2026-08-08T22:31:30.493105+00:00",
+      "model": "humano",
+      "caption": "Sunroof ☀️\n\nTeto solar aberto e nenhuma responsabilidade em vista."
+    }
+  ]
 }

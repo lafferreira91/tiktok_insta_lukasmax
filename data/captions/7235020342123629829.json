@@ -1,10 +1,10 @@
 {
   "tiktok_id": "7235020342123629829",
-  "prompt_version": "v1",
+  "prompt_version": "v2",
   "model": "humano",
   "generated_at": "2026-08-08T22:31:30.420767+00:00",
   "input_fingerprint": "sha256:d3a3e1bae74faf900bf99c94f68e358452b31aa3c107d494b59d6c92d65d4eac",
-  "caption": "Deve ser a minha energia ⚡\n\nA artista respondeu. Eu não me recuperei até hoje.",
+  "caption": "Deve ser a minha energia ⚡",
   "hashtags": [
     "#Energy",
     "#MorganStJean",
@@ -16,5 +16,11 @@
   "status": "approved",
   "edited_by_human": true,
   "approved_at": "2026-08-08T22:31:30.420795+00:00",
-  "history": []
+  "history": [
+    {
+      "at": "2026-08-08T22:31:30.420767+00:00",
+      "model": "humano",
+      "caption": "Deve ser a minha energia ⚡\n\nA artista respondeu. Eu não me recuperei até hoje."
+    }
+  ]
 }

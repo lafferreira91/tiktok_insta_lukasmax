@@ -1,10 +1,10 @@
 {
   "tiktok_id": "6843428822872804613",
-  "prompt_version": "v1",
+  "prompt_version": "v2",
   "model": "humano",
   "generated_at": "2026-08-08T22:31:30.496227+00:00",
   "input_fingerprint": "sha256:d214af5c2179f68c73bfb408779c297691feef8c57a973fd30b243064ae1c132",
-  "caption": "Like that x Sunday best 🎧\n\nMashup que não deveria funcionar e funciona.",
+  "caption": "Like that x Sunday best 🎧",
   "hashtags": [
     "#LikeThatXSunday",
     "#Rapidsongs",
@@ -16,5 +16,11 @@
   "status": "approved",
   "edited_by_human": true,
   "approved_at": "2026-08-08T22:31:30.496249+00:00",
-  "history": []
+  "history": [
+    {
+      "at": "2026-08-08T22:31:30.496227+00:00",
+      "model": "humano",
+      "caption": "Like that x Sunday best 🎧\n\nMashup que não deveria funcionar e funciona."
+    }
+  ]
 }

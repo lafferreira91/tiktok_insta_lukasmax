@@ -1,10 +1,10 @@
 {
   "tiktok_id": "7250083252973604102",
-  "prompt_version": "v1",
+  "prompt_version": "v2",
   "model": "humano",
   "generated_at": "2026-08-08T22:31:30.438366+00:00",
   "input_fingerprint": "sha256:8f5ac96009d72ffe761aafca85b08143e058101cf1cd1442a7b5612917b5b30e",
-  "caption": "Faz o que quiser fazer ✨\n\nLiberdade total. Escolhi dublar no carro. Julguem.",
+  "caption": "Faz o que quiser fazer ✨",
   "hashtags": [
     "#TaOK",
     "#DENNISMCKevinO",
@@ -16,5 +16,11 @@
   "status": "approved",
   "edited_by_human": true,
   "approved_at": "2026-08-08T22:31:30.438404+00:00",
-  "history": []
+  "history": [
+    {
+      "at": "2026-08-08T22:31:30.438366+00:00",
+      "model": "humano",
+      "caption": "Faz o que quiser fazer ✨\n\nLiberdade total. Escolhi dublar no carro. Julguem."
+    }
+  ]
 }

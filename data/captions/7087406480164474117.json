@@ -1,10 +1,10 @@
 {
   "tiktok_id": "7087406480164474117",
-  "prompt_version": "v1",
+  "prompt_version": "v2",
   "model": "humano",
   "generated_at": "2026-08-08T22:31:30.492674+00:00",
   "input_fingerprint": "sha256:92d54cab70f82b9209fea3bae939248f991c3d080dc3e50b7d9cad139216a963",
-  "caption": "Não dá pra ser influencer, inferno 😡\n\nDeu. Três anos depois, deu.",
+  "caption": "Não dá pra ser influencer, inferno 😡",
   "hashtags": [
     "#BONEKINHA",
     "#GloriaGroove",
@@ -16,5 +16,11 @@
   "status": "approved",
   "edited_by_human": true,
   "approved_at": "2026-08-08T22:31:30.492703+00:00",
-  "history": []
+  "history": [
+    {
+      "at": "2026-08-08T22:31:30.492674+00:00",
+      "model": "humano",
+      "caption": "Não dá pra ser influencer, inferno 😡\n\nDeu. Três anos depois, deu."
+    }
+  ]
 }

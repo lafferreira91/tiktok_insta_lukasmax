@@ -1,10 +1,10 @@
 {
   "tiktok_id": "7138139410851237125",
-  "prompt_version": "v1",
+  "prompt_version": "v2",
   "model": "humano",
   "generated_at": "2026-08-08T22:31:30.445221+00:00",
   "input_fingerprint": "sha256:30586642a541177624a085f55f7e0ca54a94072e826cf207d9b18bffb7732b53",
-  "caption": "Diz aí quem faz sua pupila dilatar 👀\n\nPergunta perigosa pra fazer num domingo.",
+  "caption": "Diz aí quem faz sua pupila dilatar 👀",
   "hashtags": [
     "#Pupila",
     "#ANAVITORIAVitorKley",
@@ -16,5 +16,11 @@
   "status": "approved",
   "edited_by_human": true,
   "approved_at": "2026-08-08T22:31:30.445242+00:00",
-  "history": []
+  "history": [
+    {
+      "at": "2026-08-08T22:31:30.445221+00:00",
+      "model": "humano",
+      "caption": "Diz aí quem faz sua pupila dilatar 👀\n\nPergunta perigosa pra fazer num domingo."
+    }
+  ]
 }

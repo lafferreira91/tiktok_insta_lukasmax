@@ -1,10 +1,10 @@
 {
   "tiktok_id": "7102164197076634886",
-  "prompt_version": "v1",
+  "prompt_version": "v2",
   "model": "humano",
   "generated_at": "2026-08-08T22:31:30.484439+00:00",
   "input_fingerprint": "sha256:5910f1da9b93a2588c9a28379334a10afd1028399a800fcb89b11f60ef61a959",
-  "caption": "Só eu que volto do trabalho animado? 🤪\n\nProvavelmente. Mas a playlist ajuda.",
+  "caption": "Só eu que volto do trabalho animado? 🤪",
   "hashtags": [
     "#DANCARINA",
     "#PEDROSAMPAIOMcPedrinho",
@@ -16,5 +16,11 @@
   "status": "approved",
   "edited_by_human": true,
   "approved_at": "2026-08-08T22:31:30.484463+00:00",
-  "history": []
+  "history": [
+    {
+      "at": "2026-08-08T22:31:30.484439+00:00",
+      "model": "humano",
+      "caption": "Só eu que volto do trabalho animado? 🤪\n\nProvavelmente. Mas a playlist ajuda."
+    }
+  ]
 }

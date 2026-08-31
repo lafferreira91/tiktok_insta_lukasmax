@@ -1,10 +1,10 @@
 {
   "tiktok_id": "7196307953824156933",
-  "prompt_version": "v1",
+  "prompt_version": "v2",
   "model": "humano",
   "generated_at": "2026-08-08T22:31:30.472555+00:00",
   "input_fingerprint": "sha256:bf7916c304ecce1a56f3c29eed37c7b6c92a1cf7b24b7f64de115a0e2e4ac50d",
-  "caption": "Pô, isso acaba comigo ✨\n\nAcaba mesmo. E eu ponho no repeat.",
+  "caption": "Pô, isso acaba comigo ✨",
   "hashtags": [
     "#AmorNaoEhPra",
     "#ElanaDaraVitorKley",
@@ -16,5 +16,11 @@
   "status": "approved",
   "edited_by_human": true,
   "approved_at": "2026-08-08T22:31:30.472575+00:00",
-  "history": []
+  "history": [
+    {
+      "at": "2026-08-08T22:31:30.472555+00:00",
+      "model": "humano",
+      "caption": "Pô, isso acaba comigo ✨\n\nAcaba mesmo. E eu ponho no repeat."
+    }
+  ]
 }

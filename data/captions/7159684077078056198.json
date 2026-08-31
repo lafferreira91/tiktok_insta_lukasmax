@@ -1,10 +1,10 @@
 {
   "tiktok_id": "7159684077078056198",
-  "prompt_version": "v1",
+  "prompt_version": "v2",
   "model": "humano",
   "generated_at": "2026-08-08T22:31:30.470342+00:00",
   "input_fingerprint": "sha256:3d3fd3d37224e107ea8f8fe15427e654879db89ffee1502760dceabfb2040528",
-  "caption": "É o que você é ✨\n\nO Bruno Mars falando isso soa melhor do que sua terapeuta falando.",
+  "caption": "É o que você é ✨",
   "hashtags": [
     "#Treasure1",
     "#BrunoMars",
@@ -16,5 +16,11 @@
   "status": "approved",
   "edited_by_human": true,
   "approved_at": "2026-08-08T22:31:30.470360+00:00",
-  "history": []
+  "history": [
+    {
+      "at": "2026-08-08T22:31:30.470342+00:00",
+      "model": "humano",
+      "caption": "É o que você é ✨\n\nO Bruno Mars falando isso soa melhor do que sua terapeuta falando."
+    }
+  ]
 }

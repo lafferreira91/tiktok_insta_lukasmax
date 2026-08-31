@@ -1,10 +1,10 @@
 {
   "tiktok_id": "7144472046108495109",
-  "prompt_version": "v1",
+  "prompt_version": "v2",
   "model": "humano",
   "generated_at": "2026-08-08T22:31:30.479238+00:00",
   "input_fingerprint": "sha256:97eb08538df95c17afe18e7465e3a7c2c1f93d61ff4977dc7a20c13aa7eb6a45",
-  "caption": "Não preciso de cura de mim mesmo ✨\n\nA AURORA resolveu isso antes da terapia ficar cara.",
+  "caption": "Não preciso de cura de mim mesmo ✨",
   "hashtags": [
     "#CureForMe",
     "#AURORA",
@@ -16,5 +16,11 @@
   "status": "approved",
   "edited_by_human": true,
   "approved_at": "2026-08-08T22:31:30.479288+00:00",
-  "history": []
+  "history": [
+    {
+      "at": "2026-08-08T22:31:30.479238+00:00",
+      "model": "humano",
+      "caption": "Não preciso de cura de mim mesmo ✨\n\nA AURORA resolveu isso antes da terapia ficar cara."
+    }
+  ]
 }

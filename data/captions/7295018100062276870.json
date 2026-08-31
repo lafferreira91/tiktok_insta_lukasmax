@@ -1,10 +1,10 @@
 {
   "tiktok_id": "7295018100062276870",
-  "prompt_version": "v1",
+  "prompt_version": "v2",
   "model": "humano",
   "generated_at": "2026-08-08T22:31:30.467368+00:00",
   "input_fingerprint": "sha256:285d823bc4356c1a6233759d72460899271f7157fb2b6a8768fc4934bfa63977",
-  "caption": "Amo 💫\n\nLegenda curta porque a música já disse tudo em três minutos.",
+  "caption": "Amo 💫",
   "hashtags": [
     "#Domino",
     "#JessieJ",
@@ -16,5 +16,11 @@
   "status": "approved",
   "edited_by_human": true,
   "approved_at": "2026-08-08T22:31:30.467387+00:00",
-  "history": []
+  "history": [
+    {
+      "at": "2026-08-08T22:31:30.467368+00:00",
+      "model": "humano",
+      "caption": "Amo 💫\n\nLegenda curta porque a música já disse tudo em três minutos."
+    }
+  ]
 }

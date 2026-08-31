@@ -1,10 +1,10 @@
 {
   "tiktok_id": "7321095904071666949",
-  "prompt_version": "v1",
+  "prompt_version": "v2",
   "model": "humano",
   "generated_at": "2026-08-08T22:31:30.467743+00:00",
   "input_fingerprint": "sha256:db456fafc9cb8dccb3101eff839f52558e849c2d62178e4513e1c6f9bfbe4d30",
-  "caption": "É... voltei 💅\n\nA música diz nunca mais. Eu voltei. Ela mentiu, eu também.",
+  "caption": "É... voltei 💅",
   "hashtags": [
     "#WeAreNeverEver",
     "#TaylorSwift",
@@ -16,5 +16,11 @@
   "status": "approved",
   "edited_by_human": true,
   "approved_at": "2026-08-08T22:31:30.467769+00:00",
-  "history": []
+  "history": [
+    {
+      "at": "2026-08-08T22:31:30.467743+00:00",
+      "model": "humano",
+      "caption": "É... voltei 💅\n\nA música diz nunca mais. Eu voltei. Ela mentiu, eu também."
+    }
+  ]
 }

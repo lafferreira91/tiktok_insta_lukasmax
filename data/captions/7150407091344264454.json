@@ -1,10 +1,10 @@
 {
   "tiktok_id": "7150407091344264454",
-  "prompt_version": "v1",
+  "prompt_version": "v2",
   "model": "humano",
   "generated_at": "2026-08-08T22:31:30.440661+00:00",
   "input_fingerprint": "sha256:cb1ce342bbf7c8340ef4b84e7a30601b2b23f247059c4ce99a28c8a37e9f53ba",
-  "caption": "Não vá dizer que eu não sou sua cara-metade 🫶\n\nEstou pedindo com jeitinho. Por enquanto.",
+  "caption": "Não vá dizer que eu não sou sua cara-metade 🫶",
   "hashtags": [
     "#MeuAbrigo",
     "#Melim",
@@ -16,5 +16,11 @@
   "status": "approved",
   "edited_by_human": true,
   "approved_at": "2026-08-08T22:31:30.440681+00:00",
-  "history": []
+  "history": [
+    {
+      "at": "2026-08-08T22:31:30.440661+00:00",
+      "model": "humano",
+      "caption": "Não vá dizer que eu não sou sua cara-metade 🫶\n\nEstou pedindo com jeitinho. Por enquanto."
+    }
+  ]
 }

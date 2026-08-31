@@ -1,10 +1,10 @@
 {
   "tiktok_id": "7307722417466658054",
-  "prompt_version": "v1",
+  "prompt_version": "v2",
   "model": "humano",
   "generated_at": "2026-08-08T22:31:30.444454+00:00",
   "input_fingerprint": "sha256:ddcefd1cff4154cc36b1bd3c6734023c9277fb70a623fded9bbcb135c9672c42",
-  "caption": "Os seus problemas a gente tem que resolver ✨\n\nA Anitta se ofereceu. Eu não teria coragem.",
+  "caption": "Os seus problemas a gente tem que resolver ✨",
   "hashtags": [
     "#Mulher",
     "#Anitta",
@@ -16,5 +16,11 @@
   "status": "approved",
   "edited_by_human": true,
   "approved_at": "2026-08-08T22:31:30.444476+00:00",
-  "history": []
+  "history": [
+    {
+      "at": "2026-08-08T22:31:30.444454+00:00",
+      "model": "humano",
+      "caption": "Os seus problemas a gente tem que resolver ✨\n\nA Anitta se ofereceu. Eu não teria coragem."
+    }
+  ]
 }

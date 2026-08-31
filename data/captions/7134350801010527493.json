@@ -1,10 +1,10 @@
 {
   "tiktok_id": "7134350801010527493",
-  "prompt_version": "v1",
+  "prompt_version": "v2",
   "model": "humano",
   "generated_at": "2026-08-08T22:31:30.449345+00:00",
   "input_fingerprint": "sha256:e280a54494e4b9dac44cf8ab4b949f0d3866d277fabc4d6cfe371943fe827fae",
-  "caption": "Essa eu fiz pro nosso amor ✨\n\nNão fiz. O Jão fez. Mas a intenção transfere.",
+  "caption": "Essa eu fiz pro nosso amor ✨",
   "hashtags": [
     "#EssaEuFizPro",
     "#Jao",
@@ -16,5 +16,11 @@
   "status": "approved",
   "edited_by_human": true,
   "approved_at": "2026-08-08T22:31:30.449440+00:00",
-  "history": []
+  "history": [
+    {
+      "at": "2026-08-08T22:31:30.449345+00:00",
+      "model": "humano",
+      "caption": "Essa eu fiz pro nosso amor ✨\n\nNão fiz. O Jão fez. Mas a intenção transfere."
+    }
+  ]
 }

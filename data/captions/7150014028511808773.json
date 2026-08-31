@@ -1,10 +1,10 @@
 {
   "tiktok_id": "7150014028511808773",
-  "prompt_version": "v1",
+  "prompt_version": "v2",
   "model": "humano",
   "generated_at": "2026-08-08T22:31:30.421175+00:00",
   "input_fingerprint": "sha256:d248a1ccffcb202aa3ccde1b34eadda89edf678b2e2f478522dfb32037fead06",
-  "caption": "Dá pra sentir? 💸\n\nNão é sobre o dinheiro. Nunca foi. Diz a música que fez muito dinheiro.",
+  "caption": "Dá pra sentir? 💸",
   "hashtags": [
     "#PriceTag",
     "#JessieJ",
@@ -16,5 +16,11 @@
   "status": "approved",
   "edited_by_human": true,
   "approved_at": "2026-08-08T22:31:30.421202+00:00",
-  "history": []
+  "history": [
+    {
+      "at": "2026-08-08T22:31:30.421175+00:00",
+      "model": "humano",
+      "caption": "Dá pra sentir? 💸\n\nNão é sobre o dinheiro. Nunca foi. Diz a música que fez muito dinheiro."
+    }
+  ]
 }

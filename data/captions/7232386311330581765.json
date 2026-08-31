@@ -1,10 +1,10 @@
 {
   "tiktok_id": "7232386311330581765",
-  "prompt_version": "v1",
+  "prompt_version": "v2",
   "model": "humano",
   "generated_at": "2026-08-08T20:21:19.623482+00:00",
   "input_fingerprint": "sha256:301fe2a3d0bd3b5d193ecafdfbbbb93d9ef721209e5f1e7f77d54a6b8d1662ff",
-  "caption": "Você deveria ouvir essa todos os dias 💊\n\nNão é exagero, é prescrição. Eu não sou médico, mas confia.",
+  "caption": "Você deveria ouvir essa todos os dias 💊",
   "hashtags": [
     "#Energy",
     "#MorganStJean",
@@ -17,5 +17,11 @@
   "status": "approved",
   "edited_by_human": true,
   "approved_at": "2026-08-08T20:21:19.623498+00:00",
-  "history": []
+  "history": [
+    {
+      "at": "2026-08-08T20:21:19.623482+00:00",
+      "model": "humano",
+      "caption": "Você deveria ouvir essa todos os dias 💊\n\nNão é exagero, é prescrição. Eu não sou médico, mas confia."
+    }
+  ]
 }

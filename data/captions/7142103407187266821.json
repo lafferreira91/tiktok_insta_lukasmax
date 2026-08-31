@@ -1,10 +1,10 @@
 {
   "tiktok_id": "7142103407187266821",
-  "prompt_version": "v1",
+  "prompt_version": "v2",
   "model": "humano",
   "generated_at": "2026-08-08T22:31:30.456259+00:00",
   "input_fingerprint": "sha256:24fabe8967ffbe7c8b31e80e31ca07210980c1fb9ca16d21826b2d6176e63ed9",
-  "caption": "Eu não te amo, mas espera até o beat 🤪\n\nA negação dura exatos onze segundos.",
+  "caption": "Eu não te amo, mas espera até o beat 🤪",
   "hashtags": [
     "#NaoTeAmo",
     "#Jao",
@@ -16,5 +16,11 @@
   "status": "approved",
   "edited_by_human": true,
   "approved_at": "2026-08-08T22:31:30.456284+00:00",
-  "history": []
+  "history": [
+    {
+      "at": "2026-08-08T22:31:30.456259+00:00",
+      "model": "humano",
+      "caption": "Eu não te amo, mas espera até o beat 🤪\n\nA negação dura exatos onze segundos."
+    }
+  ]
 }

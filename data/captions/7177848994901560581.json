@@ -1,10 +1,10 @@
 {
   "tiktok_id": "7177848994901560581",
-  "prompt_version": "v1",
+  "prompt_version": "v2",
   "model": "humano",
   "generated_at": "2026-08-08T22:31:30.444024+00:00",
   "input_fingerprint": "sha256:663a94c3e9662fc0a998cba8bb7344c380a008d84a922562106cf7eb4b0896fb",
-  "caption": "Wake me up 🖤\n\nGritei. Dentro do carro. Com as janelas fechadas, felizmente.",
+  "caption": "Wake me up 🖤",
   "hashtags": [
     "#BringMeToLife",
     "#Evanescence",
@@ -16,5 +16,11 @@
   "status": "approved",
   "edited_by_human": true,
   "approved_at": "2026-08-08T22:31:30.444046+00:00",
-  "history": []
+  "history": [
+    {
+      "at": "2026-08-08T22:31:30.444024+00:00",
+      "model": "humano",
+      "caption": "Wake me up 🖤\n\nGritei. Dentro do carro. Com as janelas fechadas, felizmente."
+    }
+  ]
 }

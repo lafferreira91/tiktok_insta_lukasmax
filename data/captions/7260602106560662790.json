@@ -1,10 +1,10 @@
 {
   "tiktok_id": "7260602106560662790",
-  "prompt_version": "v1",
+  "prompt_version": "v2",
   "model": "humano",
   "generated_at": "2026-08-08T20:21:19.624355+00:00",
   "input_fingerprint": "sha256:277b2bdb9acc7d0a04a73e64b95626ce4f1a36a4da7e46a0e6a82a18445f4384",
-  "caption": "Essa aqui é boa demais pra ficar no fundo da playlist 🎧\n\nEstava lá. Culpa minha.",
+  "caption": "Essa aqui é boa demais pra ficar no fundo da playlist 🎧",
   "hashtags": [
     "#LushLife",
     "#ZaraLarsson",
@@ -17,5 +17,11 @@
   "status": "approved",
   "edited_by_human": true,
   "approved_at": "2026-08-08T20:21:19.624371+00:00",
-  "history": []
+  "history": [
+    {
+      "at": "2026-08-08T20:21:19.624355+00:00",
+      "model": "humano",
+      "caption": "Essa aqui é boa demais pra ficar no fundo da playlist 🎧\n\nEstava lá. Culpa minha."
+    }
+  ]
 }

@@ -1,10 +1,10 @@
 {
   "tiktok_id": "7261262427470171398",
-  "prompt_version": "v1",
+  "prompt_version": "v2",
   "model": "humano",
   "generated_at": "2026-08-08T20:21:19.623906+00:00",
   "input_fingerprint": "sha256:77554b795989e39403083137b5a2c5bd6ca3c3a007f6a5e1437b99f6a86dbda5",
-  "caption": "Essa é das antigas e eu sei exatamente onde você estava quando ela tocava 📻\n\nComenta aí o lugar. Eu conto o meu se você contar o seu.",
+  "caption": "Essa é das antigas e eu sei exatamente onde você estava quando ela tocava 📻",
   "hashtags": [
     "#KissYou",
     "#OneDirection",
@@ -17,5 +17,11 @@
   "status": "approved",
   "edited_by_human": true,
   "approved_at": "2026-08-08T20:21:19.623924+00:00",
-  "history": []
+  "history": [
+    {
+      "at": "2026-08-08T20:21:19.623906+00:00",
+      "model": "humano",
+      "caption": "Essa é das antigas e eu sei exatamente onde você estava quando ela tocava 📻\n\nComenta aí o lugar. Eu conto o meu se você contar o seu."
+    }
+  ]
 }

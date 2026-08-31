@@ -1,10 +1,10 @@
 {
   "tiktok_id": "7158935824845901062",
-  "prompt_version": "v1",
+  "prompt_version": "v2",
   "model": "humano",
   "generated_at": "2026-08-08T22:31:30.448360+00:00",
   "input_fingerprint": "sha256:61edeb3683be536f93efea4c6f31ed5cf55ee7267559ca2e0f68a7c388c65447",
-  "caption": "Te digo te amo e você disfarça com essa cara 😐\n\nEssa cara aí. Exatamente essa.",
+  "caption": "Te digo te amo e você disfarça com essa cara 😐",
   "hashtags": [
     "#VoceVaiMeDestruir",
     "#Jao",
@@ -16,5 +16,11 @@
   "status": "approved",
   "edited_by_human": true,
   "approved_at": "2026-08-08T22:31:30.448379+00:00",
-  "history": []
+  "history": [
+    {
+      "at": "2026-08-08T22:31:30.448360+00:00",
+      "model": "humano",
+      "caption": "Te digo te amo e você disfarça com essa cara 😐\n\nEssa cara aí. Exatamente essa."
+    }
+  ]
 }

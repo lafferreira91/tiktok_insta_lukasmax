@@ -1,10 +1,10 @@
 {
   "tiktok_id": "7297597846126087430",
-  "prompt_version": "v1",
+  "prompt_version": "v2",
   "model": "humano",
   "generated_at": "2026-08-08T22:31:30.423772+00:00",
   "input_fingerprint": "sha256:90f18f2cef62cab36eae90c5ad90aadf8dd1d477ce4a30c57311a7464448ac5d",
-  "caption": "Essa entrega a idade ✨\n\nA minha, pelo menos. Se entregou a sua também, a gente não comenta.",
+  "caption": "Essa entrega a idade ✨",
   "hashtags": [
     "#VoceSempreSera",
     "#MarjorieEstiano",
@@ -16,5 +16,11 @@
   "status": "approved",
   "edited_by_human": true,
   "approved_at": "2026-08-08T22:31:30.423795+00:00",
-  "history": []
+  "history": [
+    {
+      "at": "2026-08-08T22:31:30.423772+00:00",
+      "model": "humano",
+      "caption": "Essa entrega a idade ✨\n\nA minha, pelo menos. Se entregou a sua também, a gente não comenta."
+    }
+  ]
 }

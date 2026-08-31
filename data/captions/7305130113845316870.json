@@ -1,10 +1,10 @@
 {
   "tiktok_id": "7305130113845316870",
-  "prompt_version": "v1",
+  "prompt_version": "v2",
   "model": "humano",
   "generated_at": "2026-08-08T22:31:30.473559+00:00",
   "input_fingerprint": "sha256:deff4c2041e8d318769cce5ed6e140d9803db16f4031f190c306a9f1787c3396",
-  "caption": "Essa música foi um surto meu? ✨\n\nFoi. Mas um surto bem produzido.",
+  "caption": "Essa música foi um surto meu? ✨",
   "hashtags": [
     "#Fiz18",
     "#Ananda",
@@ -16,5 +16,11 @@
   "status": "approved",
   "edited_by_human": true,
   "approved_at": "2026-08-08T22:31:30.473579+00:00",
-  "history": []
+  "history": [
+    {
+      "at": "2026-08-08T22:31:30.473559+00:00",
+      "model": "humano",
+      "caption": "Essa música foi um surto meu? ✨\n\nFoi. Mas um surto bem produzido."
+    }
+  ]
 }

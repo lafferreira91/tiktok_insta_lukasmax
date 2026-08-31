@@ -1,10 +1,10 @@
 {
   "tiktok_id": "7158215364860546310",
-  "prompt_version": "v1",
+  "prompt_version": "v2",
   "model": "humano",
   "generated_at": "2026-08-08T22:31:30.414825+00:00",
   "input_fingerprint": "sha256:53ab01370bcf18e90d483da39ffa34d6580c00abcbfde520635b8cd52a973af5",
-  "caption": "Todo mundo tá atrás de amor 💚\n\nInclusive o burro do Shrek. Especialmente ele.",
+  "caption": "Todo mundo tá atrás de amor 💚",
   "hashtags": [
     "#AccidentallyInLove",
     "#CountingCrows",
@@ -16,5 +16,11 @@
   "status": "approved",
   "edited_by_human": true,
   "approved_at": "2026-08-08T22:31:30.414857+00:00",
-  "history": []
+  "history": [
+    {
+      "at": "2026-08-08T22:31:30.414825+00:00",
+      "model": "humano",
+      "caption": "Todo mundo tá atrás de amor 💚\n\nInclusive o burro do Shrek. Especialmente ele."
+    }
+  ]
 }

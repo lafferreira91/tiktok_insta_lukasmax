@@ -1,10 +1,10 @@
 {
   "tiktok_id": "7152570422100380933",
-  "prompt_version": "v1",
+  "prompt_version": "v2",
   "model": "humano",
   "generated_at": "2026-08-08T22:31:30.455311+00:00",
   "input_fingerprint": "sha256:b505ded880412bd2894e226affcfb5e683825579dd8ac83d5e63779a12730491",
-  "caption": "Quando não souber o que pedir ✨\n\nPeça felicidade. É o que sobra quando o resto complica.",
+  "caption": "Quando não souber o que pedir ✨",
   "hashtags": [
     "#PecaFelicidade",
     "#Melim",
@@ -16,5 +16,11 @@
   "status": "approved",
   "edited_by_human": true,
   "approved_at": "2026-08-08T22:31:30.455329+00:00",
-  "history": []
+  "history": [
+    {
+      "at": "2026-08-08T22:31:30.455311+00:00",
+      "model": "humano",
+      "caption": "Quando não souber o que pedir ✨\n\nPeça felicidade. É o que sobra quando o resto complica."
+    }
+  ]
 }

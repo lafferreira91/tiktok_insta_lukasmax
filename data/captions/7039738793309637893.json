@@ -1,10 +1,10 @@
 {
   "tiktok_id": "7039738793309637893",
-  "prompt_version": "v1",
+  "prompt_version": "v2",
   "model": "humano",
   "generated_at": "2026-08-08T22:31:30.494088+00:00",
   "input_fingerprint": "sha256:96f5a131c6b8c3b214f4ed5c226786ed05b2b9561005c03565c64f8446156885",
-  "caption": "In the dark 🌑\n\nMúsica pra dirigir à noite fingindo que é videoclipe.",
+  "caption": "In the dark 🌑",
   "hashtags": [
     "#InTheDark",
     "#Dance",
@@ -16,5 +16,11 @@
   "status": "approved",
   "edited_by_human": true,
   "approved_at": "2026-08-08T22:31:30.494114+00:00",
-  "history": []
+  "history": [
+    {
+      "at": "2026-08-08T22:31:30.494088+00:00",
+      "model": "humano",
+      "caption": "In the dark 🌑\n\nMúsica pra dirigir à noite fingindo que é videoclipe."
+    }
+  ]
 }

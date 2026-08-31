@@ -1,10 +1,10 @@
 {
   "tiktok_id": "7292420764903558405",
-  "prompt_version": "v1",
+  "prompt_version": "v2",
   "model": "humano",
   "generated_at": "2026-08-08T22:31:30.464626+00:00",
   "input_fingerprint": "sha256:72b8cf090321e2faa4e40558e86237586e5b4e736291cb72364977cb01c3be84",
-  "caption": "Olhe pra dentro ✨\n\nA Lily Allen fala isso de um jeito bem menos gentil na música.",
+  "caption": "Olhe pra dentro ✨",
   "hashtags": [
     "#FuckYou",
     "#LilyAllen",
@@ -16,5 +16,11 @@
   "status": "approved",
   "edited_by_human": true,
   "approved_at": "2026-08-08T22:31:30.464650+00:00",
-  "history": []
+  "history": [
+    {
+      "at": "2026-08-08T22:31:30.464626+00:00",
+      "model": "humano",
+      "caption": "Olhe pra dentro ✨\n\nA Lily Allen fala isso de um jeito bem menos gentil na música."
+    }
+  ]
 }

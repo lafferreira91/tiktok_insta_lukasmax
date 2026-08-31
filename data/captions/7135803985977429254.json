@@ -1,10 +1,10 @@
 {
   "tiktok_id": "7135803985977429254",
-  "prompt_version": "v1",
+  "prompt_version": "v2",
   "model": "humano",
   "generated_at": "2026-08-08T22:31:30.462976+00:00",
   "input_fingerprint": "sha256:ebc82e0139e174deb5dab5aa67fcaba85c68e8f234fe4770c7af5542eb96ad50",
-  "caption": "O melhor presente que Deus me deu 🎵\n\nCharlie Brown Jr. resolvendo em três minutos o que a terapia leva anos.",
+  "caption": "O melhor presente que Deus me deu 🎵",
   "hashtags": [
     "#LutarPeloQueE",
     "#CharlieBrownJr",
@@ -16,5 +16,11 @@
   "status": "approved",
   "edited_by_human": true,
   "approved_at": "2026-08-08T22:31:30.463000+00:00",
-  "history": []
+  "history": [
+    {
+      "at": "2026-08-08T22:31:30.462976+00:00",
+      "model": "humano",
+      "caption": "O melhor presente que Deus me deu 🎵\n\nCharlie Brown Jr. resolvendo em três minutos o que a terapia leva anos."
+    }
+  ]
 }

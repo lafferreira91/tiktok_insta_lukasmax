@@ -1,10 +1,10 @@
 {
   "tiktok_id": "7146966322545446149",
-  "prompt_version": "v1",
+  "prompt_version": "v2",
   "model": "humano",
   "generated_at": "2026-08-08T20:21:19.614873+00:00",
   "input_fingerprint": "sha256:7d9de77085cead7df8b9a12a3186caf1b326ad64b9cb58bce976e3a23c8703a7",
-  "caption": "Fala o que eu tô querendo ouvir 🎤\n\nNão é tanta coisa. É literalmente uma frase. Duas, no máximo.",
+  "caption": "Fala o que eu tô querendo ouvir 🎤",
   "hashtags": [
     "#Lokko",
     "#GiuliaBe",
@@ -17,5 +17,11 @@
   "status": "approved",
   "edited_by_human": true,
   "approved_at": "2026-08-08T20:21:19.614894+00:00",
-  "history": []
+  "history": [
+    {
+      "at": "2026-08-08T20:21:19.614873+00:00",
+      "model": "humano",
+      "caption": "Fala o que eu tô querendo ouvir 🎤\n\nNão é tanta coisa. É literalmente uma frase. Duas, no máximo."
+    }
+  ]
 }

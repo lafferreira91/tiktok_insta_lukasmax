@@ -1,10 +1,10 @@
 {
   "tiktok_id": "7151871722235497733",
-  "prompt_version": "v1",
+  "prompt_version": "v2",
   "model": "humano",
   "generated_at": "2026-08-08T22:31:30.430144+00:00",
   "input_fingerprint": "sha256:f7a12f2ba68360acc28925f645b5fa9c288c1c328a14e5383c18b2446b2fe878",
-  "caption": "Amor, não há nada me impedindo ✨\n\nExceto tudo. Mas fora isso, nada.",
+  "caption": "Amor, não há nada me impedindo ✨",
   "hashtags": [
     "#ThereSNothingHoldin",
     "#ShawnMendes",
@@ -16,5 +16,11 @@
   "status": "approved",
   "edited_by_human": true,
   "approved_at": "2026-08-08T22:31:30.430164+00:00",
-  "history": []
+  "history": [
+    {
+      "at": "2026-08-08T22:31:30.430144+00:00",
+      "model": "humano",
+      "caption": "Amor, não há nada me impedindo ✨\n\nExceto tudo. Mas fora isso, nada."
+    }
+  ]
 }

@@ -1,10 +1,10 @@
 {
   "tiktok_id": "7180702229131693317",
-  "prompt_version": "v1",
+  "prompt_version": "v2",
   "model": "humano",
   "generated_at": "2026-08-08T20:21:19.627680+00:00",
   "input_fingerprint": "sha256:b0559d04889c2c92aa65603b825a821d447a93ad5c05c50804163219c1da4ee2",
-  "caption": "A mensagem ja ta dada, so falta voce ouvir de novo. E de novo. E mais uma vez. Salva essa aqui porque ela vicia sem pedir licenca.",
+  "caption": "A mensagem já tá dada, só falta você ouvir de novo.",
   "hashtags": [
     "#Playground",
     "#CarJams",
@@ -16,6 +16,12 @@
   "warnings": [],
   "status": "approved",
   "edited_by_human": true,
-  "approved_at": "2026-08-08T20:21:19.627697+00:00",
-  "history": []
+  "approved_at": "2026-08-31T19:42:10.150000+00:00",
+  "history": [
+    {
+      "at": "2026-08-08T20:21:19.627680+00:00",
+      "model": "humano",
+      "caption": "A mensagem ja ta dada, so falta voce ouvir de novo. E de novo. E mais uma vez. Salva essa aqui porque ela vicia sem pedir licenca."
+    }
+  ]
 }

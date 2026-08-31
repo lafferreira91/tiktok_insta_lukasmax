@@ -1,10 +1,10 @@
 {
   "tiktok_id": "7131177146990595334",
-  "prompt_version": "v1",
+  "prompt_version": "v2",
   "model": "humano",
   "generated_at": "2026-08-08T22:31:30.437797+00:00",
   "input_fingerprint": "sha256:eceb22d4ec14b5fb46b9b78d031f6708a9e97700209172cb26c3c319d5b9e711",
-  "caption": "Cê vai me destruir 💔\n\nE eu vou deixar. É esse o acordo.",
+  "caption": "Cê vai me destruir 💔",
   "hashtags": [
     "#VoceVaiMeDestruir",
     "#Jao",
@@ -16,5 +16,11 @@
   "status": "approved",
   "edited_by_human": true,
   "approved_at": "2026-08-08T22:31:30.437829+00:00",
-  "history": []
+  "history": [
+    {
+      "at": "2026-08-08T22:31:30.437797+00:00",
+      "model": "humano",
+      "caption": "Cê vai me destruir 💔\n\nE eu vou deixar. É esse o acordo."
+    }
+  ]
 }

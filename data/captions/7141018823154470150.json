@@ -1,10 +1,10 @@
 {
   "tiktok_id": "7141018823154470150",
-  "prompt_version": "v1",
+  "prompt_version": "v2",
   "model": "humano",
   "generated_at": "2026-08-08T22:31:30.439696+00:00",
   "input_fingerprint": "sha256:42018466546840af62f4e8d00d33db20152beeaa6c23537d3c18fd00526904df",
-  "caption": "Sou viciado nessa 💸\n\nDiagnóstico feito por mim mesmo, sem qualificação nenhuma.",
+  "caption": "Sou viciado nessa 💸",
   "hashtags": [
     "#MONEY",
     "#LISA",
@@ -16,5 +16,11 @@
   "status": "approved",
   "edited_by_human": true,
   "approved_at": "2026-08-08T22:31:30.439714+00:00",
-  "history": []
+  "history": [
+    {
+      "at": "2026-08-08T22:31:30.439696+00:00",
+      "model": "humano",
+      "caption": "Sou viciado nessa 💸\n\nDiagnóstico feito por mim mesmo, sem qualificação nenhuma."
+    }
+  ]
 }

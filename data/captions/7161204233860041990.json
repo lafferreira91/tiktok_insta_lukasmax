@@ -1,10 +1,10 @@
 {
   "tiktok_id": "7161204233860041990",
-  "prompt_version": "v1",
+  "prompt_version": "v2",
   "model": "humano",
   "generated_at": "2026-08-08T22:31:30.401979+00:00",
   "input_fingerprint": "sha256:fcfbd606fb745e8991d0dd4f7564795c4c2d8bd264b5d0899394ea81007db622",
-  "caption": "Toda nossa juventude corre pelas veias ✨\n\nCorre mesmo. Só não corre tão rápido quanto antes.",
+  "caption": "Toda nossa juventude corre pelas veias ✨",
   "hashtags": [
     "#Imaturo",
     "#Jao",
@@ -16,5 +16,11 @@
   "status": "approved",
   "edited_by_human": true,
   "approved_at": "2026-08-08T22:31:30.402006+00:00",
-  "history": []
+  "history": [
+    {
+      "at": "2026-08-08T22:31:30.401979+00:00",
+      "model": "humano",
+      "caption": "Toda nossa juventude corre pelas veias ✨\n\nCorre mesmo. Só não corre tão rápido quanto antes."
+    }
+  ]
 }

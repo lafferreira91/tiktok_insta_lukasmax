@@ -1,10 +1,10 @@
 {
   "tiktok_id": "7162872382942629126",
-  "prompt_version": "v1",
+  "prompt_version": "v2",
   "model": "humano",
   "generated_at": "2026-08-08T22:31:30.432650+00:00",
   "input_fingerprint": "sha256:96a2276bf7e2b79a25b556a30b76d518f2200f422876af736f620186fc272025",
-  "caption": "Desejando que você se sinta melhor 🫂\n\nÉ o máximo que dá pra fazer de dentro de um carro.",
+  "caption": "Desejando que você se sinta melhor 🫂",
   "hashtags": [
     "#CarJams",
     "#DublagemNoCarro",
@@ -15,5 +15,11 @@
   "status": "approved",
   "edited_by_human": true,
   "approved_at": "2026-08-08T22:31:30.432682+00:00",
-  "history": []
+  "history": [
+    {
+      "at": "2026-08-08T22:31:30.432650+00:00",
+      "model": "humano",
+      "caption": "Desejando que você se sinta melhor 🫂\n\nÉ o máximo que dá pra fazer de dentro de um carro."
+    }
+  ]
 }

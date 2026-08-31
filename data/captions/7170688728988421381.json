@@ -1,10 +1,10 @@
 {
   "tiktok_id": "7170688728988421381",
-  "prompt_version": "v1",
+  "prompt_version": "v2",
   "model": "humano",
   "generated_at": "2026-08-08T20:21:19.625670+00:00",
   "input_fingerprint": "sha256:f3ecb7cefb7ca11dee1853c3a16dc1c50bbe867a67c1e39ffd188b31174e41ba",
-  "caption": "O mundo tá complicado 🌪️\n\nVamos descomplicar por cinquenta segundos. Depois volta tudo, relaxa.",
+  "caption": "O mundo tá complicado 🌪️",
   "hashtags": [
     "#FazParte",
     "#Projota",
@@ -17,5 +17,11 @@
   "status": "approved",
   "edited_by_human": true,
   "approved_at": "2026-08-08T20:21:19.625688+00:00",
-  "history": []
+  "history": [
+    {
+      "at": "2026-08-08T20:21:19.625670+00:00",
+      "model": "humano",
+      "caption": "O mundo tá complicado 🌪️\n\nVamos descomplicar por cinquenta segundos. Depois volta tudo, relaxa."
+    }
+  ]
 }

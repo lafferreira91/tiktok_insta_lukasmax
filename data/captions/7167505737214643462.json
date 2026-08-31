@@ -1,10 +1,10 @@
 {
   "tiktok_id": "7167505737214643462",
-  "prompt_version": "v1",
+  "prompt_version": "v2",
   "model": "humano",
   "generated_at": "2026-08-08T22:31:30.466992+00:00",
   "input_fingerprint": "sha256:987516287bbf40358be593ae877c5245617bda44d61ec382c7f4ad8732d81f39",
-  "caption": "Garota, bota um cropped ✨\n\nConselho de moda vindo de quem dubla dentro do carro. Aceite com cautela.",
+  "caption": "Garota, bota um cropped ✨",
   "hashtags": [
     "#PutYourRecordsOn",
     "#RittMomney",
@@ -16,5 +16,11 @@
   "status": "approved",
   "edited_by_human": true,
   "approved_at": "2026-08-08T22:31:30.467009+00:00",
-  "history": []
+  "history": [
+    {
+      "at": "2026-08-08T22:31:30.466992+00:00",
+      "model": "humano",
+      "caption": "Garota, bota um cropped ✨\n\nConselho de moda vindo de quem dubla dentro do carro. Aceite com cautela."
+    }
+  ]
 }

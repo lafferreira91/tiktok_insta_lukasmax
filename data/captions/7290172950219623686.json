@@ -1,10 +1,10 @@
 {
   "tiktok_id": "7290172950219623686",
-  "prompt_version": "v1",
+  "prompt_version": "v2",
   "model": "humano",
   "generated_at": "2026-08-08T22:31:30.426304+00:00",
   "input_fingerprint": "sha256:bf57a0b277c191fcbd2bdb4e909f9889b24e1d1288b2edfef4ba67ba25a6f31c",
-  "caption": "Mesmo depois de todo esse tempo, eu ainda estou 🫠\n\nParamore me descreveu melhor do que eu conseguiria.",
+  "caption": "Mesmo depois de todo esse tempo, eu ainda estou 🫠",
   "hashtags": [
     "#StillIntoYou",
     "#Paramore",
@@ -16,5 +16,11 @@
   "status": "approved",
   "edited_by_human": true,
   "approved_at": "2026-08-08T22:31:30.426334+00:00",
-  "history": []
+  "history": [
+    {
+      "at": "2026-08-08T22:31:30.426304+00:00",
+      "model": "humano",
+      "caption": "Mesmo depois de todo esse tempo, eu ainda estou 🫠\n\nParamore me descreveu melhor do que eu conseguiria."
+    }
+  ]
 }

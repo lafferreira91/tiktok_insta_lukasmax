@@ -1,10 +1,10 @@
 {
   "tiktok_id": "7255074217979383046",
-  "prompt_version": "v1",
+  "prompt_version": "v2",
   "model": "humano",
   "generated_at": "2026-08-08T20:21:19.618236+00:00",
   "input_fingerprint": "sha256:b7af52a49a9993b11e115fc4b68f5ec890db5c83ce6e229c7caa4e8fe3c00f0f",
-  "caption": "Nem todos os dias serão bons dias ☁️\n\nRevolucionário. Ninguém nunca tinha me avisado.",
+  "caption": "Nem todos os dias serão bons dias ☁️",
   "hashtags": [
     "#Breakaway",
     "#KellyClarkson",
@@ -17,5 +17,11 @@
   "status": "approved",
   "edited_by_human": true,
   "approved_at": "2026-08-08T20:21:19.618393+00:00",
-  "history": []
+  "history": [
+    {
+      "at": "2026-08-08T20:21:19.618236+00:00",
+      "model": "humano",
+      "caption": "Nem todos os dias serão bons dias ☁️\n\nRevolucionário. Ninguém nunca tinha me avisado."
+    }
+  ]
 }

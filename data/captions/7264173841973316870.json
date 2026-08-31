@@ -1,10 +1,10 @@
 {
   "tiktok_id": "7264173841973316870",
-  "prompt_version": "v1",
+  "prompt_version": "v2",
   "model": "humano",
   "generated_at": "2026-08-08T20:21:19.619741+00:00",
   "input_fingerprint": "sha256:c93c6361f8c9edacdf9c179d2f79476d207b45ce456e8329f437c7f6dcd19c4f",
-  "caption": "Eu sei que isso é o fim do mundo 🌎\n\nO terceiro este mês. A gente já pegou o jeito.",
+  "caption": "Eu sei que isso é o fim do mundo 🌎",
   "hashtags": [
     "#UmMinutoParaOFimDoMundo",
     "#CPM22",
@@ -17,5 +17,11 @@
   "status": "approved",
   "edited_by_human": true,
   "approved_at": "2026-08-08T20:21:19.619757+00:00",
-  "history": []
+  "history": [
+    {
+      "at": "2026-08-08T20:21:19.619741+00:00",
+      "model": "humano",
+      "caption": "Eu sei que isso é o fim do mundo 🌎\n\nO terceiro este mês. A gente já pegou o jeito."
+    }
+  ]
 }

@@ -52,22 +52,53 @@ TIMEZONE = "America/Sao_Paulo"
 #: Duas hipoteses minhas cairam no caminho: o slot das 21h, tirado da curva de
 #: `online_followers` da API, ficou em ultimo; e o das 16h, que eu tinha posto com
 #: peso alto por causa de um unico bom resultado, ficou abaixo da manha.
+#: Dentro da faixa, 18h e 19h ainda estao empatados -- e e um empate que so a
+#: alternancia desempata (31/08/2026).
+#:
+#:     18h  5.912 medianos (n=6)
+#:     19h 34.404 medianos (n=2)  <- 15.738 e 53.069
+#:
+#: Nao e efeito do ranking do video: os dois das 19h eram rank 4 e 9, cercados
+#: por posts das 18h de rank 2 e 6 que renderam menos. Mas sao dois posts, e
+#: dois posts nao mudam um pool sozinhos.
+#:
+#: Por isso os dois horarios convivem com peso igual: a rotacao por dia alterna
+#: entre eles, e em duas semanas a amostra das 19h sai de 2 para ~8. Alternar
+#: aqui e barato porque as duas pontas estao dentro da faixa que ja se provou --
+#: diferente da alternancia antiga com a manha, que jogava metade da fila num
+#: horario 3,4x pior.
 DEFAULT_SLOTS: list[dict[str, Any]] = [
     {
         "id": "wd-commute",
         "weekdays": [0, 1, 2, 3, 4],
         "time": "18:45",
         "weight": 1.40,
-        "samples": 8,
-        "rationale": "7.664 views medianos (h24, n=8); 3,4x qualquer outra faixa",
+        "samples": 6,
+        "rationale": "5.912 views medianos (h24, n=6)",
+    },
+    {
+        "id": "wd-prime",
+        "weekdays": [0, 1, 2, 3, 4],
+        "time": "19:15",
+        "weight": 1.40,
+        "samples": 2,
+        "rationale": "34.404 medianos com n=2; alterna com wd-commute para medir",
     },
     {
         "id": "we-evening",
         "weekdays": [5, 6],
         "time": "18:30",
         "weight": 1.40,
-        "samples": 8,
+        "samples": 6,
         "rationale": "mesma faixa da noite, no fim de semana",
+    },
+    {
+        "id": "we-prime",
+        "weekdays": [5, 6],
+        "time": "19:15",
+        "weight": 1.40,
+        "samples": 2,
+        "rationale": "o teste das 19h tambem no fim de semana",
     },
 ]
 

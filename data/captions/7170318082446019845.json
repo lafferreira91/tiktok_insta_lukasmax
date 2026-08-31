@@ -1,10 +1,10 @@
 {
   "tiktok_id": "7170318082446019845",
-  "prompt_version": "v1",
+  "prompt_version": "v2",
   "model": "humano",
   "generated_at": "2026-08-08T20:21:19.615488+00:00",
   "input_fingerprint": "sha256:02fd91fe522feba90a97a2e22fffe87e0fe0e0a2b27a2b87d6014cdd44505510",
-  "caption": "Ahhh que coisa boa ✨\n\nEu tinha planos pro resto do dia. Tinha.",
+  "caption": "Ahhh que coisa boa ✨",
   "hashtags": [
     "#CoisaBoa",
     "#GloriaGroove",
@@ -17,5 +17,11 @@
   "status": "approved",
   "edited_by_human": true,
   "approved_at": "2026-08-08T20:21:19.615507+00:00",
-  "history": []
+  "history": [
+    {
+      "at": "2026-08-08T20:21:19.615488+00:00",
+      "model": "humano",
+      "caption": "Ahhh que coisa boa ✨\n\nEu tinha planos pro resto do dia. Tinha."
+    }
+  ]
 }

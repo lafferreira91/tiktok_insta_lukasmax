@@ -1,10 +1,10 @@
 {
   "tiktok_id": "7322475731206851846",
-  "prompt_version": "v1",
+  "prompt_version": "v2",
   "model": "humano",
   "generated_at": "2026-08-08T22:31:30.463772+00:00",
   "input_fingerprint": "sha256:e05bd59305f28b8f49bfea6a78fa1e2b1eedfd306f01079b793e5f5f7a53df0f",
-  "caption": "De 0 a 100, quanto essa música é red flag? 🚩\n\nMinha resposta é 100. E eu ouço mesmo assim.",
+  "caption": "De 0 a 100, quanto essa música é red flag? 🚩",
   "hashtags": [
     "#PelaUltimaVez",
     "#NXZero",
@@ -16,5 +16,11 @@
   "status": "approved",
   "edited_by_human": true,
   "approved_at": "2026-08-08T22:31:30.463792+00:00",
-  "history": []
+  "history": [
+    {
+      "at": "2026-08-08T22:31:30.463772+00:00",
+      "model": "humano",
+      "caption": "De 0 a 100, quanto essa música é red flag? 🚩\n\nMinha resposta é 100. E eu ouço mesmo assim."
+    }
+  ]
 }

@@ -1,10 +1,10 @@
 {
   "tiktok_id": "7256061139488869637",
-  "prompt_version": "v1",
+  "prompt_version": "v2",
   "model": "humano",
   "generated_at": "2026-08-08T20:21:19.619341+00:00",
   "input_fingerprint": "sha256:0c522cfab377ec2da429f7ace254c2b3dbd23f98b9376cdbe91ba0408a6b0eac",
-  "caption": "Vamos fugir? 🚗💨\n\nSem plano, sem destino e sem dinheiro. Principalmente sem dinheiro.",
+  "caption": "Vamos fugir? 🚗💨",
   "hashtags": [
     "#Down",
     "#JaySean",
@@ -17,5 +17,11 @@
   "status": "approved",
   "edited_by_human": true,
   "approved_at": "2026-08-08T20:21:19.619355+00:00",
-  "history": []
+  "history": [
+    {
+      "at": "2026-08-08T20:21:19.619341+00:00",
+      "model": "humano",
+      "caption": "Vamos fugir? 🚗💨\n\nSem plano, sem destino e sem dinheiro. Principalmente sem dinheiro."
+    }
+  ]
 }

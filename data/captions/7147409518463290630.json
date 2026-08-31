@@ -1,10 +1,10 @@
 {
   "tiktok_id": "7147409518463290630",
-  "prompt_version": "v1",
+  "prompt_version": "v2",
   "model": "humano",
   "generated_at": "2026-08-08T22:31:30.483723+00:00",
   "input_fingerprint": "sha256:7a01f592a0981593e3ff4f9c104715bab0a5690d602c69d3b6f8df8769ca40f8",
-  "caption": "Sei que é meio difícil amar alguém como eu 🙃\n\nO Kanye disse. Eu só concordei rápido demais.",
+  "caption": "Sei que é meio difícil amar alguém como eu 🙃",
   "hashtags": [
     "#Famous",
     "#KanyeWest",
@@ -16,5 +16,11 @@
   "status": "approved",
   "edited_by_human": true,
   "approved_at": "2026-08-08T22:31:30.484006+00:00",
-  "history": []
+  "history": [
+    {
+      "at": "2026-08-08T22:31:30.483723+00:00",
+      "model": "humano",
+      "caption": "Sei que é meio difícil amar alguém como eu 🙃\n\nO Kanye disse. Eu só concordei rápido demais."
+    }
+  ]
 }

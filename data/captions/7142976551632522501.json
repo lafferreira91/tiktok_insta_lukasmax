@@ -1,10 +1,10 @@
 {
   "tiktok_id": "7142976551632522501",
-  "prompt_version": "v1",
+  "prompt_version": "v2",
   "model": "humano",
   "generated_at": "2026-08-08T22:31:30.446847+00:00",
   "input_fingerprint": "sha256:05109e9781afd5f7e1fbfb371b3950d6a56706a735c1a982de54c1046342a79c",
-  "caption": "Então VSF ✨\n\nA música diz por extenso. Eu fui mais educado aqui.",
+  "caption": "Então VSF ✨",
   "hashtags": [
     "#VSF",
     "#Jao",
@@ -16,5 +16,11 @@
   "status": "approved",
   "edited_by_human": true,
   "approved_at": "2026-08-08T22:31:30.446866+00:00",
-  "history": []
+  "history": [
+    {
+      "at": "2026-08-08T22:31:30.446847+00:00",
+      "model": "humano",
+      "caption": "Então VSF ✨\n\nA música diz por extenso. Eu fui mais educado aqui."
+    }
+  ]
 }

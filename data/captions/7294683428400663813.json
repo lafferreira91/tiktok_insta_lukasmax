@@ -1,10 +1,10 @@
 {
   "tiktok_id": "7294683428400663813",
-  "prompt_version": "v1",
+  "prompt_version": "v2",
   "model": "humano",
   "generated_at": "2026-08-08T22:31:30.409345+00:00",
   "input_fingerprint": "sha256:d061882474cde191e8a970e6e6f2ef8e083d0eab61eb8363f55fb3bed8cdf202",
-  "caption": "I got the eye of the tiger 🐯\n\nA confiança dura o refrão inteiro. Depois volta ao normal.",
+  "caption": "I got the eye of the tiger 🐯",
   "hashtags": [
     "#Roar",
     "#KatyPerry",
@@ -16,5 +16,11 @@
   "status": "approved",
   "edited_by_human": true,
   "approved_at": "2026-08-08T22:31:30.409395+00:00",
-  "history": []
+  "history": [
+    {
+      "at": "2026-08-08T22:31:30.409345+00:00",
+      "model": "humano",
+      "caption": "I got the eye of the tiger 🐯\n\nA confiança dura o refrão inteiro. Depois volta ao normal."
+    }
+  ]
 }

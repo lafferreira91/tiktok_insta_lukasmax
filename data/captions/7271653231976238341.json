@@ -1,10 +1,10 @@
 {
   "tiktok_id": "7271653231976238341",
-  "prompt_version": "v1",
+  "prompt_version": "v2",
   "model": "humano",
   "generated_at": "2026-08-08T22:31:30.445593+00:00",
   "input_fingerprint": "sha256:da24a66bd3c9a45d4f5f49149162823271a223ddaf6eabe7a814fe6a03b9f0b4",
-  "caption": "Então eu rezei ☁️\n\nFuncionou parcialmente. Como quase tudo.",
+  "caption": "Então eu rezei ☁️",
   "hashtags": [
     "#Breakaway",
     "#KellyClarkson",
@@ -16,5 +16,11 @@
   "status": "approved",
   "edited_by_human": true,
   "approved_at": "2026-08-08T22:31:30.445613+00:00",
-  "history": []
+  "history": [
+    {
+      "at": "2026-08-08T22:31:30.445593+00:00",
+      "model": "humano",
+      "caption": "Então eu rezei ☁️\n\nFuncionou parcialmente. Como quase tudo."
+    }
+  ]
 }

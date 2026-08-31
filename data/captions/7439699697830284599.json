@@ -1,10 +1,10 @@
 {
   "tiktok_id": "7439699697830284599",
-  "prompt_version": "v1",
+  "prompt_version": "v2",
   "model": "humano",
   "generated_at": "2026-08-08T22:31:30.495201+00:00",
   "input_fingerprint": "sha256:d43c16e115d94eb7778f01cf3bf7d3b8ea6a5f203716e4b50489e129f148b030",
-  "caption": "That's how we howling 🐺\n\nUiva junto. Ninguém está vendo.",
+  "caption": "That's how we howling 🐺",
   "hashtags": [
     "#HOWLING",
     "#XG",
@@ -16,5 +16,11 @@
   "status": "approved",
   "edited_by_human": true,
   "approved_at": "2026-08-08T22:31:30.495222+00:00",
-  "history": []
+  "history": [
+    {
+      "at": "2026-08-08T22:31:30.495201+00:00",
+      "model": "humano",
+      "caption": "That's how we howling 🐺\n\nUiva junto. Ninguém está vendo."
+    }
+  ]
 }

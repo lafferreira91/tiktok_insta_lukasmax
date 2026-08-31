@@ -1,10 +1,10 @@
 {
   "tiktok_id": "7144801859243478277",
-  "prompt_version": "v1",
+  "prompt_version": "v2",
   "model": "humano",
   "generated_at": "2026-08-08T20:21:19.622627+00:00",
   "input_fingerprint": "sha256:3be5192c7c27bb557c5645ce7f6d4ca90332ec069f3e11649f3350b5a16775b5",
-  "caption": "Vermelho que nem a lanterna traseira da nave que toca esse som 🚨\n\nDetalhe que ninguém pediu, mas tá aí.",
+  "caption": "Vermelho que nem a lanterna traseira da nave que toca esse som 🚨",
   "hashtags": [
     "#Vermelho",
     "#GloriaGroove",
@@ -17,5 +17,11 @@
   "status": "approved",
   "edited_by_human": true,
   "approved_at": "2026-08-08T20:21:19.622649+00:00",
-  "history": []
+  "history": [
+    {
+      "at": "2026-08-08T20:21:19.622627+00:00",
+      "model": "humano",
+      "caption": "Vermelho que nem a lanterna traseira da nave que toca esse som 🚨\n\nDetalhe que ninguém pediu, mas tá aí."
+    }
+  ]
 }

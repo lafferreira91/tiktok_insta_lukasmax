@@ -1,10 +1,10 @@
 {
   "tiktok_id": "7288713801967488262",
-  "prompt_version": "v1",
+  "prompt_version": "v2",
   "model": "humano",
   "generated_at": "2026-08-08T20:21:19.614392+00:00",
   "input_fingerprint": "sha256:6356956e7b04d4c8325179da0f4d9970633b5faaee5e4052ffd16e62a010f87d",
-  "caption": "Entrei nessa achando que ia dublar sem me entregar 😌\n\nNão durei meio refrão.",
+  "caption": "Entrei nessa achando que ia dublar sem me entregar 😌",
   "hashtags": [
     "#Cobertor",
     "#Anitta",
@@ -17,5 +17,11 @@
   "status": "approved",
   "edited_by_human": true,
   "approved_at": "2026-08-08T20:21:19.614417+00:00",
-  "history": []
+  "history": [
+    {
+      "at": "2026-08-08T20:21:19.614392+00:00",
+      "model": "humano",
+      "caption": "Entrei nessa achando que ia dublar sem me entregar 😌\n\nNão durei meio refrão."
+    }
+  ]
 }

@@ -1,10 +1,10 @@
 {
   "tiktok_id": "7250562695643090181",
-  "prompt_version": "v1",
+  "prompt_version": "v2",
   "model": "humano",
   "generated_at": "2026-08-08T22:31:30.446016+00:00",
   "input_fingerprint": "sha256:dcf9a26b1e498de7267fa7cd59b026a312be1eacef5123f51a4cd282106fb4f6",
-  "caption": "Só quero ter uma boa noite ✨\n\nExigência mínima. Ainda assim, negociável.",
+  "caption": "Só quero ter uma boa noite ✨",
   "hashtags": [
     "#PlayersDJSmallz732",
     "#CoiLeray",
@@ -16,5 +16,11 @@
   "status": "approved",
   "edited_by_human": true,
   "approved_at": "2026-08-08T22:31:30.446038+00:00",
-  "history": []
+  "history": [
+    {
+      "at": "2026-08-08T22:31:30.446016+00:00",
+      "model": "humano",
+      "caption": "Só quero ter uma boa noite ✨\n\nExigência mínima. Ainda assim, negociável."
+    }
+  ]
 }

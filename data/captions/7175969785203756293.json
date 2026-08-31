@@ -1,10 +1,10 @@
 {
   "tiktok_id": "7175969785203756293",
-  "prompt_version": "v1",
+  "prompt_version": "v2",
   "model": "humano",
   "generated_at": "2026-08-08T22:31:30.456645+00:00",
   "input_fingerprint": "sha256:07c3bbc90c6d043f5bb13f3c6a08877d63a3a1415347dc081bd8b9ec438d190c",
-  "caption": "Nem tento fingir, não vou voltar atrás ✨\n\nDeterminação que dura até a próxima música triste.",
+  "caption": "Nem tento fingir, não vou voltar atrás ✨",
   "hashtags": [
     "#FaleiDeVocePra",
     "#ElanaDara",
@@ -16,5 +16,11 @@
   "status": "approved",
   "edited_by_human": true,
   "approved_at": "2026-08-08T22:31:30.456669+00:00",
-  "history": []
+  "history": [
+    {
+      "at": "2026-08-08T22:31:30.456645+00:00",
+      "model": "humano",
+      "caption": "Nem tento fingir, não vou voltar atrás ✨\n\nDeterminação que dura até a próxima música triste."
+    }
+  ]
 }

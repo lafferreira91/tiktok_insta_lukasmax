@@ -1,10 +1,10 @@
 {
   "tiktok_id": "7211177158851497221",
-  "prompt_version": "v1",
+  "prompt_version": "v2",
   "model": "humano",
   "generated_at": "2026-08-08T22:31:30.418927+00:00",
   "input_fingerprint": "sha256:0e440ba7a88e6fc75a6f8726d3b2cd17e69e7bd577b8d056b648ded1f7d18fe7",
-  "caption": "Cara de pilantra ❤️‍🔥\n\nA música é sobre outra pessoa. Obviamente.",
+  "caption": "Cara de pilantra ❤️‍🔥",
   "hashtags": [
     "#Pilantra",
     "#JaoAnitta",
@@ -16,5 +16,11 @@
   "status": "approved",
   "edited_by_human": true,
   "approved_at": "2026-08-08T22:31:30.419111+00:00",
-  "history": []
+  "history": [
+    {
+      "at": "2026-08-08T22:31:30.418927+00:00",
+      "model": "humano",
+      "caption": "Cara de pilantra ❤️‍🔥\n\nA música é sobre outra pessoa. Obviamente."
+    }
+  ]
 }

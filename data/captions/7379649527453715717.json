@@ -1,10 +1,10 @@
 {
   "tiktok_id": "7379649527453715717",
-  "prompt_version": "v1",
+  "prompt_version": "v2",
   "model": "humano",
   "generated_at": "2026-08-08T22:31:30.497446+00:00",
   "input_fingerprint": "sha256:81edd5c70c0c6666f358748faa616928e86ed68fe237ba4757ec58c7eb1cf141",
-  "caption": "7 ✨\n\nSete dias da semana, de novo. O Jung Kook insistiu e eu também.",
+  "caption": "7 ✨",
   "hashtags": [
     "#SevenCleanVer",
     "#JungKookLatto",
@@ -16,5 +16,11 @@
   "status": "approved",
   "edited_by_human": true,
   "approved_at": "2026-08-08T22:31:30.497464+00:00",
-  "history": []
+  "history": [
+    {
+      "at": "2026-08-08T22:31:30.497446+00:00",
+      "model": "humano",
+      "caption": "7 ✨\n\nSete dias da semana, de novo. O Jung Kook insistiu e eu também."
+    }
+  ]
 }

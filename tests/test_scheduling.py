@@ -92,30 +92,37 @@ class TestNotBefore:
         # Derivado de MONDAY: uma data fixa aqui deixa de ser "de madrugada no
         # primeiro dia" assim que MONDAY passa dela.
         dawn = datetime.combine(MONDAY, time(5, 0), tzinfo=SAO_PAULO)
-        esperado = len([s for s in DEFAULT_CONFIG["pool"] if MONDAY.weekday() in s["weekdays"]])
 
-        planned = plan_slots(MONDAY, 1, config(), per_day=esperado, not_before=dawn)
+        planned = plan_slots(MONDAY, 1, config(), per_day=1, not_before=dawn)
 
-        assert len(planned) == esperado, "um corte de madrugada nao pode custar slots do dia"
+        # Contava os candidatos do dia e pedia todos eles. Isso parou de fazer
+        # sentido em 31/08/2026: o pool passou a ter dois horarios por dia util
+        # (18:45 e 19:15) que existem para se alternar, nao para sair juntos --
+        # a 30 minutos um do outro, o intervalo minimo de 4h so deixa um passar.
+        # O que o corte de madrugada nao pode custar e o post do dia.
+        assert len(planned) == 1, "um corte de madrugada nao pode custar o post do dia"
+        assert planned[0].local.date() == MONDAY
 
 
 class TestNoRut:
-    def test_o_minuto_nunca_e_o_mesmo_dois_dias_seguidos(self):
-        """A variacao vem do jitter, nao mais da rotacao.
+    def test_o_horario_nunca_se_repete_dois_dias_seguidos(self):
+        """O post nao pode sair cravado no mesmo instante todo dia.
 
-        Ate 25/08/2026 o pool tinha varios horarios por dia e este teste exigia
-        pelo menos tres horas distintas em 21 dias. Com um post diario na unica
-        faixa que se provou, a hora passou a ser sempre a mesma de proposito --
-        o que precisa continuar variando e o minuto, para o post nao sair
-        cravado no mesmo instante todo dia.
+        A asercao ja mediu tres coisas diferentes, sempre a mesma propriedade
+        vista pelo pool da epoca: horas distintas (varios slots por dia),
+        depois so o minuto (25/08/2026, um slot unico, hora fixa de proposito),
+        e agora o relogio inteiro -- desde 31/08/2026 a hora alterna de novo
+        entre 18h e 19h, entao olhar so o minuto passou a acusar repeticao onde
+        os dois posts saem com 30 minutos de diferenca.
         """
         planned = plan_slots(MONDAY, 21, config())
 
-        minutos = [slot.local.minute for slot in planned]
-        assert len(set(minutos)) >= 5, f"o jitter parou de espalhar: {sorted(set(minutos))}"
-        assert not any(a == b for a, b in zip(minutos, minutos[1:], strict=False)), (
-            "dois dias seguidos no mesmo minuto"
+        relogio = [(slot.local.hour, slot.local.minute) for slot in planned]
+        assert not any(a == b for a, b in zip(relogio, relogio[1:], strict=False)), (
+            "dois dias seguidos no mesmo horario"
         )
+        minutos = {minuto for _, minuto in relogio}
+        assert len(minutos) >= 5, f"o jitter parou de espalhar: {sorted(minutos)}"
 
     def test_o_pool_do_dia_e_respeitado(self):
         planned = plan_slots(MONDAY, 21, config())

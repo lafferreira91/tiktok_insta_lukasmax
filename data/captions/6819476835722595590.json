@@ -1,10 +1,10 @@
 {
   "tiktok_id": "6819476835722595590",
-  "prompt_version": "v1",
+  "prompt_version": "v2",
   "model": "humano",
   "generated_at": "2026-08-08T22:31:30.494782+00:00",
   "input_fingerprint": "sha256:c7ea0d43b06509b6db985b2d85df08a87c871c4e5450ee509a64bf208c7df62f",
-  "caption": "Sonido original 🎵\n\nEsse é de 2020. Eu era outra pessoa. A música, não.",
+  "caption": "Sonido original 🎵",
   "hashtags": [
     "#ZanahorioAdomicilio",
     "#CarJams",
@@ -15,5 +15,11 @@
   "status": "approved",
   "edited_by_human": true,
   "approved_at": "2026-08-08T22:31:30.494806+00:00",
-  "history": []
+  "history": [
+    {
+      "at": "2026-08-08T22:31:30.494782+00:00",
+      "model": "humano",
+      "caption": "Sonido original 🎵\n\nEsse é de 2020. Eu era outra pessoa. A música, não."
+    }
+  ]
 }

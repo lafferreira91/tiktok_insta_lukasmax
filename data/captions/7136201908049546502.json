@@ -1,10 +1,10 @@
 {
   "tiktok_id": "7136201908049546502",
-  "prompt_version": "v1",
+  "prompt_version": "v2",
   "model": "humano",
   "generated_at": "2026-08-08T22:31:30.451727+00:00",
   "input_fingerprint": "sha256:a6f838c744e8b783c58104b75fde9381223e8da0a4fd3d88f7eec24fe0aa3f13",
-  "caption": "Mostra toda a sua habilidade ✨\n\nEssa aqui é a minha habilidade. Toda ela.",
+  "caption": "Mostra toda a sua habilidade ✨",
   "hashtags": [
     "#BAGUNCA",
     "#PEDROSAMPAIO",
@@ -16,5 +16,11 @@
   "status": "approved",
   "edited_by_human": true,
   "approved_at": "2026-08-08T22:31:30.451747+00:00",
-  "history": []
+  "history": [
+    {
+      "at": "2026-08-08T22:31:30.451727+00:00",
+      "model": "humano",
+      "caption": "Mostra toda a sua habilidade ✨\n\nEssa aqui é a minha habilidade. Toda ela."
+    }
+  ]
 }

@@ -1,10 +1,10 @@
 {
   "tiktok_id": "7195668255682333957",
-  "prompt_version": "v1",
+  "prompt_version": "v2",
   "model": "humano",
   "generated_at": "2026-08-08T22:31:30.470979+00:00",
   "input_fingerprint": "sha256:011b18510de01d9f64094d4b1665001c298338c3cc02c5a24d08f808af44c943",
-  "caption": "Bem-vindo à minha canção de autossabotagem 🫠\n\nEntrada franca. Saída, difícil.",
+  "caption": "Bem-vindo à minha canção de autossabotagem 🫠",
   "hashtags": [
     "#AmorNaoEhPra",
     "#ElanaDaraVitorKley",
@@ -16,5 +16,11 @@
   "status": "approved",
   "edited_by_human": true,
   "approved_at": "2026-08-08T22:31:30.470998+00:00",
-  "history": []
+  "history": [
+    {
+      "at": "2026-08-08T22:31:30.470979+00:00",
+      "model": "humano",
+      "caption": "Bem-vindo à minha canção de autossabotagem 🫠\n\nEntrada franca. Saída, difícil."
+    }
+  ]
 }

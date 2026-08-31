@@ -1,10 +1,10 @@
 {
   "tiktok_id": "7269147234262928646",
-  "prompt_version": "v1",
+  "prompt_version": "v2",
   "model": "humano",
   "generated_at": "2026-08-08T22:31:30.442397+00:00",
   "input_fingerprint": "sha256:a0552308d4daabcbe8a4b955319787d01908b7732e36313785f66a06b555ace7",
-  "caption": "Like a G6 ✈️\n\nEstou num carro popular. Mas a energia é essa.",
+  "caption": "Like a G6 ✈️",
   "hashtags": [
     "#LikeAG6",
     "#FarEastMovementThe",
@@ -16,5 +16,11 @@
   "status": "approved",
   "edited_by_human": true,
   "approved_at": "2026-08-08T22:31:30.442425+00:00",
-  "history": []
+  "history": [
+    {
+      "at": "2026-08-08T22:31:30.442397+00:00",
+      "model": "humano",
+      "caption": "Like a G6 ✈️\n\nEstou num carro popular. Mas a energia é essa."
+    }
+  ]
 }

@@ -1,10 +1,10 @@
 {
   "tiktok_id": "7178130085227089158",
-  "prompt_version": "v1",
+  "prompt_version": "v2",
   "model": "humano",
   "generated_at": "2026-08-08T22:31:30.443674+00:00",
   "input_fingerprint": "sha256:1112a8338b369657f68981a437964d802addecda1437f1d62b4c9df3647f8bf0",
-  "caption": "Finalmente achei um homem que presta ✨\n\nSpoiler da música: não achou.",
+  "caption": "Finalmente achei um homem que presta ✨",
   "hashtags": [
     "#BRASILTAEMFESTA",
     "#GIULIABE",
@@ -16,5 +16,11 @@
   "status": "approved",
   "edited_by_human": true,
   "approved_at": "2026-08-08T22:31:30.443693+00:00",
-  "history": []
+  "history": [
+    {
+      "at": "2026-08-08T22:31:30.443674+00:00",
+      "model": "humano",
+      "caption": "Finalmente achei um homem que presta ✨\n\nSpoiler da música: não achou."
+    }
+  ]
 }

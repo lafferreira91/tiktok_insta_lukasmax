@@ -1,10 +1,10 @@
 {
   "tiktok_id": "7257983925031570693",
-  "prompt_version": "v1",
+  "prompt_version": "v2",
   "model": "humano",
   "generated_at": "2026-08-08T22:31:30.422467+00:00",
   "input_fingerprint": "sha256:e56e137e60ec2ff1b40c58157c16331cb2925277d2b30042bb641face29857e8",
-  "caption": "Voltando do filme da Barbie assim 💗\n\nDuas horas de filme e eu saí achando que sabia dançar.",
+  "caption": "Voltando do filme da Barbie assim 💗",
   "hashtags": [
     "#DanceTheNight",
     "#DuaLipa",
@@ -16,5 +16,11 @@
   "status": "approved",
   "edited_by_human": true,
   "approved_at": "2026-08-08T22:31:30.422497+00:00",
-  "history": []
+  "history": [
+    {
+      "at": "2026-08-08T22:31:30.422467+00:00",
+      "model": "humano",
+      "caption": "Voltando do filme da Barbie assim 💗\n\nDuas horas de filme e eu saí achando que sabia dançar."
+    }
+  ]
 }

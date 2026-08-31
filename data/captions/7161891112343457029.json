@@ -1,10 +1,10 @@
 {
   "tiktok_id": "7161891112343457029",
-  "prompt_version": "v1",
+  "prompt_version": "v2",
   "model": "humano",
   "generated_at": "2026-08-08T22:31:30.438985+00:00",
   "input_fingerprint": "sha256:6f4acdc3b8c00dc509d88f16709dda4d036ecc82d9e05863b50331701547eb17",
-  "caption": "Aposto que fiz você ver 👁️\n\nSe você chegou até aqui, ela ganhou a aposta.",
+  "caption": "Aposto que fiz você ver 👁️",
   "hashtags": [
     "#MadeYouLook",
     "#MeghanTrainor",
@@ -16,5 +16,11 @@
   "status": "approved",
   "edited_by_human": true,
   "approved_at": "2026-08-08T22:31:30.439018+00:00",
-  "history": []
+  "history": [
+    {
+      "at": "2026-08-08T22:31:30.438985+00:00",
+      "model": "humano",
+      "caption": "Aposto que fiz você ver 👁️\n\nSe você chegou até aqui, ela ganhou a aposta."
+    }
+  ]
 }

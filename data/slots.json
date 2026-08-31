@@ -18,8 +18,22 @@
       ],
       "time": "18:45",
       "weight": 1.4,
-      "samples": 8,
-      "rationale": "7.664 views medianos (h24, n=8); 3,4x qualquer outra faixa"
+      "samples": 6,
+      "rationale": "5.912 views medianos (h24, n=6)"
+    },
+    {
+      "id": "wd-prime",
+      "weekdays": [
+        0,
+        1,
+        2,
+        3,
+        4
+      ],
+      "time": "19:15",
+      "weight": 1.4,
+      "samples": 2,
+      "rationale": "34.404 medianos com n=2; alterna com wd-commute para medir"
     },
     {
       "id": "we-evening",
@@ -29,8 +43,19 @@
       ],
       "time": "18:30",
       "weight": 1.4,
-      "samples": 8,
+      "samples": 6,
       "rationale": "mesma faixa da noite, no fim de semana"
+    },
+    {
+      "id": "we-prime",
+      "weekdays": [
+        5,
+        6
+      ],
+      "time": "19:15",
+      "weight": 1.4,
+      "samples": 2,
+      "rationale": "o teste das 19h tambem no fim de semana"
     }
   ]
 }

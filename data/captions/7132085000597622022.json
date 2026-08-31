@@ -1,10 +1,10 @@
 {
   "tiktok_id": "7132085000597622022",
-  "prompt_version": "v1",
+  "prompt_version": "v2",
   "model": "humano",
   "generated_at": "2026-08-08T22:31:30.464179+00:00",
   "input_fingerprint": "sha256:b34fc70bbefeaa3e7ec57c0f3cc79d01871d8e947e3ff326da571e3ac2f81fb3",
-  "caption": "Você me deixa louquinho 🤪\n\nDiagnóstico dado pelo Jão, mas eu assino embaixo.",
+  "caption": "Você me deixa louquinho 🤪",
   "hashtags": [
     "#Louquinho",
     "#Jao",
@@ -16,5 +16,11 @@
   "status": "approved",
   "edited_by_human": true,
   "approved_at": "2026-08-08T22:31:30.464206+00:00",
-  "history": []
+  "history": [
+    {
+      "at": "2026-08-08T22:31:30.464179+00:00",
+      "model": "humano",
+      "caption": "Você me deixa louquinho 🤪\n\nDiagnóstico dado pelo Jão, mas eu assino embaixo."
+    }
+  ]
 }

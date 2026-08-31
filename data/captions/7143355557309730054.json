@@ -1,10 +1,10 @@
 {
   "tiktok_id": "7143355557309730054",
-  "prompt_version": "v1",
+  "prompt_version": "v2",
   "model": "humano",
   "generated_at": "2026-08-08T22:31:30.446437+00:00",
   "input_fingerprint": "sha256:59816487f7b29f8a4b6f01a82bedd3bbd1750d12aa44634c80794a8c2b2cb65f",
-  "caption": "Bem nos olhos, vejo os monstros 👁️\n\nOlhar nos olhos é subestimado como esporte radical.",
+  "caption": "Bem nos olhos, vejo os monstros 👁️",
   "hashtags": [
     "#Monstros",
     "#Jao",
@@ -16,5 +16,11 @@
   "status": "approved",
   "edited_by_human": true,
   "approved_at": "2026-08-08T22:31:30.446457+00:00",
-  "history": []
+  "history": [
+    {
+      "at": "2026-08-08T22:31:30.446437+00:00",
+      "model": "humano",
+      "caption": "Bem nos olhos, vejo os monstros 👁️\n\nOlhar nos olhos é subestimado como esporte radical."
+    }
+  ]
 }

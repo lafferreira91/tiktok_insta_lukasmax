@@ -1,10 +1,10 @@
 {
   "tiktok_id": "7157683298905443590",
-  "prompt_version": "v1",
+  "prompt_version": "v2",
   "model": "humano",
   "generated_at": "2026-08-08T22:31:30.466631+00:00",
   "input_fingerprint": "sha256:b88fae73b9ba4c9eaf58a8f24780da4aa632519a33264c9285dc895df4bcee3d",
-  "caption": "Eu sei que você me adora ✨\n\nA Pitty me deu essa confiança. Não foi mérito meu.",
+  "caption": "Eu sei que você me adora ✨",
   "hashtags": [
     "#MeAdora",
     "#Pitty",
@@ -16,5 +16,11 @@
   "status": "approved",
   "edited_by_human": true,
   "approved_at": "2026-08-08T22:31:30.466654+00:00",
-  "history": []
+  "history": [
+    {
+      "at": "2026-08-08T22:31:30.466631+00:00",
+      "model": "humano",
+      "caption": "Eu sei que você me adora ✨\n\nA Pitty me deu essa confiança. Não foi mérito meu."
+    }
+  ]
 }

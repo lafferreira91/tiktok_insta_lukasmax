@@ -1,10 +1,10 @@
 {
   "tiktok_id": "7196416586423586054",
-  "prompt_version": "v1",
+  "prompt_version": "v2",
   "model": "humano",
   "generated_at": "2026-08-08T22:31:30.463319+00:00",
   "input_fingerprint": "sha256:579719ffb3d4bf3b64a5f6254dfab2a7c30f3c09c96d7cefa1517e224990b583",
-  "caption": "Trevo 🍀\n\nANAVITÓRIA não precisa de legenda. Mas aqui está uma.",
+  "caption": "Trevo 🍀",
   "hashtags": [
     "#TrevoTu",
     "#ANAVITORIA",
@@ -16,5 +16,11 @@
   "status": "approved",
   "edited_by_human": true,
   "approved_at": "2026-08-08T22:31:30.463342+00:00",
-  "history": []
+  "history": [
+    {
+      "at": "2026-08-08T22:31:30.463319+00:00",
+      "model": "humano",
+      "caption": "Trevo 🍀\n\nANAVITÓRIA não precisa de legenda. Mas aqui está uma."
+    }
+  ]
 }

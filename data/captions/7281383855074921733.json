@@ -1,10 +1,10 @@
 {
   "tiktok_id": "7281383855074921733",
-  "prompt_version": "v1",
+  "prompt_version": "v2",
   "model": "humano",
   "generated_at": "2026-08-08T20:21:19.625216+00:00",
   "input_fingerprint": "sha256:68b681c11e1dbe5d8b4d5d234e538a16303e23bc880761dbcf309543d63b4f2b",
-  "caption": "Corra 🏃\n\nÉ o que a música manda. Se a batida te pegar no meio da rua, boa sorte explicando.",
+  "caption": "Corra 🏃",
   "hashtags": [
     "#DogDaysAreOver",
     "#FlorenceAndTheMachine",
@@ -17,5 +17,11 @@
   "status": "approved",
   "edited_by_human": true,
   "approved_at": "2026-08-08T20:21:19.625232+00:00",
-  "history": []
+  "history": [
+    {
+      "at": "2026-08-08T20:21:19.625216+00:00",
+      "model": "humano",
+      "caption": "Corra 🏃\n\nÉ o que a música manda. Se a batida te pegar no meio da rua, boa sorte explicando."
+    }
+  ]
 }

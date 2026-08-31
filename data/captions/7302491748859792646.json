@@ -1,10 +1,10 @@
 {
   "tiktok_id": "7302491748859792646",
-  "prompt_version": "v1",
+  "prompt_version": "v2",
   "model": "humano",
   "generated_at": "2026-08-08T22:31:30.458570+00:00",
   "input_fingerprint": "sha256:4d797b708b49f2adbd7c68db5f3719b2565ac37815537b9da8b8db0a3c1aab06",
-  "caption": "Sonhando com o que poderíamos ser ⭐\n\nContando estrelas em vez de resolver a vida. Recomendo.",
+  "caption": "Sonhando com o que poderíamos ser ⭐",
   "hashtags": [
     "#CountingStars",
     "#OneRepublic",
@@ -16,5 +16,11 @@
   "status": "approved",
   "edited_by_human": true,
   "approved_at": "2026-08-08T22:31:30.458648+00:00",
-  "history": []
+  "history": [
+    {
+      "at": "2026-08-08T22:31:30.458570+00:00",
+      "model": "humano",
+      "caption": "Sonhando com o que poderíamos ser ⭐\n\nContando estrelas em vez de resolver a vida. Recomendo."
+    }
+  ]
 }

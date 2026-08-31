@@ -1,10 +1,10 @@
 {
   "tiktok_id": "7297224616420936966",
-  "prompt_version": "v1",
+  "prompt_version": "v2",
   "model": "humano",
   "generated_at": "2026-08-08T22:31:30.450757+00:00",
   "input_fingerprint": "sha256:9e3e361dac03d433ee19260a69194474ca8cc55ea08600bc7425833140749a93",
-  "caption": "Querido, nós somos os novos românticos ✨\n\nRomantismo novo: dublar sozinho no carro.",
+  "caption": "Querido, nós somos os novos românticos ✨",
   "hashtags": [
     "#NewRomantics",
     "#TaylorSwift",
@@ -16,5 +16,11 @@
   "status": "approved",
   "edited_by_human": true,
   "approved_at": "2026-08-08T22:31:30.450779+00:00",
-  "history": []
+  "history": [
+    {
+      "at": "2026-08-08T22:31:30.450757+00:00",
+      "model": "humano",
+      "caption": "Querido, nós somos os novos românticos ✨\n\nRomantismo novo: dublar sozinho no carro."
+    }
+  ]
 }

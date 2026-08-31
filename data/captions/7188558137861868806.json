@@ -1,10 +1,10 @@
 {
   "tiktok_id": "7188558137861868806",
-  "prompt_version": "v1",
+  "prompt_version": "v2",
   "model": "humano",
   "generated_at": "2026-08-08T22:31:30.452727+00:00",
   "input_fingerprint": "sha256:db4b33c0dfabae0233542eca4347227d1513ef6aa63ebdad03cf84d8a744a237",
-  "caption": "Foge comigo à meia-noite ✨\n\nHorário escolhido a dedo pra ninguém dizer não.",
+  "caption": "Foge comigo à meia-noite ✨",
   "hashtags": [
     "#AMEIANOITE",
     "#PablloVittarGloriaGroove",
@@ -16,5 +16,11 @@
   "status": "approved",
   "edited_by_human": true,
   "approved_at": "2026-08-08T22:31:30.452745+00:00",
-  "history": []
+  "history": [
+    {
+      "at": "2026-08-08T22:31:30.452727+00:00",
+      "model": "humano",
+      "caption": "Foge comigo à meia-noite ✨\n\nHorário escolhido a dedo pra ninguém dizer não."
+    }
+  ]
 }

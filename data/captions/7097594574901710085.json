@@ -1,10 +1,10 @@
 {
   "tiktok_id": "7097594574901710085",
-  "prompt_version": "v1",
+  "prompt_version": "v2",
   "model": "humano",
   "generated_at": "2026-08-08T22:31:30.485636+00:00",
   "input_fingerprint": "sha256:17e92f5d9e3338ace5884296bb57c8398b1752e96ed3b9068245f30718b53602",
-  "caption": "É meme 😐\n\nÀs vezes o vídeo não precisa de explicação. Esse é um deles.",
+  "caption": "É meme 😐",
   "hashtags": [
     "#SilviaAraujo",
     "#CarJams",
@@ -15,5 +15,11 @@
   "status": "approved",
   "edited_by_human": true,
   "approved_at": "2026-08-08T22:31:30.485658+00:00",
-  "history": []
+  "history": [
+    {
+      "at": "2026-08-08T22:31:30.485636+00:00",
+      "model": "humano",
+      "caption": "É meme 😐\n\nÀs vezes o vídeo não precisa de explicação. Esse é um deles."
+    }
+  ]
 }

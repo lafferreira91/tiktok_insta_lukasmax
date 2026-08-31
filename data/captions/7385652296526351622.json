@@ -1,10 +1,10 @@
 {
   "tiktok_id": "7385652296526351622",
-  "prompt_version": "v1",
+  "prompt_version": "v2",
   "model": "humano",
   "generated_at": "2026-08-08T20:21:19.617459+00:00",
   "input_fingerprint": "sha256:282a1897f0c913748d53ab4298f0c0af475a163923371952007c0794924aaf6d",
-  "caption": "Dublei em japonês sem saber uma palavra de japonês 🇯🇵\n\nA confiança foi a mesma de quem sabe. O resultado, nem tanto.",
+  "caption": "Dublei em japonês sem saber uma palavra de japonês 🇯🇵",
   "hashtags": [
     "#Rockstar",
     "#Lisa",
@@ -17,5 +17,11 @@
   "status": "approved",
   "edited_by_human": true,
   "approved_at": "2026-08-08T20:21:19.617474+00:00",
-  "history": []
+  "history": [
+    {
+      "at": "2026-08-08T20:21:19.617459+00:00",
+      "model": "humano",
+      "caption": "Dublei em japonês sem saber uma palavra de japonês 🇯🇵\n\nA confiança foi a mesma de quem sabe. O resultado, nem tanto."
+    }
+  ]
 }

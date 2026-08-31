@@ -1,10 +1,10 @@
 {
   "tiktok_id": "7172658171608141061",
-  "prompt_version": "v1",
+  "prompt_version": "v2",
   "model": "humano",
   "generated_at": "2026-08-08T20:21:19.617828+00:00",
   "input_fingerprint": "sha256:ab099a2fdf87cf872c5472f3b76092e2d3ef95722a041c681890ce3bbfb103ca",
-  "caption": "Se eu me solto você me arrasta 🫠\n\nÉ o combinado de toda amizade que presta. Marca quem te arrasta e depois finge que não foi ideia dela.",
+  "caption": "Se eu me solto você me arrasta 🫠",
   "hashtags": [
     "#Ressaca",
     "#Jao",
@@ -17,5 +17,11 @@
   "status": "approved",
   "edited_by_human": true,
   "approved_at": "2026-08-08T20:21:19.617845+00:00",
-  "history": []
+  "history": [
+    {
+      "at": "2026-08-08T20:21:19.617828+00:00",
+      "model": "humano",
+      "caption": "Se eu me solto você me arrasta 🫠\n\nÉ o combinado de toda amizade que presta. Marca quem te arrasta e depois finge que não foi ideia dela."
+    }
+  ]
 }

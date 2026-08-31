@@ -1,10 +1,10 @@
 {
   "tiktok_id": "7162615373861309702",
-  "prompt_version": "v1",
+  "prompt_version": "v2",
   "model": "humano",
   "generated_at": "2026-08-08T22:31:30.452378+00:00",
   "input_fingerprint": "sha256:66ae953ffea39699f7ad6eee2ef16c20ec2426af35a4292771bad9f7d6653a44",
-  "caption": "Me liga, talvez? 📞\n\nEm 2012 isso era ousado. Hoje é quase agressivo.",
+  "caption": "Me liga, talvez? 📞",
   "hashtags": [
     "#CallMeMaybe",
     "#CarlyRaeJepsen",
@@ -16,5 +16,11 @@
   "status": "approved",
   "edited_by_human": true,
   "approved_at": "2026-08-08T22:31:30.452397+00:00",
-  "history": []
+  "history": [
+    {
+      "at": "2026-08-08T22:31:30.452378+00:00",
+      "model": "humano",
+      "caption": "Me liga, talvez? 📞\n\nEm 2012 isso era ousado. Hoje é quase agressivo."
+    }
+  ]
 }

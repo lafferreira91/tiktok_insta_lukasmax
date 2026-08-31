@@ -1,10 +1,10 @@
 {
   "tiktok_id": "7191230651218103557",
-  "prompt_version": "v1",
+  "prompt_version": "v2",
   "model": "humano",
   "generated_at": "2026-08-08T22:31:30.441381+00:00",
   "input_fingerprint": "sha256:20a83db5a93b26d38d56b94c92417b74da24d24b970bab4063c77954f34eccdd",
-  "caption": "Sei que cê me quer também 🦁\n\nMarília não errava uma. Nem quando doía.",
+  "caption": "Sei que cê me quer também 🦁",
   "hashtags": [
     "#Leao",
     "#MariliaMendonca",
@@ -16,5 +16,11 @@
   "status": "approved",
   "edited_by_human": true,
   "approved_at": "2026-08-08T22:31:30.441406+00:00",
-  "history": []
+  "history": [
+    {
+      "at": "2026-08-08T22:31:30.441381+00:00",
+      "model": "humano",
+      "caption": "Sei que cê me quer também 🦁\n\nMarília não errava uma. Nem quando doía."
+    }
+  ]
 }

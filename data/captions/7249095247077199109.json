@@ -1,10 +1,10 @@
 {
   "tiktok_id": "7249095247077199109",
-  "prompt_version": "v1",
+  "prompt_version": "v2",
   "model": "humano",
   "generated_at": "2026-08-08T20:21:19.617102+00:00",
   "input_fingerprint": "sha256:588c596fdcb6f7c70e11c0afef5b780fd94c694f44b253cd262abdb091c4cf2e",
-  "caption": "O que tá rolando? 😮‍💨\n\nEntrei no carro de um jeito e saí de outro. Não pedi por isso.",
+  "caption": "O que tá rolando? 😮‍💨",
   "hashtags": [
     "#WhatItIs",
     "#Doechii",
@@ -17,5 +17,11 @@
   "status": "approved",
   "edited_by_human": true,
   "approved_at": "2026-08-08T20:21:19.617117+00:00",
-  "history": []
+  "history": [
+    {
+      "at": "2026-08-08T20:21:19.617102+00:00",
+      "model": "humano",
+      "caption": "O que tá rolando? 😮‍💨\n\nEntrei no carro de um jeito e saí de outro. Não pedi por isso."
+    }
+  ]
 }

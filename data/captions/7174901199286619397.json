@@ -1,10 +1,10 @@
 {
   "tiktok_id": "7174901199286619397",
-  "prompt_version": "v1",
+  "prompt_version": "v2",
   "model": "humano",
   "generated_at": "2026-08-08T22:31:30.447197+00:00",
   "input_fingerprint": "sha256:3f5379a6b8e5182c91abb5e71907aaf9d4ebbf957eb3fa8999570a42a211a08c",
-  "caption": "Toda nossa juventude corre 🏃\n\nCorre de mim, principalmente.",
+  "caption": "Toda nossa juventude corre 🏃",
   "hashtags": [
     "#CarJams",
     "#DublagemNoCarro",
@@ -15,5 +15,11 @@
   "status": "approved",
   "edited_by_human": true,
   "approved_at": "2026-08-08T22:31:30.447215+00:00",
-  "history": []
+  "history": [
+    {
+      "at": "2026-08-08T22:31:30.447197+00:00",
+      "model": "humano",
+      "caption": "Toda nossa juventude corre 🏃\n\nCorre de mim, principalmente."
+    }
+  ]
 }

@@ -1,10 +1,10 @@
 {
   "tiktok_id": "7137320777388395782",
-  "prompt_version": "v1",
+  "prompt_version": "v2",
   "model": "humano",
   "generated_at": "2026-08-08T22:31:30.481620+00:00",
   "input_fingerprint": "sha256:282804cfd85532ca82d718df0e3c7e0c63cb0a6d894b8eb3ad4a38b9262b57d3",
-  "caption": "Eu penso o tempo todo ✨\n\nA Kesha chamou de droga. O nome técnico é esse mesmo.",
+  "caption": "Eu penso o tempo todo ✨",
   "hashtags": [
     "#YourLoveIsMy",
     "#Kesha",
@@ -16,5 +16,11 @@
   "status": "approved",
   "edited_by_human": true,
   "approved_at": "2026-08-08T22:31:30.481650+00:00",
-  "history": []
+  "history": [
+    {
+      "at": "2026-08-08T22:31:30.481620+00:00",
+      "model": "humano",
+      "caption": "Eu penso o tempo todo ✨\n\nA Kesha chamou de droga. O nome técnico é esse mesmo."
+    }
+  ]
 }

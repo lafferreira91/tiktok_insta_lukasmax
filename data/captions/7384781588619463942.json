@@ -1,10 +1,10 @@
 {
   "tiktok_id": "7384781588619463942",
-  "prompt_version": "v1",
+  "prompt_version": "v2",
   "model": "humano",
   "generated_at": "2026-08-08T22:31:30.486868+00:00",
   "input_fingerprint": "sha256:53e058e0c3c1f5a16d538ef73eb13c850059d9f85cadede71dd5ee8d27769dfe",
-  "caption": "I'm so Julia ✨\n\nNão sei quem é a Julia. Sou ela mesmo assim.",
+  "caption": "I'm so Julia ✨",
   "hashtags": [
     "#360",
     "#CharliXcx",
@@ -16,5 +16,11 @@
   "status": "approved",
   "edited_by_human": true,
   "approved_at": "2026-08-08T22:31:30.486892+00:00",
-  "history": []
+  "history": [
+    {
+      "at": "2026-08-08T22:31:30.486868+00:00",
+      "model": "humano",
+      "caption": "I'm so Julia ✨\n\nNão sei quem é a Julia. Sou ela mesmo assim."
+    }
+  ]
 }

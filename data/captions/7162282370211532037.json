@@ -1,10 +1,10 @@
 {
   "tiktok_id": "7162282370211532037",
-  "prompt_version": "v1",
+  "prompt_version": "v2",
   "model": "humano",
   "generated_at": "2026-08-08T20:21:19.623090+00:00",
   "input_fingerprint": "sha256:2bbf4b577fd376e39af58dffeeb2701b291abda3b3132672f769154c999c9f99",
-  "caption": "Ultimamente nada tem feito muito sentido 🫥\n\nEssa aqui faz. Vou me apegar a isso e ver no que dá.",
+  "caption": "Ultimamente nada tem feito muito sentido 🫥",
   "hashtags": [
     "#CarJams",
     "#DublagemNoCarro",
@@ -16,5 +16,11 @@
   "status": "approved",
   "edited_by_human": true,
   "approved_at": "2026-08-08T20:21:19.623121+00:00",
-  "history": []
+  "history": [
+    {
+      "at": "2026-08-08T20:21:19.623090+00:00",
+      "model": "humano",
+      "caption": "Ultimamente nada tem feito muito sentido 🫥\n\nEssa aqui faz. Vou me apegar a isso e ver no que dá."
+    }
+  ]
 }

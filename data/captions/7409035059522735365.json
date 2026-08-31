@@ -1,10 +1,10 @@
 {
   "tiktok_id": "7409035059522735365",
-  "prompt_version": "v1",
+  "prompt_version": "v2",
   "model": "humano",
   "generated_at": "2026-08-08T22:31:30.484836+00:00",
   "input_fingerprint": "sha256:764f2be8343fbcb0d14e85b7576fe859ebf2b1de96a2fdfd7d9c263b049e622a",
-  "caption": "Essa vai pro mozão 💛\n\nSe você não tem, essa vai pro seu carro mesmo.",
+  "caption": "Essa vai pro mozão 💛",
   "hashtags": [
     "#DieWithASmile",
     "#LadyGagaBrunoMars",
@@ -16,5 +16,11 @@
   "status": "approved",
   "edited_by_human": true,
   "approved_at": "2026-08-08T22:31:30.484862+00:00",
-  "history": []
+  "history": [
+    {
+      "at": "2026-08-08T22:31:30.484836+00:00",
+      "model": "humano",
+      "caption": "Essa vai pro mozão 💛\n\nSe você não tem, essa vai pro seu carro mesmo."
+    }
+  ]
 }

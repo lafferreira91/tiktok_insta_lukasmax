@@ -1,10 +1,10 @@
 {
   "tiktok_id": "7151141667234516229",
-  "prompt_version": "v1",
+  "prompt_version": "v2",
   "model": "humano",
   "generated_at": "2026-08-08T22:31:30.424575+00:00",
   "input_fingerprint": "sha256:76820318ba93c32db70dd007d85e9f5db62d068523c26a994580a360b1c6fc48",
-  "caption": "Você me faz brilhar ✨\n\nOu é o sol batendo no para-brisa. Uma das duas.",
+  "caption": "Você me faz brilhar ✨",
   "hashtags": [
     "#HeartAttack",
     "#DemiLovato",
@@ -16,5 +16,11 @@
   "status": "approved",
   "edited_by_human": true,
   "approved_at": "2026-08-08T22:31:30.424596+00:00",
-  "history": []
+  "history": [
+    {
+      "at": "2026-08-08T22:31:30.424575+00:00",
+      "model": "humano",
+      "caption": "Você me faz brilhar ✨\n\nOu é o sol batendo no para-brisa. Uma das duas."
+    }
+  ]
 }

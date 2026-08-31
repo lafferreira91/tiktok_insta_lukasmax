@@ -1,10 +1,10 @@
 {
   "tiktok_id": "7128885535455644933",
-  "prompt_version": "v1",
+  "prompt_version": "v2",
   "model": "humano",
   "generated_at": "2026-08-08T22:31:30.425327+00:00",
   "input_fingerprint": "sha256:f8e124e64c26b9120bd5a5ffae7a8508d05420d68f1a486e67c00851c63b28f6",
-  "caption": "Mãe, eu nunca fui santo 😇\n\nEla já sabia. Todas já sabem.",
+  "caption": "Mãe, eu nunca fui santo 😇",
   "hashtags": [
     "#MeninosEMeninas",
     "#Jao",
@@ -16,5 +16,11 @@
   "status": "approved",
   "edited_by_human": true,
   "approved_at": "2026-08-08T22:31:30.425349+00:00",
-  "history": []
+  "history": [
+    {
+      "at": "2026-08-08T22:31:30.425327+00:00",
+      "model": "humano",
+      "caption": "Mãe, eu nunca fui santo 😇\n\nEla já sabia. Todas já sabem."
+    }
+  ]
 }

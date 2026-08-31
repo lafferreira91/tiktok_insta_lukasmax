@@ -1,10 +1,10 @@
 {
   "tiktok_id": "7168191740644510982",
-  "prompt_version": "v1",
+  "prompt_version": "v2",
   "model": "humano",
   "generated_at": "2026-08-08T22:31:30.454169+00:00",
   "input_fingerprint": "sha256:e830de81c123f00c56398bd1157955102305ded8c9ca48d9a43eb8ca147821b4",
-  "caption": "Eu ponho minha armadura ⚔️\n\nLema diário. Funciona até umas dez da manhã.",
+  "caption": "Eu ponho minha armadura ⚔️",
   "hashtags": [
     "#Unstoppable",
     "#Sia",
@@ -16,5 +16,11 @@
   "status": "approved",
   "edited_by_human": true,
   "approved_at": "2026-08-08T22:31:30.454188+00:00",
-  "history": []
+  "history": [
+    {
+      "at": "2026-08-08T22:31:30.454169+00:00",
+      "model": "humano",
+      "caption": "Eu ponho minha armadura ⚔️\n\nLema diário. Funciona até umas dez da manhã."
+    }
+  ]
 }

@@ -1,10 +1,10 @@
 {
   "tiktok_id": "7191113045370866950",
-  "prompt_version": "v1",
+  "prompt_version": "v2",
   "model": "humano",
   "generated_at": "2026-08-08T22:31:30.449011+00:00",
   "input_fingerprint": "sha256:043163fb19c4cf28fa58e5875caede65e9d0ea5e1532266bba7264f53de74e12",
-  "caption": "Comecei a chorar, mas aí lembrei 💐\n\nA Miley resolveu terapia de dez anos em três minutos.",
+  "caption": "Comecei a chorar, mas aí lembrei 💐",
   "hashtags": [
     "#Flowers",
     "#MileyCyrus",
@@ -16,5 +16,11 @@
   "status": "approved",
   "edited_by_human": true,
   "approved_at": "2026-08-08T22:31:30.449030+00:00",
-  "history": []
+  "history": [
+    {
+      "at": "2026-08-08T22:31:30.449011+00:00",
+      "model": "humano",
+      "caption": "Comecei a chorar, mas aí lembrei 💐\n\nA Miley resolveu terapia de dez anos em três minutos."
+    }
+  ]
 }

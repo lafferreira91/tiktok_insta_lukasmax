@@ -1,10 +1,10 @@
 {
   "tiktok_id": "7280645870536740101",
-  "prompt_version": "v1",
+  "prompt_version": "v2",
   "model": "humano",
   "generated_at": "2026-08-08T22:31:30.424962+00:00",
   "input_fingerprint": "sha256:a655f4487d72e23a85880d35f533420d7ef1314dbc6825913f26158044e2d581",
-  "caption": "Nem tudo lhe cai bem 🖤\n\nEssa frase eu já usei numa DR. Não funcionou.",
+  "caption": "Nem tudo lhe cai bem 🖤",
   "hashtags": [
     "#ViciosEVirtudesAo",
     "#CharlieBrownJr",
@@ -16,5 +16,11 @@
   "status": "approved",
   "edited_by_human": true,
   "approved_at": "2026-08-08T22:31:30.424981+00:00",
-  "history": []
+  "history": [
+    {
+      "at": "2026-08-08T22:31:30.424962+00:00",
+      "model": "humano",
+      "caption": "Nem tudo lhe cai bem 🖤\n\nEssa frase eu já usei numa DR. Não funcionou."
+    }
+  ]
 }

@@ -1,10 +1,10 @@
 {
   "tiktok_id": "7328353454852787461",
-  "prompt_version": "v1",
+  "prompt_version": "v2",
   "model": "humano",
   "generated_at": "2026-08-08T22:31:30.429371+00:00",
   "input_fingerprint": "sha256:2c6e495af69dba12a7eab5f0324346cdd1b91d8e56d3537ac6477a66ccdee1e8",
-  "caption": "E tem eu e você ✨\n\nMatemática simples. Estranhamente difícil de executar.",
+  "caption": "E tem eu e você ✨",
   "hashtags": [
     "#Iguaria",
     "#LuisaSonza",
@@ -16,5 +16,11 @@
   "status": "approved",
   "edited_by_human": true,
   "approved_at": "2026-08-08T22:31:30.429395+00:00",
-  "history": []
+  "history": [
+    {
+      "at": "2026-08-08T22:31:30.429371+00:00",
+      "model": "humano",
+      "caption": "E tem eu e você ✨\n\nMatemática simples. Estranhamente difícil de executar."
+    }
+  ]
 }

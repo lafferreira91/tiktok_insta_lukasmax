@@ -1,10 +1,10 @@
 {
   "tiktok_id": "7619341364228050183",
-  "prompt_version": "v1",
+  "prompt_version": "v2",
   "model": "humano",
   "generated_at": "2026-08-08T22:31:30.496957+00:00",
   "input_fingerprint": "sha256:93c1461e02906a7520e70c0bb86f59391419f4c8b2c48d37d5fef097d9b74ffd",
-  "caption": "No repeat 🔁\n\nMentira. Está no repeat desde que saiu.",
+  "caption": "No repeat 🔁",
   "hashtags": [
     "#Telefone",
     "#LuisaSonza",
@@ -16,5 +16,11 @@
   "status": "approved",
   "edited_by_human": true,
   "approved_at": "2026-08-08T22:31:30.496986+00:00",
-  "history": []
+  "history": [
+    {
+      "at": "2026-08-08T22:31:30.496957+00:00",
+      "model": "humano",
+      "caption": "No repeat 🔁\n\nMentira. Está no repeat desde que saiu."
+    }
+  ]
 }

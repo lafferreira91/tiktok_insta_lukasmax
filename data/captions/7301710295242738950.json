@@ -1,10 +1,10 @@
 {
   "tiktok_id": "7301710295242738950",
-  "prompt_version": "v1",
+  "prompt_version": "v2",
   "model": "humano",
   "generated_at": "2026-08-08T22:31:30.447559+00:00",
   "input_fingerprint": "sha256:91b8b8a982ffb75e57ecca5184001ea2e1e797f9c6d8cecd083e56c4bf6af505",
-  "caption": "Posso parecer doido, mas não liga não ✨\n\nPedido que nunca funcionou pra ninguém.",
+  "caption": "Posso parecer doido, mas não liga não ✨",
   "hashtags": [
     "#ShapeOfYou",
     "#EdSheeran",
@@ -16,5 +16,11 @@
   "status": "approved",
   "edited_by_human": true,
   "approved_at": "2026-08-08T22:31:30.447577+00:00",
-  "history": []
+  "history": [
+    {
+      "at": "2026-08-08T22:31:30.447559+00:00",
+      "model": "humano",
+      "caption": "Posso parecer doido, mas não liga não ✨\n\nPedido que nunca funcionou pra ninguém."
+    }
+  ]
 }

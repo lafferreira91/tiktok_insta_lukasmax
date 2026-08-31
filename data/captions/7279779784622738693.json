@@ -1,10 +1,10 @@
 {
   "tiktok_id": "7279779784622738693",
-  "prompt_version": "v1",
+  "prompt_version": "v2",
   "model": "humano",
   "generated_at": "2026-08-08T20:21:19.616699+00:00",
   "input_fingerprint": "sha256:438e4041e8c20c1bd577c467e945b114e9e48210fb14853fbe99ba9e7cb5729a",
-  "caption": "Te ensinei certin e agora tá usando comigo 🙃\n\nExcelente aluno. Péssima ideia minha.",
+  "caption": "Te ensinei certin e agora tá usando comigo 🙃",
   "hashtags": [
     "#TeEnsineiCertin",
     "#Ludmilla",
@@ -17,5 +17,11 @@
   "status": "approved",
   "edited_by_human": true,
   "approved_at": "2026-08-08T20:21:19.616715+00:00",
-  "history": []
+  "history": [
+    {
+      "at": "2026-08-08T20:21:19.616699+00:00",
+      "model": "humano",
+      "caption": "Te ensinei certin e agora tá usando comigo 🙃\n\nExcelente aluno. Péssima ideia minha."
+    }
+  ]
 }

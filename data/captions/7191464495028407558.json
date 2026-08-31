@@ -1,10 +1,10 @@
 {
   "tiktok_id": "7191464495028407558",
-  "prompt_version": "v1",
+  "prompt_version": "v2",
   "model": "humano",
   "generated_at": "2026-08-08T22:31:30.448652+00:00",
   "input_fingerprint": "sha256:b30e0a63594537292880d0be44d541e22ef05d1e3c424bc087e676f714dc2185",
-  "caption": "O mundo gira e não para 🌍\n\nNinguém pediu, mas ele insiste.",
+  "caption": "O mundo gira e não para 🌍",
   "hashtags": [
     "#Forcado",
     "#Bomtalvao",
@@ -16,5 +16,11 @@
   "status": "approved",
   "edited_by_human": true,
   "approved_at": "2026-08-08T22:31:30.448670+00:00",
-  "history": []
+  "history": [
+    {
+      "at": "2026-08-08T22:31:30.448652+00:00",
+      "model": "humano",
+      "caption": "O mundo gira e não para 🌍\n\nNinguém pediu, mas ele insiste."
+    }
+  ]
 }

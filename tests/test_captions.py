@@ -76,7 +76,16 @@ class TestValidator:
 
     def test_link_in_bio_is_blocked(self):
         warnings = validate("Veja mais no link na bio dessa conta aqui ok", ["#a", "#b", "#c"])
-        assert any("link na bio" in warning for warning in warnings)
+        assert any("na bio" in warning for warning in warnings)
+
+    def test_any_pointer_to_the_bio_is_blocked_not_just_a_link(self):
+        """'Playlist na bio' passava pelo filtro antigo e ja estava agendada.
+
+        A bio nao tem link nem playlist, entao mandar alguem para la e um beco
+        sem saida qualquer que seja o substantivo antes de 'na bio'.
+        """
+        warnings = validate("Playlist na bio", ["#a", "#b", "#c"])
+        assert any("na bio" in warning for warning in warnings)
 
     def test_too_many_hashtags_hits_the_instagram_ceiling(self):
         caption = "Uma legenda perfeitamente adequada " * 3
@@ -90,8 +99,29 @@ class TestValidator:
     def test_a_caption_over_2200_characters_is_rejected(self):
         assert any("limite do Instagram" in warning for warning in validate("x" * 2300, ["#a"]))
 
-    def test_a_stub_caption_warns(self):
-        assert any("muito curta" in warning for warning in validate("oi", ["#a", "#b", "#c"]))
+    def test_uma_legenda_curtissima_e_valida_na_v2(self):
+        """O piso de tamanho saiu junto com a segunda frase (31/08/2026).
+
+        Ate a v1 isto era 'legenda muito curta', porque a forma esperada era um
+        paragrafo. A v2 pede uma frase so, e "Trevo 🍀" -- 7 caracteres -- e o
+        formato pedido, nao um defeito. 26 das 161 legendas agendadas ficam
+        abaixo de 15 caracteres depois do corte.
+        """
+        assert validate("Trevo 🍀", ["#a", "#b", "#c"]) == []
+
+    def test_legenda_vazia_continua_bloqueada(self):
+        """O unico minimo que sobrou. Sem ele, remover o piso abriria um buraco."""
+        assert any("vazia" in warning for warning in validate("   ", ["#a", "#b", "#c"]))
+
+    def test_uma_segunda_frase_em_outra_linha_e_bloqueada(self):
+        """A regra que define a v2: a segunda frase entrava como bloco novo."""
+        caption = "Sete dias da semana 📅\n\nEle contou. Eu so dublei."
+        assert any("uma linha" in warning for warning in validate(caption, ["#a", "#b", "#c"]))
+
+    def test_a_legenda_nao_pode_passar_da_dobra_do_mais(self):
+        """Na v2 o teto e o proprio gancho: a frase inteira tem de ser visivel."""
+        caption = "A" * 130
+        assert any("125" in warning for warning in validate(caption, ["#a", "#b", "#c"]))
 
     def test_a_hook_left_hanging_on_a_conjunction_warns(self):
         caption = "A" * 120 + " e o resto da frase continua bem depois do corte da dobra."
@@ -157,6 +187,37 @@ class TestCache:
         captions_mod.save(record, path)
 
         _, fresh = draft("111", {**METADATA, "title": "outro titulo"}, path, client=client)
+        assert fresh and client.calls == 2
+
+    def test_texto_editado_a_mao_sobrevive_a_metadados_novos(self, tmp_path):
+        """A guarda que protege as 194 legendas cortadas para a v2.
+
+        Subir a PROMPT_VERSION invalida a impressao digital de todos os
+        registros de uma vez. Sem esta guarda, o proximo ``draft-captions``
+        acharia todas desatualizadas e reescreveria o corte manual em silencio,
+        que e a unica falha aqui que ninguem notaria antes de o post ir ao ar.
+        """
+        client = FakeClient()
+        path = tmp_path / "111.json"
+        record, _ = draft("111", METADATA, path, client=client)
+        record["caption"] = "Trevo 🍀"
+        record["edited_by_human"] = True
+        captions_mod.save(record, path)
+
+        mantido, fresh = draft("111", {**METADATA, "title": "outro"}, path, client=client)
+
+        assert not fresh and client.calls == 1
+        assert mantido["caption"] == "Trevo 🍀"
+
+    def test_force_reescreve_ate_o_que_foi_editado_a_mao(self, tmp_path):
+        """A guarda protege de acidente, nao de intencao declarada."""
+        client = FakeClient()
+        path = tmp_path / "111.json"
+        record, _ = draft("111", METADATA, path, client=client)
+        record["edited_by_human"] = True
+        captions_mod.save(record, path)
+
+        _, fresh = draft("111", METADATA, path, client=client, force=True)
         assert fresh and client.calls == 2
 
     def test_force_ignores_the_cache(self, tmp_path):

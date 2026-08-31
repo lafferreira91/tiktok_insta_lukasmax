@@ -25,21 +25,25 @@ from pathlib import Path
 from typing import Any
 
 MODEL = "claude-opus-5"
-PROMPT_VERSION = "v1"
+PROMPT_VERSION = "v2"
 
 #: Instagram's hard ceiling is 2200 characters, but the first ~125 are all that
 #: show before the "more" fold, so that is where the hook has to live.
 MAX_CAPTION_CHARS = 2200
 
-#: Piso baixo de proposito. Ele nasceu em 90, quando as legendas eram paragrafos
-#: explicativos, e passou a reprovar justamente as boas quando a voz mudou para
-#: algo mais seco: "Ahhh que coisa boa. Eu tinha planos pro resto do dia. Tinha."
-#: tem 60 caracteres e diz mais que qualquer paragrafo. O que o piso precisa
-#: barrar e a legenda vazia de conteudo -- so a frase da musica sem nada em
-#: volta -- e para isso 40 basta.
-TARGET_MIN_CHARS = 40
-TARGET_MAX_CHARS = 400
+#: Todo o texto visivel antes do "mais". Desde a v2 ele tambem e o teto da
+#: legenda inteira: uma frase que cabe aqui e lida por completo, sem depender de
+#: ninguem tocar em "mais".
 HOOK_CHARS = 125
+TARGET_MAX_CHARS = HOOK_CHARS
+
+#: Nao existe mais piso de tamanho.
+#:
+#: Ele foi 90 e depois 40, e nas duas versoes servia para barrar "so a frase da
+#: musica sem nada em volta". Na v2 e exatamente essa a forma pedida: uma frase
+#: e ponto. "Trevo 🍀" tem 7 caracteres e e uma legenda legitima. Qualquer piso
+#: agora reprovaria o formato que o perfil escolheu, entao o unico minimo que
+#: sobra e o de ``validate``: nao pode ser vazia.
 
 #: Words that leave the hook hanging mid-thought when the caption is cut at the
 #: "more" fold. Matched whole, never as a suffix.
@@ -84,8 +88,12 @@ MAX_HASHTAGS = 30
 TARGET_HASHTAG_RANGE = (3, 8)
 
 #: Naming the source platform on a repost invites both a policy problem and a
-#: reach penalty; "link na bio" is dead weight on an account with no link.
-FORBIDDEN_TERMS = ("tiktok", "link na bio", "link in bio")
+#: reach penalty.
+#:
+#: "na bio" cobre mais que o "link na bio" que estava aqui antes: uma legenda ja
+#: agendada dizia "Playlist na bio 🎧", que passava pelo filtro antigo e mandava
+#: o publico para uma bio que nao tem link nem playlist.
+FORBIDDEN_TERMS = ("tiktok", "na bio", "in bio")
 
 SYSTEM_PROMPT = """\
 Voce escreve legendas de Reels para o perfil brasileiro @_lukasmax, que republica \
@@ -96,15 +104,16 @@ do video. A legenda acompanha o video: ela provoca curiosidade ou emocao, nunca 
 descreve o que a pessoa ja esta vendo.
 
 Regras:
-- Os primeiros 125 caracteres sao o gancho: e o unico trecho visivel antes do "mais". \
-  Comece por ele, nunca por saudacao ou contexto.
-- Entre 90 e 400 caracteres no total.
-- Termine com um convite leve a interacao (salvar, marcar alguem, comentar), sem soar \
-  como pedido de engajamento generico.
+- UMA frase, e so uma. Sem segunda linha, sem comentario depois, sem paragrafo de \
+  apoio. A legenda inteira precisa caber em ate 125 caracteres, que e tudo o que \
+  aparece antes do "mais".
+- Comece pela frase que interessa, nunca por saudacao ou contexto.
+- Nao peca interacao (salvar, marcar, comentar). O convite fica no video.
 - De 3 a 8 hashtags, especificas do tema e da musica, sem hashtags genericas de alcance \
   (#viral, #fyp, #foryou, #explorar).
-- Nunca cite TikTok nem outra plataforma, e nunca escreva "link na bio".
-- Sem emoji em excesso: no maximo dois, e so se somarem alguma coisa.
+- Nunca cite TikTok nem outra plataforma, e nunca mande ninguem para a bio: nao ha \
+  link nem playlist la.
+- No maximo um emoji, no fim da frase, e so se somar alguma coisa.
 
 O alt_text descreve a cena para quem usa leitor de tela, em uma frase objetiva.\
 """
@@ -197,14 +206,19 @@ def validate(caption: str, hashtags: list[str]) -> list[str]:
         warnings.append(
             f"legenda com {full_length} caracteres (limite do Instagram: {MAX_CAPTION_CHARS})"
         )
-    if text and len(text) < TARGET_MIN_CHARS:
-        warnings.append(
-            f"legenda muito curta ({len(text)} caracteres, alvo minimo {TARGET_MIN_CHARS})"
-        )
     if len(text) > TARGET_MAX_CHARS:
-        warnings.append(f"legenda longa ({len(text)} caracteres, alvo maximo {TARGET_MAX_CHARS})")
+        warnings.append(
+            f"legenda com {len(text)} caracteres: passa do que aparece antes do "
+            f"'mais' (limite {TARGET_MAX_CHARS})"
+        )
     if text and text != caption:
         warnings.append("legenda tem espaco em branco nas pontas")
+    # A regra da v2 e "uma frase". Uma quebra de linha e como a segunda frase
+    # entrava: o texto vinha como "gancho\n\ncomentario". Barrar a quebra barra o
+    # formato inteiro, sem precisar contar frases -- o que exigiria decidir se
+    # "Ahhh, que coisa boa. Tinha." e uma frase ou duas.
+    if "\n" in text:
+        warnings.append("legenda tem mais de uma linha (a v2 pede uma frase so)")
 
     hook = text[:HOOK_CHARS].rstrip()
     if text and len(text) > HOOK_CHARS:
@@ -358,6 +372,12 @@ def draft(
     stamp = fingerprint(metadata)
     existing = load(path)
     if existing and existing.get("input_fingerprint") == stamp and not force:
+        return existing, False
+    # Texto escrito ou editado por pessoa nunca e sobrescrito sozinho, mesmo com
+    # a impressao digital velha. Subir a PROMPT_VERSION invalida a impressao de
+    # TODOS os registros de uma vez, entao sem esta guarda um `draft-captions`
+    # depois da v2 apagaria em silencio as 194 legendas cortadas a mao.
+    if existing and existing.get("edited_by_human") and not force:
         return existing, False
 
     result = generate(metadata, client=client)

@@ -1,10 +1,10 @@
 {
   "tiktok_id": "7307407042505968901",
-  "prompt_version": "v1",
+  "prompt_version": "v2",
   "model": "humano",
   "generated_at": "2026-08-08T22:31:30.444895+00:00",
   "input_fingerprint": "sha256:52cb630179fc98d9e9e3ba6f6fcd145a8887f9813cda64dfc3a47f820fb7a43f",
-  "caption": "Vai passar mal 💅\n\nAviso dado com uma antecedência generosa.",
+  "caption": "Vai passar mal 💅",
   "hashtags": [
     "#CorpoSensual",
     "#PablloVittarMateusCarrilho",
@@ -16,5 +16,11 @@
   "status": "approved",
   "edited_by_human": true,
   "approved_at": "2026-08-08T22:31:30.444917+00:00",
-  "history": []
+  "history": [
+    {
+      "at": "2026-08-08T22:31:30.444895+00:00",
+      "model": "humano",
+      "caption": "Vai passar mal 💅\n\nAviso dado com uma antecedência generosa."
+    }
+  ]
 }

@@ -1,10 +1,10 @@
 {
   "tiktok_id": "7264689053826665734",
-  "prompt_version": "v1",
+  "prompt_version": "v2",
   "model": "humano",
   "generated_at": "2026-08-08T22:31:30.405458+00:00",
   "input_fingerprint": "sha256:3d8d1ab1727f0bc9d7e4e3144652883638a06c6e5ec19190ccba4cc8357f2e30",
-  "caption": "Eu vou te achar 👀\n\nIsso soa muito melhor cantado do que dito em voz alta.",
+  "caption": "Eu vou te achar 👀",
   "hashtags": [
     "#ReadyOrNot",
     "#BridgitMendler",
@@ -16,5 +16,11 @@
   "status": "approved",
   "edited_by_human": true,
   "approved_at": "2026-08-08T22:31:30.405501+00:00",
-  "history": []
+  "history": [
+    {
+      "at": "2026-08-08T22:31:30.405458+00:00",
+      "model": "humano",
+      "caption": "Eu vou te achar 👀\n\nIsso soa muito melhor cantado do que dito em voz alta."
+    }
+  ]
 }

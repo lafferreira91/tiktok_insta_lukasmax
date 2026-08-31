@@ -1,10 +1,10 @@
 {
   "tiktok_id": "7299936810812067077",
-  "prompt_version": "v1",
+  "prompt_version": "v2",
   "model": "humano",
   "generated_at": "2026-08-08T22:31:30.443249+00:00",
   "input_fingerprint": "sha256:fa3bb26fc7055f3f2e531df97dcf3faddca59764a22fc26b2b56da8a0925d676",
-  "caption": "Nem ao menos pra dizer ✨\n\nO CPM 22 escreveu isso e o Brasil inteiro se identificou. Inclusive quem não devia.",
+  "caption": "Nem ao menos pra dizer ✨",
   "hashtags": [
     "#NaoSeiViverSem",
     "#CPM22",
@@ -16,5 +16,11 @@
   "status": "approved",
   "edited_by_human": true,
   "approved_at": "2026-08-08T22:31:30.443269+00:00",
-  "history": []
+  "history": [
+    {
+      "at": "2026-08-08T22:31:30.443249+00:00",
+      "model": "humano",
+      "caption": "Nem ao menos pra dizer ✨\n\nO CPM 22 escreveu isso e o Brasil inteiro se identificou. Inclusive quem não devia."
+    }
+  ]
 }

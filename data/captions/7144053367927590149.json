@@ -1,10 +1,10 @@
 {
   "tiktok_id": "7144053367927590149",
-  "prompt_version": "v1",
+  "prompt_version": "v2",
   "model": "humano",
   "generated_at": "2026-08-08T22:31:30.439314+00:00",
   "input_fingerprint": "sha256:92e9c38e65017484f3ac149b4fa0ee1e89d6a6deaa92d4a5c7b7bd846997448c",
-  "caption": "Ainda tem muito nesse mundo que eu não aprendi ✨\n\nA lista só cresce. Achei que fosse o contrário.",
+  "caption": "Ainda tem muito nesse mundo que eu não aprendi ✨",
   "hashtags": [
     "#MeninosEMeninas",
     "#Jao",
@@ -16,5 +16,11 @@
   "status": "approved",
   "edited_by_human": true,
   "approved_at": "2026-08-08T22:31:30.439340+00:00",
-  "history": []
+  "history": [
+    {
+      "at": "2026-08-08T22:31:30.439314+00:00",
+      "model": "humano",
+      "caption": "Ainda tem muito nesse mundo que eu não aprendi ✨\n\nA lista só cresce. Achei que fosse o contrário."
+    }
+  ]
 }

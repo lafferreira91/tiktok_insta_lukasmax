@@ -1,10 +1,10 @@
 {
   "tiktok_id": "7136538019363867910",
-  "prompt_version": "v1",
+  "prompt_version": "v2",
   "model": "humano",
   "generated_at": "2026-08-08T20:21:19.622048+00:00",
   "input_fingerprint": "sha256:3ee4b5c3d7718cd75374f0c19c813a14d10b14614ab4c319aaee6424bd01eb6f",
-  "caption": "Esse sorriso indica: fugimos da prisão 😃\n\nA prisão era a segunda-feira. Mas conta.",
+  "caption": "Esse sorriso indica: fugimos da prisão 😃",
   "hashtags": [
     "#ARua",
     "#Jao",
@@ -17,5 +17,11 @@
   "status": "approved",
   "edited_by_human": true,
   "approved_at": "2026-08-08T20:21:19.622085+00:00",
-  "history": []
+  "history": [
+    {
+      "at": "2026-08-08T20:21:19.622048+00:00",
+      "model": "humano",
+      "caption": "Esse sorriso indica: fugimos da prisão 😃\n\nA prisão era a segunda-feira. Mas conta."
+    }
+  ]
 }

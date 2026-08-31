@@ -1,10 +1,10 @@
 {
   "tiktok_id": "7276110548935249158",
-  "prompt_version": "v1",
+  "prompt_version": "v2",
   "model": "humano",
   "generated_at": "2026-08-08T20:21:19.613474+00:00",
   "input_fingerprint": "sha256:ad0dba951dac2864a55830f87283de1f2aca4a35bacb3670ff7b0fcc6e60a900",
-  "caption": "Deixa ele sofrer 💅\n\nTem um ponto em que a música para de ser sobre a Anitta e vira sobre alguém que você conhece. Se você chegou nesse ponto, problema seu.",
+  "caption": "Deixa ele sofrer 💅",
   "hashtags": [
     "#DeixaEleSofrer",
     "#Anitta",
@@ -17,5 +17,11 @@
   "status": "approved",
   "edited_by_human": true,
   "approved_at": "2026-08-08T20:21:19.613849+00:00",
-  "history": []
+  "history": [
+    {
+      "at": "2026-08-08T20:21:19.613474+00:00",
+      "model": "humano",
+      "caption": "Deixa ele sofrer 💅\n\nTem um ponto em que a música para de ser sobre a Anitta e vira sobre alguém que você conhece. Se você chegou nesse ponto, problema seu."
+    }
+  ]
 }

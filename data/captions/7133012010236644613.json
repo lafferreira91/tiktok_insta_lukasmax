@@ -1,10 +1,10 @@
 {
   "tiktok_id": "7133012010236644613",
-  "prompt_version": "v1",
+  "prompt_version": "v2",
   "model": "humano",
   "generated_at": "2026-08-08T22:31:30.401367+00:00",
   "input_fingerprint": "sha256:f66cdc9858988f4f8b15df222d02a74d1b99a170c35e41b150958e3a260fc1ec",
-  "caption": "Música desbloqueada na sua cabeça 🔓\n\nDe nada. Ou desculpa. Depende de quanto tempo ela ficar.",
+  "caption": "Música desbloqueada na sua cabeça 🔓",
   "hashtags": [
     "#MisterX",
     "#CarJams",
@@ -15,5 +15,11 @@
   "status": "approved",
   "edited_by_human": true,
   "approved_at": "2026-08-08T22:31:30.401402+00:00",
-  "history": []
+  "history": [
+    {
+      "at": "2026-08-08T22:31:30.401367+00:00",
+      "model": "humano",
+      "caption": "Música desbloqueada na sua cabeça 🔓\n\nDe nada. Ou desculpa. Depende de quanto tempo ela ficar."
+    }
+  ]
 }

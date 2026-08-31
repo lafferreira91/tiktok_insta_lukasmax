@@ -1,10 +1,10 @@
 {
   "tiktok_id": "7092861820154711301",
-  "prompt_version": "v1",
+  "prompt_version": "v2",
   "model": "humano",
   "generated_at": "2026-08-08T22:31:30.491942+00:00",
   "input_fingerprint": "sha256:b10761e014f2bad3c26e2f288c4f15fd9bbe763783925de2a0e181bd8063ab21",
-  "caption": "Que rabão 😳\n\nSem comentários. Literalmente sem comentários.",
+  "caption": "Que rabão 😳",
   "hashtags": [
     "#QueRabao",
     "#AnittaPapatinhoMCKevin",
@@ -16,5 +16,11 @@
   "status": "approved",
   "edited_by_human": true,
   "approved_at": "2026-08-08T22:31:30.492002+00:00",
-  "history": []
+  "history": [
+    {
+      "at": "2026-08-08T22:31:30.491942+00:00",
+      "model": "humano",
+      "caption": "Que rabão 😳\n\nSem comentários. Literalmente sem comentários."
+    }
+  ]
 }

@@ -1,10 +1,10 @@
 {
   "tiktok_id": "7196016732249607430",
-  "prompt_version": "v1",
+  "prompt_version": "v2",
   "model": "humano",
   "generated_at": "2026-08-08T22:31:30.454510+00:00",
   "input_fingerprint": "sha256:ae786763df6e1d504cb6f850867e2ce37c90e79d8e14706476eb2a7d18d69f75",
-  "caption": "Se ele quiser, eu piso onde ninguém pisou 🔥\n\nA IZA disse com fé. Eu disse com trânsito.",
+  "caption": "Se ele quiser, eu piso onde ninguém pisou 🔥",
   "hashtags": [
     "#Fe",
     "#IZA",
@@ -16,5 +16,11 @@
   "status": "approved",
   "edited_by_human": true,
   "approved_at": "2026-08-08T22:31:30.454527+00:00",
-  "history": []
+  "history": [
+    {
+      "at": "2026-08-08T22:31:30.454510+00:00",
+      "model": "humano",
+      "caption": "Se ele quiser, eu piso onde ninguém pisou 🔥\n\nA IZA disse com fé. Eu disse com trânsito."
+    }
+  ]
 }
