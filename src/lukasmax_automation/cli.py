@@ -15,7 +15,7 @@ import os
 import sys
 from collections.abc import Callable
 from dataclasses import asdict
-from datetime import date
+from datetime import date, timedelta
 from pathlib import Path
 from typing import Any
 
@@ -480,6 +480,40 @@ def cmd_publish_due(args: argparse.Namespace) -> int:
     return 1 if result.get("failed") else 0
 
 
+def cmd_next_due(args: argparse.Namespace) -> int:
+    """Quanto falta para o proximo post. O CI usa isto para dormir ate a hora.
+
+    Com ``--seconds-only`` imprime um numero cru, para o shell do workflow ler
+    sem precisar de um parser de JSON: os segundos a dormir, ou -1 para "nada
+    nesta janela, pode encerrar".
+    """
+    paths = _paths(args)
+    queue = queue_mod.load_queue(paths.queue)
+    horizon = timedelta(seconds=args.max_wait_seconds) if args.max_wait_seconds else None
+    espera = queue_mod.seconds_until_due(queue, horizon=horizon)
+
+    if args.seconds_only:
+        print(-1 if espera is None else int(espera))
+        return 0
+
+    proximo = min(
+        (item for item in queue["items"] if queue_mod._due_at(item)),
+        key=lambda item: queue_mod._due_at(item),
+        default=None,
+    )
+    _emit(
+        {
+            "segundos_ate_o_proximo": None if espera is None else int(espera),
+            "vencido_agora": espera == 0,
+            "dentro_do_horizonte": espera is not None,
+            "proximo": None
+            if proximo is None
+            else {"id": proximo["id"], "scheduled_at": proximo.get("scheduled_at")},
+        }
+    )
+    return 0
+
+
 def cmd_reconcile(args: argparse.Namespace) -> int:
     paths = _paths(args)
     queue = queue_mod.load_queue(paths.queue)
@@ -813,6 +847,7 @@ COMMANDS: dict[str, Callable[[argparse.Namespace], int]] = {
     "set-cover": cmd_set_cover,
     "host-media": cmd_host_media,
     "publish-due": cmd_publish_due,
+    "next-due": cmd_next_due,
     "reconcile": cmd_reconcile,
     "refresh-token": cmd_refresh_token,
     "check-instagram": cmd_check_instagram,
@@ -911,6 +946,21 @@ def build_parser() -> argparse.ArgumentParser:
     publish = commands.add_parser("publish-due", help="Publica o que estiver vencido (CI)")
     publish.add_argument("--max-per-run", type=int, default=1)
     publish.add_argument("--dry-run", action="store_true")
+
+    proximo = commands.add_parser(
+        "next-due", help="Quanto falta para o proximo post (o CI dorme por este numero)"
+    )
+    proximo.add_argument(
+        "--max-wait-seconds",
+        type=int,
+        default=0,
+        help="Acima disto responde 'nada nesta janela'. 0 desliga o corte.",
+    )
+    proximo.add_argument(
+        "--seconds-only",
+        action="store_true",
+        help="Imprime so o numero de segundos (-1 = nada a esperar), para o shell do CI",
+    )
 
     commands.add_parser("reconcile", help="Resolve itens presos em 'publishing'")
     token = commands.add_parser("refresh-token", help="Estende o token por mais 60 dias")

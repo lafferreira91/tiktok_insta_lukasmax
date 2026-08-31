@@ -24,6 +24,20 @@ name: Publicar Reels agendados
 # alta, "alguns jobs podem ser descartados". Com muitas janelas por dia, um job
 # perdido custa 30 minutos; com uma janela por slot, custaria o post.
 #
+# Isso nao bastou. Medido em 31/08/2026, sobre 39 posts: o cron pede 30
+# execucoes por dia e o GitHub entrega ~8,5, com buracos de ate 16 horas. O
+# atraso mediano entre o horario agendado e o publicado ficou em 45 minutos e
+# 13 posts sairam mais de uma hora atrasados -- tres deles foram ao ar as 21h47,
+# 00h22 e 02h20, ou seja, nas piores faixas medidas, depois de terem sido
+# agendados para as 18h30. Otimizar o horario nao adianta se a entrega escorrega
+# assim.
+#
+# Por isso o job agora DORME ate a hora do post (passo "Esperar a hora exata").
+# A dependencia se inverte: em vez de precisar de um tique no minuto certo,
+# basta um tique em qualquer ponto das 5 horas anteriores. Um tique que chega
+# cedo demais encerra em segundos, e um post ja vencido continua sendo publicado
+# na hora -- o pior caso passa a ser exatamente o comportamento antigo.
+#
 # O teste tests/test_cron_cobre_os_slots.py amarra esta janela ao pool de
 # horarios -- foi ele que pegou o slot das 21:15 caindo fora dela.
 on:
@@ -52,6 +66,10 @@ permissions:
 jobs:
   publish:
     runs-on: ubuntu-latest
+    # 5h de sono (MAX_WAIT_SECONDS) + o trabalho em si. Fica abaixo do limite
+    # rigido de 6 horas do GitHub de proposito: assim um job que passe do tempo
+    # falha aqui, com log, em vez de ser morto sem explicacao la.
+    timeout-minutes: 330
     # A publicacao nasce desligada: ligar exige mudar a variable no repositorio.
     if: github.event_name == 'workflow_dispatch' || vars.PUBLISH_ENABLED == 'true'
     env:
@@ -74,12 +92,47 @@ jobs:
       - name: Checagem previa
         run: uv run lukasmax doctor
 
+      # O coracao da correcao do atraso. Imprime os segundos ate o proximo post,
+      # ou -1 para "nada nas proximas 5 horas" -- e ai o run encerra em segundos
+      # em vez de ocupar a fila a toa. Item ja vencido devolve 0 e publica na
+      # hora, que e o comportamento antigo preservado.
+      #
+      # O teto de 5h e o do GitHub: um job e morto em 6 horas. MAX_WAIT_SECONDS
+      # e timeout-minutes tem de continuar cabendo um dentro do outro.
+      - name: Esperar a hora exata do post
+        id: espera
+        run: |
+          SEGUNDOS=$(uv run lukasmax next-due --max-wait-seconds "${MAX_WAIT_SECONDS}" --seconds-only)
+          if [ "${SEGUNDOS}" -lt 0 ]; then
+            echo "Nenhum post vence nas proximas $((MAX_WAIT_SECONDS / 3600))h. Encerrando."
+            echo "publicar=false" >> "$GITHUB_OUTPUT"
+            exit 0
+          fi
+          echo "Faltam ${SEGUNDOS}s para o proximo post. Dormindo ate la."
+          sleep "${SEGUNDOS}"
+          echo "publicar=true" >> "$GITHUB_OUTPUT"
+        env:
+          MAX_WAIT_SECONDS: 18000
+
+      # Obrigatorio depois de dormir, e so por causa do sono: o checkout foi
+      # feito ate 5 horas atras, e nesse intervalo outro run pode ter publicado
+      # e empurrado a fila. Publicar sobre a copia velha e como nasceria um post
+      # duplicado, que e a unica falha irreversivel deste projeto. Nada local foi
+      # modificado ate aqui, entao o reset nao descarta trabalho.
+      - name: Reler a fila antes de publicar
+        if: steps.espera.outputs.publicar == 'true'
+        run: |
+          git fetch origin "${GITHUB_REF_NAME}"
+          git reset --hard "origin/${GITHUB_REF_NAME}"
+
       # Sempre antes de publicar: resolve qualquer item que ficou preso em
       # 'publishing' por um run que morreu no meio.
       - name: Reconciliar publicacoes interrompidas
+        if: steps.espera.outputs.publicar == 'true'
         run: uv run lukasmax reconcile
 
       - name: Publicar o que estiver vencido
+        if: steps.espera.outputs.publicar == 'true'
         run: |
           uv run lukasmax publish-due \
             --max-per-run "${{ inputs.max_per_run || 1 }}" \

@@ -120,3 +120,42 @@ class TestCobertura:
         horas_utc, _ = janela
         cobertas = horas_locais_cobertas(horas_utc)
         assert not (cobertas & {0, 1, 2, 3, 4, 5, 6}), "o cron acorda de madrugada"
+
+
+class TestOSonoCabeNoJob:
+    """O job dorme ate a hora do post; o GitHub mata um job em 6 horas.
+
+    Sao tres numeros em dois arquivos que precisam concordar: o teto de sono, o
+    timeout do job e o limite da plataforma. Se o sono passar do timeout, o post
+    daquele dia morre sem publicar -- e o log so diz "cancelled", sem apontar o
+    motivo. Foi para dar nome a essa falha que este teste existe.
+    """
+
+    LIMITE_DO_GITHUB_MIN = 360
+
+    def _do_workflow(self, padrao: str) -> int:
+        achado = re.search(padrao, WORKFLOW.read_text(encoding="utf-8"))
+        assert achado, f"publish.yml nao tem {padrao!r}"
+        return int(achado.group(1))
+
+    def test_o_sono_maximo_cabe_no_timeout_do_job(self):
+        sono_min = self._do_workflow(r"MAX_WAIT_SECONDS:\s*(\d+)") / 60
+        timeout = self._do_workflow(r"timeout-minutes:\s*(\d+)")
+        assert sono_min < timeout, (
+            f"o job dorme ate {sono_min:.0f} min mas e cortado em {timeout} min"
+        )
+
+    def test_o_timeout_fica_abaixo_do_limite_rigido_do_github(self):
+        """Assim o job falha com log proprio em vez de ser morto sem explicacao."""
+        assert self._do_workflow(r"timeout-minutes:\s*(\d+)") < self.LIMITE_DO_GITHUB_MIN
+
+    def test_a_espera_cobre_a_folga_entre_execucoes_do_cron(self):
+        """De nada adianta dormir se nenhum tique cai dentro da janela de sono.
+
+        Medido em 31/08/2026: o GitHub entregou ~8,5 execucoes por dia, uma a
+        cada ~2,8h em media. O teto de sono precisa ser maior que isso com
+        folga, senao a maioria dos tiques encerra cedo demais e o post continua
+        saindo atrasado.
+        """
+        sono_h = self._do_workflow(r"MAX_WAIT_SECONDS:\s*(\d+)") / 3600
+        assert sono_h >= 4, f"dormir so {sono_h:.1f}h nao cobre a folga real entre execucoes"

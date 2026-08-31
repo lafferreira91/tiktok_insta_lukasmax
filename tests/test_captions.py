@@ -74,18 +74,16 @@ class TestValidator:
         warnings = validate("Repostando do TikTok porque merece", ["#a", "#b", "#c"])
         assert any("tiktok" in warning for warning in warnings)
 
-    def test_link_in_bio_is_blocked(self):
-        warnings = validate("Veja mais no link na bio dessa conta aqui ok", ["#a", "#b", "#c"])
-        assert any("na bio" in warning for warning in warnings)
+    def test_apontar_para_a_playlist_da_bio_e_permitido(self):
+        """A bio TEM um link de playlist -- confirmado pelo dono em 31/08/2026.
 
-    def test_any_pointer_to_the_bio_is_blocked_not_just_a_link(self):
-        """'Playlist na bio' passava pelo filtro antigo e ja estava agendada.
-
-        A bio nao tem link nem playlist, entao mandar alguem para la e um beco
-        sem saida qualquer que seja o substantivo antes de 'na bio'.
+        "link na bio" era proibido desde o inicio, com a justificativa de ser
+        "peso morto numa conta sem link". A premissa era falsa, e por causa dela
+        eu cheguei a barrar e reescrever uma legenda perfeitamente boa
+        ("Playlist na bio"). O unico termo que sobra na lista e a plataforma de
+        origem, que e proibicao de politica, nao de premissa minha.
         """
-        warnings = validate("Playlist na bio", ["#a", "#b", "#c"])
-        assert any("na bio" in warning for warning in warnings)
+        assert validate("Playlist na bio", ["#a", "#b", "#c"]) == []
 
     def test_too_many_hashtags_hits_the_instagram_ceiling(self):
         caption = "Uma legenda perfeitamente adequada " * 3

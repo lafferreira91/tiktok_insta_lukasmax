@@ -200,20 +200,51 @@ def find_due(queue: dict[str, Any], moment: datetime | None = None) -> list[dict
     best-effort and routinely fires late, so anything already due stays due.
     """
     moment = moment or now()
-    due = []
-    for item in queue["items"]:
-        status = item.get("status")
-        if status not in {"scheduled", "retry"}:
-            continue
-        scheduled_at = _parse(item.get("scheduled_at"))
-        if scheduled_at is None or scheduled_at > moment:
-            continue
-        next_attempt = _parse(item.get("next_attempt_at"))
-        if next_attempt is not None and next_attempt > moment:
-            continue
-        due.append(item)
+    # A elegibilidade vive em _due_at, compartilhada com seconds_until_due: a
+    # espera do CI dorme ate o vencimento calculado la, e se as duas regras
+    # divergirem o job acorda para uma fila que nao tem nada a publicar.
+    due = [item for item in queue["items"] if (due_at := _due_at(item)) and due_at <= moment]
     due.sort(key=lambda entry: _parse(entry.get("scheduled_at")) or moment)
     return due
+
+
+def _due_at(item: dict[str, Any]) -> datetime | None:
+    """Quando este item passa a ser publicavel, ou None se nunca sera.
+
+    Extraida de ``find_due`` para que a conta da espera use exatamente a mesma
+    regra de elegibilidade. Se as duas divergirem, o job dorme ate a hora de um
+    item que a publicacao vai ignorar, e o post do dia se perde em silencio.
+    """
+    if item.get("status") not in {"scheduled", "retry"}:
+        return None
+    scheduled_at = _parse(item.get("scheduled_at"))
+    if scheduled_at is None:
+        return None
+    next_attempt = _parse(item.get("next_attempt_at"))
+    return max(scheduled_at, next_attempt) if next_attempt else scheduled_at
+
+
+def seconds_until_due(
+    queue: dict[str, Any],
+    moment: datetime | None = None,
+    *,
+    horizon: timedelta | None = None,
+) -> float | None:
+    """Segundos ate o proximo post, 0 se ja venceu, None se nao ha o que esperar.
+
+    Existe para o CI dormir ate a hora exata em vez de depender de um tique do
+    cron cair nela. O ``horizon`` corta esperas que nao cabem num job do GitHub
+    (limite de 6 horas) -- alem dele a resposta e a mesma de fila vazia: nada a
+    fazer nesta execucao.
+    """
+    moment = moment or now()
+    vencimentos = [due for item in queue["items"] if (due := _due_at(item)) is not None]
+    if not vencimentos:
+        return None
+    espera = min(vencimentos) - moment
+    if horizon is not None and espera > horizon:
+        return None
+    return max(espera.total_seconds(), 0.0)
 
 
 def schedule_retry(item: dict[str, Any], error: str, *, by: str = "ci") -> dict[str, Any]:

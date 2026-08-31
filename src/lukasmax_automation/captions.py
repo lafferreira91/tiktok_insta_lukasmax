@@ -90,10 +90,11 @@ TARGET_HASHTAG_RANGE = (3, 8)
 #: Naming the source platform on a repost invites both a policy problem and a
 #: reach penalty.
 #:
-#: "na bio" cobre mais que o "link na bio" que estava aqui antes: uma legenda ja
-#: agendada dizia "Playlist na bio 🎧", que passava pelo filtro antigo e mandava
-#: o publico para uma bio que nao tem link nem playlist.
-FORBIDDEN_TERMS = ("tiktok", "na bio", "in bio")
+#: A bio saiu desta lista em 31/08/2026. Ela entrou porque "link na bio era peso
+#: morto numa conta sem link" -- premissa que era simplesmente falsa: a bio tem
+#: um link de playlist. Apontar para la e legitimo, e a legenda "Playlist na bio
+#: 🎧" que eu tinha barrado por isso foi restaurada.
+FORBIDDEN_TERMS = ("tiktok",)
 
 SYSTEM_PROMPT = """\
 Voce escreve legendas de Reels para o perfil brasileiro @_lukasmax, que republica \
@@ -111,8 +112,8 @@ Regras:
 - Nao peca interacao (salvar, marcar, comentar). O convite fica no video.
 - De 3 a 8 hashtags, especificas do tema e da musica, sem hashtags genericas de alcance \
   (#viral, #fyp, #foryou, #explorar).
-- Nunca cite TikTok nem outra plataforma, e nunca mande ninguem para a bio: nao ha \
-  link nem playlist la.
+- Nunca cite TikTok nem outra plataforma. Mandar para a playlist da bio e permitido, \
+  mas so quando a musica do video for o assunto da frase.
 - No maximo um emoji, no fim da frase, e so se somar alguma coisa.
 
 O alt_text descreve a cena para quem usa leitor de tela, em uma frase objetiva.\
