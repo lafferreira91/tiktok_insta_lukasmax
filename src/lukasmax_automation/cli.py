@@ -514,6 +514,24 @@ def cmd_next_due(args: argparse.Namespace) -> int:
     return 0
 
 
+def cmd_bump(args: argparse.Namespace) -> int:
+    """Poe um video no proximo horario, trocando com quem estava la."""
+    paths = _paths(args)
+    queue = queue_mod.load_queue(paths.queue)
+    alvo = date.fromisoformat(args.date) if args.date else None
+    try:
+        resultado = planner.bump(
+            queue, args.tiktok_id, date=alvo, dry_run=args.dry_run, force=args.force
+        )
+    except queue_mod.QueueError as error:
+        print(str(error), file=sys.stderr)
+        return 2
+    if not args.dry_run:
+        queue_mod.save_queue(queue, paths.queue)
+    _emit(resultado)
+    return 0
+
+
 def cmd_reconcile(args: argparse.Namespace) -> int:
     paths = _paths(args)
     queue = queue_mod.load_queue(paths.queue)
@@ -848,6 +866,7 @@ COMMANDS: dict[str, Callable[[argparse.Namespace], int]] = {
     "host-media": cmd_host_media,
     "publish-due": cmd_publish_due,
     "next-due": cmd_next_due,
+    "bump": cmd_bump,
     "reconcile": cmd_reconcile,
     "refresh-token": cmd_refresh_token,
     "check-instagram": cmd_check_instagram,
@@ -961,6 +980,14 @@ def build_parser() -> argparse.ArgumentParser:
         action="store_true",
         help="Imprime so o numero de segundos (-1 = nada a esperar), para o shell do CI",
     )
+
+    bump = commands.add_parser(
+        "bump", help="Adianta um video para o proximo horario (trocando com quem estava la)"
+    )
+    bump.add_argument("tiktok_id")
+    bump.add_argument("--date", help="Data de destino (YYYY-MM-DD); default: o proximo post")
+    bump.add_argument("--dry-run", action="store_true")
+    bump.add_argument("--force", action="store_true", help="Aceita horario de destino ja vencido")
 
     commands.add_parser("reconcile", help="Resolve itens presos em 'publishing'")
     token = commands.add_parser("refresh-token", help="Estende o token por mais 60 dias")

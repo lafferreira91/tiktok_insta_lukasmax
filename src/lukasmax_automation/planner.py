@@ -405,3 +405,95 @@ def mark_trials(
             item.pop("trial", None)
 
     return {"marcados": marcados, "limpos": [], "dias_com_teste": len(marcados)}
+
+
+#: Estados que podem trocar de lugar na fila. Igual a RESCHEDULABLE mais
+#: 'retry': um item em backoff continua sendo um post que ainda vai sair, e nao
+#: ha motivo para ele nao poder ceder ou receber um horario.
+BUMPABLE = frozenset({"planned", "prepared", "hosted", "scheduled", "retry"})
+
+
+def bump(
+    queue: dict[str, Any],
+    tiktok_id: str,
+    *,
+    date: date | None = None,
+    dry_run: bool = False,
+    force: bool = False,
+) -> dict[str, Any]:
+    """Troca o horario de um video com o do proximo post (ou o do dia pedido).
+
+    Existe por causa das trends: quando a musica de um video do acervo vira
+    trend, esperar a data que o ranking sorteou -- as vezes tres meses -- perde
+    a onda. Aqui o video escolhido assume o proximo horario e quem estava la
+    herda a data dele.
+
+    A troca e simetrica de proposito: adiantar sem devolver o horario deixaria
+    um buraco na agenda ou empilharia dois posts no mesmo minuto, e as duas
+    coisas so apareceriam no dia.
+    """
+    claimed = [item for item in queue["items"] if item.get("status") == "publishing"]
+    if claimed:
+        raise queue_mod.QueueError(
+            f"{len(claimed)} item(ns) em 'publishing'. Rode 'lukasmax reconcile' antes."
+        )
+
+    escolhido = next((i for i in queue["items"] if i.get("tiktok_id") == tiktok_id), None)
+    if escolhido is None:
+        raise queue_mod.QueueError(f"{tiktok_id} nao esta na fila")
+    if escolhido.get("status") not in BUMPABLE:
+        raise queue_mod.QueueError(
+            f"{tiktok_id} esta em '{escolhido['status']}' e nao pode ser remarcado"
+        )
+
+    pendentes = sorted(
+        (i for i in queue["items"] if i.get("status") in BUMPABLE and i.get("scheduled_at")),
+        key=lambda i: i["scheduled_at"],
+    )
+    if date is None:
+        alvo = pendentes[0] if pendentes else None
+    else:
+        alvo = next(
+            (i for i in pendentes if datetime.fromisoformat(i["scheduled_at"]).date() == date),
+            None,
+        )
+        if alvo is None:
+            raise queue_mod.QueueError(f"nenhum post agendado para {date.isoformat()}")
+
+    if alvo is None or alvo["id"] == escolhido["id"]:
+        return {
+            "video": tiktok_id,
+            "trocou_com": None,
+            "scheduled_at": escolhido.get("scheduled_at"),
+            "nota": "ja era o proximo da fila",
+        }
+
+    quando = datetime.fromisoformat(alvo["scheduled_at"])
+    if not force and quando <= datetime.now(quando.tzinfo):
+        raise queue_mod.QueueError(
+            f"o horario de destino ({alvo['scheduled_at']}) ja passou; use --force "
+            "se quiser publicar no proximo tique do cron"
+        )
+
+    if dry_run:
+        return {
+            "video": tiktok_id,
+            "trocou_com": alvo["tiktok_id"],
+            "scheduled_at": alvo["scheduled_at"],
+            "devolvido_para": escolhido["scheduled_at"],
+            "dry_run": True,
+        }
+
+    # slot_id viaja junto com o relogio: e a chave que liga o post a medicao de
+    # desempenho, e trocar so o horario gravaria o post das 18:30 como se
+    # tivesse saido no slot das 19:15.
+    campos = ("scheduled_at", "scheduled_at_utc", "slot_id")
+    for campo in campos:
+        escolhido[campo], alvo[campo] = alvo.get(campo), escolhido.get(campo)
+
+    return {
+        "video": tiktok_id,
+        "trocou_com": alvo["tiktok_id"],
+        "scheduled_at": escolhido["scheduled_at"],
+        "devolvido_para": alvo["scheduled_at"],
+    }
