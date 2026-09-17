@@ -13094,7 +13094,7 @@
       "id": "q_20260917T190500_7235020342123629829",
       "tiktok_id": "7235020342123629829",
       "source_url": "https://www.tiktok.com/@_lukasmax/video/7235020342123629829",
-      "status": "scheduled",
+      "status": "published",
       "scheduled_at": "2026-09-17T19:07:00-03:00",
       "scheduled_at_utc": "2026-09-17T22:07:00+00:00",
       "slot_id": "wd-prime",
@@ -13114,13 +13114,13 @@
       "max_attempts": 3,
       "next_attempt_at": null,
       "last_error": null,
-      "container_id": null,
-      "container_created_at": null,
-      "claimed_at": null,
-      "claimed_by_run": null,
-      "instagram_media_id": null,
-      "permalink": null,
-      "published_at": null,
+      "container_id": "18025268906913893",
+      "container_created_at": "2026-09-17T22:24:31.290718+00:00",
+      "claimed_at": "2026-09-17T22:24:30.878828+00:00",
+      "claimed_by_run": "35281853211",
+      "instagram_media_id": "18143705839499487",
+      "permalink": "https://www.instagram.com/reel/DdZ7Y8cG-0q/",
+      "published_at": "2026-09-17T22:25:40.186596+00:00",
       "history": [
         {
           "at": "2026-09-17T00:31:27.846342+00:00",
@@ -13134,6 +13134,19 @@
           "to": "scheduled",
           "by": "local",
           "note": "repost de q_20260904T121100_7235020342123629829"
+        },
+        {
+          "at": "2026-09-17T22:24:30.878843+00:00",
+          "from": "scheduled",
+          "to": "publishing",
+          "by": "ci",
+          "note": "claim do run 35281853211"
+        },
+        {
+          "at": "2026-09-17T22:25:40.186620+00:00",
+          "from": "publishing",
+          "to": "published",
+          "by": "ci"
         }
       ],
       "alt_text": "Homem dubla dentro do carro. Texto na tela: Deve ser a minha energia ⚡"
