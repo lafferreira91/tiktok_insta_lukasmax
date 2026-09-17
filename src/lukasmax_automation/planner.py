@@ -12,9 +12,10 @@ file afterwards cannot silently change a post that is already scheduled.
 from __future__ import annotations
 
 import csv
+import json
 from collections.abc import Iterable
 from dataclasses import dataclass
-from datetime import date, datetime
+from datetime import date, datetime, timedelta
 from pathlib import Path
 from typing import Any
 from zoneinfo import ZoneInfo
@@ -246,7 +247,7 @@ def reschedule(
     queue: dict[str, Any],
     config: dict[str, Any],
     *,
-    per_day: int = 2,
+    per_day: int | None = None,
     start: date | None = None,
     not_before: datetime | None = None,
 ) -> dict[str, Any]:
@@ -267,6 +268,12 @@ def reschedule(
         for item in queue["items"]
         if item.get("status") not in RESCHEDULABLE and item.get("scheduled_at")
     ]
+
+    # A configuracao manda, nao um numero fixo aqui. O default era 2 desde
+    # quando a fila postava duas vezes por dia; quando posts_per_day virou 1, um
+    # reschedule sem --per-day passou a pedir o dobro de horarios que cabem e a
+    # janela ficava curta demais para todos os pendentes.
+    per_day = per_day or int(config.get("posts_per_day", 1))
 
     piso = not_before or queue_mod.now()
     inicio = start or piso.astimezone(ZoneInfo(config.get("timezone", "America/Sao_Paulo"))).date()
@@ -496,4 +503,96 @@ def bump(
         "trocou_com": alvo["tiktok_id"],
         "scheduled_at": escolhido["scheduled_at"],
         "devolvido_para": alvo["scheduled_at"],
+    }
+
+
+def repost(
+    queue: dict[str, Any],
+    tiktok_id: str,
+    *,
+    dry_run: bool = False,
+) -> dict[str, Any]:
+    """Enfileira de novo um video que ja foi ao ar, como item NOVO.
+
+    Nasceu de um caso concreto: em 16/09/2026 dois posts sairam com a cartela do
+    CapCut no fim e fizeram 356 e 521 views contra uma mediana de 3.772. Os
+    arquivos foram cortados, e os dois videos merecem uma segunda chance.
+
+    O item publicado nao e tocado. ``published`` e terminal porque e a trava que
+    impede o mesmo post de ir ao ar duas vezes, e um repost que reabrisse o item
+    antigo trocaria um problema de alcance por um de post duplicado. O item novo
+    tambem nasce limpo do lado do Instagram: herdar ``instagram_media_id`` faria
+    o ``reconcile`` concluir que ele ja foi publicado e o descartar.
+    """
+    claimed = [item for item in queue["items"] if item.get("status") == "publishing"]
+    if claimed:
+        raise queue_mod.QueueError(
+            f"{len(claimed)} item(ns) em 'publishing'. Rode 'lukasmax reconcile' antes."
+        )
+
+    do_video = [item for item in queue["items"] if item.get("tiktok_id") == tiktok_id]
+    if not do_video:
+        raise queue_mod.QueueError(f"{tiktok_id} nao esta na fila")
+    publicados = [item for item in do_video if item.get("status") == "published"]
+    if not publicados:
+        raise queue_mod.QueueError(f"{tiktok_id} nunca foi publicado; nao ha o que repostar")
+    if any(item.get("status") in BUMPABLE for item in do_video):
+        raise queue_mod.QueueError(f"{tiktok_id} ja tem um repost pendente na fila")
+
+    origem = max(publicados, key=lambda item: str(item.get("published_at") or ""))
+
+    # Um instante antes do proximo pendente: o repost entra na frente sem
+    # precisar re-datar ninguem aqui. O `reschedule` seguinte poe todo mundo,
+    # inclusive ele, nos horarios do pool -- e a ordem ja estara certa.
+    pendentes = [
+        item
+        for item in queue["items"]
+        if item.get("status") in BUMPABLE and item.get("scheduled_at")
+    ]
+    referencia = min((item["scheduled_at"] for item in pendentes), default=None)
+    quando = (
+        datetime.fromisoformat(referencia) - timedelta(minutes=1)
+        if referencia
+        else datetime.now(ZoneInfo("America/Sao_Paulo"))
+    )
+
+    if dry_run:
+        return {
+            "video": tiktok_id,
+            "criado": False,
+            "entraria_em": quando.isoformat(),
+            "origem": origem["id"],
+            "dry_run": True,
+        }
+
+    novo = queue_mod.new_item(
+        tiktok_id=tiktok_id,
+        source_url=origem.get("source_url") or "",
+        scheduled_at=quando.isoformat(),
+        scheduled_at_utc=quando.astimezone(ZoneInfo("UTC")).isoformat(),
+        slot_id=origem.get("slot_id") or "",
+        rank=origem.get("rank"),
+    )
+    novo["media"] = json.loads(json.dumps(origem.get("media")))
+    novo["caption"] = origem.get("caption")
+    novo["caption_fingerprint"] = origem.get("caption_fingerprint")
+    novo["alt_text"] = origem.get("alt_text")
+    novo["history"].append(
+        {
+            "at": queue_mod.now().isoformat(),
+            "from": "planned",
+            "to": "scheduled",
+            "by": "local",
+            "note": f"repost de {origem['id']}",
+        }
+    )
+    novo["status"] = "scheduled"
+    queue["items"].append(novo)
+
+    return {
+        "video": tiktok_id,
+        "criado": True,
+        "id": novo["id"],
+        "scheduled_at": novo["scheduled_at"],
+        "origem": origem["id"],
     }

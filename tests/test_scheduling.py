@@ -118,11 +118,20 @@ class TestNoRut:
         planned = plan_slots(MONDAY, 21, config())
 
         relogio = [(slot.local.hour, slot.local.minute) for slot in planned]
-        assert not any(a == b for a, b in zip(relogio, relogio[1:], strict=False)), (
-            "dois dias seguidos no mesmo horario"
-        )
-        minutos = {minuto for _, minuto in relogio}
-        assert len(minutos) >= 5, f"o jitter parou de espalhar: {sorted(minutos)}"
+
+        # Exigia zero repeticao em dias seguidos, e isso deixou de ser possivel
+        # quando o pool passou a alternar entre 18:45 e 19:15 (31/08/2026): as
+        # duas pontas ficam a 30 minutos, o jitter e de +-20, e volta e meia um
+        # dia cai no mesmo relogio do anterior por coincidencia. O que
+        # caracteriza uma rotina previsivel nao e esse encontro isolado -- e a
+        # repeticao se sustentar. Medido em 21 dias: 18 horarios distintos, uma
+        # unica repeticao, nenhuma sequencia de tres.
+        assert len(set(relogio)) >= 15, f"so {len(set(relogio))} horarios distintos em 21 dias"
+        maior = atual = 1
+        for anterior, seguinte in zip(relogio, relogio[1:], strict=False):
+            atual = atual + 1 if anterior == seguinte else 1
+            maior = max(maior, atual)
+        assert maior < 3, f"{maior} dias seguidos no mesmo horario: virou rotina"
 
     def test_o_pool_do_dia_e_respeitado(self):
         planned = plan_slots(MONDAY, 21, config())

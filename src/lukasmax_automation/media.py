@@ -137,54 +137,70 @@ def failed_checks(report: dict) -> list[str]:
     return sorted(name for name, passed in report["checks"].items() if not passed)
 
 
-def normalize_for_instagram(source: Path, target: Path) -> dict:
-    """Create a conservative Reels file and strip source-platform metadata."""
+#: A receita de encoding, uma vez so. Normalizar e cortar precisam gerar
+#: arquivos indistinguiveis: um Reel cortado que saisse com fps ou perfil
+#: diferente do resto viraria uma variavel escondida na medicao de desempenho.
+_ENCODE = (
+    "-map_metadata", "-1",
+    "-c:v", "libx264",
+    "-preset", "medium",
+    "-crf", "18",
+    "-profile:v", "high",
+    "-pix_fmt", "yuv420p",
+    "-r", "30",
+    "-c:a", "aac",
+    "-ar", "48000",
+    "-b:a", "128k",
+    "-movflags", "+faststart",
+)  # fmt: skip
+
+
+def _encode(source: Path, target: Path, extra: tuple[str, ...], acao: str) -> dict:
     ffmpeg = imageio_ffmpeg.get_ffmpeg_exe()
     target.parent.mkdir(parents=True, exist_ok=True)
     result = subprocess.run(
-        [
-            ffmpeg,
-            "-y",
-            "-i",
-            str(source),
-            "-map_metadata",
-            "-1",
-            "-c:v",
-            "libx264",
-            "-preset",
-            "medium",
-            "-crf",
-            "18",
-            "-profile:v",
-            "high",
-            "-pix_fmt",
-            "yuv420p",
-            "-r",
-            "30",
-            "-c:a",
-            "aac",
-            "-ar",
-            "48000",
-            "-b:a",
-            "128k",
-            "-movflags",
-            "+faststart",
-            str(target),
-        ],
+        [ffmpeg, "-y", "-i", str(source), *extra, *_ENCODE, str(target)],
         capture_output=True,
         text=True,
     )
     if result.returncode != 0:
         target.unlink(missing_ok=True)
         tail = "\n".join(result.stderr.strip().splitlines()[-8:])
-        raise RuntimeError(f"ffmpeg falhou ao normalizar {source.name}:\n{tail}")
+        raise RuntimeError(f"ffmpeg falhou ao {acao} {source.name}:\n{tail}")
 
     report = validate_for_instagram(target)
     if not report["valid"]:
+        target.unlink(missing_ok=True)
         raise RuntimeError(
-            f"Arquivo normalizado {target.name} falhou em: {', '.join(failed_checks(report))}"
+            f"Arquivo {acao[:-1]}ado {target.name} falhou em: {', '.join(failed_checks(report))}"
         )
     return report
+
+
+def normalize_for_instagram(source: Path, target: Path) -> dict:
+    """Create a conservative Reels file and strip source-platform metadata."""
+    return _encode(source, target, (), "normalizar")
+
+
+def trim_tail(source: Path, target: Path, *, keep_seconds: float) -> dict:
+    """Reescreve o video mantendo so os primeiros ``keep_seconds``.
+
+    Existe para tirar a cartela final do CapCut. Em 16/09/2026, dois dos sete
+    videos do acervo que a tinham ja haviam sido publicados, e eram o pior e o
+    segundo pior de 54 posts medidos -- 356 e 521 views contra uma mediana de
+    3.772 (p = 0,0007 de ser coincidencia).
+
+    Reencoda em vez de copiar o fluxo. ``-c copy`` corta no keyframe mais
+    proximo, o que deixaria ate um segundo de cartela para tras ou comeria
+    conteudo de verdade; o corte aqui cai no quadro pedido. O custo e reencodar,
+    que e o mesmo preco que o video ja pagou uma vez em ``prepare``.
+    """
+    if keep_seconds < MIN_DURATION_SECONDS:
+        raise ValueError(
+            f"cortar em {keep_seconds:.1f}s deixaria o Reel abaixo do minimo "
+            f"de {MIN_DURATION_SECONDS}s do Instagram"
+        )
+    return _encode(source, target, ("-t", f"{keep_seconds:.3f}"), "cortar")
 
 
 def extract_review_frames(path: Path, output_dir: Path, seconds: list[int]) -> list[Path]:

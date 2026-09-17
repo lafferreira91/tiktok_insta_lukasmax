@@ -532,6 +532,41 @@ def cmd_bump(args: argparse.Namespace) -> int:
     return 0
 
 
+def cmd_repost(args: argparse.Namespace) -> int:
+    """Enfileira de novo um video que ja foi ao ar, como item novo."""
+    paths = _paths(args)
+    queue = queue_mod.load_queue(paths.queue)
+    try:
+        resultado = planner.repost(queue, args.tiktok_id, dry_run=args.dry_run)
+    except queue_mod.QueueError as error:
+        print(str(error), file=sys.stderr)
+        return 2
+    if not args.dry_run:
+        # A midia veio do item publicado, que e um registro historico do que foi
+        # ao ar -- e por isso nao acompanha edicoes posteriores do arquivo. Foi
+        # exatamente esse o caso que originou o comando: os videos tinham sido
+        # cortados depois de publicados, e o repost herdou o tamanho antigo. O
+        # `doctor --check-assets` acusa isso como "asset inacessivel", porque o
+        # arquivo na Release nao tem mais os bytes que a fila afirma.
+        novo = next(i for i in queue["items"] if i["id"] == resultado["id"])
+        local = paths.ready(args.tiktok_id)
+        if local.exists():
+            from .media import inspect
+
+            atual = inspect(local)
+            novo["media"] = {
+                **(novo.get("media") or {}),
+                "sha256": hosting.sha256_of(local),
+                "bytes": local.stat().st_size,
+                "duration_seconds": atual["duration_seconds"],
+            }
+            resultado["midia_reconferida"] = atual["duration_seconds"]
+        queue_mod.save_queue(queue, paths.queue)
+        resultado["nota"] = "rode 'lukasmax reschedule' para encaixar nos horarios do pool"
+    _emit(resultado)
+    return 0
+
+
 def cmd_reconcile(args: argparse.Namespace) -> int:
     paths = _paths(args)
     queue = queue_mod.load_queue(paths.queue)
@@ -867,6 +902,7 @@ COMMANDS: dict[str, Callable[[argparse.Namespace], int]] = {
     "publish-due": cmd_publish_due,
     "next-due": cmd_next_due,
     "bump": cmd_bump,
+    "repost": cmd_repost,
     "reconcile": cmd_reconcile,
     "refresh-token": cmd_refresh_token,
     "check-instagram": cmd_check_instagram,
@@ -988,6 +1024,12 @@ def build_parser() -> argparse.ArgumentParser:
     bump.add_argument("--date", help="Data de destino (YYYY-MM-DD); default: o proximo post")
     bump.add_argument("--dry-run", action="store_true")
     bump.add_argument("--force", action="store_true", help="Aceita horario de destino ja vencido")
+
+    repost = commands.add_parser(
+        "repost", help="Enfileira de novo um video ja publicado, como item novo"
+    )
+    repost.add_argument("tiktok_id")
+    repost.add_argument("--dry-run", action="store_true")
 
     commands.add_parser("reconcile", help="Resolve itens presos em 'publishing'")
     token = commands.add_parser("refresh-token", help="Estende o token por mais 60 dias")
