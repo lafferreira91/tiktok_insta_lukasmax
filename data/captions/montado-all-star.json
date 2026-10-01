@@ -1,0 +1,20 @@
+{
+  "tiktok_id": "montado-all-star",
+  "prompt_version": "v2",
+  "model": "humano",
+  "generated_at": "2026-10-01T01:05:29.950841+00:00",
+  "input_fingerprint": "sha256:d03b55d1f43f24686b53ad99e7c334e69f54b9655318ff05e4a32f2c8a48c084",
+  "caption": "Ei, agora você é uma estrela ⭐",
+  "hashtags": [
+    "#AllStar",
+    "#SmashMouth",
+    "#CarJams",
+    "#DublagemNoCarro"
+  ],
+  "alt_text": "Homem dubla dentro do carro. Texto na tela: Ei, agora você é uma estrela ⭐",
+  "warnings": [],
+  "status": "approved",
+  "edited_by_human": true,
+  "approved_at": "2026-10-01T01:05:29.950891+00:00",
+  "history": []
+}

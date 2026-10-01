@@ -1,0 +1,20 @@
+{
+  "tiktok_id": "montado-rockstar",
+  "prompt_version": "v2",
+  "model": "humano",
+  "generated_at": "2026-10-01T01:05:29.742831+00:00",
+  "input_fingerprint": "sha256:5e1179a383752bbda635a8c69cb8cf306bb0f0bd2a731572ae8f3decb3a3ab6f",
+  "caption": "Todo mundo só quer ser um grande rockstar 🎸",
+  "hashtags": [
+    "#Rockstar",
+    "#Nickelback",
+    "#CarJams",
+    "#DublagemNoCarro"
+  ],
+  "alt_text": "Homem dubla dentro do carro. Texto na tela: Todo mundo só quer ser um grande rockstar 🎸",
+  "warnings": [],
+  "status": "approved",
+  "edited_by_human": true,
+  "approved_at": "2026-10-01T01:05:29.742880+00:00",
+  "history": []
+}
