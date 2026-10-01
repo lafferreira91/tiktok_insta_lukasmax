@@ -52,6 +52,19 @@ class Paths:
         return self.media / "ready"
 
     @property
+    def montados_dir(self) -> Path:
+        """Reels montados por 'lukasmax montar', antes de entrarem no acervo."""
+        return self.media / "montados"
+
+    @property
+    def letras_dir(self) -> Path:
+        """Letras sincronizadas e traduzidas, uma por musica."""
+        return self.data / "letras"
+
+    def letra(self, slug: str) -> Path:
+        return self.letras_dir / f"{slug}.json"
+
+    @property
     def captions_dir(self) -> Path:
         return self.data / "captions"
 

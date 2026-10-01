@@ -1,0 +1,324 @@
+{
+  "artista": "Smash Mouth",
+  "musica": "All Star",
+  "fonte": "lrclib:19692629",
+  "duracao": 200.56,
+  "ajuste": -0.5,
+  "linhas": [
+    {
+      "inicio": 0.5,
+      "original": "Somebody once told me the world is gonna roll me",
+      "traducao": "alguém me disse uma vez | que o mundo ia me atropelar"
+    },
+    {
+      "inicio": 5.57,
+      "original": "I ain't the sharpest tool in the shed",
+      "traducao": "eu não sou a ferramenta | mais afiada da caixa"
+    },
+    {
+      "inicio": 9.77,
+      "original": "She was looking kind of dumb with her finger and her thumb",
+      "traducao": "ela tava meio boba | com o dedo e o polegar"
+    },
+    {
+      "inicio": 14.24,
+      "original": "In the shape of an \"L\" on her forehead",
+      "traducao": "fazendo um \"L\" na testa"
+    },
+    {
+      "inicio": 18.84,
+      "original": "Well, the years start comin' and they don't stop comin'",
+      "traducao": "os anos começam a vir | e não param de vir"
+    },
+    {
+      "inicio": 21.64,
+      "original": "Fed to the rules and I hit the ground runnin'",
+      "traducao": "cansei das regras | e saí correndo"
+    },
+    {
+      "inicio": 24.22,
+      "original": "Didn't make sense not to live for fun",
+      "traducao": "não fazia sentido | não viver por diversão"
+    },
+    {
+      "inicio": 26.37,
+      "original": "Your brain gets smart, but your head gets dumb",
+      "traducao": "o cérebro fica esperto, | mas a cabeça fica burra"
+    },
+    {
+      "inicio": 28.79,
+      "original": "So much to do, so much to see",
+      "traducao": "tanto pra fazer, tanto pra ver"
+    },
+    {
+      "inicio": 30.5,
+      "original": "So, what's wrong with taking the backstreets?",
+      "traducao": "qual o problema | de pegar um atalho?"
+    },
+    {
+      "inicio": 33.24,
+      "original": "You'll never know if you don't go (go)",
+      "traducao": "você nunca vai saber se não for (vai)"
+    },
+    {
+      "inicio": 35.4,
+      "original": "You'll never shine if you don't glow",
+      "traducao": "você nunca vai brilhar | se não reluzir"
+    },
+    {
+      "inicio": 37.98,
+      "original": "Hey now, you're an all-star",
+      "traducao": "ei, agora você é uma estrela"
+    },
+    {
+      "inicio": 39.97,
+      "original": "Get your game on, go play",
+      "traducao": "entra no jogo, vai jogar"
+    },
+    {
+      "inicio": 42.58,
+      "original": "Hey now, you're a rock star",
+      "traducao": "ei, agora você é um rock star"
+    },
+    {
+      "inicio": 44.67,
+      "original": "Get the show on, get paid",
+      "traducao": "começa o show, recebe o cachê"
+    },
+    {
+      "inicio": 47.03,
+      "original": "(And all that glitters is gold)",
+      "traducao": "(e tudo que reluz é ouro)"
+    },
+    {
+      "inicio": 50.71,
+      "original": "Only shootin' stars break the mold",
+      "traducao": "só estrelas cadentes | quebram o padrão"
+    },
+    {
+      "inicio": 56.23,
+      "original": "It's a cool place, and they say it gets colder",
+      "traducao": "é um lugar frio, | e dizem que esfria mais"
+    },
+    {
+      "inicio": 58.6,
+      "original": "You're bundled up now, wait 'til you get older",
+      "traducao": "você tá agasalhado agora, | espera até ficar mais velho"
+    },
+    {
+      "inicio": 60.83,
+      "original": "But the meteor men beg to differ",
+      "traducao": "mas os homens do tempo discordam"
+    },
+    {
+      "inicio": 62.84,
+      "original": "Judging by the hole in the satellite picture",
+      "traducao": "pelo buraco | na foto do satélite"
+    },
+    {
+      "inicio": 65.15,
+      "original": "The ice we skate is gettin' pretty thin",
+      "traducao": "o gelo onde a gente patina | tá ficando fino"
+    },
+    {
+      "inicio": 67.35,
+      "original": "The water's gettin' warm, so you might as well swim",
+      "traducao": "a água tá esquentando, | então é melhor nadar"
+    },
+    {
+      "inicio": 69.52,
+      "original": "My world's on fire, how 'bout yours?",
+      "traducao": "meu mundo tá pegando fogo, | e o seu?"
+    },
+    {
+      "inicio": 72.06,
+      "original": "That's the way I like it, and I'll never get bored",
+      "traducao": "é assim que eu gosto, | e nunca vou ficar entediado"
+    },
+    {
+      "inicio": 74.98,
+      "original": "Hey now, you're an all-star",
+      "traducao": "ei, agora você é uma estrela"
+    },
+    {
+      "inicio": 77.07,
+      "original": "Get your game on, go play",
+      "traducao": "entra no jogo, vai jogar"
+    },
+    {
+      "inicio": 79.5,
+      "original": "Hey now, you're a rock star",
+      "traducao": "ei, agora você é um rock star"
+    },
+    {
+      "inicio": 81.57,
+      "original": "Get the show on, get paid",
+      "traducao": "começa o show, recebe o cachê"
+    },
+    {
+      "inicio": 84.26,
+      "original": "(All that glitters is gold)",
+      "traducao": "(tudo que reluz é ouro)"
+    },
+    {
+      "inicio": 87.69,
+      "original": "Only shootin' stars break the mold",
+      "traducao": "só estrelas cadentes | quebram o padrão"
+    },
+    {
+      "inicio": 96.75,
+      "original": "Go for the moon",
+      "traducao": "vai pra lua"
+    },
+    {
+      "inicio": 98.13,
+      "original": "Go, go, go, go for the moon",
+      "traducao": "vai, vai, vai, vai pra lua"
+    },
+    {
+      "inicio": 102.63,
+      "original": "Go, go, go, go for the moon",
+      "traducao": "vai, vai, vai, vai pra lua"
+    },
+    {
+      "inicio": 109.89,
+      "original": "Go, go, go for the moon",
+      "traducao": "vai, vai, vai pra lua"
+    },
+    {
+      "inicio": 111.87,
+      "original": "Hey now, you're an all-star",
+      "traducao": "ei, agora você é uma estrela"
+    },
+    {
+      "inicio": 113.95,
+      "original": "Get your game on, go play",
+      "traducao": "entra no jogo, vai jogar"
+    },
+    {
+      "inicio": 116.46,
+      "original": "Hey now, you're a rock star",
+      "traducao": "ei, agora você é um rock star"
+    },
+    {
+      "inicio": 118.46,
+      "original": "Get the show on, get paid",
+      "traducao": "começa o show, recebe o cachê"
+    },
+    {
+      "inicio": 120.85,
+      "original": "(And all that glitters is gold)",
+      "traducao": "(e tudo que reluz é ouro)"
+    },
+    {
+      "inicio": 124.61,
+      "original": "Only shooting stars",
+      "traducao": "só estrelas cadentes"
+    },
+    {
+      "inicio": 127.36,
+      "original": "Somebody once asked, \"Could I spare some change for gas?",
+      "traducao": "alguém me pediu uns trocados | pra gasolina"
+    },
+    {
+      "inicio": 131.81,
+      "original": "I need to get myself away from this place\"",
+      "traducao": "\"preciso sair desse lugar\""
+    },
+    {
+      "inicio": 136.67,
+      "original": "I said, \"Yep, what a concept, I could use a little fuel myself",
+      "traducao": "eu disse: \"boa ideia, | eu também queria um combustível"
+    },
+    {
+      "inicio": 141.04,
+      "original": "And we could all use a little change\"",
+      "traducao": "e todo mundo precisa | de uma mudança\""
+    },
+    {
+      "inicio": 145.88,
+      "original": "Well, the years start comin' and they don't stop comin'",
+      "traducao": "os anos começam a vir | e não param de vir"
+    },
+    {
+      "inicio": 148.71,
+      "original": "Fed to the rules and I hit the ground runnin'",
+      "traducao": "cansei das regras | e saí correndo"
+    },
+    {
+      "inicio": 151.04,
+      "original": "Didn't make sense not to live for fun",
+      "traducao": "não fazia sentido | não viver por diversão"
+    },
+    {
+      "inicio": 153.32,
+      "original": "Your brain gets smart, but your head gets dumb",
+      "traducao": "o cérebro fica esperto, | mas a cabeça fica burra"
+    },
+    {
+      "inicio": 155.61,
+      "original": "So much to do, so much to see",
+      "traducao": "tanto pra fazer, tanto pra ver"
+    },
+    {
+      "inicio": 157.46,
+      "original": "So, what's wrong with taking the backstreets?",
+      "traducao": "qual o problema | de pegar um atalho?"
+    },
+    {
+      "inicio": 160.17,
+      "original": "You'll never know if you don't go (go)",
+      "traducao": "você nunca vai saber se não for (vai)"
+    },
+    {
+      "inicio": 162.55,
+      "original": "You'll never shine if you don't glow",
+      "traducao": "você nunca vai brilhar | se não reluzir"
+    },
+    {
+      "inicio": 164.82,
+      "original": "Hey now, you're an all-star",
+      "traducao": "ei, agora você é uma estrela"
+    },
+    {
+      "inicio": 166.98,
+      "original": "Get your game on, go play",
+      "traducao": "entra no jogo, vai jogar"
+    },
+    {
+      "inicio": 169.43,
+      "original": "Hey now, you're a rock star",
+      "traducao": "ei, agora você é um rock star"
+    },
+    {
+      "inicio": 171.5,
+      "original": "Get the show on, get paid",
+      "traducao": "começa o show, recebe o cachê"
+    },
+    {
+      "inicio": 173.83,
+      "original": "(And all that glitters is gold)",
+      "traducao": "(e tudo que reluz é ouro)"
+    },
+    {
+      "inicio": 177.62,
+      "original": "Only shootin' stars break the mold",
+      "traducao": "só estrelas cadentes | quebram o padrão"
+    },
+    {
+      "inicio": 183.08,
+      "original": "(And all that glitters is gold)",
+      "traducao": "(e tudo que reluz é ouro)"
+    },
+    {
+      "inicio": 186.99,
+      "original": "Only shootin' stars break the mold",
+      "traducao": "só estrelas cadentes | quebram o padrão"
+    },
+    {
+      "inicio": 193.2,
+      "original": "",
+      "traducao": ""
+    }
+  ]
+}

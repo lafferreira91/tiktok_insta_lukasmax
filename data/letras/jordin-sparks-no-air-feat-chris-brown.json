@@ -1,0 +1,393 @@
+{
+  "artista": "Jordin Sparks",
+  "musica": "No Air (feat. Chris Brown)",
+  "fonte": "lrclib:36965612",
+  "duracao": 264.0,
+  "linhas": [
+    {
+      "inicio": 0.1,
+      "original": "Tell me how I'm supposed to breathe with no air (air, air)",
+      "traducao": "me diz como eu vou respirar sem ar (ar, ar)"
+    },
+    {
+      "inicio": 4.94,
+      "original": "Ooh-ooh, ooh, ooh-ooh, ha, ah-ah",
+      "traducao": "ooh-ooh, ooh, ooh-ooh, ha, ah-ah"
+    },
+    {
+      "inicio": 16.92,
+      "original": "If I should die before I wake",
+      "traducao": "se eu morrer antes de acordar"
+    },
+    {
+      "inicio": 20.07,
+      "original": "It's 'cause you took my breath away",
+      "traducao": "é porque você me tirou o fôlego"
+    },
+    {
+      "inicio": 23.01,
+      "original": "Losing you is like living in a world with no air, oh",
+      "traducao": "te perder é como viver | num mundo sem ar, oh"
+    },
+    {
+      "inicio": 29.03,
+      "original": "I'm here alone, didn't wanna leave",
+      "traducao": "tô aqui sozinho, | não queria ir embora"
+    },
+    {
+      "inicio": 32.12,
+      "original": "My heart won't move, it's incomplete",
+      "traducao": "meu coração não se mexe, | tá incompleto"
+    },
+    {
+      "inicio": 35.14,
+      "original": "Wish there was a way that I can make you understand",
+      "traducao": "queria que tivesse um jeito | de te fazer entender"
+    },
+    {
+      "inicio": 40.61,
+      "original": "But how do you expect me",
+      "traducao": "mas como você espera"
+    },
+    {
+      "inicio": 45.54,
+      "original": "To live alone with just me?",
+      "traducao": "que eu viva sozinho comigo mesmo?"
+    },
+    {
+      "inicio": 48.28,
+      "original": "'Cause my world revolves around you",
+      "traducao": "porque meu mundo gira em torno de você"
+    },
+    {
+      "inicio": 50.7,
+      "original": "It's so hard for me to breathe",
+      "traducao": "tá tão difícil respirar"
+    },
+    {
+      "inicio": 54.08,
+      "original": "Tell me how I'm supposed to breathe with no air",
+      "traducao": "me diz como eu vou respirar sem ar"
+    },
+    {
+      "inicio": 57.08,
+      "original": "Can't live, can't breathe with no air",
+      "traducao": "não dá pra viver, | não dá pra respirar sem ar"
+    },
+    {
+      "inicio": 59.95,
+      "original": "It's how I feel whenever you ain't there",
+      "traducao": "é assim que eu me sinto | sempre que você não tá"
+    },
+    {
+      "inicio": 62.94,
+      "original": "It's no air, no air",
+      "traducao": "é sem ar, sem ar"
+    },
+    {
+      "inicio": 66.19,
+      "original": "Got me out here in the water so deep",
+      "traducao": "você me deixou aqui | numa água tão funda"
+    },
+    {
+      "inicio": 69.04,
+      "original": "Tell me how you gon' be without me",
+      "traducao": "me diz como você vai ficar sem mim"
+    },
+    {
+      "inicio": 72.01,
+      "original": "If you ain't here, I just can't breathe",
+      "traducao": "se você não tá aqui, | eu não consigo respirar"
+    },
+    {
+      "inicio": 75.09,
+      "original": "It's no air, no air",
+      "traducao": "é sem ar, sem ar"
+    },
+    {
+      "inicio": 78.15,
+      "original": "No air, air (ho-ooh)",
+      "traducao": "sem ar, ar (ho-ooh)"
+    },
+    {
+      "inicio": 81.02,
+      "original": "No air, air (no)",
+      "traducao": "sem ar, ar (não)"
+    },
+    {
+      "inicio": 84.02,
+      "original": "No air, air (ho, ah)",
+      "traducao": "sem ar, ar (ho, ah)"
+    },
+    {
+      "inicio": 87.24,
+      "original": "No air, air",
+      "traducao": "sem ar, ar"
+    },
+    {
+      "inicio": 89.18,
+      "original": "I walked, I ran, I jumped, I flew",
+      "traducao": "eu andei, corri, pulei, voei"
+    },
+    {
+      "inicio": 92.14,
+      "original": "Right off the ground to float to you",
+      "traducao": "saí do chão pra flutuar até você"
+    },
+    {
+      "inicio": 95.08,
+      "original": "There's no gravity to hold me down for real",
+      "traducao": "não tem gravidade | que me segure de verdade"
+    },
+    {
+      "inicio": 100.74,
+      "original": "But somehow I'm still alive inside",
+      "traducao": "mas de algum jeito | ainda tô vivo por dentro"
+    },
+    {
+      "inicio": 104.14,
+      "original": "Took my breath, but I survived",
+      "traducao": "tirou meu fôlego, mas eu sobrevivi"
+    },
+    {
+      "inicio": 107.19,
+      "original": "I don't know how, but I don't even care",
+      "traducao": "não sei como, | mas eu nem ligo"
+    },
+    {
+      "inicio": 112.69,
+      "original": "So how (how)",
+      "traducao": "então como (como)"
+    },
+    {
+      "inicio": 114.85,
+      "original": "Do you expect me (me)",
+      "traducao": "você espera (espera)"
+    },
+    {
+      "inicio": 117.44,
+      "original": "To live alone with just me? (Oh, oh)",
+      "traducao": "que eu viva sozinho comigo mesmo? (oh, oh)"
+    },
+    {
+      "inicio": 120.01,
+      "original": "'Cause my world revolves around you",
+      "traducao": "porque meu mundo gira em torno de você"
+    },
+    {
+      "inicio": 122.53,
+      "original": "It's so hard for me to breathe",
+      "traducao": "tá tão difícil respirar"
+    },
+    {
+      "inicio": 126.06,
+      "original": "Tell me how I'm supposed to breathe with no air (oh-oh, oh-oh)",
+      "traducao": "me diz como eu vou respirar sem ar (oh-oh, oh-oh)"
+    },
+    {
+      "inicio": 129.05,
+      "original": "Can't live, can't breathe with no air (oh-oh, oh-oh)",
+      "traducao": "não dá pra viver, | não dá pra respirar sem ar"
+    },
+    {
+      "inicio": 132.15,
+      "original": "It's how I feel whenever you ain't there",
+      "traducao": "é assim que eu me sinto | sempre que você não tá"
+    },
+    {
+      "inicio": 135.1,
+      "original": "It's no air, no air",
+      "traducao": "é sem ar, sem ar"
+    },
+    {
+      "inicio": 138.06,
+      "original": "Got me out here in the water so deep (so deep)",
+      "traducao": "você me deixou aqui | numa água tão funda (tão funda)"
+    },
+    {
+      "inicio": 141.0,
+      "original": "Tell me how you gon' be without me (without me, yeah)",
+      "traducao": "me diz como você vai ficar sem mim (sem mim, yeah)"
+    },
+    {
+      "inicio": 144.09,
+      "original": "If you ain't here, I just can't breathe",
+      "traducao": "se você não tá aqui, | eu não consigo respirar"
+    },
+    {
+      "inicio": 147.06,
+      "original": "It's no air, no air (no air)",
+      "traducao": "é sem ar, sem ar (sem ar)"
+    },
+    {
+      "inicio": 150.18,
+      "original": "No air, air (ho-ooh)",
+      "traducao": "sem ar, ar (ho-ooh)"
+    },
+    {
+      "inicio": 153.07,
+      "original": "No air, air (ho-ooh)",
+      "traducao": "sem ar, ar (ho-ooh)"
+    },
+    {
+      "inicio": 155.82,
+      "original": "No air, air (no, whoa)",
+      "traducao": "sem ar, ar (não, whoa)"
+    },
+    {
+      "inicio": 158.82,
+      "original": "No air, air (no more)",
+      "traducao": "sem ar, ar (não mais)"
+    },
+    {
+      "inicio": 164.28,
+      "original": "(No air) oh-ooh-ooh-ooh-ooh",
+      "traducao": "(sem ar) oh-ooh-ooh-ooh-ooh"
+    },
+    {
+      "inicio": 167.67,
+      "original": "(No air) baby, oh-oh-oh, whoa",
+      "traducao": "(sem ar) baby, oh-oh-oh, whoa"
+    },
+    {
+      "inicio": 171.04,
+      "original": "It's no air, no air",
+      "traducao": "é sem ar, sem ar"
+    },
+    {
+      "inicio": 175.46,
+      "original": "Hey (no air), no air (no air, ain't there)",
+      "traducao": "hey (sem ar), sem ar | (sem ar, você não tá)"
+    },
+    {
+      "inicio": 184.21,
+      "original": "Oh!",
+      "traducao": "oh!"
+    },
+    {
+      "inicio": 186.27,
+      "original": "Tell me how I'm supposed to breathe with no air (no air)",
+      "traducao": "me diz como eu vou respirar sem ar (sem ar)"
+    },
+    {
+      "inicio": 189.18,
+      "original": "Can't live, can't breathe with no air (no air)",
+      "traducao": "não dá pra viver, | não dá pra respirar sem ar"
+    },
+    {
+      "inicio": 192.16,
+      "original": "It's how I feel whenever you ain't there (no breathing)",
+      "traducao": "é assim que eu me sinto | sempre que você não tá"
+    },
+    {
+      "inicio": 195.05,
+      "original": "It's no air, no air (no breathing at all)",
+      "traducao": "é sem ar, sem ar | (nada de respirar)"
+    },
+    {
+      "inicio": 198.03,
+      "original": "Got me out here in the water so deep",
+      "traducao": "você me deixou aqui | numa água tão funda"
+    },
+    {
+      "inicio": 201.04,
+      "original": "Tell me how you gon' be without me, yeah",
+      "traducao": "me diz como você vai ficar sem mim, yeah"
+    },
+    {
+      "inicio": 204.0,
+      "original": "If you ain't here, I just can't breathe",
+      "traducao": "se você não tá aqui, | eu não consigo respirar"
+    },
+    {
+      "inicio": 207.18,
+      "original": "It's no air, no air",
+      "traducao": "é sem ar, sem ar"
+    },
+    {
+      "inicio": 209.94,
+      "original": "No air, air (how do you expect me)",
+      "traducao": "sem ar, ar | (como você espera)"
+    },
+    {
+      "inicio": 213.09,
+      "original": "No air, air (to live alone with just me?)",
+      "traducao": "sem ar, ar | (que eu viva sozinho comigo mesmo?)"
+    },
+    {
+      "inicio": 216.03,
+      "original": "No air, air ('cause my world revolves around you)",
+      "traducao": "sem ar, ar | (porque meu mundo gira em torno de você)"
+    },
+    {
+      "inicio": 218.68,
+      "original": "It's so hard for me to breathe",
+      "traducao": "tá tão difícil respirar"
+    },
+    {
+      "inicio": 221.91,
+      "original": "Tell me how I'm supposed to breathe with no air (no air)",
+      "traducao": "me diz como eu vou respirar sem ar (sem ar)"
+    },
+    {
+      "inicio": 225.06,
+      "original": "Can't live, can't breathe with no air",
+      "traducao": "não dá pra viver, | não dá pra respirar sem ar"
+    },
+    {
+      "inicio": 228.05,
+      "original": "That's how I feel whenever you ain't there (not there)",
+      "traducao": "é assim que eu me sinto | sempre que você não tá"
+    },
+    {
+      "inicio": 231.06,
+      "original": "It's no air, no air",
+      "traducao": "é sem ar, sem ar"
+    },
+    {
+      "inicio": 233.92,
+      "original": "Got me out here in the water so deep",
+      "traducao": "você me deixou aqui | numa água tão funda"
+    },
+    {
+      "inicio": 237.05,
+      "original": "Tell me how you're gon' be without me",
+      "traducao": "me diz como você vai ficar sem mim"
+    },
+    {
+      "inicio": 240.03,
+      "original": "If you ain't here, I just can't breathe",
+      "traducao": "se você não tá aqui, | eu não consigo respirar"
+    },
+    {
+      "inicio": 243.02,
+      "original": "It's no air, no air",
+      "traducao": "é sem ar, sem ar"
+    },
+    {
+      "inicio": 246.04,
+      "original": "No air, air (oh, ooh)",
+      "traducao": "sem ar, ar (oh, ooh)"
+    },
+    {
+      "inicio": 249.0,
+      "original": "No air, air (no)",
+      "traducao": "sem ar, ar (não)"
+    },
+    {
+      "inicio": 252.1,
+      "original": "No air, air (no air)",
+      "traducao": "sem ar, ar (sem ar)"
+    },
+    {
+      "inicio": 256.11,
+      "original": "No air",
+      "traducao": "sem ar"
+    },
+    {
+      "inicio": 260.43,
+      "original": "",
+      "traducao": ""
+    }
+  ]
+}

@@ -266,6 +266,62 @@ def cmd_prepare(args: argparse.Namespace) -> int:
     return 1 if failed else 0
 
 
+def cmd_montar(args: argparse.Namespace) -> int:
+    paths = _paths(args)
+    # Mesmo motivo do import tardio em 'prepare': numpy e imageio-ffmpeg so
+    # existem no extra "local".
+    from .letras import LetraError
+    from .letras import carregar as carregar_letra
+    from .montagem import MontagemError, montar
+
+    destino = args.saida or paths.montados_dir / f"{args.camera.stem}.mp4"
+    if destino.exists() and not args.force:
+        print(f"{destino} ja existe (use --force para refazer)", file=sys.stderr)
+        return 2
+    try:
+        resultado = montar(
+            args.camera,
+            args.tela,
+            destino,
+            defasagem=args.defasagem,
+            letra=carregar_letra(args.letra) if args.letra else None,
+            inicio_musica=args.inicio_musica,
+            vhs=not args.sem_vhs,
+        )
+    except (MontagemError, LetraError) as error:
+        print(f"ERRO: {error}", file=sys.stderr)
+        return 1
+    resultado.pop("validacao")
+    _emit({"saida": str(destino), **resultado})
+    return 0
+
+
+def cmd_letra(args: argparse.Namespace) -> int:
+    paths = _paths(args)
+    from . import letras
+
+    destino = paths.letra(letras.slug(args.artista, args.musica))
+    if destino.exists() and not args.force:
+        # A traducao e trabalho feito: buscar de novo apagaria tudo.
+        print(f"{destino} ja existe (use --force para buscar de novo)", file=sys.stderr)
+        return 2
+    try:
+        registro = letras.buscar(args.artista, args.musica)
+    except letras.LetraError as error:
+        print(f"ERRO: {error}", file=sys.stderr)
+        return 1
+    letras.salvar(registro, destino)
+    _emit(
+        {
+            "arquivo": str(destino),
+            "fonte": registro["fonte"],
+            "versos": sum(1 for linha in registro["linhas"] if linha["original"]),
+            "proximo_passo": "preencher 'traducao' dos versos e rodar 'montar --letra'",
+        }
+    )
+    return 0
+
+
 # ---------------------------------------------------------------------------
 # Planning and hosting
 # ---------------------------------------------------------------------------
@@ -893,6 +949,8 @@ COMMANDS: dict[str, Callable[[argparse.Namespace], int]] = {
     "review-captions": cmd_review_captions,
     "approve-caption": cmd_approve_caption,
     "prepare": cmd_prepare,
+    "montar": cmd_montar,
+    "letra": cmd_letra,
     "plan-queue": cmd_plan_queue,
     "refresh-captions": cmd_refresh_captions,
     "reschedule": cmd_reschedule,
@@ -959,6 +1017,29 @@ def build_parser() -> argparse.ArgumentParser:
     prepare.add_argument("--id", nargs="+")
     prepare.add_argument("--all-approved", action="store_true")
     prepare.add_argument("--force", action="store_true")
+
+    montagem = commands.add_parser(
+        "montar", help="Monta camera + player do Spotify num Reel novo, com o audio sincronizado"
+    )
+    montagem.add_argument("--camera", type=Path, required=True, help="Gravacao da camera")
+    montagem.add_argument("--tela", type=Path, required=True, help="Gravacao de tela do Spotify")
+    montagem.add_argument("--saida", type=Path, help="Default: media/montados/<camera>.mp4")
+    montagem.add_argument(
+        "--defasagem", type=float, help="Segundos de tela antes da camera (pula a medicao)"
+    )
+    montagem.add_argument("--letra", type=Path, help="data/letras/<musica>.json ja traduzido")
+    montagem.add_argument(
+        "--inicio-musica",
+        type=float,
+        help="Segundo da gravacao de tela em que a musica comecou (default: detecta)",
+    )
+    montagem.add_argument("--sem-vhs", action="store_true", help="Nao aplica o filtro de VHS")
+    montagem.add_argument("--force", action="store_true")
+
+    letra = commands.add_parser("letra", help="Busca a letra sincronizada para traduzir")
+    letra.add_argument("--artista", required=True)
+    letra.add_argument("--musica", required=True)
+    letra.add_argument("--force", action="store_true")
 
     plan = commands.add_parser(
         "plan-queue", help="Agenda os videos elegiveis nos melhores horarios"
