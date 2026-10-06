@@ -13519,7 +13519,7 @@
       "id": "q_20261005T191800_montado-rockstar",
       "tiktok_id": "montado-rockstar",
       "source_url": "local:media/montados/rockstar.mp4",
-      "status": "scheduled",
+      "status": "published",
       "scheduled_at": "2026-10-06T18:53:00-03:00",
       "scheduled_at_utc": "2026-10-06T21:53:00+00:00",
       "slot_id": "wd-commute",
@@ -13541,13 +13541,13 @@
       "max_attempts": 3,
       "next_attempt_at": null,
       "last_error": null,
-      "container_id": null,
-      "container_created_at": null,
-      "claimed_at": null,
-      "claimed_by_run": null,
-      "instagram_media_id": null,
-      "permalink": null,
-      "published_at": null,
+      "container_id": "18027977168913893",
+      "container_created_at": "2026-10-06T21:53:01.267279+00:00",
+      "claimed_at": "2026-10-06T21:53:00.508241+00:00",
+      "claimed_by_run": "37501305496",
+      "instagram_media_id": "18120656461736891",
+      "permalink": "https://www.instagram.com/reel/DeKy1oqiK_M/",
+      "published_at": "2026-10-06T21:53:43.391470+00:00",
       "history": [
         {
           "at": "2026-10-01T01:05:29.743042+00:00",
@@ -13575,6 +13575,19 @@
           "to": "scheduled",
           "by": "local",
           "note": "pronto para o cron publicar"
+        },
+        {
+          "at": "2026-10-06T21:53:00.508269+00:00",
+          "from": "scheduled",
+          "to": "publishing",
+          "by": "ci",
+          "note": "claim do run 37501305496"
+        },
+        {
+          "at": "2026-10-06T21:53:43.391537+00:00",
+          "from": "publishing",
+          "to": "published",
+          "by": "ci"
         }
       ],
       "caption_ref": "data/captions/montado-rockstar.json",
