@@ -13610,7 +13610,7 @@
       "id": "q_20261007T192300_montado-sawadika",
       "tiktok_id": "montado-sawadika",
       "source_url": "local:media/montados/sawadika.mp4",
-      "status": "scheduled",
+      "status": "published",
       "scheduled_at": "2026-10-08T18:55:00-03:00",
       "scheduled_at_utc": "2026-10-08T21:55:00+00:00",
       "slot_id": "wd-prime",
@@ -13632,13 +13632,13 @@
       "max_attempts": 3,
       "next_attempt_at": null,
       "last_error": null,
-      "container_id": null,
-      "container_created_at": null,
-      "claimed_at": null,
-      "claimed_by_run": null,
-      "instagram_media_id": null,
-      "permalink": null,
-      "published_at": null,
+      "container_id": "18028249637913893",
+      "container_created_at": "2026-10-08T21:55:00.949635+00:00",
+      "claimed_at": "2026-10-08T21:55:00.356098+00:00",
+      "claimed_by_run": "37819679513",
+      "instagram_media_id": "18588855073066774",
+      "permalink": "https://www.instagram.com/reel/DeP8pbpEcl8/",
+      "published_at": "2026-10-08T21:55:41.936369+00:00",
       "history": [
         {
           "at": "2026-10-01T01:05:29.790516+00:00",
@@ -13666,6 +13666,19 @@
           "to": "scheduled",
           "by": "local",
           "note": "pronto para o cron publicar"
+        },
+        {
+          "at": "2026-10-08T21:55:00.356116+00:00",
+          "from": "scheduled",
+          "to": "publishing",
+          "by": "ci",
+          "note": "claim do run 37819679513"
+        },
+        {
+          "at": "2026-10-08T21:55:41.936391+00:00",
+          "from": "publishing",
+          "to": "published",
+          "by": "ci"
         }
       ],
       "caption_ref": "data/captions/montado-sawadika.json",
