@@ -7225,7 +7225,7 @@
       "id": "q_20260925T085900_7177848994901560581",
       "tiktok_id": "7177848994901560581",
       "source_url": "https://www.tiktok.com/@_lukasmax/video/7177848994901560581",
-      "status": "scheduled",
+      "status": "published",
       "scheduled_at": "2026-11-01T18:25:00-03:00",
       "scheduled_at_utc": "2026-11-01T21:25:00+00:00",
       "slot_id": "we-evening",
@@ -7245,13 +7245,13 @@
       "max_attempts": 3,
       "next_attempt_at": null,
       "last_error": null,
-      "container_id": null,
-      "container_created_at": null,
-      "claimed_at": null,
-      "claimed_by_run": null,
-      "instagram_media_id": null,
-      "permalink": null,
-      "published_at": null,
+      "container_id": "18032065418913893",
+      "container_created_at": "2026-11-01T21:25:00.863592+00:00",
+      "claimed_at": "2026-11-01T21:25:00.160136+00:00",
+      "claimed_by_run": "41329618370",
+      "instagram_media_id": "18115839299519948",
+      "permalink": "https://www.instagram.com/reel/DfNsXwvCTwh/",
+      "published_at": "2026-11-01T21:26:18.640145+00:00",
       "history": [
         {
           "at": "2026-08-08T23:56:58.742238+00:00",
@@ -7279,6 +7279,19 @@
           "to": "scheduled",
           "by": "local",
           "note": "pronto para o cron publicar"
+        },
+        {
+          "at": "2026-11-01T21:25:00.160156+00:00",
+          "from": "scheduled",
+          "to": "publishing",
+          "by": "ci",
+          "note": "claim do run 41329618370"
+        },
+        {
+          "at": "2026-11-01T21:26:18.640184+00:00",
+          "from": "publishing",
+          "to": "published",
+          "by": "ci"
         }
       ],
       "caption_ref": "data/captions/7177848994901560581.json",
