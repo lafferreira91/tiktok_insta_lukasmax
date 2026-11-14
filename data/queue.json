@@ -8213,7 +8213,7 @@
       "id": "q_20261001T190000_7158935824845901062",
       "tiktok_id": "7158935824845901062",
       "source_url": "https://www.tiktok.com/@_lukasmax/video/7158935824845901062",
-      "status": "scheduled",
+      "status": "published",
       "scheduled_at": "2026-11-14T19:33:00-03:00",
       "scheduled_at_utc": "2026-11-14T22:33:00+00:00",
       "slot_id": "we-prime",
@@ -8233,13 +8233,13 @@
       "max_attempts": 3,
       "next_attempt_at": null,
       "last_error": null,
-      "container_id": null,
-      "container_created_at": null,
-      "claimed_at": null,
-      "claimed_by_run": null,
-      "instagram_media_id": null,
-      "permalink": null,
-      "published_at": null,
+      "container_id": "18033966254913893",
+      "container_created_at": "2026-11-14T22:33:01.050871+00:00",
+      "claimed_at": "2026-11-14T22:33:00.488899+00:00",
+      "claimed_by_run": "43642629648",
+      "instagram_media_id": "18136016692802777",
+      "permalink": "https://www.instagram.com/reel/DfvSaB9jOMX/",
+      "published_at": "2026-11-14T22:33:39.976812+00:00",
       "history": [
         {
           "at": "2026-08-08T23:56:58.742801+00:00",
@@ -8267,6 +8267,19 @@
           "to": "scheduled",
           "by": "local",
           "note": "pronto para o cron publicar"
+        },
+        {
+          "at": "2026-11-14T22:33:00.488926+00:00",
+          "from": "scheduled",
+          "to": "publishing",
+          "by": "ci",
+          "note": "claim do run 43642629648"
+        },
+        {
+          "at": "2026-11-14T22:33:39.976834+00:00",
+          "from": "publishing",
+          "to": "published",
+          "by": "ci"
         }
       ],
       "caption_ref": "data/captions/7158935824845901062.json",
