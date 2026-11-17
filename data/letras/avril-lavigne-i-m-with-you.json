@@ -1,0 +1,273 @@
+{
+  "artista": "Avril Lavigne",
+  "musica": "Im With You",
+  "fonte": "lrclib:7254222",
+  "duracao": 223.0,
+  "linhas": [
+    {
+      "inicio": 19.24,
+      "original": "I'm standing on the bridge",
+      "traducao": ""
+    },
+    {
+      "inicio": 21.38,
+      "original": "I'm waiting in the dark",
+      "traducao": ""
+    },
+    {
+      "inicio": 23.85,
+      "original": "I thought that you'd be here by now",
+      "traducao": ""
+    },
+    {
+      "inicio": 28.39,
+      "original": "There's nothing but the rain",
+      "traducao": ""
+    },
+    {
+      "inicio": 30.72,
+      "original": "No footsteps on the ground",
+      "traducao": ""
+    },
+    {
+      "inicio": 33.09,
+      "original": "I'm listening but there's no sound",
+      "traducao": ""
+    },
+    {
+      "inicio": 38.24,
+      "original": "Isn't anyone trying to find me?",
+      "traducao": ""
+    },
+    {
+      "inicio": 43.28,
+      "original": "Won't somebody come take me home?",
+      "traducao": ""
+    },
+    {
+      "inicio": 46.85,
+      "original": "It's a damn cold night",
+      "traducao": ""
+    },
+    {
+      "inicio": 51.43,
+      "original": "Tryin' to figure out this life",
+      "traducao": ""
+    },
+    {
+      "inicio": 56.47,
+      "original": "Won't you take me by the hand",
+      "traducao": ""
+    },
+    {
+      "inicio": 59.07,
+      "original": "Take me somewhere new?",
+      "traducao": ""
+    },
+    {
+      "inicio": 61.55,
+      "original": "I don't know who you are, but I",
+      "traducao": ""
+    },
+    {
+      "inicio": 65.97,
+      "original": "I'm with you",
+      "traducao": ""
+    },
+    {
+      "inicio": 70.66,
+      "original": "I'm with you, mm",
+      "traducao": ""
+    },
+    {
+      "inicio": 76.05,
+      "original": "I'm looking for a place",
+      "traducao": ""
+    },
+    {
+      "inicio": 78.46,
+      "original": "I'm searching for a face",
+      "traducao": ""
+    },
+    {
+      "inicio": 81.02,
+      "original": "Is anybody here I know?",
+      "traducao": "há alguém aqui que conheço?"
+    },
+    {
+      "inicio": 85.69,
+      "original": "'Cause nothing's going right",
+      "traducao": "porque nada está dando certo"
+    },
+    {
+      "inicio": 87.83,
+      "original": "And everything's a mess",
+      "traducao": "está tudo uma bagunça"
+    },
+    {
+      "inicio": 90.25,
+      "original": "And no one likes to be alone",
+      "traducao": "e ninguém gosta de ficar só"
+    },
+    {
+      "inicio": 95.34,
+      "original": "Isn't anyone trying to find me?",
+      "traducao": "não há ninguém tentando me encontrar?"
+    },
+    {
+      "inicio": 100.38,
+      "original": "Won't somebody come take me home?",
+      "traducao": "ninguém virá me levar pra casa?"
+    },
+    {
+      "inicio": 103.93,
+      "original": "It's a damn cold night",
+      "traducao": "é uma maldita noite fria"
+    },
+    {
+      "inicio": 108.42,
+      "original": "Trying to figure out this life",
+      "traducao": "tentando entender a vida"
+    },
+    {
+      "inicio": 113.44,
+      "original": "Won't you take me by the hand",
+      "traducao": "você não vai pegar minha mão"
+    },
+    {
+      "inicio": 115.8,
+      "original": "Take me somewhere new?",
+      "traducao": "e me levar a algum lugar novo?"
+    },
+    {
+      "inicio": 118.38,
+      "original": "I don't know who you are, but I",
+      "traducao": "não sei quem você é, mas eu"
+    },
+    {
+      "inicio": 122.47,
+      "original": "I'm with you",
+      "traducao": "eu estou com você"
+    },
+    {
+      "inicio": 127.22,
+      "original": "I'm with you, yeah-yeah",
+      "traducao": "estou com você, yeah yeah"
+    },
+    {
+      "inicio": 132.34,
+      "original": "Oh, why is everything so confusing?",
+      "traducao": "oh, por que está tudo tão confuso?"
+    },
+    {
+      "inicio": 137.83,
+      "original": "Maybe I'm just out of my mind",
+      "traducao": "talvez eu só tenha perdido a cabeça"
+    },
+    {
+      "inicio": 141.81,
+      "original": "Yeah-yeah-yeah, yeah-yeah",
+      "traducao": "yeah, yeah, yeah, yeah, yeah"
+    },
+    {
+      "inicio": 145.29,
+      "original": "Yeah-yeah, yeah-yeah, yeah",
+      "traducao": "yeah, yeah, yeah, yeah, yeah"
+    },
+    {
+      "inicio": 151.21,
+      "original": "It's a damn cold night",
+      "traducao": "é uma maldita noite fria"
+    },
+    {
+      "inicio": 155.53,
+      "original": "Trying to figure out this life",
+      "traducao": "tentando entender a vida"
+    },
+    {
+      "inicio": 160.27,
+      "original": "Won't you take me by the hand",
+      "traducao": "você não vai pegar minha mão"
+    },
+    {
+      "inicio": 162.85,
+      "original": "Take me somewhere new?",
+      "traducao": "e me levar a algum lugar novo?"
+    },
+    {
+      "inicio": 165.42,
+      "original": "I don't know who you are, but I",
+      "traducao": "não sei quem você é, mas eu"
+    },
+    {
+      "inicio": 169.92,
+      "original": "I'm with you",
+      "traducao": "eu estou com você"
+    },
+    {
+      "inicio": 174.48,
+      "original": "I'm with you",
+      "traducao": "estou com você"
+    },
+    {
+      "inicio": 180.29,
+      "original": "Take me by the hand",
+      "traducao": "me pegue pela mão"
+    },
+    {
+      "inicio": 181.8,
+      "original": "Take me somewhere new",
+      "traducao": "e me leve a algum lugar novo"
+    },
+    {
+      "inicio": 184.43,
+      "original": "I don't know who you are, but I",
+      "traducao": "não sei quem você é, mas eu"
+    },
+    {
+      "inicio": 188.76,
+      "original": "I'm with you",
+      "traducao": "eu estou com você"
+    },
+    {
+      "inicio": 193.26,
+      "original": "I'm with you",
+      "traducao": "estou com você"
+    },
+    {
+      "inicio": 199.29,
+      "original": "Take me by the hand",
+      "traducao": "me pegue pela mão"
+    },
+    {
+      "inicio": 200.82,
+      "original": "Take me somewhere new",
+      "traducao": "e me leve a algum lugar novo"
+    },
+    {
+      "inicio": 203.08,
+      "original": "I don't know who you are, but I",
+      "traducao": "não sei quem você é, mas eu"
+    },
+    {
+      "inicio": 207.88,
+      "original": "I'm with you, oh",
+      "traducao": "estou com você, oh"
+    },
+    {
+      "inicio": 212.56,
+      "original": "I'm with you",
+      "traducao": "estou com você"
+    },
+    {
+      "inicio": 217.13,
+      "original": "I'm with you",
+      "traducao": "estou com você"
+    },
+    {
+      "inicio": 219.36,
+      "original": "",
+      "traducao": ""
+    }
+  ]
+}

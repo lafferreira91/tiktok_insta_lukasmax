@@ -187,7 +187,7 @@ def inicio_da_musica(tela: Path) -> float:
     return round(float(tocando[0] * passo / TAXA_AUDIO), 3)
 
 
-def _filtro(*, com_letra: bool, vhs: bool) -> str:
+def _filtro(*, com_letra: bool, vhs: bool, velocidade_camera: float = 1.0) -> str:
     faixa = (
         f"crop=iw:ih*{FAIXA_ALTURA}:0:ih*{FAIXA_TOPO},"
         f"hue=s=0,curves=all='{CURVA}',"
@@ -207,8 +207,13 @@ def _filtro(*, com_letra: bool, vhs: bool) -> str:
     # setpts zera o relogio das duas camadas. Depois do -ss, o primeiro quadro
     # da gravacao de tela chega em 1/30 s, e o blend soltava o quadro 0 so com a
     # camera -- um quadro sem o player no comeco de todo Reel.
+    #
+    # Camera gravada com a musica acelerada (efeito de clipe em camera lenta):
+    # esticar o relogio dela pelo mesmo fator devolve a musica ao tempo normal
+    # e deixa o movimento lento. Gravada a 60 fps e esticada 1,5x, sobram 40
+    # quadros por segundo de musica, mais que os 30 da saida.
     return (
-        f"[0:v]setpts=PTS-STARTPTS,fps=30,"
+        f"[0:v]setpts=(PTS-STARTPTS)*{velocidade_camera:.6f},fps=30,"
         f"scale={LARGURA}:{ALTURA}:force_original_aspect_ratio=increase:flags=lanczos,"
         f"crop={LARGURA}:{ALTURA},setsar=1,format=gbrp[camera];"
         f"[1:v]setpts=PTS-STARTPTS,fps=30,{faixa},setsar=1,format=gbrp[faixa];"
@@ -225,12 +230,22 @@ def montar(
     letra: dict[str, Any] | None = None,
     inicio_musica: float | None = None,
     vhs: bool = True,
+    velocidade_camera: float = 1.0,
+    inicio: float = 0.0,
 ) -> dict:
     """Gera o Reel montado em ``destino`` e devolve a medida e a validacao.
 
     ``inicio_musica`` e o segundo da gravacao de tela em que a musica comecou;
     so importa com ``letra``, e e detectado pelo audio quando nao vem.
+
+    ``velocidade_camera`` e a velocidade em que a musica tocava na hora de
+    gravar a camera (1.5 = tocando a 1,5x). A camera e desacelerada por esse
+    fator, e ``defasagem`` passa a valer no tempo ja desacelerado. A medicao
+    automatica compara as formas de onda, que nao batem com o audio esticado,
+    entao nesse caso a defasagem tem que vir de fora.
     """
+    if velocidade_camera != 1.0 and defasagem is None:
+        raise MontagemError("com --velocidade-camera, passe tambem --defasagem")
     medida = (
         {"defasagem_segundos": defasagem, "janelas_concordantes": None, "janelas": None}
         if defasagem is not None
@@ -239,9 +254,11 @@ def montar(
     offset = medida["defasagem_segundos"]
     # Defasagem negativa: a camera comecou antes da musica. Corta o comeco da
     # camera em vez de pedir um trecho da gravacao de tela que nao existe.
-    pula_camera, pula_tela = max(-offset, 0.0), max(offset, 0.0)
+    # ``inicio`` corta o comeco da montagem: pula o mesmo tanto das duas camadas,
+    # e a letra acompanha porque sai de ``pula_tela``.
+    pula_camera, pula_tela = max(-offset, 0.0) + inicio, max(offset, 0.0) + inicio
     duracao = min(
-        (inspect(camera)["duration_seconds"] or 0) - pula_camera,
+        (inspect(camera)["duration_seconds"] or 0) * velocidade_camera - pula_camera,
         (inspect(tela)["duration_seconds"] or 0) - pula_tela,
     )
 
@@ -268,9 +285,13 @@ def montar(
         destino.parent.mkdir(parents=True, exist_ok=True)
         result = subprocess.run(
             [_ffmpeg(), "-y",
-             "-ss", f"{pula_camera:.4f}", "-i", str(camera.resolve()),
+             # O -ss conta no relogio original da camera, antes de esticar.
+             "-ss", f"{pula_camera / velocidade_camera:.4f}", "-i", str(camera.resolve()),
              "-ss", f"{pula_tela:.4f}", "-i", str(tela.resolve()),
-             "-filter_complex", _filtro(com_letra=letra is not None, vhs=vhs),
+             "-filter_complex",
+             _filtro(
+                 com_letra=letra is not None, vhs=vhs, velocidade_camera=velocidade_camera
+             ),
              "-map", "[video]", "-map", "1:a",
              "-t", f"{duracao:.3f}",
              *_ENCODE, str(destino)],

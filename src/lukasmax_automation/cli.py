@@ -287,6 +287,8 @@ def cmd_montar(args: argparse.Namespace) -> int:
             letra=carregar_letra(args.letra) if args.letra else None,
             inicio_musica=args.inicio_musica,
             vhs=not args.sem_vhs,
+            velocidade_camera=args.velocidade_camera,
+            inicio=args.inicio,
         )
     except (MontagemError, LetraError) as error:
         print(f"ERRO: {error}", file=sys.stderr)
@@ -1034,6 +1036,19 @@ def build_parser() -> argparse.ArgumentParser:
         help="Segundo da gravacao de tela em que a musica comecou (default: detecta)",
     )
     montagem.add_argument("--sem-vhs", action="store_true", help="Nao aplica o filtro de VHS")
+    montagem.add_argument(
+        "--inicio",
+        type=float,
+        default=0.0,
+        help="Segundos da montagem completa a pular no comeco (corta o trecho)",
+    )
+    montagem.add_argument(
+        "--velocidade-camera",
+        type=float,
+        default=1.0,
+        help="Velocidade em que a musica tocava ao gravar a camera (1.5 desacelera a camera "
+        "1,5x); exige --defasagem, ja no tempo desacelerado",
+    )
     montagem.add_argument("--force", action="store_true")
 
     letra = commands.add_parser("letra", help="Busca a letra sincronizada para traduzir")
