@@ -14273,7 +14273,7 @@
       "id": "q_20261118T190000_montado-im-with-you",
       "tiktok_id": "montado-im-with-you",
       "source_url": "local:media/montados/im-with-you-2m22.mp4",
-      "status": "scheduled",
+      "status": "published",
       "scheduled_at": "2026-11-18T19:01:00-03:00",
       "scheduled_at_utc": "2026-11-18T22:01:00+00:00",
       "slot_id": "wd-prime",
@@ -14295,13 +14295,13 @@
       "max_attempts": 3,
       "next_attempt_at": null,
       "last_error": null,
-      "container_id": null,
-      "container_created_at": null,
-      "claimed_at": null,
-      "claimed_by_run": null,
-      "instagram_media_id": null,
-      "permalink": null,
-      "published_at": null,
+      "container_id": "18034547849913893",
+      "container_created_at": "2026-11-18T22:01:01.240858+00:00",
+      "claimed_at": "2026-11-18T22:01:00.300542+00:00",
+      "claimed_by_run": "44379781395",
+      "instagram_media_id": "18117312314129288",
+      "permalink": "https://www.instagram.com/reel/Df5h7zzCdD7/",
+      "published_at": "2026-11-18T22:02:02.351273+00:00",
       "history": [
         {
           "at": "2026-11-17T23:41:05.417188+00:00",
@@ -14329,6 +14329,19 @@
           "to": "scheduled",
           "by": "local",
           "note": "pronto para o cron publicar"
+        },
+        {
+          "at": "2026-11-18T22:01:00.300568+00:00",
+          "from": "scheduled",
+          "to": "publishing",
+          "by": "ci",
+          "note": "claim do run 44379781395"
+        },
+        {
+          "at": "2026-11-18T22:02:02.351301+00:00",
+          "from": "publishing",
+          "to": "published",
+          "by": "ci"
         }
       ],
       "caption_ref": "data/captions/montado-im-with-you.json",
